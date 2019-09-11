@@ -1,0 +1,122 @@
+{
+  "attributes": [
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "number",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "title",
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
+    },
+    {
+      "id": "type",
+      "name": {
+        "de-DE": "Typ",
+        "en-US": "Type"
+      },
+      "sortorder": 100,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "document": {
+            "values": {
+              "de-DE": "Dokument",
+              "en-US": "Document"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          },
+          "drawing": {
+            "values": {
+              "de-DE": "Zeichnung",
+              "en-US": "Drawing"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "cad": {
+            "values": {
+              "de-DE": "CAD-Daten",
+              "en-US": "CAD-Data"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "dmu": {
+            "values": {
+              "de-DE": "DMU-Daten",
+              "en-US": "DMU-Data"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "pending": {
+            "values": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": ""
+            }
+          }
+        },
+        "default": "pending"
+      }
+    }
+  ],
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+  "icon": "",
+  "name": {
+    "de-DE": "Liefergegenstand",
+    "en-US": "Delivery Item"
+  },
+  "name_plural": {
+    "de-DE": "Liefergegenstände",
+    "en-US": "Deliverables"
+  },
+  "id": "DI",
+  "domain": "projectmanagement",
+  "properties": {
+    "color": {
+      "background": "orchid",
+      "border": "orchid"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
+}

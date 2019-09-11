@@ -1,0 +1,22 @@
+[
+  {
+      "foreward": {
+          "id": "sourceof",
+          "name": {
+              "de-DE": "ist Quelle von",
+              "en-US": "is source of"
+          },
+          "cardinality": "one2many"
+      },
+      "left": "ND",
+      "right": "RT",
+      "reverse": {
+          "id": "hasasasource",
+          "name": {
+              "de-DE": "hat als Quelle",
+              "en-US": "has as a source"
+          },
+          "cardinality": "one2one"
+      }
+  }
+]

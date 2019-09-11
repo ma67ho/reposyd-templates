@@ -1,0 +1,42 @@
+[
+    {
+        "foreward": {
+            "id": "requires",
+            "name": {
+                "de-DE": "erfordert",
+                "en-US": "requires"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "CY",
+        "right": "FN",
+        "reverse": {
+            "id": "requiredfor",
+            "name": {
+                "de-DE": "erforderlich für",
+                "en-US": "required for"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "requires",
+            "name": {
+                "de-DE": "erfordert",
+                "en-US": "requires"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "UC",
+        "right": "CY",
+        "reverse": {
+            "id": "requiredfor",
+            "name": {
+                "de-DE": "erforderlich für",
+                "en-US": "required for"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

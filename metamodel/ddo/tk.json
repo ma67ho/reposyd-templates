@@ -1,0 +1,174 @@
+{
+  "attributes": [
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "number",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "title",
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
+    },
+    {
+      "id": "duration",
+      "name": {
+        "de-DE": "Dauer",
+        "en-US": "Duration"
+      },
+      "sortorder": 200,
+      "type": "value",
+      "properties": {
+        "unit": {
+          "de-DE": "h",
+          "en-US": "h"
+        },
+        "decimals": 2,
+        "default": 0,
+        "max": 99999,
+        "min": 0
+      }
+    },
+    {
+      "id": "resource",
+      "name": {
+        "de-DE": "Ressource",
+        "en-US": "Resource"
+      },
+      "sortorder": 310,
+      "type": "resource_pm",
+      "properties": {
+        "enumeration": {
+          "none": {
+            "values": {
+              "de-DE": "Keine",
+              "en-US": "None"
+            },
+            "properties": {
+              "costcenter": "",
+              "hourlyRate": {
+                "value": 0.0,
+                "currency": "EUR"
+              }
+            }
+          },
+          "sem": {
+            "values": {
+              "de-DE": "Systems Engineering Manager",
+              "en-US": "Systems Engineering Manager"
+            },
+            "properties": {
+              "costcenter": "4711",
+              "hourlyRate": {
+                "value": 150.0,
+                "currency": "EUR"
+              }
+            }
+          }
+        },
+        "default": "none"
+      }
+    },
+    {
+      "id": "startdate",
+      "name": {
+        "de-DE": "Startdatum",
+        "en-US": "Start Date"
+      },
+      "sortorder": 320,
+      "type": "date"
+    },
+    {
+      "id": "enddate",
+      "name": {
+        "de-DE": "Enddatum",
+        "en-US": "End Date"
+      },
+      "sortorder": 330,
+      "type": "date"
+    },
+    {
+      "id": "plannedstartdate",
+      "name": {
+        "de-DE": "Geplantes Startdatum",
+        "en-US": "Planned Start Date"
+      },
+      "sortorder": 340,
+      "type": "date"
+    },
+    {
+      "id": "plannedenddate",
+      "name": {
+        "de-DE": "Geplantes Enddatum",
+        "en-US": "Planned End Date"
+      },
+      "sortorder": 350,
+      "type": "date"
+    },
+    {
+      "id": "degreeofcompletion",
+      "name": {
+        "de-DE": "Fertigstellungsgrad",
+        "en-US": "Degree of Completion"
+      },
+      "sortorder": 400,
+      "type": "value",
+      "properties": {
+        "unit": {
+          "de-DE": "%",
+          "en-US": "%"
+        },
+        "decimals": 0,
+        "default": 0,
+        "max": 100,
+        "min": 0
+      }
+    }
+  ],
+  "description": "",
+  "icon": "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",
+  "name": {
+    "de-DE": "Vorgang",
+    "en-US": "Task"
+  },
+  "name_plural": {
+    "de-DE": "Vorgänge",
+    "en-US": "Tasks"
+  },
+  "id": "TK",
+  "domain": "projectmanagement",
+  "properties": {
+    "color": {
+      "background": "darkorchid",
+      "border": "darkorchid"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
+}

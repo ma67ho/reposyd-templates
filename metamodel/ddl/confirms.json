@@ -1,0 +1,22 @@
+[
+    {
+        "foreward": {
+            "id": "confirms",
+            "name": {
+                "de-DE": "bestätigt",
+                "en-US": "confirms"
+            },
+            "cardinality": "one2one"
+        },
+        "left": "TR",
+        "right": "TT",
+        "reverse": {
+            "id": "confirmedby",
+            "name": {
+                "de-DE": "bestätigt durch",
+                "en-US": "confirmed by"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "foreward": {
+            "id": "generates",
+            "name": {
+                "de-DE": "erzeugt",
+                "en-US": "generates"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "WP",
+        "right": "DI",
+        "reverse": {
+            "id": "producedby",
+            "name": {
+                "de-DE": "erzeugt durch",
+                "en-US": "produced by"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

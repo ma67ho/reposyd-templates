@@ -1,0 +1,483 @@
+{
+  "attributes": [
+    {
+      "id": "number",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "title",
+      "description": {
+        "de-DE": "Enthält eine Beschreibung des Risikos",
+        "en-US": "Contains a description of the risk"
+      },
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
+    },
+    {
+      "id": "mitigationmeasure",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Gegenmaßnahme",
+        "en-US": "Mitigation Measure"
+      },
+      "sortorder": 40,
+      "type": "text"
+    },
+    {
+      "id": "state",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Status",
+        "en-US": "State"
+      },
+      "sortorder": 100,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
+            "description": {
+              "de-DE": "offen",
+              "en-US": "pending"
+            },
+            "values": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "monitored": {
+            "description": {
+              "en-US": ""
+            },
+            "values": {
+              "de-DE": "überwacht",
+              "en-US": "monitored"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "occurred": {
+            "description": {
+              "en-US": ""
+            },
+            "values": {
+              "de-DE": "eingetreten",
+              "en-US": "occurred"
+            },
+            "properties": {
+              "backgroundColor": "firebrick"
+            }
+          },
+          "eliminated": {
+            "description": {
+              "en-US": ""
+            },
+            "values": {
+              "de-DE": "eliminiert",
+              "en-US": "eliminated"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          }
+        },
+        "default": "pending"
+      }
+    },
+    {
+      "id": "category",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Kategorie",
+        "en-US": "Category"
+      },
+      "sortorder": 110,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
+            "description": {
+              "de-DE": "offen",
+              "en-US": "pending"
+            },
+            "values": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "productrelated": {
+            "values": {
+              "de-DE": "produktbezogen",
+              "en-US": "product-related"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          },
+          "economical": {
+            "values": {
+              "de-DE": "wirtschaftlich",
+              "en-US": "economical"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "political": {
+            "values": {
+              "de-DE": "politisch",
+              "en-US": "political"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          }
+        },
+        "default": "pending"
+      }
+    },
+    {
+      "id": "probability",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Wahrscheinlichkeit",
+        "en-US": "Probability"
+      },
+      "sortorder": 120,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "0": {
+            "description": {
+              "de-DE": "Bewertung offen",
+              "en-US": "Assessment pending"
+            },
+            "values": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "4": {
+            "description": {
+              "en-US": "A risk that is almost certain to show-up during project execution. If you’re looking at percentages a risk that is more than 80% likely to cause problems will fall under this category."
+            },
+            "values": {
+              "de-DE": "wahrscheinlich",
+              "en-US": "probable"
+            },
+            "properties": {
+              "backgroundColor": "firebrick"
+            }
+          },
+          "3": {
+            "description": {
+              "en-US": "Risks that have 60-80% chances of occurrence can be grouped as possible."
+            },
+            "values": {
+              "de-DE": "möglich",
+              "en-US": "possible"
+            },
+            "properties": {
+              "backgroundColor": "darkorange"
+            }
+          },
+          "2": {
+            "description": {
+              "en-US": "Risks which have a near 50/50 probability of occurrence."
+            },
+            "values": {
+              "de-DE": "unwahrscheinlich",
+              "en-US": "unlikely"
+            },
+            "properties": {
+              "backgroundColor": "gold"
+            }
+          },
+          "1": {
+            "description": {
+              "en-US": "Rare and exceptional risks which have a less than 10% chance of occurrence."
+            },
+            "values": {
+              "de-DE": "selten",
+              "en-US": "rare"
+            },
+            "properties": {
+              "backgroundColor": "darkgreen"
+            }
+          }
+        },
+        "default": "0"
+      }
+    },
+    {
+      "id": "consequence",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Folge",
+        "en-US": "Consequence"
+      },
+      "sortorder": 130,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "0": {
+            "description": {
+              "de-DE": "Bewertung offen",
+              "en-US": "Assessment pending"
+            },
+            "values": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "1": {
+            "description": {
+              "en-US": "Risks that will cause a near negligible amount of damage to the overall progress of the project."
+            },
+            "values": {
+              "de-DE": "unbedeutent",
+              "en-US": "insignificant"
+            },
+            "properties": {
+              "backgroundColor": "drakgreen"
+            }
+          },
+          "2": {
+            "description": {
+              "en-US": "Risks which do not impose a great threat, but yet a sizable damage can be classified as moderate."
+            },
+            "values": {
+              "de-DE": "mittel",
+              "en-US": "medium"
+            },
+            "properties": {
+              "backgroundColor": "gold"
+            }
+          },
+          "3": {
+            "description": {
+              "en-US": "Risks with significantly large consequences which can lead to a great amount of loss are classified as critical."
+            },
+            "values": {
+              "de-DE": "hoch",
+              "en-US": "high"
+            },
+            "properties": {
+              "backgroundColor": "darkorange"
+            }
+          },
+          "4": {
+            "description": {
+              "en-US": "These are the risks which can make the project completely unproductive and unfruitful, and must be a top priority during risk management. "
+            },
+            "values": {
+              "de-DE": "sehr hoch",
+              "en-US": "very high"
+            },
+            "properties": {
+              "backgroundColor": "firebrick"
+            }
+          }
+        },
+        "default": "0"
+      }
+    },
+    {
+      "id": "risklevel",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Risikograd",
+        "en-US": "Risk Level"
+      },
+      "sortorder": 140,
+      "type": "matrix",
+      "properties": {
+        "axis": {
+          "x": {
+            "attribute": "consequence",
+            "size": 5
+          },
+          "y": {
+            "attribute": "probability",
+            "size": 5
+          }
+        },  
+        "matrix": [
+          [0, 2, 3, 4, 4],
+          [0, 2, 3, 3, 4],
+          [0, 1, 2, 3, 3],
+          [0, 1, 1, 2, 2],
+          [0, 0, 0, 0, 0]
+        ],
+        "type": "enumeration",
+        "enumeration": {
+          "4": {
+            "values": {
+              "de-DE": "Schweres Risiko",
+              "en-US": "Severe Risk"
+            },
+            "properties": {
+              "backgroundColor": "firebrick"
+            }
+          },
+          "3": {
+            "values": {
+              "de-DE": "Hauptrisiko",
+              "en-US": "Major Risk"
+            },
+            "properties": {
+              "backgroundColor": "darkorange"
+            }
+          },
+          "2": {
+            "values": {
+              "de-DE": "Moderates Risiko",
+              "en-US": "Moderate Risk"
+            },
+            "properties": {
+              "backgroundColor": "gold"
+            }
+          },
+          "1": {
+            "values": {
+              "de-DE": "Niedriges Risiko",
+              "en-US": "Low Risk"
+            },
+            "properties": {
+              "backgroundColor": "darkgreen"
+            }
+          },
+          "0": {
+            "values": {
+              "de-DE": "Bewertung ausstehend",
+              "en-US": "Assessment pending"
+            },
+            "properties": {
+              "backgroundColor": "#A9A9A9"
+            }
+          }
+        },
+        "default": "0"
+      }
+    },
+    {
+      "id": "costimpact",
+      "description": {
+        "de-DE": "",
+        "en-US": "The estimated most likely cost impact of the risk if it were to occur (in millions of dollars).  For the initial risk assessment, this value should generally correlate with the pre-response assessment.  For subsequent risk assements as response plans are implemented, the value should reflect the estimated impact at the time of assessment."
+      },
+      "name": {
+        "de-DE": "Auswirkungen Kosten",
+        "en-US": "Cost Impact"
+      },
+      "sortorder": 200,
+      "type": "value",
+      "properties": {
+        "unit": "EUR"
+      }
+    },
+    {
+      "id": "scheduleimpact",
+      "description": {
+        "de-DE": "",
+        "en-US": "The estimated most likely schedule impact of the risk if it were to occur (in months).  For the initial risk assessment, this value should generally correlate with the pre-response assessment.  For subsequent risk assessments as response plans are implemented, the value should reflect the estimated impact at the time of assessment."
+      },
+      "name": {
+        "de-DE": "Auswirkungen Terminplan",
+        "en-US": "Schedule Impact"
+      },
+      "sortorder": 210,
+      "type": "value",
+      "properties": {
+        "unit": "EUR"
+      }
+    }
+  ],
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+  "icon": "",
+  "name": {
+    "de-DE": "Risiko",
+    "en-US": "Risk"
+  },
+  "name_plural": {
+    "de-DE": "Risiken",
+    "en-US": "Risks"
+  },
+  "id": "RK",
+  "domain": "projectmanagement",
+  "properties": {
+    "color": {
+      "background": "goldenrod",
+      "border": "goldenrod"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
+}

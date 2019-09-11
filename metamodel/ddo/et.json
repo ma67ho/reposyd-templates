@@ -1,0 +1,76 @@
+{
+  "attributes": [
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "title",
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 100,
+      "type": "text",
+      "properties": {}
+    },
+    {
+      "id": "materialnumber",
+      "name": {
+        "de-DE": "Materialnummer",
+        "en-US": "Material Number"
+      },
+      "sortorder": 200,
+      "type": "text",
+      "properties": {
+        "length": 255
+      }
+    }
+  ],
+  "description": {
+    "de-DE": "Ein Gerät ist physikalische Implementation eines Systemelementes",
+    "en-US": "An equipment is the physical implemntation of a system element."
+  },
+  "icon": "",
+  "name": {
+    "de-DE": "Gerät",
+    "en-US": "Equipment"
+  },
+  "name_plural": {
+    "de-DE": "Geräte",
+    "en-US": "Equipments"
+  },
+  "id": "ET",
+  "domain": "systemdesign",
+  "properties": {
+    "color": {
+      "background": "steelblue",
+      "border": "steelblue"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+[
+    {
+        "foreward": {
+            "id": "allocatedto",
+            "name": {
+                "de-DE": "zugewiesen zu",
+                "en-US": "allocated to"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "FN",
+        "right": "SE",
+        "reverse": {
+            "id": "allocates",
+            "name": {
+                "de-DE": "stellt bereit",
+                "en-US": "allocates"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

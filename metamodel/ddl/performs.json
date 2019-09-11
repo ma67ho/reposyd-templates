@@ -1,0 +1,22 @@
+[
+    {
+        "foreward": {
+            "id": "performs",
+            "name": {
+                "de-DE": "führt durch",
+                "en-US": "performs"
+            },
+            "cardinality": "one2one"
+        },
+        "left": "AT",
+        "right": "TT",
+        "reverse": {
+            "id": "performedby",
+            "name": {
+                "de-DE": "durchgeführt durch",
+                "en-US": "performed by"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]
