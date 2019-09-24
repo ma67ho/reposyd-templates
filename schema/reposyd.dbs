@@ -809,6 +809,10 @@ completed]]></comment>
 				<defo>0</defo>
 				<comment><![CDATA[Indicates if the shape belongs to a deleted design data object or link.]]></comment>
 			</column>
+			<column name="cm_deleted" type="boolean" jt="-7" >
+				<defo>0</defo>
+			</column>
+			<column name="repository" type="char" length="38" jt="1" />
 			<index name="Pk_shape" unique="PRIMARY_KEY" >
 				<column name="uuid" />
 			</index>
@@ -4893,7 +4897,6 @@ END;]]></string>
 		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2112" y="608" />
 		<entity schema="Default" name="dm_diagram_property" color="CCCCFF" x="2224" y="1248" />
 		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1856" y="1152" />
-		<entity schema="Default" name="dm_item" color="CCCCFF" x="2080" y="1040" />
 		<entity schema="Default" name="sp_issue_history" color="3986C1" x="2592" y="944" />
 		<entity schema="Default" name="dm_item_property" color="CCCCFF" x="2384" y="1088" />
 		<entity schema="Default" name="re_document_history" color="FFFFCC" x="2352" y="368" />
@@ -4901,6 +4904,7 @@ END;]]></string>
 		<entity schema="Default" name="re_document" color="FFEBEB" x="1360" y="2048" />
 		<entity schema="Default" name="re_section_ddl" color="FFEBEB" x="944" y="2272" />
 		<entity schema="Default" name="re_section_ddo" color="FFEBEB" x="944" y="2384" />
+		<entity schema="Default" name="dm_item" color="CCCCFF" x="2080" y="1040" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
