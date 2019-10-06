@@ -129,6 +129,7 @@ CREATE TABLE dm_item (
 	revision_from        integer  DEFAULT 0   ,
 	revision_to          integer  DEFAULT -1   ,
 	ghost                boolean  DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
 	cm_deleted           boolean  DEFAULT 0   ,
 	repository           char(38)     ,
 	CONSTRAINT Unq_dm_item_uuid UNIQUE ( uuid, revision ) ,

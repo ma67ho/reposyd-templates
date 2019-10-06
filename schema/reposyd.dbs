@@ -809,6 +809,7 @@ completed]]></comment>
 				<defo>0</defo>
 				<comment><![CDATA[Indicates if the shape belongs to a deleted design data object or link.]]></comment>
 			</column>
+			<column name="cm_modified_by" type="char" length="38" jt="1" mandatory="y" />
 			<column name="cm_deleted" type="boolean" jt="-7" >
 				<defo>0</defo>
 			</column>
@@ -1339,6 +1340,9 @@ completed]]></comment>
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
 			<column name="timestamp" type="datetime" jt="93" >
 				<defo>CURRENT_TIMESTAMP</defo>
+			</column>
+			<column name="master" type="char" length="38" jt="1" >
+				<comment><![CDATA[Contains the master lock's UUID.]]></comment>
 			</column>
 			<index name="idx_rp_lock_uuid" unique="NORMAL" >
 				<column name="uuid" />
@@ -4875,7 +4879,6 @@ END;]]></string>
 		<entity schema="Default" name="rp_member_settings" color="F0ECF7" x="1152" y="2816" />
 		<entity schema="Default" name="rp_config" color="F0ECF7" x="1152" y="2960" />
 		<entity schema="Default" name="rp_member" color="F0ECF7" x="1408" y="2832" />
-		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1152" y="3056" />
 		<entity schema="Default" name="sp_comment" color="FFCCFF" x="1872" y="2496" />
 		<entity schema="Default" name="sp_messagebox" color="FFCCFF" x="1872" y="2672" />
 		<entity schema="Default" name="re_template" color="FFEBEB" x="1424" y="2432" />
@@ -4895,7 +4898,6 @@ END;]]></string>
 		<entity schema="Default" name="re_reportson" color="FFEBEB" x="1136" y="1760" />
 		<entity schema="Default" name="re_documenttree" color="FFEBEB" x="1152" y="1904" />
 		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2112" y="608" />
-		<entity schema="Default" name="dm_diagram_property" color="CCCCFF" x="2224" y="1248" />
 		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1856" y="1152" />
 		<entity schema="Default" name="sp_issue_history" color="3986C1" x="2592" y="944" />
 		<entity schema="Default" name="dm_item_property" color="CCCCFF" x="2384" y="1088" />
@@ -4905,6 +4907,8 @@ END;]]></string>
 		<entity schema="Default" name="re_section_ddl" color="FFEBEB" x="944" y="2272" />
 		<entity schema="Default" name="re_section_ddo" color="FFEBEB" x="944" y="2384" />
 		<entity schema="Default" name="dm_item" color="CCCCFF" x="2080" y="1040" />
+		<entity schema="Default" name="dm_diagram_property" color="CCCCFF" x="2080" y="1264" />
+		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1152" y="3056" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
