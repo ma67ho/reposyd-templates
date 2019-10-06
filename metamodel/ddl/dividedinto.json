@@ -13,7 +13,7 @@
     "reverse": {
       "id": "includedin",
       "name": {
-        "de-DE": "unterteilt in",
+        "de-DE": "enthalten in",
         "en-US": "included in"
       },
       "cardinality": "one2one"
