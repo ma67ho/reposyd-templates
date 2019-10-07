@@ -570,7 +570,7 @@ CREATE INDEX idx_po_ipt_member_ipt ON po_ipt_member ( ipt );
 CREATE TABLE po_role ( 
 	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
 	project              char(38) NOT NULL    ,
-	name                 varchar(100) NOT NULL    ,
+	id                   varchar(100) NOT NULL    ,
 	description          text     ,
 	state                varchar(100)  DEFAULT 'enabled'   ,
 	repository           char(38) NOT NULL    ,
@@ -660,6 +660,7 @@ CREATE TABLE rp_lock (
 	member               char(38) NOT NULL    ,
 	uuid                 char(38) NOT NULL    ,
 	timestamp            datetime  DEFAULT CURRENT_TIMESTAMP   ,
+	master               char(38)     ,
 	FOREIGN KEY ( project ) REFERENCES rp_project( uuid ) ON DELETE CASCADE ,
 	FOREIGN KEY ( member ) REFERENCES rp_member( uuid ) ON DELETE CASCADE 
  );
@@ -1028,7 +1029,7 @@ CREATE VIEW ac_owner AS SELECT ddo.solution AS ds_uuid,
 
 CREATE VIEW ac_roles AS SELECT ro.project AS po_uuid,
            ro.uuid AS ro_uuid,
-           ro.name AS ro_name,
+           ro.id AS ro_id,
            ro.description AS ro_description,
            ro.state AS ro_state
       FROM po_role AS ro;;
@@ -1483,7 +1484,7 @@ CREATE VIEW mb_assigned_roles AS SELECT ro.project AS po_uuid,
        mb.name AS mb_name,
        rpm.mode AS mb_mode,
        ro.uuid AS ro_uuid,
-       ro.name AS ro_name,
+       ro.id AS ro_id,
        ro.state AS ro_state,
        ro.description AS ro_description
   FROM po_role AS ro
@@ -1534,7 +1535,7 @@ CREATE VIEW mb_assigned_transactions AS SELECT po_role.project AS po_uuid,
        rp_transaction.uuid AS ta_uuid,
        rp_transaction.name AS ta_name,
        po_role.uuid AS ro_uuid,
-       po_role.name AS ro_name,
+       po_role.id AS ro_id,
        po_role.state AS ro_state,
        po_role.repository AS ro_repository,
        ro_assigned_teammembers.mb_uuid AS mb_uuid,
@@ -1789,7 +1790,24 @@ CREATE VIEW re_templates AS SELECT tes.solution AS ds_uuid,
        LEFT JOIN
        re_template te ON (te.uuid = tes.template);
 
-CREATE VIEW ro_assigned_teammembers AS SELECT rp_project_member.project AS po_uuid, po_role.uuid AS ro_uuid, po_role.name AS ro_name, po_role.description AS ro_description, po_role.state AS ro_state, po_role.repository AS ro_repository, rp_member.uuid AS mb_uuid, rp_member.account AS mb_account, rp_member.name AS mb_name, rp_project_member.mode AS mb_mode, rp_member.repository AS mb_repository FROM po_role_member INNER JOIN po_role ON (po_role.uuid = po_role_member.role) INNER JOIN rp_project_member ON (rp_project_member.member = po_role_member.member) INNER JOIN rp_member ON (rp_member.uuid = rp_project_member.member);
+CREATE VIEW ro_assigned_teammembers AS SELECT rp_project_member.project AS po_uuid,
+       po_role.uuid AS ro_uuid,
+       po_role.id AS ro_id,
+       po_role.description AS ro_description,
+       po_role.state AS ro_state,
+       po_role.repository AS ro_repository,
+       rp_member.uuid AS mb_uuid,
+       rp_member.account AS mb_account,
+       rp_member.name AS mb_name,
+       rp_project_member.mode AS mb_mode,
+       rp_member.repository AS mb_repository
+  FROM po_role_member
+       INNER JOIN
+       po_role ON (po_role.uuid = po_role_member.role) 
+       INNER JOIN
+       rp_project_member ON (rp_project_member.member = po_role_member.member) 
+       INNER JOIN
+       rp_member ON (rp_member.uuid = rp_project_member.member);
 
 CREATE VIEW rp_members AS SELECT mb.account AS mb_account,
        mb.name AS mb_name,
@@ -1898,7 +1916,7 @@ CREATE VIEW ta_assignments AS SELECT po_role.project AS po_uuid,
        rp_transaction.uuid AS ta_uuid,
        rp_transaction.name AS ta_name,
        po_role.uuid AS ro_uuid,
-       po_role.name AS ro_name,
+       po_role.id AS ro_id,
        po_role.state AS ro_state,
        po_role.repository AS ro_repository,
        ro_assigned_teammembers.mb_uuid AS mb_uuid,
