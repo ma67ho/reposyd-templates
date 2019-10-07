@@ -37,16 +37,118 @@
       "properties": {}
     },
     {
+      "id": "quantity",
+      "name": {
+        "de-DE": "Menge",
+        "en-US": "Quantity"
+      },
+      "sortorder": 200,
+      "type": "value",
+      "properties": {
+      },
+      "default": 0
+    },
+    {
+      "id": "unit",
+      "name": {
+        "de-DE": "Einheit",
+        "en-US": "Unit"
+      },
+      "sortorder": 200,
+      "type": "value",
+      "properties": {
+        "enumeration": {
+          "pcs": {
+            "values": {
+              "de-DE": "Stück",
+              "en-US": "Piece"
+            },
+            "properties": {}
+          },
+          "m": {
+            "values": {
+              "de-DE": "Meter",
+              "en-US": "Metre"
+            },
+            "properties": {}
+          }
+        }
+      },
+      "default": "pcs"
+    },
+    {
+      "id": "height",
+      "name": {
+        "de-DE": "Höhe",
+        "en-US": "Height"
+      },
+      "sortorder": 710,
+      "type": "value",
+      "properties": {
+        "unit": "mm"
+      }
+    },
+    {
+      "id": "width",
+      "name": {
+        "de-DE": "Breite",
+        "en-US": "Width"
+      },
+      "sortorder": 720,
+      "type": "value",
+      "properties": {
+        "unit": "mm"
+      }
+    },
+    {
+      "id": "length",
+      "name": {
+        "de-DE": "Länge",
+        "en-US": "Length"
+      },
+      "sortorder": 730,
+      "type": "value",
+      "properties": {
+        "unit": "mm"
+      }
+    },
+    {
       "id": "materialnumber",
       "name": {
         "de-DE": "Materialnummer",
         "en-US": "Material Number"
       },
-      "sortorder": 200,
+      "sortorder": 890,
       "type": "text",
       "properties": {
         "length": 255
       }
+    },
+    {
+      "id": "mtbf",
+      "name": {
+        "de-DE": "MTBF",
+        "en-US": "MTBF"
+      },
+      "sortorder": 910,
+      "type": "value",
+      "properties": {
+        "unit": "h"
+      },
+      "default": 0
+    },
+    {
+      "id": "mttr",
+      "name": {
+        "de-DE": "MTTR",
+        "en-US": "MTTR"
+      },
+      "sortorder": 920,
+      "type": "value",
+      "properties": {
+        "unit": "h"
+      },
+      "default": 0
     }
   ],
   "description": {
