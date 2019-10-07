@@ -809,6 +809,7 @@ completed]]></comment>
 				<defo>0</defo>
 				<comment><![CDATA[Indicates if the shape belongs to a deleted design data object or link.]]></comment>
 			</column>
+			<column name="cm_modified_by" type="char" length="38" jt="1" mandatory="y" />
 			<column name="cm_deleted" type="boolean" jt="-7" >
 				<defo>0</defo>
 			</column>
@@ -899,7 +900,7 @@ completed]]></comment>
 			<column name="project" type="char" length="38" jt="1" mandatory="y" >
 				<comment><![CDATA[The project's uuid the role is assigned to]]></comment>
 			</column>
-			<column name="name" type="varchar" length="100" jt="12" mandatory="y" >
+			<column name="id" type="varchar" length="100" jt="12" mandatory="y" >
 				<comment><![CDATA[The name]]></comment>
 			</column>
 			<column name="description" type="text" jt="-1" />
@@ -1339,6 +1340,9 @@ completed]]></comment>
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
 			<column name="timestamp" type="datetime" jt="93" >
 				<defo>CURRENT_TIMESTAMP</defo>
+			</column>
+			<column name="master" type="char" length="38" jt="1" >
+				<comment><![CDATA[Contains the master lock's UUID.]]></comment>
 			</column>
 			<index name="idx_rp_lock_uuid" unique="NORMAL" >
 				<column name="uuid" />
@@ -1794,15 +1798,15 @@ Please refer to reposyd::ProjectState]]></comment>
 		<view name="ac_roles" >
 			<view_script><![CDATA[SELECT ro.project AS po_uuid,
            ro.uuid AS ro_uuid,
-           ro.name AS ro_name,
+           ro.id AS ro_id,
            ro.description AS ro_description,
            ro.state AS ro_state
       FROM po_role AS ro;]]></view_script>
-			<column name="po_uuid" type="char" />
-			<column name="ro_uuid" type="char" />
-			<column name="ro_name" type="varchar" />
+			<column name="po_uuid" type="char " />
+			<column name="ro_uuid" type="char " />
+			<column name="ro_id" type="varchar " />
 			<column name="ro_description" type="text" />
-			<column name="ro_state" type="varchar" />
+			<column name="ro_state" type="varchar " />
 		</view>
 		<view name="ac_transactions" >
 			<view_script><![CDATA[SELECT uuid AS tn_uuid,name AS tn_name, description AS tn_description FROM rp_transaction]]></view_script>
@@ -2653,7 +2657,7 @@ Please refer to reposyd::ProjectState]]></comment>
        mb.name AS mb_name,
        rpm.mode AS mb_mode,
        ro.uuid AS ro_uuid,
-       ro.name AS ro_name,
+       ro.id AS ro_id,
        ro.state AS ro_state,
        ro.description AS ro_description
   FROM po_role AS ro
@@ -2664,14 +2668,14 @@ Please refer to reposyd::ProjectState]]></comment>
                                  rpm.project = ro.project) 
        INNER JOIN
        rp_member mb ON (mb.uuid = rpm.member)]]></view_script>
-			<column name="po_uuid" type="char" />
+			<column name="po_uuid" type="char " />
 			<column name="mb_uuid" type="char" />
 			<column name="mb_account" type="varchar" />
 			<column name="mb_name" type="varchar" />
 			<column name="mb_mode" type="varchar" />
-			<column name="ro_uuid" type="char" />
-			<column name="ro_name" type="varchar" />
-			<column name="ro_state" type="varchar" />
+			<column name="ro_uuid" type="char " />
+			<column name="ro_id" type="varchar " />
+			<column name="ro_state" type="varchar " />
 			<column name="ro_description" type="text" />
 		</view>
 		<view name="mb_assigned_solutions" >
@@ -2736,7 +2740,7 @@ Please refer to reposyd::ProjectState]]></comment>
        rp_transaction.uuid AS ta_uuid,
        rp_transaction.name AS ta_name,
        po_role.uuid AS ro_uuid,
-       po_role.name AS ro_name,
+       po_role.id AS ro_id,
        po_role.state AS ro_state,
        po_role.repository AS ro_repository,
        ro_assigned_teammembers.mb_uuid AS mb_uuid,
@@ -3213,13 +3217,30 @@ Please refer to reposyd::ProjectState]]></comment>
 			<column name="te_repository" type="char" />
 		</view>
 		<view name="ro_assigned_teammembers" >
-			<view_script><![CDATA[SELECT rp_project_member.project AS po_uuid, po_role.uuid AS ro_uuid, po_role.name AS ro_name, po_role.description AS ro_description, po_role.state AS ro_state, po_role.repository AS ro_repository, rp_member.uuid AS mb_uuid, rp_member.account AS mb_account, rp_member.name AS mb_name, rp_project_member.mode AS mb_mode, rp_member.repository AS mb_repository FROM po_role_member INNER JOIN po_role ON (po_role.uuid = po_role_member.role) INNER JOIN rp_project_member ON (rp_project_member.member = po_role_member.member) INNER JOIN rp_member ON (rp_member.uuid = rp_project_member.member)]]></view_script>
+			<view_script><![CDATA[SELECT rp_project_member.project AS po_uuid,
+       po_role.uuid AS ro_uuid,
+       po_role.id AS ro_id,
+       po_role.description AS ro_description,
+       po_role.state AS ro_state,
+       po_role.repository AS ro_repository,
+       rp_member.uuid AS mb_uuid,
+       rp_member.account AS mb_account,
+       rp_member.name AS mb_name,
+       rp_project_member.mode AS mb_mode,
+       rp_member.repository AS mb_repository
+  FROM po_role_member
+       INNER JOIN
+       po_role ON (po_role.uuid = po_role_member.role) 
+       INNER JOIN
+       rp_project_member ON (rp_project_member.member = po_role_member.member) 
+       INNER JOIN
+       rp_member ON (rp_member.uuid = rp_project_member.member)]]></view_script>
 			<column name="po_uuid" type="char" />
-			<column name="ro_uuid" type="char" />
-			<column name="ro_name" type="varchar" />
+			<column name="ro_uuid" type="char " />
+			<column name="ro_id" type="varchar " />
 			<column name="ro_description" type="text" />
-			<column name="ro_state" type="varchar" />
-			<column name="ro_repository" type="char" />
+			<column name="ro_state" type="varchar " />
+			<column name="ro_repository" type="char " />
 			<column name="mb_uuid" type="char" />
 			<column name="mb_account" type="varchar" />
 			<column name="mb_name" type="varchar" />
@@ -3414,7 +3435,7 @@ WHERE ie.cm_deleted=0]]></view_script>
        rp_transaction.uuid AS ta_uuid,
        rp_transaction.name AS ta_name,
        po_role.uuid AS ro_uuid,
-       po_role.name AS ro_name,
+       po_role.id AS ro_id,
        po_role.state AS ro_state,
        po_role.repository AS ro_repository,
        ro_assigned_teammembers.mb_uuid AS mb_uuid,
@@ -3427,13 +3448,13 @@ WHERE ie.cm_deleted=0]]></view_script>
        rp_transaction ON (rp_transaction.uuid = po_role_transaction.transaction_uuid) 
        INNER JOIN
        ro_assigned_teammembers ON (ro_assigned_teammembers.ro_uuid = po_role.uuid)]]></view_script>
-			<column name="po_uuid" type="char" />
+			<column name="po_uuid" type="char " />
 			<column name="ta_uuid" type="char" />
 			<column name="ta_name" type="varchar" />
-			<column name="ro_uuid" type="char" />
-			<column name="ro_name" type="varchar" />
-			<column name="ro_state" type="varchar" />
-			<column name="ro_repository" type="char" />
+			<column name="ro_uuid" type="char " />
+			<column name="ro_id" type="varchar " />
+			<column name="ro_state" type="varchar " />
+			<column name="ro_repository" type="char " />
 			<column name="mb_uuid" type="char" />
 			<column name="mb_account" type="varchar" />
 			<column name="mb_mode" type="varchar" />
@@ -4835,7 +4856,6 @@ END;]]></string>
 		<entity schema="Default" name="po_role_ddo_transaction" color="EEF7EC" x="416" y="1856" />
 		<entity schema="Default" name="po_role_ddl_transaction" color="EEF7EC" x="416" y="1744" />
 		<entity schema="Default" name="cm_baseline" color="F7F3EC" x="64" y="1344" />
-		<entity schema="Default" name="po_role" color="EEF7EC" x="208" y="2432" />
 		<entity schema="Default" name="po_ipt" color="EEF7EC" x="416" y="2320" />
 		<entity schema="Default" name="po_role_transaction" color="EEF7EC" x="416" y="1968" />
 		<entity schema="Default" name="dd_ddl_solution_history" color="FFFFCC" x="1888" y="384" />
@@ -4875,7 +4895,6 @@ END;]]></string>
 		<entity schema="Default" name="rp_member_settings" color="F0ECF7" x="1152" y="2816" />
 		<entity schema="Default" name="rp_config" color="F0ECF7" x="1152" y="2960" />
 		<entity schema="Default" name="rp_member" color="F0ECF7" x="1408" y="2832" />
-		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1152" y="3056" />
 		<entity schema="Default" name="sp_comment" color="FFCCFF" x="1872" y="2496" />
 		<entity schema="Default" name="sp_messagebox" color="FFCCFF" x="1872" y="2672" />
 		<entity schema="Default" name="re_template" color="FFEBEB" x="1424" y="2432" />
@@ -4895,7 +4914,6 @@ END;]]></string>
 		<entity schema="Default" name="re_reportson" color="FFEBEB" x="1136" y="1760" />
 		<entity schema="Default" name="re_documenttree" color="FFEBEB" x="1152" y="1904" />
 		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2112" y="608" />
-		<entity schema="Default" name="dm_diagram_property" color="CCCCFF" x="2224" y="1248" />
 		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1856" y="1152" />
 		<entity schema="Default" name="sp_issue_history" color="3986C1" x="2592" y="944" />
 		<entity schema="Default" name="dm_item_property" color="CCCCFF" x="2384" y="1088" />
@@ -4905,6 +4923,9 @@ END;]]></string>
 		<entity schema="Default" name="re_section_ddl" color="FFEBEB" x="944" y="2272" />
 		<entity schema="Default" name="re_section_ddo" color="FFEBEB" x="944" y="2384" />
 		<entity schema="Default" name="dm_item" color="CCCCFF" x="2080" y="1040" />
+		<entity schema="Default" name="dm_diagram_property" color="CCCCFF" x="2080" y="1264" />
+		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1152" y="3056" />
+		<entity schema="Default" name="po_role" color="EEF7EC" x="208" y="2432" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
@@ -5800,7 +5821,6 @@ CREATE INDEX Idx_da_analysis_definition ON da_analysis ( definition );]]></strin
 		<entity schema="Default" name="mm_enum" color="CCB3FF" x="64" y="528" />
 		<entity schema="Default" name="mb_assigned_projects" color="3986C1" x="528" y="960" />
 		<entity schema="Default" name="po_members" color="C8DAF5" x="656" y="2304" />
-		<entity schema="Default" name="mb_assigned_roles" color="3986C1" x="704" y="1184" />
 		<entity schema="Default" name="mb_assigned_teams" color="3986C1" x="528" y="784" />
 		<entity schema="Default" name="dac_container" color="3986C1" x="896" y="1840" />
 		<entity schema="Default" name="ro_assigned_teammembers" color="3986C1" x="1024" y="2368" />
@@ -5808,7 +5828,6 @@ CREATE INDEX Idx_da_analysis_definition ON da_analysis ( definition );]]></strin
 		<entity schema="Default" name="tl_ddo_na" color="3986C1" x="752" y="3264" />
 		<entity schema="Default" name="ac_roles" color="3986C1" x="96" y="1088" />
 		<entity schema="Default" name="ac_transactions" color="3986C1" x="112" y="960" />
-		<entity schema="Default" name="mb_assigned_transactions" color="3986C1" x="688" y="960" />
 		<entity schema="Default" name="dd_hierarchy" color="3986C1" x="896" y="960" />
 		<entity schema="Default" name="ow_ipt" color="FFCC99" x="400" y="128" />
 		<entity schema="Default" name="mb_modifiedBy" color="FFCC99" x="400" y="272" />
@@ -5847,6 +5866,8 @@ CREATE INDEX Idx_da_analysis_definition ON da_analysis ( definition );]]></strin
 		<entity schema="Default" name="ds_ddl_right" color="C4E0F9" x="304" y="2528" />
 		<entity schema="Default" name="re_documents" color="C4E0F9" x="736" y="80" />
 		<entity schema="Default" name="re_documents_history" color="C4E0F9" x="944" y="80" />
+		<entity schema="Default" name="mb_assigned_transactions" color="3986C1" x="688" y="960" />
+		<entity schema="Default" name="mb_assigned_roles" color="3986C1" x="704" y="1184" />
 		<group name="report engine (re)" color="C4E0F9" >
 			<entity schema="Default" name="re_sections" />
 			<entity schema="Default" name="re_templates" />
