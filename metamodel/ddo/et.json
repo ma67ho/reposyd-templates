@@ -45,6 +45,10 @@
       "sortorder": 200,
       "type": "value",
       "properties": {
+        "unit": {
+          "de-DE": "",
+          "en-US": ""
+        }
       },
       "default": 0
     },
@@ -55,7 +59,7 @@
         "en-US": "Unit"
       },
       "sortorder": 200,
-      "type": "value",
+      "type": "enumeration",
       "properties": {
         "enumeration": {
           "pcs": {
@@ -85,7 +89,10 @@
       "sortorder": 710,
       "type": "value",
       "properties": {
-        "unit": "mm"
+        "unit": {
+          "de-DE": "mm",
+          "en-US": "mm"
+        }
       }
     },
     {
@@ -97,7 +104,10 @@
       "sortorder": 720,
       "type": "value",
       "properties": {
-        "unit": "mm"
+        "unit": {
+          "de-DE": "mm",
+          "en-US": "mm"
+        }
       }
     },
     {
@@ -109,7 +119,10 @@
       "sortorder": 730,
       "type": "value",
       "properties": {
-        "unit": "mm"
+        "unit": {
+          "de-DE": "mm",
+          "en-US": "mm"
+        }
       }
     },
     {
@@ -133,7 +146,10 @@
       "sortorder": 910,
       "type": "value",
       "properties": {
-        "unit": "h"
+        "unit": {
+          "de-DE": "std",
+          "en-US": "h"
+        }
       },
       "default": 0
     },
@@ -146,7 +162,10 @@
       "sortorder": 920,
       "type": "value",
       "properties": {
-        "unit": "h"
+        "unit": {
+          "de-DE": "std",
+          "en-US": "h"
+        }
       },
       "default": 0
     }
