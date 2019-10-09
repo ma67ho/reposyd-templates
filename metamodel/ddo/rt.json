@@ -123,7 +123,7 @@
           },
           "security": {
             "values": {
-              "de-DE": "IT-Sicherheit",
+              "de-DE": "Gefahrenabwehr",
               "en-US": "Security"
             },
             "properties": {
@@ -220,10 +220,27 @@
               "backgroundColor": null
             }
           },
-          "interface.electrical": {
+          "interface.commuication": {
+            "description": {
+              "de-DE": "Diese Kategorie fasst alle Anforderungen an Schnittstellen für die Kommunikation zusammen",
+              "en-US": "This category summarizes all requirements for interfaces related to communication"
+            },
             "values": {
-              "de-DE": "Elektrische Schnittstelle",
-              "en-US": "Electrical Interface"
+              "de-DE": "Schnittstelle - Kommunikation",
+              "en-US": "Interface - Communication"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "interface.electrical": {
+            "description": {
+              "de-DE": "Diese Kategorie fasst alle Anforderungen an elektrische Schnittstellen für die Energieversorgung zusammen",
+              "en-US": "This category summarizes all requirements or electrical interface related to power supply"
+            },
+            "values": {
+              "de-DE": "Schnittstelle - ELektrisch",
+              "en-US": "Interface - Electrical"
             },
             "properties": {
               "backgroundColor": null
@@ -231,18 +248,18 @@
           },
           "interface.mechanical": {
             "description": {
-              "de-DE": "Dieser Kategorie fasst alle Anforderungen an die mechanische Schnittstelle zusammen",
-              "en-US": "This category summarizes all requirements related to the mechanical Interface"
+              "de-DE": "Diese Kategorie fasst alle Anforderungen an die mechanische Schnittstelle zusammen",
+              "en-US": "This category summarizes all requirements related to mechanical interfaces"
             },
             "values": {
-              "de-DE": "Mechanische Schnittstelle",
-              "en-US": "Mechanical Interface"
+              "de-DE": "Schnittstelle - Mechanisch",
+              "en-US": "Interface - Mechanical"
             },
             "properties": {
               "backgroundColor": null
             }
           },
-          "interface.hm": {
+          "interface.hmi": {
             "description": {
               "de-DE": "Diese Kategorie fasst alle Anforderungen an MMI zusammen",
               "en-US": "This category summarizes all requirements related to the MMI"
@@ -264,10 +281,10 @@
               "backgroundColor": null
             }
           },
-          "logistics": {
+          "systemquality": {
             "values": {
-              "de-DE": "Logistik",
-              "en-US": "Logistics"
+              "de-DE": "Systemqualität",
+              "en-US": "System Quality"
             },
             "properties": {
               "backgroundColor": "lightyellow"
@@ -277,6 +294,15 @@
             "values": {
               "de-DE": "Verpackung & Transport",
               "en-US": "Packaging & Transportation"
+            },
+            "properties": {
+              "backgroundColor": "lightyellow"
+            }
+          },
+          "marking": {
+            "values": {
+              "de-DE": "Kennzeichnung",
+              "en-US": "Marking"
             },
             "properties": {
               "backgroundColor": "lightyellow"
