@@ -1016,6 +1016,58 @@ CREATE TABLE ddh_ddo_dda_revision (
 
 CREATE INDEX idx_ddh_ddo_dda_revision_dda ON ddh_ddo_dda_revision ( dda );
 
+CREATE VIEW ac_ddl_assignments AS SELECT dd_def_link.project AS po_uuid,
+       rp_transaction.name AS ta_name,
+       po_role.id AS ro_id,
+       po_role.state AS ro_state,
+       dd_def_link.id AS dl_id,
+       dd_def_link.uuid AS dl_uuid,
+       dd_def_link.repository AS dl_repository,
+       rp_member.uuid AS mb_uuid,
+       rp_member.name AS mb_name,
+       rp_member.account AS mb_account,
+       rp_project_member.mode AS mb_mode,
+       rp_member.repository AS mb_repository
+  FROM po_role_ddl_transaction
+       INNER JOIN
+       dd_def_link ON (dd_def_link.uuid = po_role_ddl_transaction.ddl) 
+       INNER JOIN
+       rp_transaction ON (rp_transaction.uuid = po_role_ddl_transaction.transaction_uuid) 
+       INNER JOIN
+       po_role ON (po_role.uuid = po_role_ddl_transaction.role) 
+       INNER JOIN
+       po_role_member ON (po_role_member.role = po_role.uuid) 
+       INNER JOIN
+       rp_project_member ON (rp_project_member.member = po_role_member.member) 
+       INNER JOIN
+       rp_member ON (rp_member.uuid = rp_project_member.member);
+
+CREATE VIEW ac_ddo_assignments AS SELECT dd_def_object.project AS po_uuid,
+       rp_transaction.name AS ta_name,
+       po_role.id AS ro_id,
+       po_role.state AS ro_state,
+       dd_def_object.id AS do_id,
+       dd_def_object.uuid AS do_uuid,
+       dd_def_object.repository AS do_repository,
+       rp_member.uuid AS mb_uuid,
+       rp_member.name AS mb_name,
+       rp_member.account AS mb_account,
+       rp_project_member.mode AS mb_mode,
+       rp_member.repository AS mb_repository
+  FROM po_role_ddo_transaction
+       INNER JOIN
+       dd_def_object ON (dd_def_object.uuid = po_role_ddo_transaction.ddo) 
+       INNER JOIN
+       rp_transaction ON (rp_transaction.uuid = po_role_ddo_transaction.transaction_uuid) 
+       INNER JOIN
+       po_role ON (po_role.uuid = po_role_ddo_transaction.role) 
+       INNER JOIN
+       po_role_member ON (po_role_member.role = po_role.uuid) 
+       INNER JOIN
+       rp_project_member ON (rp_project_member.member = po_role_member.member) 
+       INNER JOIN
+       rp_member ON (rp_member.uuid = rp_project_member.member);
+
 CREATE VIEW ac_owner AS SELECT ddo.solution AS ds_uuid,
        ddo.ddo AS do_uuid,
        ip.uuid AS ip_uuid,
