@@ -1068,6 +1068,35 @@ CREATE VIEW ac_ddo_assignments AS SELECT dd_def_object.project AS po_uuid,
        INNER JOIN
        rp_member ON (rp_member.uuid = rp_project_member.member);
 
+CREATE VIEW ac_locked_ddl AS SELECT
+*
+FROM
+ac_locks AS lck
+INNER JOIN ds_ddl_na ddl ON (ddl.dl_uuid=lck.dd_uuid);
+
+CREATE VIEW ac_locked_ddo AS SELECT
+*
+FROM
+ac_locks AS lck
+INNER JOIN ds_ddo_na ddo ON (ddo.do_uuid=lck.dd_uuid);
+
+CREATE VIEW ac_locked_dt AS SELECT
+*
+FROM
+ac_locks AS lck
+INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid);
+
+CREATE VIEW ac_locks AS SELECT lk.project AS po_uuid,
+       lk.uuid AS dd_uuid,
+       lk.timestamp AS lk_timestamp,
+       lk.master AS lk_master,
+       rpm.uuid AS mb_uuid,
+       rpm.account AS mb_account,
+       rpm.name AS mb_name       
+  FROM rp_lock AS lk
+       INNER JOIN
+       rp_member rpm ON (rpm.uuid = lk.member);;
+
 CREATE VIEW ac_owner AS SELECT ddo.solution AS ds_uuid,
        ddo.ddo AS do_uuid,
        ip.uuid AS ip_uuid,
