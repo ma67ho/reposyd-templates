@@ -264,14 +264,10 @@ CREATE TABLE rp_project_member (
 	project              char(38) NOT NULL    ,
 	member               char(38) NOT NULL    ,
 	mode                 varchar(100)  DEFAULT readwrite   ,
-	CONSTRAINT idx_po_project_member_member UNIQUE ( member ) ,
 	CONSTRAINT pk_po_project_member PRIMARY KEY ( project, member ),
-	CONSTRAINT Unq_rp_project_member_member UNIQUE ( member, project ) ,
 	FOREIGN KEY ( member ) REFERENCES rp_member( uuid ) ON DELETE CASCADE ,
 	FOREIGN KEY ( project ) REFERENCES rp_project( uuid ) ON DELETE CASCADE 
  );
-
-CREATE INDEX idx_po_project_member_project ON rp_project_member ( project );
 
 CREATE TABLE rp_solution_space ( 
 	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
@@ -390,7 +386,9 @@ CREATE INDEX idx_sp_script_project_project ON sp_script_project ( project );
 CREATE TABLE sp_sys_log ( 
 	timestamp            datetime  DEFAULT CURRENT_TIMESTAMP   ,
 	level                varchar(100) NOT NULL    ,
-	message              text     
+	category             varchar(100)     ,
+	message              text     ,
+	orginator            varchar(38)  DEFAULT '<system>'   
  );
 
 CREATE TABLE sp_tags ( 
@@ -602,7 +600,6 @@ CREATE TABLE po_role_member (
 	role                 char(38) NOT NULL    ,
 	member               char(38) NOT NULL    ,
 	CONSTRAINT pk_po_role_member PRIMARY KEY ( role, member, project ),
-	FOREIGN KEY ( member ) REFERENCES rp_project_member( member )  ,
 	FOREIGN KEY ( project, role ) REFERENCES po_role( project, uuid ) ON DELETE CASCADE 
  );
 
@@ -1553,7 +1550,7 @@ CREATE VIEW mb_assigned_projects AS SELECT pim.member AS mb_uuid,
            rp.state AS po_state
       FROM po_ipt_member pim
            INNER JOIN
-           rp_project_member rpm ON (pim.member = rpm.member) 
+           rp_project_member rpm ON (pim.member=rpm.member AND pim.project=rpm.project) 
            INNER JOIN
            po_ipt pi ON (pim.ipt = pi.uuid) 
            INNER JOIN

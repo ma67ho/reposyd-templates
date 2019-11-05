@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="reposyd" id="Project_292fb82e" template="Default" database="Sqlite" >
-	<schema name="Default" schemaname="Default" >
+	<schema name="Default" >
 		<table name="cm_baseline" generator_rows="150" >
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
 			<column name="name" type="varchar" length="255" jt="12" mandatory="y" />
@@ -999,9 +999,6 @@ completed]]></comment>
 				<column name="member" />
 				<column name="project" />
 			</index>
-			<fk name="fk_po_role_member" to_schema="Default" to_table="rp_project_member" >
-				<fk_column name="member" pk="member" />
-			</fk>
 			<fk name="fk_po_role_member_role" to_schema="Default" to_table="po_role" delete_action="cascade" >
 				<fk_column name="project" pk="project" />
 				<fk_column name="role" pk="uuid" />
@@ -1451,19 +1448,9 @@ Please refer to reposyd::ProjectState]]></comment>
 - readwrite
 - readonly]]></comment>
 			</column>
-			<index name="idx_po_project_member_project" unique="NORMAL" >
-				<column name="project" />
-			</index>
-			<index name="idx_po_project_member_member" unique="UNIQUE" >
-				<column name="member" />
-			</index>
 			<index name="pk_po_project_member" unique="PRIMARY_KEY" >
 				<column name="project" />
 				<column name="member" />
-			</index>
-			<index name="Unq_rp_project_member_member" unique="UNIQUE" >
-				<column name="member" />
-				<column name="project" />
 			</index>
 			<fk name="fk_rp_project_member_rp_member" to_schema="Default" to_table="rp_member" delete_action="cascade" >
 				<fk_column name="member" pk="uuid" />
@@ -1706,7 +1693,11 @@ Please refer to reposyd::ProjectState]]></comment>
 			<column name="level" type="varchar" length="100" jt="12" mandatory="y" >
 				<enumeration>&#039;info&#039;,&#039;warn&#039;,&#039;error&#039;,&#039;fatal&#039;</enumeration>
 			</column>
+			<column name="category" type="varchar" length="100" jt="12" />
 			<column name="message" type="text" jt="-1" />
+			<column name="orginator" type="varchar" length="38" jt="12" >
+				<defo>&#039;&lt;system&gt;&#039;</defo>
+			</column>
 		</table>
 		<table name="sp_tags" >
 			<column name="uuid" type="char" length="38" jt="1" />
@@ -2842,7 +2833,7 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
            rp.state AS po_state
       FROM po_ipt_member pim
            INNER JOIN
-           rp_project_member rpm ON (pim.member = rpm.member) 
+           rp_project_member rpm ON (pim.member=rpm.member AND pim.project=rpm.project) 
            INNER JOIN
            po_ipt pi ON (pim.ipt = pi.uuid) 
            INNER JOIN
@@ -5079,7 +5070,6 @@ END;]]></string>
 		<entity schema="Default" name="dd_def_attribute" color="ECECF7" x="1040" y="464" />
 		<entity schema="Default" name="dd_def_enum" color="ECECF7" x="784" y="464" />
 		<entity schema="Default" name="sp_user_log" color="FFCCFF" x="2144" y="1600" />
-		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2144" y="1728" />
 		<entity schema="Default" name="dd_attribute_history" color="FFFFCC" x="1888" y="656" />
 		<entity schema="Default" name="dd_def_hierarchy" color="ECECF7" x="528" y="928" />
 		<entity schema="Default" name="re_template_solution" color="FFEBEB" x="1168" y="2432" />
@@ -5087,9 +5077,7 @@ END;]]></string>
 		<entity schema="Default" name="ddh_ddo_dda_revision" color="FFFFCC" x="1888" y="816" />
 		<entity schema="Default" name="sp_watcher" color="FFCCFF" x="2160" y="1920" />
 		<entity schema="Default" name="sp_translation" color="FFCCFF" x="1920" y="2224" />
-		<entity schema="Default" name="rp_project_member" color="F0ECF7" x="1408" y="2672" />
 		<entity schema="Default" name="po_ipt_member" color="EEF7EC" x="416" y="2192" />
-		<entity schema="Default" name="po_role_member" color="EEF7EC" x="416" y="2064" />
 		<entity schema="Default" name="cm_request" color="F7F3EC" x="48" y="1552" />
 		<entity schema="Default" name="cm_request_solution" color="F7F3EC" x="336" y="1536" />
 		<entity schema="Default" name="rp_solution_space" color="F0ECF7" x="912" y="2816" />
@@ -5129,6 +5117,9 @@ END;]]></string>
 		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1152" y="3056" />
 		<entity schema="Default" name="po_role" color="EEF7EC" x="208" y="2432" />
 		<entity schema="Default" name="sp_issue_history" color="3986C1" x="2640" y="400" />
+		<entity schema="Default" name="rp_project_member" color="F0ECF7" x="1408" y="2672" />
+		<entity schema="Default" name="po_role_member" color="EEF7EC" x="416" y="2064" />
+		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2144" y="1728" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
