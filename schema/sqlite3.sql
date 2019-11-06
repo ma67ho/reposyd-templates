@@ -362,6 +362,7 @@ CREATE INDEX idx_rp_messagebox_member ON sp_messagebox ( member );
 CREATE TABLE sp_script ( 
 	uuid                 char(38)     ,
 	[type]               varchar(100)     ,
+	domain               char(38)  DEFAULT '<global>'   ,
 	name                 varchar(100)     ,
 	code                 blob     ,
 	cm_revision          integer  DEFAULT 0   ,
@@ -371,17 +372,6 @@ CREATE TABLE sp_script (
 	CONSTRAINT uix_se_script_uuid UNIQUE ( uuid ) ,
 	CONSTRAINT unq_sp_script UNIQUE ( [type], name ) 
  );
-
-CREATE TABLE sp_script_project ( 
-	script               char(38)     ,
-	project              char(38)     ,
-	FOREIGN KEY ( script ) REFERENCES sp_script( uuid ) ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY ( project ) REFERENCES rp_project( uuid ) ON DELETE CASCADE ON UPDATE CASCADE
- );
-
-CREATE INDEX idx_sp_script_project_script ON sp_script_project ( script );
-
-CREATE INDEX idx_sp_script_project_project ON sp_script_project ( project );
 
 CREATE TABLE sp_sys_log ( 
 	timestamp            datetime  DEFAULT CURRENT_TIMESTAMP   ,
@@ -909,15 +899,14 @@ CREATE TABLE re_section (
 	number               varchar(255)     ,
 	caption              varchar(255)     ,
 	description          text     ,
-	script               char(38)     ,
+	script               varchar(100)     ,
 	options              blob     ,
 	cm_modified_by       char(38)     ,
 	cm_owner             char(38)     ,
 	cm_revision          integer  DEFAULT 0   ,
 	cm_deleted           boolean  DEFAULT false   ,
 	cm_timestamp         datetime  DEFAULT CURRENT_TIMESTAMP   ,
-	FOREIGN KEY ( document ) REFERENCES re_document( uuid ) ON DELETE CASCADE ,
-	FOREIGN KEY ( script ) REFERENCES sp_script( uuid )  ON UPDATE SET NULL
+	FOREIGN KEY ( document ) REFERENCES re_document( uuid ) ON DELETE CASCADE 
  );
 
 CREATE INDEX idx_re_section_document ON re_section ( document );
@@ -1975,7 +1964,7 @@ CREATE VIEW sp_issues AS SELECT ie.solution AS ds_uuid,
                       ie.dd_uuid = ddo.do_uuid)
 WHERE ie.cm_deleted=0;
 
-CREATE VIEW sp_scripts AS SELECT sp.project AS po_uuid,
+CREATE VIEW sp_scripts AS SELECT st.domain AS st_domain,
        st.uuid AS st_uuid,
        st.type AS st_type,
        st.name AS st_name,
@@ -1984,8 +1973,6 @@ CREATE VIEW sp_scripts AS SELECT sp.project AS po_uuid,
        st.cm_timestamp AS st_cm_timestamp,
        mb.*
   FROM sp_script AS st
-       INNER JOIN
-       sp_script_project sp ON (sp.script = st.uuid) 
        LEFT JOIN
        mb_modifiedBy mb ON (mb.mb_uuid = st.cm_modified_by) 
  WHERE st.cm_deleted = 0;

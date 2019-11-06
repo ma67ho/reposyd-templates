@@ -1194,7 +1194,7 @@ completed]]></comment>
 			<column name="number" type="varchar" length="255" jt="12" />
 			<column name="caption" type="varchar" length="255" jt="12" />
 			<column name="description" type="text" jt="-1" />
-			<column name="script" type="char" length="38" jt="1" />
+			<column name="script" type="varchar" length="100" jt="12" />
 			<column name="options" type="blob" jt="2004" />
 			<column name="cm_modified_by" type="char" length="38" jt="1" />
 			<column name="cm_owner" type="char" length="38" jt="1" />
@@ -1218,9 +1218,6 @@ completed]]></comment>
 			</index>
 			<fk name="fk_re_section_re_document" to_schema="Default" to_table="re_document" delete_action="cascade" >
 				<fk_column name="document" pk="uuid" />
-			</fk>
-			<fk name="fk_re_section_se_script" to_schema="Default" to_table="sp_script" update_action="setNull" >
-				<fk_column name="script" pk="uuid" />
 			</fk>
 		</table>
 		<table name="re_section_ddl" >
@@ -1650,6 +1647,9 @@ Please refer to reposyd::ProjectState]]></comment>
 			<column name="type" type="varchar" length="100" jt="12" >
 				<comment><![CDATA[reportblock]]></comment>
 			</column>
+			<column name="domain" type="char" length="38" jt="1" >
+				<defo>&#039;&lt;global&gt;&#039;</defo>
+			</column>
 			<column name="name" type="varchar" length="100" jt="12" />
 			<column name="code" type="blob" jt="2004" />
 			<column name="cm_revision" type="integer" jt="4" >
@@ -1669,22 +1669,6 @@ Please refer to reposyd::ProjectState]]></comment>
 				<column name="type" />
 				<column name="name" />
 			</index>
-		</table>
-		<table name="sp_script_project" >
-			<column name="script" type="char" length="38" jt="1" />
-			<column name="project" type="char" length="38" jt="1" />
-			<index name="idx_sp_script_project_script" unique="NORMAL" >
-				<column name="script" />
-			</index>
-			<index name="idx_sp_script_project_project" unique="NORMAL" >
-				<column name="project" />
-			</index>
-			<fk name="fk_sp_script_project_sp_script" to_schema="Default" to_table="sp_script" delete_action="cascade" update_action="cascade" >
-				<fk_column name="script" pk="uuid" />
-			</fk>
-			<fk name="fk_sp_script_project" to_schema="Default" to_table="rp_project" delete_action="cascade" update_action="cascade" >
-				<fk_column name="project" pk="uuid" />
-			</fk>
 		</table>
 		<table name="sp_sys_log" >
 			<column name="timestamp" type="datetime" jt="93" >
@@ -3599,7 +3583,7 @@ WHERE ie.cm_deleted=0]]></view_script>
 			<column name="ie_cm_modified_by" type="char " />
 		</view>
 		<view name="sp_scripts" >
-			<view_script><![CDATA[SELECT sp.project AS po_uuid,
+			<view_script><![CDATA[SELECT st.domain AS st_domain,
        st.uuid AS st_uuid,
        st.type AS st_type,
        st.name AS st_name,
@@ -3608,12 +3592,10 @@ WHERE ie.cm_deleted=0]]></view_script>
        st.cm_timestamp AS st_cm_timestamp,
        mb.*
   FROM sp_script AS st
-       INNER JOIN
-       sp_script_project sp ON (sp.script = st.uuid) 
        LEFT JOIN
        mb_modifiedBy mb ON (mb.mb_uuid = st.cm_modified_by) 
  WHERE st.cm_deleted = 0]]></view_script>
-			<column name="po_uuid" type="char" />
+			<column name="st_domain" type="char " />
 			<column name="st_uuid" type="char " />
 			<column name="st_type" type="varchar " />
 			<column name="st_name" type="varchar " />
@@ -5093,9 +5075,6 @@ END;]]></string>
 		<entity schema="Default" name="dd_ddo_solution" color="C4E0F9" x="1328" y="1376" />
 		<entity schema="Default" name="re_layout" color="FFEBEB" x="1152" y="2096" />
 		<entity schema="Default" name="dd_def_object" color="ECECF7" x="1088" y="832" />
-		<entity schema="Default" name="re_section" color="FFEBEB" x="1360" y="1792" />
-		<entity schema="Default" name="sp_script_project" color="FFCCFF" x="1936" y="2112" />
-		<entity schema="Default" name="sp_script" color="FFCCFF" x="1920" y="1920" />
 		<entity schema="Default" name="sp_issue" color="FFCCFF" x="1920" y="1504" />
 		<entity schema="Default" name="sp_tags" color="FFCCFF" x="2336" y="1440" />
 		<entity schema="Default" name="sp_tags_ddo" color="FFCCFF" x="2144" y="1456" />
@@ -5120,6 +5099,8 @@ END;]]></string>
 		<entity schema="Default" name="rp_project_member" color="F0ECF7" x="1408" y="2672" />
 		<entity schema="Default" name="po_role_member" color="EEF7EC" x="416" y="2064" />
 		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2144" y="1728" />
+		<entity schema="Default" name="re_section" color="FFEBEB" x="1360" y="1792" />
+		<entity schema="Default" name="sp_script" color="FFCCFF" x="1920" y="1920" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
@@ -5192,7 +5173,6 @@ END;]]></string>
 			<entity schema="Default" name="sp_translation" />
 			<entity schema="Default" name="sp_script" />
 			<entity schema="Default" name="sp_messagebox" />
-			<entity schema="Default" name="sp_script_project" />
 			<entity schema="Default" name="sp_watcher" />
 			<entity schema="Default" name="sp_tags" />
 			<entity schema="Default" name="sp_tags_ddo" />
@@ -6042,7 +6022,6 @@ CREATE INDEX Idx_da_analysis_definition ON da_analysis ( definition );]]></strin
 		<entity schema="Default" name="re_templates" color="C4E0F9" x="1136" y="560" />
 		<entity schema="Default" name="re_layouts" color="3986C1" x="1184" y="384" />
 		<entity schema="Default" name="mm_ddo" color="CCB3FF" x="192" y="416" />
-		<entity schema="Default" name="sp_scripts" color="3986C1" x="1360" y="976" />
 		<entity schema="Default" name="rp_projects" color="3986C1" x="512" y="368" />
 		<entity schema="Default" name="rp_solutions" color="3986C1" x="416" y="512" />
 		<entity schema="Default" name="tl_section" color="3986C1" x="1184" y="2864" />
@@ -6069,6 +6048,7 @@ CREATE INDEX Idx_da_analysis_definition ON da_analysis ( definition );]]></strin
 		<entity schema="Default" name="ac_locked_dt" color="994D66" x="1920" y="1696" />
 		<entity schema="Default" name="dd_hierarchy" color="3986C1" x="992" y="1392" />
 		<entity schema="Default" name="ip_assigned_members" color="3986C1" x="1168" y="1376" />
+		<entity schema="Default" name="sp_scripts" color="3986C1" x="1360" y="976" />
 		<group name="report engine (re)" color="C4E0F9" >
 			<entity schema="Default" name="re_sections" />
 			<entity schema="Default" name="re_templates" />
