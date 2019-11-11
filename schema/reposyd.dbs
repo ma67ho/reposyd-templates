@@ -751,7 +751,7 @@ completed]]></comment>
 			<column name="uuid" type="char " length="38" jt="12" mandatory="y" />
 			<column name="solution" type="char " length="38" jt="12" />
 			<column name="name" type="varchar" length="255" jt="12" />
-			<column name="ddo" type="char " length="38" jt="12" />
+			<column name="ddo" type="char" length="38" jt="1" />
 			<column name="type" type="char" length="255" jt="1" />
 			<column name="properties" type="text" jt="-1" />
 			<column name="cm_revision" type="integer" jt="4" >
@@ -5084,7 +5084,6 @@ END;]]></string>
 		<entity schema="Default" name="re_reportson" color="FFEBEB" x="1136" y="1760" />
 		<entity schema="Default" name="re_documenttree" color="FFEBEB" x="1152" y="1904" />
 		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2112" y="608" />
-		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1984" y="1152" />
 		<entity schema="Default" name="dm_item_property" color="CCCCFF" x="2512" y="1088" />
 		<entity schema="Default" name="re_document_history" color="FFFFCC" x="2352" y="368" />
 		<entity schema="Default" name="re_section_history" color="FFFFCC" x="2352" y="720" />
@@ -5101,6 +5100,7 @@ END;]]></string>
 		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2144" y="1728" />
 		<entity schema="Default" name="re_section" color="FFEBEB" x="1360" y="1792" />
 		<entity schema="Default" name="sp_script" color="FFCCFF" x="1920" y="1920" />
+		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1984" y="1152" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />

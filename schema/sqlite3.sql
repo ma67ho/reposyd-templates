@@ -98,7 +98,7 @@ CREATE TABLE dm_diagram (
 	uuid                 char  NOT NULL  PRIMARY KEY  ,
 	solution             char      ,
 	name                 varchar(255)     ,
-	ddo                  char      ,
+	ddo                  char(38)     ,
 	[type]               char(255)     ,
 	properties           text     ,
 	cm_revision          integer  DEFAULT 0   ,
