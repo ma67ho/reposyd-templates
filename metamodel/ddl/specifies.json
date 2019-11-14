@@ -69,6 +69,26 @@
             "cardinality": "one2many"
         },
         "left": "RT",
+        "right": "II",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
         "right": "SE",
         "reverse": {
             "id": "specifiedby",

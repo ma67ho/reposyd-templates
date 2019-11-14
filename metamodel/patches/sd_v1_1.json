@@ -1,0 +1,115 @@
+{
+  "title": {
+    "de-DE": "Aktualiasiert das Systementwurfsmodell",
+    "en-US": "Updates the System Design Model"
+  },
+  "description": {
+    "de-DE": "",
+    "en-US": "This patch adds Interface Items to the system design model"
+  },
+  "ddl": {
+    "add": [
+      {
+        "foreward": {
+          "id": "inputfor",
+          "name": {
+            "de-DE": "ist Eingabe für",
+            "en-US": "is input for"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "II",
+        "right": "FN",
+        "reverse": {
+          "id": "hasinputs",
+          "name": {
+            "de-DE": "hat Eingänge",
+            "en-US": "has inputs"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "systemengineer"
+        ]
+      },
+      {
+        "foreward": {
+          "id": "outputfrom",
+          "name": {
+            "de-DE": "wird ausgegeben von",
+            "en-US": "is output from"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "II",
+        "right": "FN",
+        "reverse": {
+          "id": "hasoutputs",
+          "name": {
+            "de-DE": "hat Ausgänge",
+            "en-US": "has outputs"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "systemengineer"
+        ]
+      },
+      {
+        "foreward": {
+          "id": "specifies",
+          "name": {
+            "de-DE": "spezifiziert",
+            "en-US": "specifies"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "II",
+        "reverse": {
+          "id": "specifiedby",
+          "name": {
+            "de-DE": "spezifiziert durch",
+            "en-US": "specified by"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "systemengineer"
+        ]
+      },
+      {
+        "foreward": {
+          "id": "transports",
+          "name": {
+            "de-DE": "transportiert",
+            "en-US": "transports"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "SI",
+        "right": "II",
+        "reverse": {
+          "id": "transportedvia",
+          "name": {
+            "de-DE": "trasportiert über",
+            "en-US": "transported viy"
+          },
+          "cardinality": "one2one"
+        },
+        "roles": [
+          "repositorymanager",
+          "systemengineer"
+        ]
+      }
+    ]
+  },
+  "ddo": {
+    "add": [
+      "../../ddo/ii.json"
+    ]
+  }
+}
