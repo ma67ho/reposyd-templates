@@ -109,7 +109,84 @@
   },
   "ddo": {
     "add": [
-      "../../ddo/ii.json"
+      {
+        "attributes": [
+          {
+            "id": "description",
+            "name": {
+              "de-DE": "Beschreibung",
+              "en-US": "Description"
+            },
+            "sortorder": 20,
+            "type": "text"
+          },
+          {
+            "id": "title",
+            "name": {
+              "de-DE": "Titel",
+              "en-US": "Title"
+            },
+            "sortorder": 10,
+            "type": "string",
+            "properties": {
+              "length": 255,
+              "default": ""
+            }
+          },
+          {
+            "id": "type",
+            "name": {
+              "de-DE": "Typ",
+              "en-US": "Type"
+            },
+            "sortorder": 100,
+            "type": "enumeration",
+            "properties": {
+              "enumeration": {
+                "pending": {
+                  "values": {
+                    "de-DE": "ausstehend",
+                    "en-US": "pending"
+                  },
+                  "properties": {
+                    "backgroundColor": "lightslategray"
+                  }
+                },
+                "data": {
+                  "values": {
+                    "de-DE": "Daten",
+                    "en-US": "Data"
+                  },
+                  "properties": {}
+                }
+              },
+              "default": "pending"
+            }
+          }
+        ],
+        "description": "",
+        "icon": "",
+        "name": {
+          "de-DE": "Schnittstellenelement",
+          "en-US": "Interface Item"
+        },
+        "name_plural": {
+          "de-DE": "Schnittstellenelemente",
+          "en-US": "Interface Items"
+        },
+        "id": "II",
+        "domain": "systemdesign",
+        "properties": {
+          "color": {
+            "background": "steelblue",
+            "border": "steelblue"
+          },
+          "font": {
+            "color": "white"
+          }
+        },
+        "roles": ["repositorymanager", "systemengineer"]
+      }
     ]
   }
 }
