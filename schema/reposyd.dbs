@@ -773,31 +773,35 @@ completed]]></comment>
 				<column name="ddo" />
 			</index>
 		</table>
-		<table name="dm_diagram_property" generator_rows="757" >
-			<column name="diagram" type="char" length="38" jt="1" mandatory="y" />
-			<column name="name" type="varchar" length="100" jt="12" mandatory="y" />
-			<column name="value" type="blob" jt="2004" />
-			<index name="idx_dm_diagram_properties" unique="NORMAL" >
-				<column name="diagram" />
-			</index>
-			<index name="pk_dm_diagram_properties" unique="PRIMARY_KEY" >
-				<column name="diagram" />
-				<column name="name" />
-			</index>
-			<fk name="fk_dm_diagram_properties" to_schema="Default" to_table="dm_diagram" >
-				<fk_column name="diagram" pk="uuid" />
-			</fk>
+		<table name="dm_diagram_history" >
+			<column name="uuid" type="char " length="38" jt="12" mandatory="y" />
+			<column name="solution" type="char " length="38" jt="12" />
+			<column name="name" type="varchar" length="255" jt="12" />
+			<column name="ddo" type="char" length="38" jt="1" />
+			<column name="type" type="char" length="255" jt="1" />
+			<column name="properties" type="text" jt="-1" />
+			<column name="cm_revision" type="integer" jt="4" >
+				<defo>0</defo>
+			</column>
+			<column name="cm_modified_by" type="char" length="38" jt="1" />
+			<column name="cm_timestamp" type="datetime" jt="93" >
+				<defo>CURRENT_TIMESTAMP</defo>
+			</column>
+			<column name="cm_deleted" type="boolean" jt="-7" >
+				<defo>0</defo>
+			</column>
+			<column name="repository" type="char " length="38" jt="12" mandatory="y" />
 		</table>
 		<table name="dm_item" generator_rows="757" >
 			<comment><![CDATA[Contains the shape's UUID.]]></comment>
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
 			<column name="diagram" type="char" length="38" jt="1" mandatory="y" />
 			<column name="type" type="varchar" length="255" jt="12" />
+			<column name="properties" type="text" jt="-1" >
+				<defo>&#039;{}&#039;</defo>
+			</column>
 			<column name="ddoddl" type="char" length="38" jt="1" >
 				<comment><![CDATA[Contains the UUID of the respective design data object or link.]]></comment>
-			</column>
-			<column name="revision" type="integer" jt="4" mandatory="y" >
-				<defo>0</defo>
 			</column>
 			<column name="revision_from" type="integer" jt="4" >
 				<defo>0</defo>
@@ -810,10 +814,11 @@ completed]]></comment>
 				<comment><![CDATA[Indicates if the shape belongs to a deleted design data object or link.]]></comment>
 			</column>
 			<column name="cm_modified_by" type="char" length="38" jt="1" mandatory="y" />
-			<column name="cm_deleted" type="boolean" jt="-7" >
+			<column name="cm_revision" type="integer" jt="4" mandatory="y" >
 				<defo>0</defo>
 			</column>
-			<column name="repository" type="char" length="38" jt="1" />
+			<column name="cm_timestamp" type="datetime" jt="93" />
+			<column name="repository" type="char" length="38" jt="1" mandatory="y" />
 			<index name="Pk_shape" unique="PRIMARY_KEY" >
 				<column name="uuid" />
 			</index>
@@ -825,34 +830,43 @@ completed]]></comment>
 			</index>
 			<index name="Unq_dm_item_uuid" unique="UNIQUE" >
 				<column name="uuid" />
-				<column name="revision" />
+				<column name="cm_revision" />
 			</index>
 			<fk name="fk_dm_shape_dm_diagram" to_schema="Default" to_table="dm_diagram" delete_action="cascade" >
 				<fk_column name="diagram" pk="uuid" />
 			</fk>
 		</table>
-		<table name="dm_item_property" generator_rows="1135" >
-			<column name="item" type="char" length="38" jt="1" />
-			<column name="revision" type="integer" jt="4" />
-			<column name="key" type="varchar " jt="-1" mandatory="y" />
-			<column name="value" type="blob" jt="2004" />
-			<column name="dda" type="char" length="38" jt="1" >
-				<comment><![CDATA[Contains the UUID of the respective design data attribute.]]></comment>
+		<table name="dm_item_history" >
+			<comment><![CDATA[Contains the shape's UUID.]]></comment>
+			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="diagram" type="char" length="38" jt="1" mandatory="y" />
+			<column name="type" type="varchar" length="255" jt="12" />
+			<column name="properties" type="text" jt="-1" >
+				<defo>&#039;{}&#039;</defo>
 			</column>
-			<index name="idx_dm_item_property_dda" unique="NORMAL" >
-				<column name="dda" />
+			<column name="ddoddl" type="char" length="38" jt="1" >
+				<comment><![CDATA[Contains the UUID of the respective design data object or link.]]></comment>
+			</column>
+			<column name="revision_from" type="integer" jt="4" >
+				<defo>0</defo>
+			</column>
+			<column name="revision_to" type="integer" length="2000000000" decimal="10" jt="4" >
+				<defo>-1</defo>
+			</column>
+			<column name="ghost" type="boolean" jt="-7" >
+				<defo>0</defo>
+				<comment><![CDATA[Indicates if the shape belongs to a deleted design data object or link.]]></comment>
+			</column>
+			<column name="cm_modified_by" type="char" length="38" jt="1" mandatory="y" />
+			<column name="cm_revision" type="integer" jt="4" mandatory="y" >
+				<defo>0</defo>
+			</column>
+			<column name="cm_timestamp" type="datetime" jt="93" />
+			<column name="repository" type="char" length="38" jt="1" mandatory="y" />
+			<index name="idx_dm_item" unique="NORMAL" >
+				<column name="uuid" />
+				<column name="cm_revision" />
 			</index>
-			<index name="idx_dm_item_property_item" unique="NORMAL" >
-				<column name="item" />
-			</index>
-			<index name="pk_dm_item_propertiey" unique="UNIQUE" >
-				<column name="item" />
-				<column name="key" />
-			</index>
-			<fk name="fk_dm_item_property_dm_item" to_schema="Default" to_table="dm_item" delete_action="cascade" update_action="cascade" >
-				<fk_column name="item" pk="uuid" />
-				<fk_column name="revision" pk="revision" />
-			</fk>
 		</table>
 		<table name="po_ipt" generator_rows="150" >
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
@@ -2163,16 +2177,21 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<view_script><![CDATA[SELECT uuid AS di_uuid,
        diagram AS dm_uuid,
        type AS di_type,
+       properties AS di_properties,
        ddoddl AS di_ddoddl,
        ghost AS di_ghost,
-       revision_from AS di_revision_from
-  FROM dm_item]]></view_script>
-			<column name="di_uuid" type="char" />
-			<column name="dm_uuid" type="char" />
-			<column name="di_type" type="varchar" />
-			<column name="di_ddoddl" type="char" />
+       revision_from AS di_revision_from,
+       revision_to AS di_revision_to
+  FROM dm_item
+ WHERE revision_to = -1]]></view_script>
+			<column name="di_uuid" type="char " />
+			<column name="dm_uuid" type="char " />
+			<column name="di_type" type="varchar " />
+			<column name="di_properties" type="text" />
+			<column name="di_ddoddl" type="char " />
 			<column name="di_ghost" type="boolean" />
 			<column name="di_revision_from" type="integer" />
+			<column name="di_revision_to" type="integer" />
 		</view>
 		<view name="do_template" >
 			<view_script><![CDATA[SELECT dd.project AS po_uuid,
@@ -3761,6 +3780,61 @@ AND uuid='{5f5bd949-c8c8-4e74-960b-e30bd7ff4d18}']]></view_script>
 		<trigger name="tg_dd_object_bu" table="dd_object" id="Trigger_fc5c98" isSystem="false" >
 			<string><![CDATA[CREATE TRIGGER tg_dd_object_bu BEFORE UPDATE ON dd_object FOR EACH ROW BEGIN INSERT OR REPLACE INTO dd_object_history SELECT * FROM dd_object WHERE uuid=OLD.uuid; END]]></string>
 		</trigger>
+		<trigger name="tg_dm_diagram_au" id="Trigger_1d77e58" isSystem="false" >
+			<string><![CDATA[CREATE TRIGGER tg_dm_diagram_au
+         AFTER UPDATE OF name,
+                         properties,
+                         cm_modified_by,
+                         cm_deleted
+            ON dm_diagram
+      FOR EACH ROW
+BEGIN
+    UPDATE dm_diagram
+       SET cm_revision = cm_revision + 1,
+           cm_timestamp = CURRENT_TIMESTAMP
+     WHERE uuid = OLD.uuid;
+END;]]></string>
+		</trigger>
+		<trigger name="tg_dm_diagram_bu" id="Trigger_1555d7f" isSystem="false" >
+			<string><![CDATA[CREATE TRIGGER tg_dm_diagram_bu
+        BEFORE UPDATE OF name,
+                         properties,
+                         cm_deleted
+            ON dm_diagram
+      FOR EACH ROW
+BEGIN
+    INSERT OR REPLACE INTO dd_diagram_history SELECT *
+                                                FROM dm_diagram
+                                               WHERE uuid = OLD.uuid;
+END;]]></string>
+		</trigger>
+		<trigger name="tg_dm_item_au" id="Trigger_1192259" isSystem="false" >
+			<string><![CDATA[
+CREATE TRIGGER tg_dm_item_au
+         AFTER UPDATE OF properties,
+                         revision_to,
+                         ghost
+            ON dm_item
+BEGIN
+    UPDATE dm_item
+       SET cm_revision = cm_revision + 1,
+           cm_timestamp = CURRENT_TIMESTAMP
+     WHERE uuid = OLD.uuid;
+END;]]></string>
+		</trigger>
+		<trigger name="tg_dm_item_bu" id="Trigger_27b989c" isSystem="false" >
+			<string><![CDATA[CREATE TRIGGER tg_dm_item_bu
+        BEFORE UPDATE OF properties,
+                         revision_to,
+                         ghost,
+                         cm_modified_by
+            ON dm_item
+BEGIN
+    INSERT OR REPLACE INTO dm_item_history SELECT *
+                                             FROM dm_item
+                                            WHERE uuid = OLD.uuid;
+END;]]></string>
+		</trigger>
 		<trigger name="tg_re_document_au" id="Trigger_2043309" isSystem="false" >
 			<string><![CDATA[CREATE TRIGGER tg_re_document_au
          AFTER UPDATE OF documentNumber,
@@ -3919,8 +3993,6 @@ END;
 		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2096" y="448" />
 		<entity schema="Default" name="dm_item" color="CCCCFF" x="464" y="80" />
 		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="272" y="80" />
-		<entity schema="Default" name="dm_item_property" color="CCCCFF" x="464" y="256" />
-		<entity schema="Default" name="dm_diagram_property" color="CCCCFF" x="272" y="256" />
 		<entity schema="Default" name="dd_object" color="C4E0F9" x="1680" y="448" />
 		<entity schema="Default" name="dd_link_history" color="FFFFCC" x="1904" y="624" />
 		<entity schema="Default" name="dd_attribute_history" color="FFFFCC" x="1904" y="448" />
@@ -3973,8 +4045,6 @@ END;
 		<group name="diagram" color="CCCCFF" >
 			<entity schema="Default" name="dm_diagram" />
 			<entity schema="Default" name="dm_item" />
-			<entity schema="Default" name="dm_item_property" />
-			<entity schema="Default" name="dm_diagram_property" />
 		</group>
 		<group name="design data history" color="FFFFCC" >
 			<comment><![CDATA[Views related to the history of design data objects and links.]]></comment>
@@ -5084,14 +5154,11 @@ END;]]></string>
 		<entity schema="Default" name="re_reportson" color="FFEBEB" x="1136" y="1760" />
 		<entity schema="Default" name="re_documenttree" color="FFEBEB" x="1152" y="1904" />
 		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2112" y="608" />
-		<entity schema="Default" name="dm_item_property" color="CCCCFF" x="2512" y="1088" />
 		<entity schema="Default" name="re_document_history" color="FFFFCC" x="2352" y="368" />
 		<entity schema="Default" name="re_section_history" color="FFFFCC" x="2352" y="720" />
 		<entity schema="Default" name="re_document" color="FFEBEB" x="1360" y="2048" />
 		<entity schema="Default" name="re_section_ddl" color="FFEBEB" x="944" y="2272" />
 		<entity schema="Default" name="re_section_ddo" color="FFEBEB" x="944" y="2384" />
-		<entity schema="Default" name="dm_item" color="CCCCFF" x="2208" y="1040" />
-		<entity schema="Default" name="dm_diagram_property" color="CCCCFF" x="2208" y="1264" />
 		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1152" y="3056" />
 		<entity schema="Default" name="po_role" color="EEF7EC" x="208" y="2432" />
 		<entity schema="Default" name="sp_issue_history" color="3986C1" x="2640" y="400" />
@@ -5100,7 +5167,10 @@ END;]]></string>
 		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2144" y="1728" />
 		<entity schema="Default" name="re_section" color="FFEBEB" x="1360" y="1792" />
 		<entity schema="Default" name="sp_script" color="FFCCFF" x="1920" y="1920" />
-		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1984" y="1152" />
+		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1968" y="1040" />
+		<entity schema="Default" name="dm_diagram_history" color="3986C1" x="2416" y="1024" />
+		<entity schema="Default" name="dm_item" color="CCCCFF" x="2224" y="1024" />
+		<entity schema="Default" name="dm_item_history" color="3986C1" x="2624" y="1008" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
@@ -5149,8 +5219,6 @@ END;]]></string>
 		<group name="diagram (dm)" color="CCCCFF" >
 			<entity schema="Default" name="dm_diagram" />
 			<entity schema="Default" name="dm_item" />
-			<entity schema="Default" name="dm_item_property" />
-			<entity schema="Default" name="dm_diagram_property" />
 		</group>
 		<group name="report framework (rf)" color="FFEBEB" >
 			<comment><![CDATA[This group contains all tables required to implement RePoSyD's report engine.]]></comment>
@@ -5967,6 +6035,64 @@ CREATE INDEX idx_dd_variant_ddl_dd_link ON dd_ddl_solution ( ddl );]]></string>
 
 CREATE INDEX Idx_da_analysis_definition ON da_analysis ( definition );]]></string>
 		</script>
+		<script name="dm_item_history_001" id="Editor_23563c5" language="SQL" >
+			<string><![CDATA[CREATE TABLE dm_item_history ( 
+	uuid                 char(38) NOT NULL    ,
+	diagram              char(38) NOT NULL    ,
+	[type]               varchar(255)     ,
+	properties           text  DEFAULT '{}'   ,
+	ddoddl               char(38)     ,
+	revision_from        integer  DEFAULT 0   ,
+	revision_to          integer  DEFAULT -1   ,
+	ghost                boolean  DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime     ,
+	cm_deleted           boolean  DEFAULT 0   
+ );
+]]></string>
+		</script>
+		<script name="dm_item_history_002" id="Editor_49949cd" language="SQL" >
+			<string><![CDATA[CREATE TABLE dm_item_history ( 
+	uuid                 char(38) NOT NULL    ,
+	diagram              char(38) NOT NULL    ,
+	[type]               varchar(255)     ,
+	properties           text  DEFAULT '{}'   ,
+	ddoddl               char(38)     ,
+	revision_from        integer  DEFAULT 0   ,
+	revision_to          integer  DEFAULT -1   ,
+	ghost                boolean  DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime     ,
+	cm_deleted           boolean  DEFAULT 0   ,
+	repository           char(38) NOT NULL    
+ );
+
+CREATE INDEX idx_dm_item_uuid ON dm_item_history ( uuid );
+]]></string>
+		</script>
+		<script name="dm_item_history_003" id="Editor_5a98992" language="SQL" >
+			<string><![CDATA[CREATE TABLE dm_item_history ( 
+	uuid                 char(38) NOT NULL    ,
+	diagram              char(38) NOT NULL    ,
+	[type]               varchar(255)     ,
+	properties           text  DEFAULT '{}'   ,
+	ddoddl               char(38)     ,
+	revision             integer     ,
+	revision_from        integer  DEFAULT 0   ,
+	revision_to          integer  DEFAULT -1   ,
+	ghost                boolean  DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime     ,
+	cm_deleted           boolean  DEFAULT 0   ,
+	repository           char(38) NOT NULL    
+ );
+
+CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
+]]></string>
+		</script>
 		<script name="rf_section" id="Editor_5033503" language="SQL" >
 			<string><![CDATA[CREATE TABLE re_section_history ( 
 	uuid                 char(38) NOT NULL  ,
@@ -6031,8 +6157,6 @@ CREATE INDEX Idx_da_analysis_definition ON da_analysis ( definition );]]></strin
 		<entity schema="Default" name="tr_da_title" color="3986C1" x="1216" y="912" />
 		<entity schema="Default" name="re_document_reportson" color="C4E0F9" x="1504" y="544" />
 		<entity schema="Default" name="sp_issues" color="3986C1" x="640" y="3568" />
-		<entity schema="Default" name="dm_diagrams" color="3986C1" x="1136" y="3584" />
-		<entity schema="Default" name="dm_items" color="3986C1" x="1344" y="3568" />
 		<entity schema="Default" name="ds_ddl_left" color="C4E0F9" x="48" y="2528" />
 		<entity schema="Default" name="ds_ddl_right" color="C4E0F9" x="304" y="2528" />
 		<entity schema="Default" name="re_documents" color="C4E0F9" x="896" y="160" />
@@ -6049,6 +6173,8 @@ CREATE INDEX Idx_da_analysis_definition ON da_analysis ( definition );]]></strin
 		<entity schema="Default" name="dd_hierarchy" color="3986C1" x="992" y="1392" />
 		<entity schema="Default" name="ip_assigned_members" color="3986C1" x="1168" y="1376" />
 		<entity schema="Default" name="sp_scripts" color="3986C1" x="1360" y="976" />
+		<entity schema="Default" name="dm_diagrams" color="3986C1" x="1136" y="3584" />
+		<entity schema="Default" name="dm_items" color="3986C1" x="1344" y="3568" />
 		<group name="report engine (re)" color="C4E0F9" >
 			<entity schema="Default" name="re_sections" />
 			<entity schema="Default" name="re_templates" />
@@ -6110,6 +6236,10 @@ CREATE INDEX Idx_da_analysis_definition ON da_analysis ( definition );]]></strin
 		<group name="Repository" color="C4E0F9" >
 			<entity schema="Default" name="rp_projects" />
 			<entity schema="Default" name="rp_solutions" />
+		</group>
+		<group name="Diagram (dm)" color="C4E0F9" >
+			<entity schema="Default" name="dm_diagrams" />
+			<entity schema="Default" name="dm_items" />
 		</group>
 		<script name="Sql_Editor" id="Editor_5e4dcb7" language="SQL" >
 			<string><![CDATA[SELECT * FROM ddo_definitions]]></string>

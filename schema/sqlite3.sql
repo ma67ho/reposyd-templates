@@ -110,29 +110,34 @@ CREATE TABLE dm_diagram (
 
 CREATE INDEX idx_dm_diagram_solution ON dm_diagram ( solution, ddo );
 
-CREATE TABLE dm_diagram_property ( 
-	diagram              char(38) NOT NULL    ,
-	name                 varchar(100) NOT NULL    ,
-	value                blob     ,
-	CONSTRAINT pk_dm_diagram_properties PRIMARY KEY ( diagram, name ),
-	FOREIGN KEY ( diagram ) REFERENCES dm_diagram( uuid )  
+CREATE TABLE dm_diagram_history ( 
+	uuid                 char  NOT NULL    ,
+	solution             char      ,
+	name                 varchar(255)     ,
+	ddo                  char(38)     ,
+	[type]               char(255)     ,
+	properties           text     ,
+	cm_revision          integer  DEFAULT 0   ,
+	cm_modified_by       char(38)     ,
+	cm_timestamp         datetime  DEFAULT CURRENT_TIMESTAMP   ,
+	cm_deleted           boolean  DEFAULT 0   ,
+	repository           char  NOT NULL    
  );
-
-CREATE INDEX idx_dm_diagram_properties ON dm_diagram_property ( diagram );
 
 CREATE TABLE dm_item ( 
 	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
 	diagram              char(38) NOT NULL    ,
 	[type]               varchar(255)     ,
+	properties           text  DEFAULT '{}'   ,
 	ddoddl               char(38)     ,
-	revision             integer NOT NULL DEFAULT 0   ,
 	revision_from        integer  DEFAULT 0   ,
 	revision_to          integer  DEFAULT -1   ,
 	ghost                boolean  DEFAULT 0   ,
 	cm_modified_by       char(38) NOT NULL    ,
-	cm_deleted           boolean  DEFAULT 0   ,
-	repository           char(38)     ,
-	CONSTRAINT Unq_dm_item_uuid UNIQUE ( uuid, revision ) ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime     ,
+	repository           char(38) NOT NULL    ,
+	CONSTRAINT Unq_dm_item_uuid UNIQUE ( uuid, cm_revision ) ,
 	FOREIGN KEY ( diagram ) REFERENCES dm_diagram( uuid ) ON DELETE CASCADE 
  );
 
@@ -140,19 +145,22 @@ CREATE INDEX idx_dm_shape ON dm_item ( diagram );
 
 CREATE INDEX idx_dm_shape_ddoddl ON dm_item ( ddoddl );
 
-CREATE TABLE dm_item_property ( 
-	item                 char(38)     ,
-	revision             integer     ,
-	key                  varchar  NOT NULL    ,
-	value                blob     ,
-	dda                  char(38)     ,
-	CONSTRAINT pk_dm_item_propertiey UNIQUE ( item, key ) ,
-	FOREIGN KEY ( item, revision ) REFERENCES dm_item( uuid, revision ) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE dm_item_history ( 
+	uuid                 char(38) NOT NULL    ,
+	diagram              char(38) NOT NULL    ,
+	[type]               varchar(255)     ,
+	properties           text  DEFAULT '{}'   ,
+	ddoddl               char(38)     ,
+	revision_from        integer  DEFAULT 0   ,
+	revision_to          integer  DEFAULT -1   ,
+	ghost                boolean  DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime     ,
+	repository           char(38) NOT NULL    
  );
 
-CREATE INDEX idx_dm_item_property_dda ON dm_item_property ( dda );
-
-CREATE INDEX idx_dm_item_property_item ON dm_item_property ( item );
+CREATE INDEX idx_dm_item ON dm_item_history ( uuid, cm_revision );
 
 CREATE TABLE re_document_history ( 
 	uuid                 char(38) NOT NULL    ,
@@ -1203,10 +1211,13 @@ CREATE VIEW dm_diagrams AS SELECT dm.solution AS ds_uuid,
 CREATE VIEW dm_items AS SELECT uuid AS di_uuid,
        diagram AS dm_uuid,
        type AS di_type,
+       properties AS di_properties,
        ddoddl AS di_ddoddl,
        ghost AS di_ghost,
-       revision_from AS di_revision_from
-  FROM dm_item;
+       revision_from AS di_revision_from,
+       revision_to AS di_revision_to
+  FROM dm_item
+ WHERE revision_to = -1;
 
 CREATE VIEW do_template AS SELECT dd.project AS po_uuid,
        dd.uuid AS do_uuid,
@@ -2045,6 +2056,56 @@ AND uuid='{5f5bd949-c8c8-4e74-960b-e30bd7ff4d18}';
 CREATE TRIGGER tg_dd_object_ai AFTER INSERT ON dd_object FOR EACH ROW BEGIN UPDATE dd_objectid SET nextId=nextId+1 WHERE ddo=NEW.definition; END
 
 CREATE TRIGGER tg_dd_object_bu BEFORE UPDATE ON dd_object FOR EACH ROW BEGIN INSERT OR REPLACE INTO dd_object_history SELECT * FROM dd_object WHERE uuid=OLD.uuid; END
+
+CREATE TRIGGER tg_dm_diagram_au
+         AFTER UPDATE OF name,
+                         properties,
+                         cm_modified_by,
+                         cm_deleted
+            ON dm_diagram
+      FOR EACH ROW
+BEGIN
+    UPDATE dm_diagram
+       SET cm_revision = cm_revision + 1,
+           cm_timestamp = CURRENT_TIMESTAMP
+     WHERE uuid = OLD.uuid;
+END;
+
+CREATE TRIGGER tg_dm_diagram_bu
+        BEFORE UPDATE OF name,
+                         properties,
+                         cm_deleted
+            ON dm_diagram
+      FOR EACH ROW
+BEGIN
+    INSERT OR REPLACE INTO dd_diagram_history SELECT *
+                                                FROM dm_diagram
+                                               WHERE uuid = OLD.uuid;
+END;
+
+CREATE TRIGGER tg_dm_item_au
+         AFTER UPDATE OF properties,
+                         revision_to,
+                         ghost
+            ON dm_item
+BEGIN
+    UPDATE dm_item
+       SET cm_revision = cm_revision + 1,
+           cm_timestamp = CURRENT_TIMESTAMP
+     WHERE uuid = OLD.uuid;
+END;
+
+CREATE TRIGGER tg_dm_item_bu
+        BEFORE UPDATE OF properties,
+                         revision_to,
+                         ghost,
+                         cm_modified_by
+            ON dm_item
+BEGIN
+    INSERT OR REPLACE INTO dm_item_history SELECT *
+                                             FROM dm_item
+                                            WHERE uuid = OLD.uuid;
+END;
 
 CREATE TRIGGER tg_re_document_au
          AFTER UPDATE OF documentNumber,
