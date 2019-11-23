@@ -76,16 +76,17 @@ PRAGMA foreign_keys = 1;
 DROP VIEW dm_items;
 
 CREATE VIEW dm_items AS
-    SELECT uuid AS di_uuid,
-           diagram AS dm_uuid,
-           type AS di_type,
-           properties AS di_properties,
-           ddoddl AS di_ddoddl,
-           ghost AS di_ghost,
-           revision_from AS di_revision_from,
-           revision_to AS di_revision_to
-      FROM dm_item
-     WHERE revision_to = -1;
+    SELECT dm.solution AS ds_uuid,
+           di.uuid AS di_uuid,
+           dm.uuid AS dm_uuid,
+           di.type AS di_type,
+           di.properties AS di_properties,
+           di.ddoddl AS di_ddoddl,
+           di.ghost AS di_ghost,
+           di.revision_from AS di_revision_from
+      FROM dm_item AS di
+           LEFT JOIN
+           dm_diagram dm ON (dm.uuid = di.diagram);
 
 CREATE TABLE dm_diagram_history ( 
 	uuid                 char  NOT NULL    ,

@@ -2174,24 +2174,26 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="cm_timestamp" type="datetime" />
 		</view>
 		<view name="dm_items" >
-			<view_script><![CDATA[SELECT uuid AS di_uuid,
-       diagram AS dm_uuid,
-       type AS di_type,
-       properties AS di_properties,
-       ddoddl AS di_ddoddl,
-       ghost AS di_ghost,
-       revision_from AS di_revision_from,
-       revision_to AS di_revision_to
-  FROM dm_item
+			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
+       di.uuid AS di_uuid,
+       dm.uuid AS dm_uuid,
+       di.type AS di_type,
+       di.properties AS di_properties,
+       di.ddoddl AS di_ddoddl,
+       di.ghost AS di_ghost,
+       di.revision_from AS di_revision_from
+  FROM dm_item AS di
+       LEFT JOIN
+       dm_diagram dm ON (dm.uuid = di.diagram)
  WHERE revision_to = -1]]></view_script>
+			<column name="ds_uuid" type="char" />
 			<column name="di_uuid" type="char " />
-			<column name="dm_uuid" type="char " />
+			<column name="dm_uuid" type="char" />
 			<column name="di_type" type="varchar " />
 			<column name="di_properties" type="text" />
 			<column name="di_ddoddl" type="char " />
 			<column name="di_ghost" type="boolean" />
 			<column name="di_revision_from" type="integer" />
-			<column name="di_revision_to" type="integer" />
 		</view>
 		<view name="do_template" >
 			<view_script><![CDATA[SELECT dd.project AS po_uuid,
