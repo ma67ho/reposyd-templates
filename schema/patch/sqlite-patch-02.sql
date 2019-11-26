@@ -49,27 +49,31 @@ INSERT INTO dm_item (
                            diagram,
                            type,
                            ddoddl,
-                           revision,
+                           0,
                            revision_from,
                            revision_to,
                            ghost,
                            cm_modified_by,
-                           cm_deleted,
+                           0,
                            repository
                       FROM sqlitestudio_temp_table;
 
 DROP TABLE sqlitestudio_temp_table;
 
+DROP INDEX IF EXISTS idx_dm_shape;
+
 CREATE INDEX idx_dm_shape ON dm_item (
     diagram
 );
+
+DROP INDEX IF EXISTS idx_dm_shape_ddoddl;
 
 CREATE INDEX idx_dm_shape_ddoddl ON dm_item (
     ddoddl
 );
 
-DROP TABLE dm_diagram_property;
-DROP TABLE dm_item_property;
+DROP TABLE IF EXISTS dm_diagram_property;
+DROP TABLE IF EXISTS dm_item_property;
 
 PRAGMA foreign_keys = 1;
 
@@ -79,6 +83,7 @@ CREATE VIEW dm_items AS
     SELECT dm.solution AS ds_uuid,
            di.uuid AS di_uuid,
            dm.uuid AS dm_uuid,
+           dm.type AS dm_type,
            di.type AS di_type,
            di.properties AS di_properties,
            di.ddoddl AS di_ddoddl,
@@ -86,7 +91,10 @@ CREATE VIEW dm_items AS
            di.revision_from AS di_revision_from
       FROM dm_item AS di
            LEFT JOIN
-           dm_diagram dm ON (dm.uuid = di.diagram);
+           dm_diagram dm ON (dm.uuid = di.diagram) 
+     WHERE di.revision_to = -1;
+
+DROP TABLE IF EXISTS dm_diagram_history;
 
 CREATE TABLE dm_diagram_history ( 
 	uuid                 char  NOT NULL    ,
@@ -102,6 +110,8 @@ CREATE TABLE dm_diagram_history (
 	repository           char  NOT NULL    
  );
 
+DROP TRIGGER IF EXISTS tg_dm_diagram_au;
+
 CREATE TRIGGER tg_dm_diagram_au
          AFTER UPDATE OF name,
                          properties,
@@ -116,6 +126,8 @@ BEGIN
      WHERE uuid = OLD.uuid;
 END;
 
+DROP TRIGGER IF EXISTS tg_dm_diagram_bu;
+
 CREATE TRIGGER tg_dm_diagram_bu
         BEFORE UPDATE OF name,
                          properties,
@@ -128,12 +140,15 @@ BEGIN
                                                WHERE uuid = OLD.uuid;
 END;
 
+DROP TABLE IF EXISTS dm_item_history;
+
 CREATE TABLE dm_item_history ( 
 	uuid                 char(38) NOT NULL    ,
 	diagram              char(38) NOT NULL    ,
 	[type]               varchar(255)     ,
 	properties           text  DEFAULT '{}'   ,
 	ddoddl               char(38)     ,
+  revision             INTEGER     ,
 	revision_from        integer  DEFAULT 0   ,
 	revision_to          integer  DEFAULT -1   ,
 	ghost                boolean  DEFAULT 0   ,
@@ -144,7 +159,11 @@ CREATE TABLE dm_item_history (
 	repository           char(38) NOT NULL    
  );
 
+DROP INDEX IF EXISTS idx_dm_item;
+
 CREATE INDEX idx_dm_item ON dm_item_history ( uuid, cm_revision );
+
+DROP TRIGGER IF EXISTS tg_dm_item_au;
 
 CREATE TRIGGER tg_dm_item_au
          AFTER UPDATE OF properties,
@@ -152,11 +171,13 @@ CREATE TRIGGER tg_dm_item_au
                          ghost
             ON dm_item
 BEGIN
-    UPDATE dm_diagram_item
+    UPDATE dm_item
        SET cm_revision = cm_revision + 1,
            cm_timestamp = CURRENT_TIMESTAMP
      WHERE uuid = OLD.uuid;
 END;
+
+DROP TRIGGER IF EXISTS tg_dm_item_bu;
 
 CREATE TRIGGER tg_dm_item_bu
         BEFORE UPDATE OF properties,
@@ -169,3 +190,14 @@ BEGIN
                                              FROM dm_item
                                             WHERE uuid = OLD.uuid;
 END;
+
+DROP INDEX IF EXISTS unq_dm_diagram;
+
+CREATE UNIQUE INDEX unq_dm_diagram ON dm_diagram (
+    ddo,
+    type
+);
+
+-- set schema version number
+INSERT OR REPLACE INTO rp_config (key,value) VALUES('schema/version', '2');
+INSERT OR REPLACE INTO rp_config (key,value) VALUES('schema/patched', CURRENT_TIMESTAMP)

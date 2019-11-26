@@ -105,7 +105,8 @@ CREATE TABLE dm_diagram (
 	cm_modified_by       char(38)     ,
 	cm_timestamp         datetime  DEFAULT CURRENT_TIMESTAMP   ,
 	cm_deleted           boolean  DEFAULT 0   ,
-	repository           char  NOT NULL    
+	repository           char  NOT NULL    ,
+	CONSTRAINT unq_dm_diagram UNIQUE ( ddo, [type] ) 
  );
 
 CREATE INDEX idx_dm_diagram_solution ON dm_diagram ( solution, ddo );
@@ -1175,6 +1176,19 @@ CREATE VIEW dac_result_properties AS SELECT dac.solution AS ds_uuid,
        LEFT JOIN
        da_analysis_result_properties dap ON (dap.result=dar.uuid);
 
+CREATE VIEW dbs_validate_view AS SELECT dm.solution AS ds_uuid,
+       di.uuid AS di_uuid,
+       dm.uuid AS dm_uuid,
+       di.type AS di_type,
+       di.properties AS di_properties,
+       di.ddoddl AS di_ddoddl,
+       di.ghost AS di_ghost,
+       di.revision_from AS di_revision_from
+  FROM dm_item AS di
+       LEFT JOIN
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;;
+
 CREATE VIEW dd_hierarchy AS SELECT dh.project AS po_uuid,
            dh.uuid AS dh_uuid,
            dh.name AS dh_name,
@@ -1218,8 +1232,8 @@ CREATE VIEW dm_items AS SELECT dm.solution AS ds_uuid,
        di.revision_from AS di_revision_from
   FROM dm_item AS di
        LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram)
- WHERE revision_to = -1;
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;;
 
 CREATE VIEW do_template AS SELECT dd.project AS po_uuid,
        dd.uuid AS do_uuid,

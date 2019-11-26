@@ -772,6 +772,10 @@ completed]]></comment>
 				<column name="solution" />
 				<column name="ddo" />
 			</index>
+			<index name="unq_dm_diagram" unique="UNIQUE" >
+				<column name="ddo" />
+				<column name="type" />
+			</index>
 		</table>
 		<table name="dm_diagram_history" >
 			<column name="uuid" type="char " length="38" jt="12" mandatory="y" />
@@ -2114,6 +2118,20 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="mb_account" type="varchar" />
 			<column name="mb_name" type="varchar" />
 		</view>
+		<view name="dbs_validate_view" >
+			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
+       di.uuid AS di_uuid,
+       dm.uuid AS dm_uuid,
+       di.type AS di_type,
+       di.properties AS di_properties,
+       di.ddoddl AS di_ddoddl,
+       di.ghost AS di_ghost,
+       di.revision_from AS di_revision_from
+  FROM dm_item AS di
+       LEFT JOIN
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;]]></view_script>
+		</view>
 		<view name="dd_hierarchy" >
 			<view_script><![CDATA[SELECT dh.project AS po_uuid,
            dh.uuid AS dh_uuid,
@@ -2184,8 +2202,8 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
        di.revision_from AS di_revision_from
   FROM dm_item AS di
        LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram)
- WHERE revision_to = -1]]></view_script>
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;]]></view_script>
 			<column name="ds_uuid" type="char" />
 			<column name="di_uuid" type="char " />
 			<column name="dm_uuid" type="char" />
@@ -5130,7 +5148,6 @@ END;]]></string>
 		<entity schema="Default" name="dd_ddl_solution" color="C4E0F9" x="1312" y="400" />
 		<entity schema="Default" name="ddh_ddo_dda_revision" color="FFFFCC" x="1888" y="816" />
 		<entity schema="Default" name="sp_watcher" color="FFCCFF" x="2160" y="1920" />
-		<entity schema="Default" name="sp_translation" color="FFCCFF" x="1920" y="2224" />
 		<entity schema="Default" name="po_ipt_member" color="EEF7EC" x="416" y="2192" />
 		<entity schema="Default" name="cm_request" color="F7F3EC" x="48" y="1552" />
 		<entity schema="Default" name="cm_request_solution" color="F7F3EC" x="336" y="1536" />
@@ -5169,10 +5186,11 @@ END;]]></string>
 		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2144" y="1728" />
 		<entity schema="Default" name="re_section" color="FFEBEB" x="1360" y="1792" />
 		<entity schema="Default" name="sp_script" color="FFCCFF" x="1920" y="1920" />
-		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1968" y="1040" />
 		<entity schema="Default" name="dm_diagram_history" color="3986C1" x="2416" y="1024" />
 		<entity schema="Default" name="dm_item" color="CCCCFF" x="2224" y="1024" />
 		<entity schema="Default" name="dm_item_history" color="3986C1" x="2624" y="1008" />
+		<entity schema="Default" name="sp_translation" color="FFCCFF" x="1920" y="2224" />
+		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1968" y="1040" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
