@@ -112,12 +112,26 @@
       {
         "attributes": [
           {
+            {
+              "id": "number",
+              "name": {
+                "de-DE": "Number",
+                "en-US": "Number"
+              },
+              "sortorder": 10,
+              "type": "string",
+              "properties": {
+                "length": 255,
+                "default": ""
+              }
+            },
+            {
             "id": "description",
             "name": {
               "de-DE": "Beschreibung",
               "en-US": "Description"
             },
-            "sortorder": 20,
+            "sortorder": 30,
             "type": "text"
           },
           {
@@ -126,7 +140,7 @@
               "de-DE": "Titel",
               "en-US": "Title"
             },
-            "sortorder": 10,
+            "sortorder": 20,
             "type": "string",
             "properties": {
               "length": 255,
