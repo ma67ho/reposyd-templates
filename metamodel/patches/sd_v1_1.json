@@ -112,20 +112,19 @@
       {
         "attributes": [
           {
-            {
-              "id": "number",
-              "name": {
-                "de-DE": "Number",
-                "en-US": "Number"
-              },
-              "sortorder": 10,
-              "type": "string",
-              "properties": {
-                "length": 255,
-                "default": ""
-              }
+            "id": "number",
+            "name": {
+              "de-DE": "Number",
+              "en-US": "Number"
             },
-            {
+            "sortorder": 10,
+            "type": "string",
+            "properties": {
+              "length": 255,
+              "default": ""
+            }
+          },
+          {
             "id": "description",
             "name": {
               "de-DE": "Beschreibung",
@@ -199,7 +198,10 @@
             "color": "white"
           }
         },
-        "roles": ["repositorymanager", "systemengineer"]
+        "roles": [
+          "repositorymanager",
+          "systemengineer"
+        ]
       }
     ]
   }
