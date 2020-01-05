@@ -1,0 +1,33 @@
+{
+  "key": "hazardanalysis.config.probability",
+  "value": [
+    {
+      "value": 0,
+      "label": {
+        "de-DE": "ausstehend",
+        "en-US": "pending"
+      }
+    },
+    {
+      "value": 1,
+      "label": {
+        "de-DE": "unwahrscheinlich",
+        "en-US": "inlikely"
+      }
+    },
+    {
+      "value": 2,
+      "label": {
+        "de-DE": "wahrscheinlich",
+        "en-US": "likely"
+      }
+    },
+    {
+      "value": 3,
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "high"
+      }
+    }
+  ]
+}

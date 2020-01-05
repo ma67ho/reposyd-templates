@@ -1,0 +1,26 @@
+{
+  "key": "hazardanalysis.config.lifecyclephase",
+  "value": [
+    {
+      "value": "maintanance",
+      "label": {
+        "de-DE": "Wartung",
+        "en-US": "Maintanance"
+      }
+    },
+    {
+      "value": "operation",
+      "label": {
+        "de-DE": "Betrieb",
+        "en-US": "Operation"
+      }
+    },
+    {
+      "value": "transport",
+      "label": {
+        "de-DE": "Transport",
+        "en-US": "transport"
+      }
+    }
+  ]
+}

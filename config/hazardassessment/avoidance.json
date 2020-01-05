@@ -1,0 +1,33 @@
+{
+  "key": "hazardanalysis.config.avoidance",
+  "value": [
+    {
+      "value": 0,
+      "label": {
+        "de-DE": "ausstehend",
+        "en-US": "pending"
+      }
+    },
+    {
+      "value": 1,
+      "label": {
+        "de-DE": "möglich",
+        "en-US": "possible"
+      }
+    },
+    {
+      "value": 3,
+      "label": {
+        "de-DE": "selten",
+        "en-US": "rare"
+      }
+    },
+    {
+      "value": 5,
+      "label": {
+        "de-DE": "unmöglich",
+        "en-US": "impossible"
+      }
+    }
+  ]
+}

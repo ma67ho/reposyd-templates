@@ -1,0 +1,63 @@
+{
+  "key": "hazardanalysis.config.frequency",
+  "value": [
+    {
+      "value": 0,
+      "label": {
+        "de-DE": "ausstehend",
+        "en-US": "pending"
+      }
+    },
+    {
+      "value": 1,
+      "description": {
+        "de-DE": "weniger oder einmal innerhalb eines Jahres"
+      },
+      "label": {
+        "de-DE": "fast nie",
+        "en-US": "hardly ever"
+      }
+    },
+    {
+      "value": 2,
+      "description": {
+        "de-DE": "weniger als einmal innerhalb von 2 Wochen und mehrmals im Jahr"
+      },
+      "label": {
+        "de-DE": "sehr selten",
+        "en-US": "very rare"
+      }
+    },
+    {
+      "value": 3,
+      "description": {
+        "de-DE": "weniger als einmal pro Tag und mehrmals innerhalb von 2 Wochen"
+      },
+      "label": {
+        "de-DE": "selten",
+        "en-US": "rare"
+      }
+    },
+    {
+      "value": 4,
+      "description": {
+        "de-DE": "einmal pro Stunde und mehrmals am Tag"
+      },
+      "label": {
+        "de-DE": "häufig",
+        "en-US": "frequently"
+      }
+    },
+    {
+      "value": 5,
+      "description": {
+        "de-DE": "mehrmals pro Stunde",
+        "en-US": ""
+      },
+      "label": {
+        "de-DE": "sehr häufig",
+        "en-US": "very often"
+      }
+    }
+  ]
+}

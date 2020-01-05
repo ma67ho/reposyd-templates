@@ -1,0 +1,61 @@
+{
+  "key": "hazardanalysis.config.hazard.type",
+  "value": [
+    {
+      "value": "pending",
+      "label": {
+        "de-DE": "ausstehend",
+        "en-US": "pending"
+      }
+    },
+    {
+      "value": "ergonomic",
+      "label": {
+        "de-DE": "Ergonomische Gefährdung",
+        "en-US": "Ergonomic Hazard"
+      }
+    },
+    {
+      "value": "electrical",
+      "label": {
+        "de-DE": "Elektrische Gefährdung",
+        "en-US": "Electrical Hazard"
+      }
+    },
+    {
+      "value": "mechanial",
+      "label": {
+        "de-DE": "Mechanische Gefährdung",
+        "en-US": "Meachnical Hazard"
+      }
+    },
+    {
+      "value": "noise",
+      "label": {
+        "de-DE": "Gefährdung durch Lärm",
+        "en-US": "Noise Hazard"
+      }
+    },
+    {
+      "value": "radiation",
+      "label": {
+        "de-DE": "Gefährdung durch Strahlung",
+        "en-US": "Radiation Hazard"
+      }
+    },
+    {
+      "value": "thermal",
+      "label": {
+        "de-DE": "Thermische Gefährdung",
+        "en-US": "Thermal Hazard"
+      }
+    },
+    {
+      "value": "vibration",
+      "label": {
+        "de-DE": "Gefährdung durch Vibration",
+        "en-US": "Vibration Hazard"
+      }
+    }
+  ]
+}
