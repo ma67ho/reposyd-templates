@@ -202,6 +202,7 @@ CREATE TABLE ha_hazard (
 	lifecyclephases      text     ,
 	typeofhazard         char(100)  DEFAULT 'pending'   ,
 	description          text     ,
+	alarp                boolean  DEFAULT 0   ,
 	cm_deleted           boolean NOT NULL DEFAULT 0   ,
 	cm_modified_by       char(38) NOT NULL    ,
 	cm_revision          integer NOT NULL DEFAULT 0   ,
@@ -225,6 +226,7 @@ CREATE TABLE ha_hazard_history (
 	lifecyclephases      text     ,
 	typeofhazard         char(100)  DEFAULT 'pending'   ,
 	description          text     ,
+	alarp                boolean  DEFAULT 0   ,
 	cm_deleted           boolean NOT NULL DEFAULT 0   ,
 	cm_modified_by       char(38) NOT NULL    ,
 	cm_revision          integer NOT NULL DEFAULT 0   ,
@@ -1673,6 +1675,7 @@ CREATE VIEW ha_hazard_assessments AS SELECT hz.solution AS ds_uuid,
        hz.typeofhazard AS hz_type,
        hz.lifecyclephases AS hz_lifecyclephases,
        hz.description AS hz_description,
+       hz.alarp AS hz_alarp,
        hzmb.uuid AS hz_mb_uuid,
        hzmb.account AS hz_mb_account,
        hzmb.name AS hz_mb_name,
@@ -1707,6 +1710,7 @@ CREATE VIEW ha_hazards AS SELECT hz.solution AS ds_uuid,
        hz.description AS hz_description,
        hz.lifecyclephases AS hz_lifecyclephases,
        hz.typeofhazard AS hz_type,
+       hz.alarp AS hz_alarp,
        cm_revision AS cm_revision,
        mb.uuid AS mb_uuid,
        mb.account AS mb_account,
@@ -2361,7 +2365,7 @@ CREATE TRIGGER tg_ha_assessment_bu
       FOR EACH ROW
 BEGIN
     INSERT OR REPLACE INTO ha_assessment_history SELECT *
-                                                   FROM ha_assessmen
+                                                   FROM ha_assessment
                                                   WHERE uuid = OLD.uuid;
 END;
 
@@ -2369,6 +2373,7 @@ CREATE TRIGGER tg_ha_hazard_au
          AFTER UPDATE OF lifecyclephases,
                          typeofhazard,
                          description,
+                         alarp,
                          cm_deleted
             ON ha_hazard
       FOR EACH ROW
@@ -2383,6 +2388,7 @@ CREATE TRIGGER tg_ha_hazard_bu
         BEFORE UPDATE OF lifecyclephases,
                          typeofhazard,
                          description,
+                         alarp,
                          cm_deleted,
                          cm_modified_by
             ON ha_hazard
