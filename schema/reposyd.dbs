@@ -114,7 +114,7 @@
 				<comment><![CDATA[closed / open]]></comment>
 			</column>
 			<column name="description" type="text" jt="-1" />
-			<column name="repository" type="char " length="38" jt="12" mandatory="y" />
+			<column name="repository" type="char " length="38" jt="-1" mandatory="y" />
 			<index name="idx_da_analysis_definition" unique="NORMAL" >
 				<column name="definition" />
 			</index>
@@ -752,8 +752,8 @@ completed]]></comment>
 			</fk>
 		</table>
 		<table name="dm_diagram" generator_rows="505" >
-			<column name="uuid" type="char " length="38" jt="12" mandatory="y" />
-			<column name="solution" type="char " length="38" jt="12" />
+			<column name="uuid" type="char " length="38" jt="-1" mandatory="y" />
+			<column name="solution" type="char " length="38" jt="-1" />
 			<column name="name" type="varchar" length="255" jt="12" />
 			<column name="ddo" type="char" length="38" jt="1" />
 			<column name="type" type="char" length="255" jt="1" />
@@ -768,7 +768,7 @@ completed]]></comment>
 			<column name="cm_deleted" type="boolean" jt="-7" >
 				<defo>0</defo>
 			</column>
-			<column name="repository" type="char " length="38" jt="12" mandatory="y" />
+			<column name="repository" type="char " length="38" jt="-1" mandatory="y" />
 			<index name="Pk_diagram" unique="PRIMARY_KEY" >
 				<column name="uuid" />
 			</index>
@@ -782,8 +782,8 @@ completed]]></comment>
 			</index>
 		</table>
 		<table name="dm_diagram_history" >
-			<column name="uuid" type="char " length="38" jt="12" mandatory="y" />
-			<column name="solution" type="char " length="38" jt="12" />
+			<column name="uuid" type="char " length="38" jt="-1" mandatory="y" />
+			<column name="solution" type="char " length="38" jt="-1" />
 			<column name="name" type="varchar" length="255" jt="12" />
 			<column name="ddo" type="char" length="38" jt="1" />
 			<column name="type" type="char" length="255" jt="1" />
@@ -798,7 +798,7 @@ completed]]></comment>
 			<column name="cm_deleted" type="boolean" jt="-7" >
 				<defo>0</defo>
 			</column>
-			<column name="repository" type="char " length="38" jt="12" mandatory="y" />
+			<column name="repository" type="char " length="38" jt="-1" mandatory="y" />
 		</table>
 		<table name="dm_item" generator_rows="757" >
 			<comment><![CDATA[Contains the shape's UUID.]]></comment>
@@ -954,6 +954,9 @@ completed]]></comment>
 				<defo>&#039;pending&#039;</defo>
 			</column>
 			<column name="description" type="text" jt="-1" />
+			<column name="alarp" type="boolean" jt="-7" >
+				<defo>0</defo>
+			</column>
 			<column name="cm_deleted" type="boolean" jt="-7" mandatory="y" >
 				<defo>0</defo>
 			</column>
@@ -997,6 +1000,9 @@ completed]]></comment>
 				<defo>&#039;pending&#039;</defo>
 			</column>
 			<column name="description" type="text" jt="-1" />
+			<column name="alarp" type="boolean" jt="-7" >
+				<defo>0</defo>
+			</column>
 			<column name="cm_deleted" type="boolean" jt="-7" mandatory="y" >
 				<defo>0</defo>
 			</column>
@@ -3067,6 +3073,7 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
        hz.typeofhazard AS hz_type,
        hz.lifecyclephases AS hz_lifecyclephases,
        hz.description AS hz_description,
+       hz.alarp AS hz_alarp,
        hzmb.uuid AS hz_mb_uuid,
        hzmb.account AS hz_mb_account,
        hzmb.name AS hz_mb_name,
@@ -3100,6 +3107,7 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="hz_type" type="char " />
 			<column name="hz_lifecyclephases" type="text" />
 			<column name="hz_description" type="text" />
+			<column name="hz_alarp" type="boolean" />
 			<column name="hz_mb_uuid" type="char" />
 			<column name="hz_mb_account" type="varchar" />
 			<column name="hz_mb_name" type="varchar" />
@@ -3125,6 +3133,7 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
        hz.description AS hz_description,
        hz.lifecyclephases AS hz_lifecyclephases,
        hz.typeofhazard AS hz_type,
+       hz.alarp AS hz_alarp,
        cm_revision AS cm_revision,
        mb.uuid AS mb_uuid,
        mb.account AS mb_account,
@@ -3140,6 +3149,7 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="hz_description" type="text" />
 			<column name="hz_lifecyclephases" type="text" />
 			<column name="hz_type" type="char " />
+			<column name="hz_alarp" type="boolean" />
 			<column name="cm_revision" type="integer" />
 			<column name="mb_uuid" type="char" />
 			<column name="mb_account" type="varchar" />
@@ -4267,7 +4277,7 @@ END;]]></string>
       FOR EACH ROW
 BEGIN
     INSERT OR REPLACE INTO ha_assessment_history SELECT *
-                                                   FROM ha_assessmen
+                                                   FROM ha_assessment
                                                   WHERE uuid = OLD.uuid;
 END;]]></string>
 		</trigger>
@@ -4276,6 +4286,7 @@ END;]]></string>
          AFTER UPDATE OF lifecyclephases,
                          typeofhazard,
                          description,
+                         alarp,
                          cm_deleted
             ON ha_hazard
       FOR EACH ROW
@@ -4291,6 +4302,7 @@ END;]]></string>
         BEFORE UPDATE OF lifecyclephases,
                          typeofhazard,
                          description,
+                         alarp,
                          cm_deleted,
                          cm_modified_by
             ON ha_hazard
@@ -5668,12 +5680,12 @@ END;]]></string>
 		<entity schema="Default" name="ha_hazard_assessment" color="C1D8EE" x="2032" y="160" />
 		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2112" y="816" />
 		<entity schema="Default" name="ha_mitigation_assessment" color="3986C1" x="1984" y="320" />
-		<entity schema="Default" name="ha_hazard" color="FF00FF" x="1472" y="160" />
 		<entity schema="Default" name="ha_mitigation" color="FF00FF" x="1744" y="224" />
 		<entity schema="Default" name="ha_assessment" color="3986C1" x="2272" y="176" />
-		<entity schema="Default" name="ha_hazard_history" color="3986C1" x="2496" y="80" />
 		<entity schema="Default" name="ha_assessment_history" color="3986C1" x="2672" y="272" />
 		<entity schema="Default" name="ha_mitigation_history" color="3986C1" x="2672" y="80" />
+		<entity schema="Default" name="ha_hazard" color="FF00FF" x="1472" y="160" />
+		<entity schema="Default" name="ha_hazard_history" color="3986C1" x="2496" y="80" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
@@ -5924,6 +5936,309 @@ CREATE TABLE ha_mitigation_history (
 	repository           char(38) NOT NULL    ,
 	CONSTRAINT idx_ha_mitigation_history UNIQUE ( uuid, cm_revision ) 
  );
+]]></string>
+		</script>
+		<script name="SQL_Editor_004" id="Editor_84fa13" language="SQL" >
+			<string><![CDATA[CREATE TABLE ha_assessment ( 
+	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
+	[type]               char(100) NOT NULL DEFAULT 'pending'   ,
+	description          text     ,
+	severity             integer NOT NULL DEFAULT 0   ,
+	avoidance            integer NOT NULL DEFAULT 0   ,
+	frequency            integer NOT NULL DEFAULT 0   ,
+	probability          integer NOT NULL DEFAULT 0   ,
+	cm_deleted           boolean NOT NULL DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime NOT NULL DEFAULT CURRENT_TIMESTAMP   ,
+	repository           char(38) NOT NULL    
+ );
+
+CREATE TABLE ha_assessment_history ( 
+	uuid                 char(38) NOT NULL    ,
+	[type]               char(100) NOT NULL DEFAULT 'pending'   ,
+	description          text     ,
+	severity             integer NOT NULL DEFAULT 0   ,
+	avoidance            integer NOT NULL DEFAULT 0   ,
+	frequency            integer NOT NULL DEFAULT 0   ,
+	probability          integer NOT NULL DEFAULT 0   ,
+	cm_deleted           boolean NOT NULL DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime NOT NULL DEFAULT CURRENT_TIMESTAMP   ,
+	repository           char(38) NOT NULL    
+ );
+
+CREATE INDEX idx_ha_assessment_history ON ha_assessment_history ( uuid, cm_revision );
+
+CREATE TABLE ha_hazard ( 
+	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
+	solution             char(38) NOT NULL    ,
+	ddo                  char(38) NOT NULL    ,
+	lifecyclephases      text     ,
+	typeofhazard         char(100)  DEFAULT 'pending'   ,
+	description          text     ,
+	alarp                boolean  DEFAULT 0   ,
+	cm_deleted           boolean NOT NULL DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime NOT NULL DEFAULT CURRENT_TIMESTAMP   ,
+	repository           char(38) NOT NULL    
+ );
+
+CREATE TABLE ha_hazard_assessment ( 
+	hazard               char(38) NOT NULL    ,
+	assessment           char(38) NOT NULL    ,
+	CONSTRAINT pk_ha_hazard_assessment PRIMARY KEY ( hazard, assessment ),
+	CONSTRAINT Unq_ha_hazard_assessment_hazard UNIQUE ( hazard ) ,
+	FOREIGN KEY ( assessment ) REFERENCES ha_assessment( uuid ) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY ( hazard ) REFERENCES ha_hazard( uuid ) ON DELETE CASCADE ON UPDATE CASCADE
+ );
+
+CREATE TABLE ha_hazard_history ( 
+	uuid                 char(38) NOT NULL    ,
+	solution             char(38) NOT NULL    ,
+	ddo                  char(38) NOT NULL    ,
+	lifecyclephases      text     ,
+	typeofhazard         char(100)  DEFAULT 'pending'   ,
+	description          text     ,
+	alarp                boolean  DEFAULT 0   ,
+	cm_deleted           boolean NOT NULL DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime NOT NULL DEFAULT CURRENT_TIMESTAMP   ,
+	repository           char(38) NOT NULL    ,
+	CONSTRAINT idx_ha_hazard_history UNIQUE ( uuid, cm_revision ) 
+ );
+
+CREATE TABLE ha_mitigation ( 
+	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
+	hazard               char(38)     ,
+	description          text     ,
+	[type]               char(100)  DEFAULT 'pending'   ,
+	cm_deleted           boolean NOT NULL DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime NOT NULL DEFAULT CURRENT_TIMESTAMP   ,
+	repository           char(38) NOT NULL    ,
+	FOREIGN KEY ( hazard ) REFERENCES ha_hazard( uuid ) ON DELETE CASCADE ON UPDATE CASCADE
+ );
+
+CREATE INDEX idx_ha_mitigation_hazard ON ha_mitigation ( hazard );
+
+CREATE TABLE ha_mitigation_assessment ( 
+	mitigation           char(38) NOT NULL    ,
+	assessment           char(38) NOT NULL    ,
+	CONSTRAINT pk_ha_mitigation_assessment PRIMARY KEY ( mitigation, assessment ),
+	CONSTRAINT Unq_ha_mitigation_assessment_mitigation UNIQUE ( mitigation ) ,
+	FOREIGN KEY ( assessment ) REFERENCES ha_assessment( uuid ) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY ( mitigation ) REFERENCES ha_mitigation( uuid ) ON DELETE CASCADE ON UPDATE CASCADE
+ );
+
+CREATE TABLE ha_mitigation_history ( 
+	uuid                 char(38) NOT NULL    ,
+	hazard               char(38)     ,
+	description          text     ,
+	[type]               char(100)  DEFAULT 'pending'   ,
+	cm_deleted           boolean NOT NULL DEFAULT 0   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL DEFAULT 0   ,
+	cm_timestamp         datetime NOT NULL DEFAULT CURRENT_TIMESTAMP   ,
+	repository           char(38) NOT NULL    ,
+	CONSTRAINT idx_ha_mitigation_history UNIQUE ( uuid, cm_revision ) 
+ );
+
+CREATE VIEW ha_assessments AS SELECT ast.uuid AS as_uuid,
+	   ast.severity AS as_severity,
+       ast.avoidance AS as_avoidance,
+       ast.frequency AS as_ra_frequency,
+       ast.probability AS as_ra_probability,
+       mb.uuid AS as_mb_uuid,
+       mb.account AS as_mb_account,
+       mb.name AS as_mb_name,
+       ast.cm_revision AS as_cm_revision,
+       ast.cm_timestamp AS as_cm_timestamp,
+       ast.repository AS as_rp_uuid
+  FROM ha_assessment AS ast
+       INNER JOIN
+       rp_member mb ON (mb.uuid = ast.cm_modified_by)
+ WHERE ast.cm_deleted = 0;
+
+CREATE VIEW ha_hazard_assessments AS SELECT hz.solution AS ds_uuid,
+       hz.uuid AS hz_uuid,
+       hz.ddo AS do_uuid,
+       hz.typeofhazard AS hz_type,
+       hz.lifecyclephases AS hz_lifecyclephases,
+       hz.description AS hz_description,
+       hz.alarp AS hz_alarp,
+       hzmb.uuid AS hz_mb_uuid,
+       hzmb.account AS hz_mb_account,
+       hzmb.name AS hz_mb_name,
+       hz.cm_revision AS hz_cm_revision,
+       hz.cm_timestamp AS hz_cm_timestamp,
+       hz.repository AS rp_uuid,
+       ast.uuid AS as_uuid,
+       ast.severity AS as_severity,
+       ast.avoidance AS as_avoidance,
+       ast.frequency AS as_frequency,
+       ast.probability AS as_probability,
+       astmb.uuid AS as_mb_uuid,
+       astmb.account AS as_mb_account,
+       astmb.name AS as_mb_name,
+       ast.cm_revision AS as_cm_revision,
+       ast.cm_timestamp AS as_cm_timestamp,
+       ast.repository AS as_rp_uuid
+  FROM ha_hazard AS hz
+       INNER JOIN
+       rp_member hzmb ON (hzmb.uuid = hz.cm_modified_by) 
+       INNER JOIN
+       ha_hazard_assessment hha ON (hha.hazard = hz.uuid) 
+       INNER JOIN
+       ha_assessment ast ON (hha.assessment = ast.uuid) 
+       INNER JOIN
+       rp_member astmb ON (astmb.uuid = ast.cm_modified_by) 
+ WHERE hz.cm_deleted = 0;
+
+CREATE VIEW ha_hazards AS SELECT hz.solution AS ds_uuid,
+       hz.uuid AS hz_uuid,
+       hz.ddo AS do_uuid,
+       hz.description AS hz_description,
+       hz.lifecyclephases AS hz_lifecyclephases,
+       hz.typeofhazard AS hz_type,
+       hz.alarp AS hz_alarp,
+       cm_revision AS cm_revision,
+       mb.uuid AS mb_uuid,
+       mb.account AS mb_account,
+       mb.name AS mb_name,
+       hz.repository AS rp_uuid
+  FROM ha_hazard AS hz
+       INNER JOIN
+       rp_member mb ON (mb.uuid = hz.cm_modified_by) 
+ WHERE cm_deleted = 0;
+
+CREATE VIEW ha_mitigation_assessments AS SELECT hz.solution AS ds_uuid,
+       hz.uuid AS hz_uuid,
+       mn.uuid AS mn_uuid,
+       mn.type AS mn_type,
+       mn.description AS mn_description,
+       mnmb.uuid AS mn_mb_uuid,
+       mnmb.account AS mn_mb_account,
+       mnmb.name AS mn_mb_name,
+       mn.cm_revision AS mn_cm_revision,
+       mn.cm_timestamp AS mn_cm_timestamp,
+       mn.repository AS rp_uuid,
+       ast.uuid AS as_uuid,
+       ast.severity AS as_severity,
+       ast.avoidance AS as_avoidance,
+       ast.frequency AS as_frequency,
+       ast.probability AS as_probability,
+       astmb.uuid AS as_mb_uuid,
+       astmb.account AS as_mb_account,
+       astmb.name AS as_mb_name,
+       ast.cm_revision AS as_cm_revision,
+       ast.cm_timestamp AS as_cm_timestamp,
+       ast.repository AS as_rp_uuid
+  FROM ha_mitigation AS mn
+       INNER JOIN ha_hazard hz ON (hz.uuid=mn.hazard)
+       INNER JOIN
+       rp_member mnmb ON (mnmb.uuid = mn.cm_modified_by) 
+       INNER JOIN
+       ha_mitigation_assessment hma ON (hma.mitigation = mn.uuid) 
+       INNER JOIN
+       ha_assessment ast ON (hma.assessment = ast.uuid) 
+       INNER JOIN
+       rp_member astmb ON (astmb.uuid = ast.cm_modified_by) 
+ WHERE mn.cm_deleted = 0;
+
+CREATE TRIGGER tg_ha_assessment_au
+         AFTER UPDATE OF type,
+                         description,
+                         severity,
+                         avoidance,
+                         frequency,
+                         probability,
+                         cm_deleted,
+                         cm_modified_by
+            ON ha_assessment
+      FOR EACH ROW
+BEGIN
+    UPDATE ha_assessment
+       SET cm_revision = cm_revision + 1,
+           cm_timestamp = CURRENT_TIMESTAMP
+     WHERE uuid = OLD.uuid;
+END;
+
+CREATE TRIGGER tg_ha_assessment_bu
+        BEFORE UPDATE OF type,
+                         description,
+                         severity,
+                         avoidance,
+                         frequency,
+                         probability,
+                         cm_deleted
+            ON ha_assessment
+      FOR EACH ROW
+BEGIN
+    INSERT OR REPLACE INTO ha_assessment_history SELECT *
+                                                   FROM ha_assessment
+                                                  WHERE uuid = OLD.uuid;
+END;
+
+CREATE TRIGGER tg_ha_hazard_au
+         AFTER UPDATE OF lifecyclephases,
+                         typeofhazard,
+                         description,
+                         alarp,
+                         cm_deleted
+            ON ha_hazard
+      FOR EACH ROW
+BEGIN
+    UPDATE ha_hazard
+       SET cm_revision = cm_revision + 1,
+           cm_timestamp = CURRENT_TIMESTAMP
+     WHERE uuid = OLD.uuid;
+END;
+
+CREATE TRIGGER tg_ha_hazard_bu
+        BEFORE UPDATE OF lifecyclephases,
+                         typeofhazard,
+                         description,
+                         alarp,
+                         cm_deleted,
+                         cm_modified_by
+            ON ha_hazard
+      FOR EACH ROW
+BEGIN
+    INSERT OR REPLACE INTO ha_hazard_history SELECT *
+                                               FROM ha_hazard
+                                              WHERE uuid = OLD.uuid;
+END;
+
+CREATE TRIGGER tg_ha_mitigation_au
+         AFTER UPDATE OF type,
+                         description,
+                         cm_deleted
+            ON ha_mitigation
+      FOR EACH ROW
+BEGIN
+    UPDATE ha_mitigation
+       SET cm_revision = cm_revision + 1,
+           cm_timestamp = CURRENT_TIMESTAMP
+     WHERE uuid = OLD.uuid;
+END;
+
+CREATE TRIGGER tg_ha_mitigation_bu
+        BEFORE UPDATE OF type,
+                         description,
+                         cm_deleted,
+                         cm_modified_by
+            ON ha_mitigation
+      FOR EACH ROW
+BEGIN
+    INSERT OR REPLACE INTO ha_mitigation_history SELECT *
+                                                   FROM ha_mitigation
+                                                  WHERE uuid = OLD.uuid;
+END;
 ]]></string>
 		</script>
 		<script name="Sql_Editor" id="Editor_452757d" language="SQL" >

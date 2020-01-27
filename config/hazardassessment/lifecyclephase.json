@@ -2,6 +2,13 @@
   "key": "hazardanalysis.config.lifecyclephase",
   "value": [
     {
+      "value": "inspection",
+      "label": {
+        "de-DE": "Inspektion",
+        "en-US": "Inspection"
+      }
+    },
+    {
       "value": "maintanance",
       "label": {
         "de-DE": "Wartung",
@@ -19,7 +26,14 @@
       "value": "transport",
       "label": {
         "de-DE": "Transport",
-        "en-US": "transport"
+        "en-US": "Transport"
+      }
+    },
+    {
+      "value": "commissioning",
+      "label": {
+        "de-DE": "Inbetriebnahme",
+        "en-US": "Commissioning"
       }
     }
   ]

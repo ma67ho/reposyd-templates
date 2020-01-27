@@ -56,6 +56,13 @@
         "de-DE": "Gefährdung durch Vibration",
         "en-US": "Vibration Hazard"
       }
+    },
+    {
+      "value": "operatingenvironment",
+      "label": {
+        "de-DE": "Gefährdung im Zusammenhang mit der Einsatzumgebeung",
+        "en-US": "Hazards related to the operating area"
+      }
     }
   ]
 }

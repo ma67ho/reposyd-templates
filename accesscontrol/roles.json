@@ -43,6 +43,17 @@
       "en-US": ""
     }
   },
+  "safetyengineer": {
+    "name": {
+      "de-DE": "Sicherheitsingenieur",
+      "en-US": "Safety Engineer"
+    },
+    "state": "enabled",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    }
+  },
   "systemengineer": {
     "name": {
       "de-DE": "Systemingenieur",
