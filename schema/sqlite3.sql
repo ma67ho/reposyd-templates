@@ -1805,6 +1805,7 @@ CREATE VIEW mb_assigned_roles AS SELECT ro.project AS po_uuid,
 CREATE VIEW mb_assigned_solutions AS SELECT po.uuid AS po_uuid,
        po.name AS po_name,
        po.state AS po_state,
+       po.description AS po_description,
        po.properties AS po_properties,
        po.repository AS po_repository,
        so.uuid AS so_uuid,
@@ -1819,7 +1820,7 @@ CREATE VIEW mb_assigned_solutions AS SELECT po.uuid AS po_uuid,
        rp_solution_space AS so ON (so.project = ap.po_uuid) 
        INNER JOIN
        rp_project po ON (po.uuid = ap.po_uuid) 
- ORDER BY po_uuid;
+ ORDER BY po_uuid;;
 
 CREATE VIEW mb_assigned_teams AS SELECT rp.uuid AS po_uuid,
            pim.member AS mb_uuid,
@@ -2120,6 +2121,7 @@ CREATE VIEW rp_members AS SELECT mb.account AS mb_account,
        mb.radmin AS mb_radmin,
        mb.uuid AS mb_uuid,
 	   mb.password AS mb_passwd,
+       mb.locked AS mb_locked,
        mb.repository AS mb_repository
   FROM rp_member mb;
 

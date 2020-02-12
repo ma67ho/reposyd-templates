@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project name="reposyd" id="Project_292fb82e" template="Default" database="Sqlite" >
+<project name="reposyd" id="Project_292fb82e" database="Sqlite" >
 	<schema name="Default" >
 		<table name="cm_baseline" generator_rows="150" >
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
@@ -3289,6 +3289,7 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<view_script><![CDATA[SELECT po.uuid AS po_uuid,
        po.name AS po_name,
        po.state AS po_state,
+       po.description AS po_description,
        po.properties AS po_properties,
        po.repository AS po_repository,
        so.uuid AS so_uuid,
@@ -3303,7 +3304,7 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
        rp_solution_space AS so ON (so.project = ap.po_uuid) 
        INNER JOIN
        rp_project po ON (po.uuid = ap.po_uuid) 
- ORDER BY po_uuid]]></view_script>
+ ORDER BY po_uuid;]]></view_script>
 			<column name="po_uuid" type="char" />
 			<column name="po_name" type="varchar" />
 			<column name="po_state" type="varchar" />
@@ -3860,6 +3861,7 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
        mb.radmin AS mb_radmin,
        mb.uuid AS mb_uuid,
 	   mb.password AS mb_passwd,
+       mb.locked AS mb_locked,
        mb.repository AS mb_repository
   FROM rp_member mb]]></view_script>
 			<column name="mb_account" type="varchar" />
