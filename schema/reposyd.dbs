@@ -3,14 +3,20 @@
 	<schema name="Default" >
 		<table name="cm_baseline" generator_rows="150" >
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="dsuuid" type="char" length="38" jt="1" mandatory="y" />
 			<column name="name" type="varchar" length="255" jt="12" mandatory="y" />
 			<column name="description" type="text" jt="-1" />
 			<column name="major" type="integer" jt="4" mandatory="y" />
 			<column name="minor" type="integer" jt="4" mandatory="y" />
-			<column name="type" type="varchar" length="100" jt="12" />
-			<column name="timestamp" type="datetime" jt="93" >
+			<column name="type" type="varchar" length="100" jt="12" >
+				<comment><![CDATA[formal
+document
+snapshot]]></comment>
+			</column>
+			<column name="cm_timestamp" type="datetime" jt="93" >
 				<defo>CURRENT_TIMESTAMP</defo>
 			</column>
+			<column name="cm_modified_by" type="char" length="38" jt="1" mandatory="y" />
 			<column name="repository" type="char" length="38" jt="1" mandatory="y" />
 			<index name="pk_cm_baseline" unique="PRIMARY_KEY" >
 				<column name="uuid" />
@@ -20,56 +26,97 @@
 				<column name="major" />
 				<column name="minor" />
 			</index>
-		</table>
-		<table name="cm_baseline_solution" >
-			<column name="solution" type="char" length="38" jt="1" mandatory="y" />
-			<column name="baseline" type="char" length="38" jt="1" mandatory="y" />
-			<index name="pk_baseline_solution" unique="NORMAL" >
-				<column name="solution" />
-				<column name="baseline" />
-			</index>
-			<index name="Idx_cm_baseline_solution_baseline" unique="NORMAL" >
-				<column name="baseline" />
-			</index>
-			<fk name="fk_cm_baseline_solution_baseline" to_schema="Default" to_table="cm_baseline" delete_action="cascade" >
-				<fk_column name="baseline" pk="uuid" />
-			</fk>
-			<fk name="fk_cm_baseline_solution_solution" to_schema="Default" to_table="rp_solution_space" delete_action="cascade" >
-				<fk_column name="solution" pk="uuid" />
+			<fk name="fk_cm_baseline_solution" to_schema="Default" to_table="rp_solution_space" delete_action="cascade" >
+				<fk_column name="dsuuid" pk="uuid" />
 			</fk>
 		</table>
 		<table name="cm_ddl" generator_rows="337" >
 			<column name="bl_uuid" type="char" length="38" jt="1" mandatory="y" />
-			<column name="ddl_uuid" type="char" length="38" jt="1" mandatory="y" />
-			<column name="ddl_revision" type="integer" jt="4" mandatory="y" />
-			<index name="idx_cm_ddl" unique="NORMAL" >
+			<column name="dl_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="dl_revision" type="integer" jt="4" mandatory="y" />
+			<index name="Idx_cm_ddl" unique="NORMAL" >
 				<column name="bl_uuid" />
-			</index>
-			<index name="idx_cm_ddl_0" unique="NORMAL" >
-				<column name="ddl_uuid" />
+				<column name="dl_uuid" />
 			</index>
 			<fk name="fk_cm_ddl_cm_baseline" to_schema="Default" to_table="cm_baseline" delete_action="cascade" >
 				<fk_column name="bl_uuid" pk="uuid" />
 			</fk>
-			<fk name="fk_cm_ddl_dd_def_link" to_schema="Default" to_table="dd_def_link" delete_action="cascade" >
-				<fk_column name="ddl_uuid" pk="uuid" />
-			</fk>
 		</table>
 		<table name="cm_ddo" generator_rows="337" >
 			<column name="bl_uuid" type="char" length="38" jt="1" mandatory="y" />
-			<column name="ddo_uuid" type="char" length="38" jt="1" mandatory="y" />
-			<column name="ddo_revision" type="integer" jt="4" mandatory="y" />
-			<index name="idx_cm_ddo_0" unique="NORMAL" >
-				<column name="ddo_uuid" />
-			</index>
-			<index name="idx_cm_ddo" unique="NORMAL" >
+			<column name="do_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="do_revision" type="integer" jt="4" mandatory="y" />
+			<index name="Idx_cm_ddo" unique="NORMAL" >
 				<column name="bl_uuid" />
+				<column name="do_uuid" />
 			</index>
 			<fk name="fk_cm_ddo_cm_baseline" to_schema="Default" to_table="cm_baseline" delete_action="cascade" >
 				<fk_column name="bl_uuid" pk="uuid" />
 			</fk>
-			<fk name="fk_cm_ddo_dd_object" to_schema="Default" to_table="dd_object" delete_action="cascade" >
-				<fk_column name="ddo_uuid" pk="uuid" />
+		</table>
+		<table name="cm_diagram" >
+			<column name="bl_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="dm_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="cm_revision" type="integer" jt="4" mandatory="y" />
+			<column name="di_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="di_revision" type="integer" jt="4" mandatory="y" />
+			<index name="Idx_cm_diagram" unique="NORMAL" >
+				<column name="bl_uuid" />
+				<column name="dm_uuid" />
+				<column name="cm_revision" />
+				<column name="di_uuid" />
+				<column name="di_revision" />
+			</index>
+			<fk name="fk_cm_diagram_cm_baseline" to_schema="Default" to_table="cm_baseline" delete_action="cascade" >
+				<fk_column name="bl_uuid" pk="uuid" />
+			</fk>
+		</table>
+		<table name="cm_document" >
+			<column name="bl_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="dt_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="dt_revision" type="integer" length="38" jt="4" mandatory="y" />
+			<column name="sn_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="sn_revision" type="integer" jt="4" mandatory="y" />
+			<index name="Idx_cm_document" unique="NORMAL" >
+				<column name="bl_uuid" />
+				<column name="dt_uuid" />
+			</index>
+			<fk name="fk_cm_document_cm_baseline" to_schema="Default" to_table="cm_baseline" delete_action="cascade" >
+				<fk_column name="bl_uuid" pk="uuid" />
+			</fk>
+		</table>
+		<table name="cm_hazard_assessment" >
+			<column name="bl_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="hz_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="hz_revision" type="integer" jt="4" mandatory="y" />
+			<column name="as_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="as_revision" type="integer" jt="4" mandatory="y" />
+			<index name="idx_cm_hazard" unique="UNIQUE" >
+				<column name="bl_uuid" />
+				<column name="hz_uuid" />
+				<column name="hz_revision" />
+				<column name="as_uuid" />
+				<column name="as_revision" />
+			</index>
+			<fk name="fk_cm_hazard_cm_baseline" to_schema="Default" to_table="cm_baseline" delete_action="cascade" >
+				<fk_column name="bl_uuid" pk="uuid" />
+			</fk>
+		</table>
+		<table name="cm_mitigation_assessment" >
+			<column name="bl_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="mn_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="mn_revision" type="integer" jt="4" mandatory="y" />
+			<column name="as_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="as_revision" type="integer" jt="4" mandatory="y" />
+			<column name="hz_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="hz_revision" type="integer" jt="4" mandatory="y" />
+			<index name="Idx_cm_mitigation_assessment" unique="NORMAL" >
+				<column name="bl_uuid" />
+				<column name="mn_uuid" />
+				<column name="mn_revision" />
+			</index>
+			<fk name="fk_cm_mitigation_assessments" to_schema="Default" to_table="cm_baseline" delete_action="cascade" >
+				<fk_column name="bl_uuid" pk="uuid" />
 			</fk>
 		</table>
 		<table name="cm_request" generator_rows="150" >
@@ -102,6 +149,16 @@
 			</fk>
 			<fk name="fk_cm_variant_solution" to_schema="Default" to_table="rp_solution_space" delete_action="cascade" >
 				<fk_column name="solution" pk="uuid" />
+			</fk>
+		</table>
+		<table name="cm_section_ddo" >
+			<column name="bl_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="sn_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="sn_revision" type="integer" jt="4" mandatory="y" />
+			<column name="ddo_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="ddo_revision" type="integer" jt="4" mandatory="y" />
+			<fk name="fk_cm_section_ddo_cm_baseline" to_schema="Default" to_table="cm_baseline" delete_action="cascade" >
+				<fk_column name="bl_uuid" pk="uuid" />
 			</fk>
 		</table>
 		<table name="da_analysis_container" >
@@ -1453,6 +1510,27 @@ completed]]></comment>
 				<fk_column name="document" pk="uuid" />
 			</fk>
 		</table>
+		<table name="re_section_dd" >
+			<column name="sn_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="sn_revision" type="integer" jt="4" mandatory="y" />
+			<column name="dd_type" type="varchar" length="100" jt="12" mandatory="y" >
+				<comment><![CDATA[hz
+mn
+ddl
+ddo
+diagram
+diagramitem]]></comment>
+			</column>
+			<column name="dd_uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="dd_revision" type="integer" jt="4" mandatory="y" />
+			<index name="Idx_re_section_dd" unique="NORMAL" >
+				<column name="sn_uuid" />
+				<column name="sn_revision" />
+			</index>
+			<fk name="fk_re_section_dd_re_section" to_schema="Default" to_table="re_section" delete_action="cascade" >
+				<fk_column name="sn_uuid" pk="uuid" />
+			</fk>
+		</table>
 		<table name="re_section_ddl" >
 			<column name="section_uuid" type="char" length="38" jt="1" mandatory="y" />
 			<column name="section_revision" type="integer" jt="4" mandatory="y" />
@@ -1917,8 +1995,8 @@ Please refer to reposyd::ProjectState]]></comment>
 			</column>
 		</table>
 		<table name="sp_tags" >
-			<column name="uuid" type="char" length="38" jt="1" />
 			<column name="name" type="char" length="255" jt="1" mandatory="y" />
+			<column name="uuid" type="char" length="38" jt="1" />
 			<index name="Pk_sp_tags_name" unique="PRIMARY_KEY" >
 				<column name="name" />
 			</index>
@@ -2225,6 +2303,35 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="tn_name" type="varchar" />
 			<column name="tn_description" type="text" />
 		</view>
+		<view name="cm_baselines" >
+			<view_script><![CDATA[SELECT bl.dsuuid AS ds_uuid,
+       bl.uuid AS bl_uuid,
+       bl.name AS bl_name,
+       bl.description AS bl_description,
+       bl.type AS bl_type,
+       bl.major AS bl_major,
+       bl.minor AS bl_minor,
+       blmb.uuid AS bl_mb_uuid,
+       blmb.account AS bl_mb_account,
+       blmb.name AS bl_mb_name,
+       bl.cm_timestamp AS bl_cm_timestamp,
+       0 AS bl_cm_revision
+  FROM cm_baseline AS bl
+       INNER JOIN
+       rp_member blmb ON (blmb.uuid = bl.cm_modified_by)]]></view_script>
+			<column name="ds_uuid" type="char " />
+			<column name="bl_uuid" type="char " />
+			<column name="bl_name" type="varchar " />
+			<column name="bl_description" type="text" />
+			<column name="bl_type" type="varchar " />
+			<column name="bl_major" type="integer" />
+			<column name="bl_minor" type="integer" />
+			<column name="bl_mb_uuid" type="char" />
+			<column name="bl_mb_account" type="varchar" />
+			<column name="hz_bl_name" type="varchar" />
+			<column name="bl_cm_timestamp" type="datetime" />
+			<column name="bl_cm_revision" type="set" />
+		</view>
 		<view name="dac_container" >
 			<view_script><![CDATA[SELECT dac.solution AS ds_uuid,
            dac.uuid AS dac_uuid,
@@ -2347,6 +2454,23 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
        dm_diagram dm ON (dm.uuid = di.diagram) 
  WHERE di.revision_to = -1;]]></view_script>
 		</view>
+		<view name="dbs_validate_view" >
+			<view_script><![CDATA[
+    SELECT dm.solution AS ds_uuid,
+           di.uuid AS di_uuid,
+           dm.uuid AS dm_uuid,
+           dm.type AS dm_type,
+           di.type AS di_type,
+           di.properties AS di_properties,
+           di.ddoddl AS di_ddoddl,
+           di.ghost AS di_ghost,
+           di.revision_from AS di_revision_from,
+           di.cm_revision AS di_cm_revision
+      FROM dm_item AS di
+           LEFT JOIN
+           dm_diagram dm ON (dm.uuid = di.diagram) 
+     WHERE di.revision_to = -1;]]></view_script>
+		</view>
 		<view name="dd_hierarchy" >
 			<view_script><![CDATA[SELECT dh.project AS po_uuid,
            dh.uuid AS dh_uuid,
@@ -2407,18 +2531,21 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="cm_timestamp" type="datetime" />
 		</view>
 		<view name="dm_items" >
-			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;]]></view_script>
+			<view_script><![CDATA[
+    SELECT dm.solution AS ds_uuid,
+           di.uuid AS di_uuid,
+           dm.uuid AS dm_uuid,
+           dm.type AS dm_type,
+           di.type AS di_type,
+           di.properties AS di_properties,
+           di.ddoddl AS di_ddoddl,
+           di.ghost AS di_ghost,
+           di.revision_from AS di_revision_from,
+           di.cm_revision AS di_cm_revision
+      FROM dm_item AS di
+           LEFT JOIN
+           dm_diagram dm ON (dm.uuid = di.diagram) 
+     WHERE di.revision_to = -1;]]></view_script>
 			<column name="ds_uuid" type="char" />
 			<column name="di_uuid" type="char " />
 			<column name="dm_uuid" type="char" />
@@ -2797,6 +2924,31 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="da_uuid" type="char" />
 			<column name="da_value" type="blob" />
 		</view>
+		<view name="ds_ddo_all" >
+			<view_script><![CDATA[SELECT *
+  FROM ds_ddo
+UNION
+SELECT *
+  FROM ds_ddo_history;]]></view_script>
+			<column name="ds_uuid" type="char" />
+			<column name="do_uuid" type="char" />
+			<column name="do_definition" type="char" />
+			<column name="do_local_id" type="integer" />
+			<column name="do_cm_revision" type="integer" />
+			<column name="do_cm_timestamp" type="datetime" />
+			<column name="do_cm_modified_by" type="char" />
+			<column name="do_repository" type="char" />
+			<column name="do_mb_uuid" type="char" />
+			<column name="do_mb_name" type="varchar" />
+			<column name="do_mb_account" type="varchar" />
+			<column name="do_ow_uuid" type="char" />
+			<column name="do_ow_name" type="varchar" />
+			<column name="do_rs_uuid" type="char" />
+			<column name="do_rs_name" type="varchar" />
+			<column name="da_id" type="varchar" />
+			<column name="da_uuid" type="char" />
+			<column name="da_value" type="blob" />
+		</view>
 		<view name="ds_ddo_ddl_left" >
 			<view_script><![CDATA[SELECT ddl.ds_uuid,
        ddl.dl_uuid,
@@ -2994,6 +3146,25 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="do_definition" type="char" />
 			<column name="do_local_id" type="integer" />
 			<column name="do_puid" type="char " />
+			<column name="do_cm_revision" type="integer" />
+			<column name="do_cm_timestamp" type="datetime" />
+			<column name="do_repository" type="char" />
+			<column name="ow_uuid" type="char" />
+			<column name="ow_name" type="varchar" />
+			<column name="rs_uuid" type="char" />
+			<column name="rs_name" type="varchar" />
+		</view>
+		<view name="ds_ddo_na_all" >
+			<view_script><![CDATA[SELECT *
+  FROM ds_ddo_na
+UNION
+SELECT *
+  FROM ds_ddo_na_history]]></view_script>
+			<column name="ds_uuid" type="char" />
+			<column name="do_uuid" type="char" />
+			<column name="do_definition" type="char" />
+			<column name="do_local_id" type="integer" />
+			<column name="do_puid" type="set" />
 			<column name="do_cm_revision" type="integer" />
 			<column name="do_cm_timestamp" type="datetime" />
 			<column name="do_repository" type="char" />
@@ -5610,84 +5781,89 @@ END;]]></string>
 		<comment><![CDATA[RePoSyD Database Model]]></comment>
 		<entity schema="Default" name="po_role_ddo_transaction" color="EEF7EC" x="416" y="2064" />
 		<entity schema="Default" name="po_role_ddl_transaction" color="EEF7EC" x="416" y="1952" />
-		<entity schema="Default" name="cm_baseline" color="F7F3EC" x="64" y="1552" />
 		<entity schema="Default" name="po_ipt" color="EEF7EC" x="416" y="2528" />
 		<entity schema="Default" name="po_role_transaction" color="EEF7EC" x="416" y="2176" />
-		<entity schema="Default" name="dd_ddl_solution_history" color="FFFFCC" x="1888" y="592" />
-		<entity schema="Default" name="dd_attribute_value" color="C4E0F9" x="1648" y="976" />
+		<entity schema="Default" name="dd_ddl_solution_history" color="FFFFCC" x="2176" y="592" />
+		<entity schema="Default" name="dd_attribute_value" color="C4E0F9" x="1904" y="976" />
 		<entity schema="Default" name="da_analysis_result" color="CC6633" x="848" y="256" />
 		<entity schema="Default" name="rp_transaction" color="F0ECF7" x="912" y="2912" />
 		<entity schema="Default" name="da_analysis_container" color="CC6633" x="656" y="272" />
 		<entity schema="Default" name="da_analysis_definition" color="CC6633" x="464" y="320" />
 		<entity schema="Default" name="da_analysis_object" color="CC6633" x="1072" y="256" />
 		<entity schema="Default" name="da_analysis_result_properties" color="CC6633" x="1040" y="432" />
-		<entity schema="Default" name="cm_ddl" color="F7F3EC" x="336" y="1344" />
-		<entity schema="Default" name="cm_ddo" color="F7F3EC" x="336" y="1488" />
-		<entity schema="Default" name="cm_baseline_solution" color="F7F3EC" x="336" y="1600" />
-		<entity schema="Default" name="dd_objectid" color="C4E0F9" x="1344" y="960" />
-		<entity schema="Default" name="dd_def_link_reverse" color="ECECF7" x="528" y="704" />
+		<entity schema="Default" name="dd_objectid" color="C4E0F9" x="1600" y="960" />
+		<entity schema="Default" name="dd_def_link_reverse" color="ECECF7" x="784" y="688" />
 		<entity schema="Default" name="re_stylesheet" color="FFEBEB" x="960" y="2304" />
-		<entity schema="Default" name="sp_user_log" color="FFCCFF" x="2144" y="1808" />
-		<entity schema="Default" name="dd_attribute_history" color="FFFFCC" x="1888" y="864" />
-		<entity schema="Default" name="dd_def_hierarchy" color="ECECF7" x="528" y="1136" />
+		<entity schema="Default" name="sp_user_log" color="FFCCFF" x="2464" y="1792" />
+		<entity schema="Default" name="dd_attribute_history" color="FFFFCC" x="2176" y="864" />
 		<entity schema="Default" name="re_template_solution" color="FFEBEB" x="1168" y="2640" />
-		<entity schema="Default" name="ddh_ddo_dda_revision" color="FFFFCC" x="1888" y="1024" />
-		<entity schema="Default" name="sp_watcher" color="FFCCFF" x="2160" y="2128" />
+		<entity schema="Default" name="ddh_ddo_dda_revision" color="FFFFCC" x="2176" y="1024" />
+		<entity schema="Default" name="sp_watcher" color="FFCCFF" x="2480" y="2112" />
 		<entity schema="Default" name="po_ipt_member" color="EEF7EC" x="416" y="2400" />
 		<entity schema="Default" name="cm_request" color="F7F3EC" x="48" y="1760" />
-		<entity schema="Default" name="cm_request_solution" color="F7F3EC" x="336" y="1744" />
 		<entity schema="Default" name="rp_solution_space" color="F0ECF7" x="912" y="3024" />
 		<entity schema="Default" name="rp_project" color="F0ECF7" x="912" y="3216" />
 		<entity schema="Default" name="rp_project_config" color="F0ECF7" x="912" y="3376" />
 		<entity schema="Default" name="rp_member_settings" color="F0ECF7" x="1152" y="3024" />
 		<entity schema="Default" name="rp_config" color="F0ECF7" x="1152" y="3168" />
 		<entity schema="Default" name="rp_member" color="F0ECF7" x="1408" y="3040" />
-		<entity schema="Default" name="sp_comment" color="FFCCFF" x="1936" y="2704" />
-		<entity schema="Default" name="sp_messagebox" color="FFCCFF" x="1936" y="2880" />
+		<entity schema="Default" name="sp_comment" color="FFCCFF" x="2256" y="2688" />
+		<entity schema="Default" name="sp_messagebox" color="FFCCFF" x="2256" y="2864" />
 		<entity schema="Default" name="re_template" color="FFEBEB" x="1424" y="2640" />
-		<entity schema="Default" name="dd_object" color="C4E0F9" x="1328" y="1296" />
-		<entity schema="Default" name="dd_ddo_solution" color="C4E0F9" x="1328" y="1584" />
+		<entity schema="Default" name="dd_object" color="C4E0F9" x="1584" y="1296" />
+		<entity schema="Default" name="dd_ddo_solution" color="C4E0F9" x="1584" y="1584" />
 		<entity schema="Default" name="re_layout" color="FFEBEB" x="1152" y="2304" />
-		<entity schema="Default" name="dd_def_object" color="ECECF7" x="1088" y="1040" />
-		<entity schema="Default" name="sp_issue" color="FFCCFF" x="1920" y="1712" />
-		<entity schema="Default" name="sp_tags" color="FFCCFF" x="2336" y="1648" />
-		<entity schema="Default" name="sp_tags_ddo" color="FFCCFF" x="2144" y="1664" />
-		<entity schema="Default" name="dd_link" color="C4E0F9" x="1648" y="720" />
-		<entity schema="Default" name="dd_link_history" color="FFFFCC" x="2112" y="576" />
-		<entity schema="Default" name="dd_template" color="C1D8EE" x="1376" y="1088" />
-		<entity schema="Default" name="re_reportson" color="FFEBEB" x="1136" y="1968" />
+		<entity schema="Default" name="dd_def_object" color="ECECF7" x="1344" y="1024" />
+		<entity schema="Default" name="sp_issue" color="FFCCFF" x="2240" y="1696" />
+		<entity schema="Default" name="dd_link" color="C4E0F9" x="1904" y="720" />
+		<entity schema="Default" name="dd_link_history" color="FFFFCC" x="2400" y="576" />
+		<entity schema="Default" name="dd_template" color="C1D8EE" x="1632" y="1088" />
 		<entity schema="Default" name="re_documenttree" color="FFEBEB" x="1152" y="2112" />
-		<entity schema="Default" name="re_document_history" color="FFFFCC" x="2352" y="576" />
-		<entity schema="Default" name="re_section_history" color="FFFFCC" x="2352" y="928" />
+		<entity schema="Default" name="re_document_history" color="FFFFCC" x="2640" y="576" />
+		<entity schema="Default" name="re_section_history" color="FFFFCC" x="2640" y="928" />
 		<entity schema="Default" name="re_document" color="FFEBEB" x="1360" y="2256" />
-		<entity schema="Default" name="re_section_ddl" color="FFEBEB" x="944" y="2480" />
 		<entity schema="Default" name="re_section_ddo" color="FFEBEB" x="944" y="2592" />
 		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1152" y="3264" />
 		<entity schema="Default" name="po_role" color="EEF7EC" x="208" y="2640" />
-		<entity schema="Default" name="sp_issue_history" color="3986C1" x="2640" y="608" />
+		<entity schema="Default" name="sp_issue_history" color="3986C1" x="2928" y="608" />
 		<entity schema="Default" name="rp_project_member" color="F0ECF7" x="1408" y="2880" />
 		<entity schema="Default" name="po_role_member" color="EEF7EC" x="416" y="2272" />
-		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2144" y="1936" />
+		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2464" y="1920" />
 		<entity schema="Default" name="re_section" color="FFEBEB" x="1360" y="2000" />
-		<entity schema="Default" name="sp_script" color="FFCCFF" x="1920" y="2128" />
-		<entity schema="Default" name="dm_diagram_history" color="3986C1" x="2416" y="1232" />
-		<entity schema="Default" name="dm_item" color="CCCCFF" x="2224" y="1232" />
-		<entity schema="Default" name="dm_item_history" color="3986C1" x="2624" y="1216" />
-		<entity schema="Default" name="sp_translation" color="FFCCFF" x="1920" y="2432" />
-		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="1968" y="1248" />
-		<entity schema="Default" name="dd_def_link" color="ECECF7" x="720" y="864" />
-		<entity schema="Default" name="dd_def_attribute" color="ECECF7" x="976" y="656" />
-		<entity schema="Default" name="dd_ddl_solution" color="C4E0F9" x="1312" y="672" />
-		<entity schema="Default" name="dd_def_enum" color="ECECF7" x="752" y="640" />
-		<entity schema="Default" name="ha_hazard_assessment" color="C1D8EE" x="2032" y="160" />
-		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2112" y="816" />
-		<entity schema="Default" name="ha_mitigation_assessment" color="3986C1" x="1984" y="320" />
+		<entity schema="Default" name="sp_script" color="FFCCFF" x="2240" y="2112" />
+		<entity schema="Default" name="sp_translation" color="FFCCFF" x="2240" y="2416" />
+		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="2224" y="1248" />
+		<entity schema="Default" name="dd_def_link" color="ECECF7" x="976" y="848" />
+		<entity schema="Default" name="dd_def_attribute" color="ECECF7" x="1232" y="640" />
+		<entity schema="Default" name="dd_ddl_solution" color="C4E0F9" x="1568" y="672" />
+		<entity schema="Default" name="dd_def_enum" color="ECECF7" x="1008" y="624" />
+		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2400" y="816" />
+		<entity schema="Default" name="ha_mitigation_assessment" color="FF00FF" x="1984" y="320" />
 		<entity schema="Default" name="ha_mitigation" color="FF00FF" x="1744" y="224" />
-		<entity schema="Default" name="ha_assessment" color="3986C1" x="2272" y="176" />
+		<entity schema="Default" name="ha_assessment" color="FF00FF" x="2272" y="176" />
 		<entity schema="Default" name="ha_assessment_history" color="3986C1" x="2672" y="272" />
 		<entity schema="Default" name="ha_mitigation_history" color="3986C1" x="2672" y="80" />
 		<entity schema="Default" name="ha_hazard" color="FF00FF" x="1472" y="160" />
 		<entity schema="Default" name="ha_hazard_history" color="3986C1" x="2496" y="80" />
+		<entity schema="Default" name="dm_item_history" color="3986C1" x="2976" y="1216" />
+		<entity schema="Default" name="dm_item" color="CCCCFF" x="2464" y="1264" />
+		<entity schema="Default" name="dm_diagram_history" color="3986C1" x="2752" y="1216" />
+		<entity schema="Default" name="dd_def_hierarchy" color="ECECF7" x="768" y="864" />
+		<entity schema="Default" name="ha_hazard_assessment" color="FF00FF" x="2032" y="160" />
+		<entity schema="Default" name="re_section_ddl" color="FFEBEB" x="944" y="2480" />
+		<entity schema="Default" name="re_reportson" color="FFEBEB" x="1136" y="1920" />
+		<entity schema="Default" name="cm_request_solution" color="F7F3EC" x="336" y="1776" />
+		<entity schema="Default" name="sp_tags_ddo" color="FFCCFF" x="2448" y="1600" />
+		<entity schema="Default" name="sp_tags" color="FFCCFF" x="2624" y="1600" />
+		<entity schema="Default" name="cm_baseline" color="F7F3EC" x="400" y="1328" />
+		<entity schema="Default" name="cm_section_ddo" color="C1D8EE" x="128" y="704" />
+		<entity schema="Default" name="cm_document" color="F7F3EC" x="128" y="848" />
+		<entity schema="Default" name="cm_mitigation_assessment" color="F7F3EC" x="96" y="992" />
+		<entity schema="Default" name="cm_hazard_assessment" color="F7F3EC" x="128" y="1168" />
+		<entity schema="Default" name="cm_diagram" color="F7F3EC" x="128" y="1552" />
+		<entity schema="Default" name="cm_ddl" color="F7F3EC" x="128" y="1328" />
+		<entity schema="Default" name="cm_ddo" color="F7F3EC" x="128" y="1440" />
+		<entity schema="Default" name="re_section_dd" color="FFEBEB" x="1616" y="2000" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
@@ -5711,10 +5887,10 @@ END;]]></string>
 		<group name="meta model (mm)" color="ECECF7" >
 			<entity schema="Default" name="dd_def_object" />
 			<entity schema="Default" name="dd_def_attribute" />
-			<entity schema="Default" name="dd_def_hierarchy" />
 			<entity schema="Default" name="dd_def_link_reverse" />
 			<entity schema="Default" name="dd_def_link" />
 			<entity schema="Default" name="dd_def_enum" />
+			<entity schema="Default" name="dd_def_hierarchy" />
 		</group>
 		<group name="project organization (po)" color="EEF7EC" >
 			<entity schema="Default" name="po_ipt" />
@@ -5731,7 +5907,11 @@ END;]]></string>
 			<entity schema="Default" name="cm_ddl" />
 			<entity schema="Default" name="cm_request" />
 			<entity schema="Default" name="cm_request_solution" />
-			<entity schema="Default" name="cm_baseline_solution" />
+			<entity schema="Default" name="cm_hazard_assessment" />
+			<entity schema="Default" name="cm_diagram" />
+			<entity schema="Default" name="cm_mitigation_assessment" />
+			<entity schema="Default" name="cm_document" />
+			<entity schema="Default" name="cm_section_ddo" />
 		</group>
 		<group name="diagram (dm)" color="CCCCFF" >
 			<entity schema="Default" name="dm_diagram" />
@@ -5749,6 +5929,7 @@ END;]]></string>
 			<entity schema="Default" name="re_reportson" />
 			<entity schema="Default" name="re_section_ddl" />
 			<entity schema="Default" name="re_section_ddo" />
+			<entity schema="Default" name="re_section_dd" />
 		</group>
 		<group name="support" color="FFCCFF" >
 			<entity schema="Default" name="sp_comment" />
@@ -7160,6 +7341,9 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 		<entity schema="Default" name="ha_hazard_assessments" color="3986C1" x="624" y="1232" />
 		<entity schema="Default" name="dd_hierarchy" color="3986C1" x="1360" y="1376" />
 		<entity schema="Default" name="ha_mitigation_assessments" color="3986C1" x="832" y="1232" />
+		<entity schema="Default" name="ds_ddo_na_all" color="3986C1" x="336" y="4240" />
+		<entity schema="Default" name="ds_ddo_all" color="3986C1" x="96" y="4240" />
+		<entity schema="Default" name="cm_baselines" color="3986C1" x="1072" y="4048" />
 		<group name="report engine (re)" color="C4E0F9" >
 			<entity schema="Default" name="re_sections" />
 			<entity schema="Default" name="re_templates" />
@@ -7192,6 +7376,8 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 			<entity schema="Default" name="ds_ddl_right_na" />
 			<entity schema="Default" name="ds_ddo_ddl_right" />
 			<entity schema="Default" name="ds_ddo_ddl_left" />
+			<entity schema="Default" name="ds_ddo_na_all" />
+			<entity schema="Default" name="ds_ddo_all" />
 		</group>
 		<group name="Timline (tl)" color="C4E0F9" >
 			<entity schema="Default" name="tl_ddo" />
