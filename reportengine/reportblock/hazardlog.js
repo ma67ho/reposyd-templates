@@ -1,15 +1,16 @@
 /* reposyd-reportblock-header */
 /* eslint-disable no-useless-constructor */
-const LexicographicalOrder = require( 'lexicographicalorder' )
-const ReportBlock = require( 'ReportBlock' )
-const ReportTable = require( 'ReportTable' )
-const Rule = require( 'js-rules-engine' ).Rule
+  const LexicographicalOrder = require( 'lexicographicalorder' )
+  const ReportBlock = require( 'ReportBlock' )
+  const ReportTable = require( 'ReportTable' )
+  const Rule = require( 'js-rules-engine' ).Rule
 /* reposyd-reportblock-header */
 
 class ReportBlockHazardLog extends ReportBlock {
   constructor( section, engine ) {
     super( section, engine )
     /* reposyd-reportblock-constructor */
+    this.hazardLogSettings = this.hazardAssessment.settings.get('*')
     /* reposyd-reportblock-constructor */
   }
 
