@@ -1456,7 +1456,11 @@ completed]]></comment>
 			<column name="solution" type="char" length="38" jt="1" />
 			<column name="name" type="varchar" length="255" jt="12" />
 			<column name="description" type="text" jt="-1" />
-			<column name="timestamp" type="datetime" jt="93" >
+			<column name="cm_modified_by" type="char" length="38" jt="1" mandatory="y" />
+			<column name="cm_revision" type="integer" jt="4" >
+				<defo>0</defo>
+			</column>
+			<column name="cm_timestamp" type="datetime" jt="93" >
 				<defo>CURRENT_TIMESTAMP</defo>
 			</column>
 			<column name="repository" type="char" length="38" jt="1" />
@@ -1465,6 +1469,24 @@ completed]]></comment>
 			</index>
 			<fk name="fk_re_layout_rp_solution_space" to_schema="Default" to_table="rp_solution_space" delete_action="cascade" >
 				<fk_column name="solution" pk="uuid" />
+			</fk>
+		</table>
+		<table name="re_reportformat" generator_rows="150" >
+			<column name="layout" type="char" length="38" jt="1" />
+			<column name="format" type="varchar" length="100" jt="12" />
+			<column name="enabled" type="boolean" jt="-7" >
+				<defo>0</defo>
+			</column>
+			<column name="data" type="blob" jt="2004" />
+			<column name="url" type="varchar" length="255" jt="12" />
+			<index name="idx_re_stylesheet_format" unique="NORMAL" >
+				<column name="format" />
+			</index>
+			<index name="idx_re_stylesheet_layout" unique="NORMAL" >
+				<column name="layout" />
+			</index>
+			<fk name="fk_re_stylesheet_re_layout" to_schema="Default" to_table="re_layout" delete_action="cascade" >
+				<fk_column name="layout" pk="uuid" />
 			</fk>
 		</table>
 		<table name="re_reportson" >
@@ -1583,21 +1605,6 @@ diagramitem]]></comment>
 			<index name="pk_re_section_0" unique="PRIMARY_KEY" >
 				<column name="uuid" />
 			</index>
-		</table>
-		<table name="re_stylesheet" generator_rows="150" >
-			<column name="layout" type="char" length="38" jt="1" />
-			<column name="format" type="varchar" length="100" jt="12" />
-			<column name="data" type="blob" jt="2004" />
-			<column name="url" type="varchar" length="255" jt="12" />
-			<index name="idx_re_stylesheet_format" unique="NORMAL" >
-				<column name="format" />
-			</index>
-			<index name="idx_re_stylesheet_layout" unique="NORMAL" >
-				<column name="layout" />
-			</index>
-			<fk name="fk_re_stylesheet_re_layout" to_schema="Default" to_table="re_layout" delete_action="cascade" >
-				<fk_column name="layout" pk="uuid" />
-			</fk>
 		</table>
 		<table name="re_template" >
 			<column name="uuid" type="char" length="38" jt="1" />
@@ -2441,20 +2448,6 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="mb_name" type="varchar" />
 		</view>
 		<view name="dbs_validate_view" >
-			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;]]></view_script>
-		</view>
-		<view name="dbs_validate_view" >
 			<view_script><![CDATA[
     SELECT dm.solution AS ds_uuid,
            di.uuid AS di_uuid,
@@ -2470,6 +2463,20 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
            LEFT JOIN
            dm_diagram dm ON (dm.uuid = di.diagram) 
      WHERE di.revision_to = -1;]]></view_script>
+		</view>
+		<view name="dbs_validate_view" >
+			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
+       di.uuid AS di_uuid,
+       dm.uuid AS dm_uuid,
+       di.type AS di_type,
+       di.properties AS di_properties,
+       di.ddoddl AS di_ddoddl,
+       di.ghost AS di_ghost,
+       di.revision_from AS di_revision_from
+  FROM dm_item AS di
+       LEFT JOIN
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;]]></view_script>
 		</view>
 		<view name="dd_hierarchy" >
 			<view_script><![CDATA[SELECT dh.project AS po_uuid,
@@ -3876,27 +3883,51 @@ SELECT *
 			<column name="ow_repository" type="char" />
 		</view>
 		<view name="re_layouts" >
-			<view_script><![CDATA[SELECT *
+			<view_script><![CDATA[SELECT lt.*,
+       mb.mb_account AS lt_mb_account,
+       mb.mb_name AS lt_mb_name,
+       mb.mb_uuid AS lt_mb_uuid
   FROM (
            SELECT lt.solution AS ds_uuid,
                   lt.uuid AS lt_uuid,
                   lt.name AS lt_name,
                   lt.description AS lt_description,
-                  lt.timestamp AS lt_timestamp,
                   GROUP_CONCAT(st.format) AS lt_stylesheets,
+                  lt.cm_revision AS lt_cm_revision,
+                  lt.cm_timestamp AS lt_cm_timestamp,
+                  lt.cm_modified_by AS lt_cm_modified_by,
                   lt.repository AS lt_repository
-             FROM re_layout AS lt 
-                  INNER JOIN
+             FROM re_layout AS lt
+                  LEFT JOIN
                   re_stylesheet st ON (st.layout = lt.uuid) 
        )
- WHERE ds_uuid IS NOT NULL]]></view_script>
-			<column name="ds_uuid" type="char" />
-			<column name="lt_uuid" type="char" />
-			<column name="lt_name" type="varchar" />
+       AS lt
+       LEFT JOIN
+       mb_modifiedBy mb ON (mb.mb_uuid = lt.lt_cm_modified_by) 
+ WHERE ds_uuid IS NOT NULL;]]></view_script>
+			<column name="ds_uuid" type="char " />
+			<column name="lt_uuid" type="char " />
+			<column name="lt_name" type="varchar " />
 			<column name="lt_description" type="text" />
-			<column name="lt_timestamp" type="datetime" />
-			<column name="lt_stylesheets" type="char " />
-			<column name="lt_repository" type="char" />
+			<column name="lt_stylesheets" type="set" />
+			<column name="lt_cm_revision" type="integer" />
+			<column name="lt_cm_timestamp" type="datetime" />
+			<column name="lt_cm_modified_by" type="char " />
+			<column name="lt_repository" type="char " />
+			<column name="lt_mb_account" type="varchar" />
+			<column name="lt_mb_name" type="varchar" />
+			<column name="lt_mb_uuid" type="char" />
+		</view>
+		<view name="re_reportformats" >
+			<view_script><![CDATA[SELECT layout AS lt_uuid,
+       format AS rf_id,
+       enabled AS rf_enabled,
+       data AS rf_data
+  FROM re_reportformat]]></view_script>
+			<column name="lt_uuid" type="char " />
+			<column name="rf_id" type="varchar " />
+			<column name="rf_enabled" type="boolean" />
+			<column name="rf_data" type="blob" />
 		</view>
 		<view name="re_sections" >
 			<view_script><![CDATA[SELECT sn.document AS dt_uuid,
@@ -4682,7 +4713,7 @@ END;
 		<entity schema="Default" name="rp_project" color="F0ECF7" x="880" y="448" />
 		<entity schema="Default" name="sp_script" color="BCD5F1" x="224" y="1360" />
 		<entity schema="Default" name="dd_def_hierarchy" color="ECECF7" x="880" y="1216" />
-		<entity schema="Default" name="re_stylesheet" color="FFEBEB" x="1088" y="1440" />
+		<entity schema="Default" name="re_reportformat" color="FFEBEB" x="1088" y="1440" />
 		<entity schema="Default" name="re_section" color="FFEBEB" x="864" y="1568" />
 		<entity schema="Default" name="re_layout" color="FFEBEB" x="864" y="1440" />
 		<entity schema="Default" name="dd_def_object" color="ECECF7" x="880" y="1024" />
@@ -4735,7 +4766,7 @@ END;
 		<group name="report engine" color="FFEBEB" >
 			<entity schema="Default" name="re_document" />
 			<entity schema="Default" name="re_layout" />
-			<entity schema="Default" name="re_stylesheet" />
+			<entity schema="Default" name="re_reportformat" />
 			<entity schema="Default" name="re_section" />
 		</group>
 		<script name="Sql" id="Query_90b9b45" language="SQL" >
@@ -5793,7 +5824,6 @@ END;]]></string>
 		<entity schema="Default" name="da_analysis_result_properties" color="CC6633" x="1040" y="432" />
 		<entity schema="Default" name="dd_objectid" color="C4E0F9" x="1600" y="960" />
 		<entity schema="Default" name="dd_def_link_reverse" color="ECECF7" x="784" y="688" />
-		<entity schema="Default" name="re_stylesheet" color="FFEBEB" x="960" y="2304" />
 		<entity schema="Default" name="sp_user_log" color="FFCCFF" x="2464" y="1792" />
 		<entity schema="Default" name="dd_attribute_history" color="FFFFCC" x="2176" y="864" />
 		<entity schema="Default" name="re_template_solution" color="FFEBEB" x="1168" y="2640" />
@@ -5812,7 +5842,6 @@ END;]]></string>
 		<entity schema="Default" name="re_template" color="FFEBEB" x="1424" y="2640" />
 		<entity schema="Default" name="dd_object" color="C4E0F9" x="1584" y="1296" />
 		<entity schema="Default" name="dd_ddo_solution" color="C4E0F9" x="1584" y="1584" />
-		<entity schema="Default" name="re_layout" color="FFEBEB" x="1152" y="2304" />
 		<entity schema="Default" name="dd_def_object" color="ECECF7" x="1344" y="1024" />
 		<entity schema="Default" name="sp_issue" color="FFCCFF" x="2240" y="1696" />
 		<entity schema="Default" name="dd_link" color="C4E0F9" x="1904" y="720" />
@@ -5864,6 +5893,8 @@ END;]]></string>
 		<entity schema="Default" name="cm_ddl" color="F7F3EC" x="128" y="1328" />
 		<entity schema="Default" name="cm_ddo" color="F7F3EC" x="128" y="1440" />
 		<entity schema="Default" name="re_section_dd" color="FFEBEB" x="1616" y="2000" />
+		<entity schema="Default" name="re_layout" color="FFEBEB" x="1152" y="2304" />
+		<entity schema="Default" name="re_reportformat" color="FFEBEB" x="960" y="2304" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
@@ -5921,7 +5952,7 @@ END;]]></string>
 			<comment><![CDATA[This group contains all tables required to implement RePoSyD's report engine.]]></comment>
 			<entity schema="Default" name="re_document" />
 			<entity schema="Default" name="re_layout" />
-			<entity schema="Default" name="re_stylesheet" />
+			<entity schema="Default" name="re_reportformat" />
 			<entity schema="Default" name="re_section" />
 			<entity schema="Default" name="re_documenttree" />
 			<entity schema="Default" name="re_template" />
@@ -7307,13 +7338,10 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 		<entity schema="Default" name="ac_owner" color="994D66" x="1568" y="1520" />
 		<entity schema="Default" name="ds_ddo" color="C4E0F9" x="48" y="1472" />
 		<entity schema="Default" name="ds_ddo_history" color="C4E0F9" x="256" y="1472" />
-		<entity schema="Default" name="re_templates" color="C4E0F9" x="1136" y="560" />
-		<entity schema="Default" name="re_layouts" color="3986C1" x="1184" y="384" />
 		<entity schema="Default" name="mm_ddo" color="CCB3FF" x="192" y="416" />
 		<entity schema="Default" name="rp_projects" color="3986C1" x="512" y="368" />
 		<entity schema="Default" name="rp_solutions" color="3986C1" x="416" y="512" />
 		<entity schema="Default" name="tl_section" color="3986C1" x="1184" y="2864" />
-		<entity schema="Default" name="re_sections" color="C4E0F9" x="1328" y="160" />
 		<entity schema="Default" name="re_sections_history" color="C4E0F9" x="1504" y="160" />
 		<entity schema="Default" name="po_assigned_ddo" color="3986C1" x="1088" y="912" />
 		<entity schema="Default" name="tr_da_title" color="3986C1" x="1216" y="912" />
@@ -7322,7 +7350,6 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 		<entity schema="Default" name="ds_ddl_left" color="C4E0F9" x="48" y="2528" />
 		<entity schema="Default" name="ds_ddl_right" color="C4E0F9" x="304" y="2528" />
 		<entity schema="Default" name="re_documents" color="C4E0F9" x="896" y="160" />
-		<entity schema="Default" name="re_documents_history" color="C4E0F9" x="1104" y="160" />
 		<entity schema="Default" name="mb_assigned_transactions" color="3986C1" x="224" y="960" />
 		<entity schema="Default" name="mb_assigned_roles" color="3986C1" x="240" y="1184" />
 		<entity schema="Default" name="ac_ddo_assignments" color="994D66" x="1936" y="1168" />
@@ -7344,6 +7371,11 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 		<entity schema="Default" name="ds_ddo_na_all" color="3986C1" x="336" y="4240" />
 		<entity schema="Default" name="ds_ddo_all" color="3986C1" x="96" y="4240" />
 		<entity schema="Default" name="cm_baselines" color="3986C1" x="1072" y="4048" />
+		<entity schema="Default" name="re_documents_history" color="C4E0F9" x="1104" y="160" />
+		<entity schema="Default" name="re_sections" color="C4E0F9" x="1328" y="160" />
+		<entity schema="Default" name="re_templates" color="C4E0F9" x="1088" y="608" />
+		<entity schema="Default" name="re_layouts" color="3986C1" x="896" y="592" />
+		<entity schema="Default" name="re_reportformats" color="3986C1" x="1888" y="656" />
 		<group name="report engine (re)" color="C4E0F9" >
 			<entity schema="Default" name="re_sections" />
 			<entity schema="Default" name="re_templates" />

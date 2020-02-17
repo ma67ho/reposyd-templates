@@ -1,15 +1,3 @@
-CREATE TABLE cm_baseline ( 
-	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
-	name                 varchar(255) NOT NULL    ,
-	description          text     ,
-	major                integer NOT NULL    ,
-	minor                integer NOT NULL    ,
-	[type]               varchar(100)     ,
-	timestamp            datetime  DEFAULT CURRENT_TIMESTAMP   ,
-	repository           char(38) NOT NULL    ,
-	CONSTRAINT unq_cm_baseline_major_minor UNIQUE ( uuid, major, minor ) 
- );
-
 CREATE TABLE cm_request ( 
 	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
 	description          text     ,
@@ -500,8 +488,8 @@ CREATE TABLE sp_sys_log (
  );
 
 CREATE TABLE sp_tags ( 
-	uuid                 char(38)     ,
 	name                 char(255) NOT NULL  PRIMARY KEY  ,
+	uuid                 char(38)     ,
 	CONSTRAINT Idx_sp_tags_uuid UNIQUE ( uuid ) 
  );
 
@@ -533,16 +521,83 @@ CREATE TABLE sp_watcher (
 	uuid                 integer     
  );
 
-CREATE TABLE cm_baseline_solution ( 
-	solution             char(38) NOT NULL    ,
-	baseline             char(38) NOT NULL    ,
-	FOREIGN KEY ( baseline ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE ,
-	FOREIGN KEY ( solution ) REFERENCES rp_solution_space( uuid ) ON DELETE CASCADE 
+CREATE TABLE cm_baseline ( 
+	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
+	dsuuid               char(38) NOT NULL    ,
+	name                 varchar(255) NOT NULL    ,
+	description          text     ,
+	major                integer NOT NULL    ,
+	minor                integer NOT NULL    ,
+	[type]               varchar(100)     ,
+	cm_timestamp         datetime  DEFAULT CURRENT_TIMESTAMP   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	repository           char(38) NOT NULL    ,
+	CONSTRAINT unq_cm_baseline_major_minor UNIQUE ( uuid, major, minor ) ,
+	FOREIGN KEY ( dsuuid ) REFERENCES rp_solution_space( uuid ) ON DELETE CASCADE 
  );
 
-CREATE INDEX pk_baseline_solution ON cm_baseline_solution ( solution, baseline );
+CREATE TABLE cm_ddl ( 
+	bl_uuid              char(38) NOT NULL    ,
+	dl_uuid              char(38) NOT NULL    ,
+	dl_revision          integer NOT NULL    ,
+	FOREIGN KEY ( bl_uuid ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE 
+ );
 
-CREATE INDEX Idx_cm_baseline_solution_baseline ON cm_baseline_solution ( baseline );
+CREATE INDEX Idx_cm_ddl ON cm_ddl ( bl_uuid, dl_uuid );
+
+CREATE TABLE cm_ddo ( 
+	bl_uuid              char(38) NOT NULL    ,
+	do_uuid              char(38) NOT NULL    ,
+	do_revision          integer NOT NULL    ,
+	FOREIGN KEY ( bl_uuid ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE 
+ );
+
+CREATE INDEX Idx_cm_ddo ON cm_ddo ( bl_uuid, do_uuid );
+
+CREATE TABLE cm_diagram ( 
+	bl_uuid              char(38) NOT NULL    ,
+	dm_uuid              char(38) NOT NULL    ,
+	cm_revision          integer NOT NULL    ,
+	di_uuid              char(38) NOT NULL    ,
+	di_revision          integer NOT NULL    ,
+	FOREIGN KEY ( bl_uuid ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE 
+ );
+
+CREATE INDEX Idx_cm_diagram ON cm_diagram ( bl_uuid, dm_uuid, cm_revision, di_uuid, di_revision );
+
+CREATE TABLE cm_document ( 
+	bl_uuid              char(38) NOT NULL    ,
+	dt_uuid              char(38) NOT NULL    ,
+	dt_revision          integer NOT NULL    ,
+	sn_uuid              char(38) NOT NULL    ,
+	sn_revision          integer NOT NULL    ,
+	FOREIGN KEY ( bl_uuid ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE 
+ );
+
+CREATE INDEX Idx_cm_document ON cm_document ( bl_uuid, dt_uuid );
+
+CREATE TABLE cm_hazard_assessment ( 
+	bl_uuid              char(38) NOT NULL    ,
+	hz_uuid              char(38) NOT NULL    ,
+	hz_revision          integer NOT NULL    ,
+	as_uuid              char(38) NOT NULL    ,
+	as_revision          integer NOT NULL    ,
+	CONSTRAINT idx_cm_hazard UNIQUE ( bl_uuid, hz_uuid, hz_revision, as_uuid, as_revision ) ,
+	FOREIGN KEY ( bl_uuid ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE 
+ );
+
+CREATE TABLE cm_mitigation_assessment ( 
+	bl_uuid              char(38) NOT NULL    ,
+	mn_uuid              char(38) NOT NULL    ,
+	mn_revision          integer NOT NULL    ,
+	as_uuid              char(38) NOT NULL    ,
+	as_revision          integer NOT NULL    ,
+	hz_uuid              char(38) NOT NULL    ,
+	hz_revision          integer NOT NULL    ,
+	FOREIGN KEY ( bl_uuid ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE 
+ );
+
+CREATE INDEX Idx_cm_mitigation_assessment ON cm_mitigation_assessment ( bl_uuid, mn_uuid, mn_revision );
 
 CREATE TABLE cm_request_solution ( 
 	solution             char(38) NOT NULL    ,
@@ -555,6 +610,15 @@ CREATE TABLE cm_request_solution (
 CREATE INDEX idx_cm_variant_request_request ON cm_request_solution ( request );
 
 CREATE INDEX idx_cm_variant_request_solution ON cm_request_solution ( solution );
+
+CREATE TABLE cm_section_ddo ( 
+	bl_uuid              char(38) NOT NULL    ,
+	sn_uuid              char(38) NOT NULL    ,
+	sn_revision          integer NOT NULL    ,
+	ddo_uuid             char(38) NOT NULL    ,
+	ddo_revision         integer NOT NULL    ,
+	FOREIGN KEY ( bl_uuid ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE 
+ );
 
 CREATE TABLE da_analysis_container ( 
 	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
@@ -732,22 +796,25 @@ CREATE TABLE re_layout (
 	solution             char(38)     ,
 	name                 varchar(255)     ,
 	description          text     ,
-	timestamp            datetime  DEFAULT CURRENT_TIMESTAMP   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer  DEFAULT 0   ,
+	cm_timestamp         datetime  DEFAULT CURRENT_TIMESTAMP   ,
 	repository           char(38)     ,
 	FOREIGN KEY ( solution ) REFERENCES rp_solution_space( uuid ) ON DELETE CASCADE 
  );
 
-CREATE TABLE re_stylesheet ( 
+CREATE TABLE re_reportformat ( 
 	layout               char(38)     ,
 	format               varchar(100)     ,
+	enabled              boolean  DEFAULT 0   ,
 	data                 blob     ,
 	url                  varchar(255)     ,
 	FOREIGN KEY ( layout ) REFERENCES re_layout( uuid ) ON DELETE CASCADE 
  );
 
-CREATE INDEX idx_re_stylesheet_format ON re_stylesheet ( format );
+CREATE INDEX idx_re_stylesheet_format ON re_reportformat ( format );
 
-CREATE INDEX idx_re_stylesheet_layout ON re_stylesheet ( layout );
+CREATE INDEX idx_re_stylesheet_layout ON re_reportformat ( layout );
 
 CREATE TABLE re_template_solution ( 
 	template             char(38) NOT NULL    ,
@@ -806,18 +873,6 @@ CREATE TABLE sp_comment (
 CREATE INDEX idx_sp_comments_ddo ON sp_comment ( ddo );
 
 CREATE INDEX idx_sp_comments_member ON sp_comment ( member );
-
-CREATE TABLE cm_ddo ( 
-	bl_uuid              char(38) NOT NULL    ,
-	ddo_uuid             char(38) NOT NULL    ,
-	ddo_revision         integer NOT NULL    ,
-	FOREIGN KEY ( bl_uuid ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE ,
-	FOREIGN KEY ( ddo_uuid ) REFERENCES dd_object( uuid ) ON DELETE CASCADE 
- );
-
-CREATE INDEX idx_cm_ddo_0 ON cm_ddo ( ddo_uuid );
-
-CREATE INDEX idx_cm_ddo ON cm_ddo ( bl_uuid );
 
 CREATE TABLE da_analysis_object ( 
 	result               char(38)     ,
@@ -1032,6 +1087,17 @@ CREATE INDEX idx_re_section_document ON re_section ( document );
 
 CREATE INDEX idx_re_section_script ON re_section ( script );
 
+CREATE TABLE re_section_dd ( 
+	sn_uuid              char(38) NOT NULL    ,
+	sn_revision          integer NOT NULL    ,
+	dd_type              varchar(100) NOT NULL    ,
+	dd_uuid              char(38) NOT NULL    ,
+	dd_revision          integer NOT NULL    ,
+	FOREIGN KEY ( sn_uuid ) REFERENCES re_section( uuid ) ON DELETE CASCADE 
+ );
+
+CREATE INDEX Idx_re_section_dd ON re_section_dd ( sn_uuid, sn_revision );
+
 CREATE TABLE sp_tags_ddo ( 
 	ddo                  char(38) NOT NULL    ,
 	tag                  char(38) NOT NULL    ,
@@ -1039,18 +1105,6 @@ CREATE TABLE sp_tags_ddo (
 	FOREIGN KEY ( ddo ) REFERENCES dd_ddo_solution( ddo ) ON DELETE CASCADE ,
 	FOREIGN KEY ( tag ) REFERENCES sp_tags( uuid )  
  );
-
-CREATE TABLE cm_ddl ( 
-	bl_uuid              char(38) NOT NULL    ,
-	ddl_uuid             char(38) NOT NULL    ,
-	ddl_revision         integer NOT NULL    ,
-	FOREIGN KEY ( bl_uuid ) REFERENCES cm_baseline( uuid ) ON DELETE CASCADE ,
-	FOREIGN KEY ( ddl_uuid ) REFERENCES dd_def_link( uuid ) ON DELETE CASCADE 
- );
-
-CREATE INDEX idx_cm_ddl ON cm_ddl ( bl_uuid );
-
-CREATE INDEX idx_cm_ddl_0 ON cm_ddl ( ddl_uuid );
 
 CREATE TABLE dd_attribute_value ( 
 	dda                  char(38) NOT NULL    ,
@@ -1222,6 +1276,22 @@ CREATE VIEW ac_roles AS SELECT ro.project AS po_uuid,
 
 CREATE VIEW ac_transactions AS SELECT uuid AS tn_uuid,name AS tn_name, description AS tn_description FROM rp_transaction;
 
+CREATE VIEW cm_baselines AS SELECT bl.dsuuid AS ds_uuid,
+       bl.uuid AS bl_uuid,
+       bl.name AS bl_name,
+       bl.description AS bl_description,
+       bl.type AS bl_type,
+       bl.major AS bl_major,
+       bl.minor AS bl_minor,
+       blmb.uuid AS bl_mb_uuid,
+       blmb.account AS bl_mb_account,
+       blmb.name AS bl_mb_name,
+       bl.cm_timestamp AS bl_cm_timestamp,
+       0 AS bl_cm_revision
+  FROM cm_baseline AS bl
+       INNER JOIN
+       rp_member blmb ON (blmb.uuid = bl.cm_modified_by);
+
 CREATE VIEW dac_container AS SELECT dac.solution AS ds_uuid,
            dac.uuid AS dac_uuid,
            dac.name AS dac_name,
@@ -1299,6 +1369,21 @@ CREATE VIEW dbs_validate_view AS SELECT dm.solution AS ds_uuid,
        dm_diagram dm ON (dm.uuid = di.diagram) 
  WHERE di.revision_to = -1;;
 
+SELECT dm.solution AS ds_uuid,
+           di.uuid AS di_uuid,
+           dm.uuid AS dm_uuid,
+           dm.type AS dm_type,
+           di.type AS di_type,
+           di.properties AS di_properties,
+           di.ddoddl AS di_ddoddl,
+           di.ghost AS di_ghost,
+           di.revision_from AS di_revision_from,
+           di.cm_revision AS di_cm_revision
+      FROM dm_item AS di
+           LEFT JOIN
+           dm_diagram dm ON (dm.uuid = di.diagram) 
+     WHERE di.revision_to = -1;;
+
 CREATE VIEW dd_hierarchy AS SELECT dh.project AS po_uuid,
            dh.uuid AS dh_uuid,
            dh.name AS dh_name,
@@ -1332,18 +1417,20 @@ CREATE VIEW dm_diagrams AS SELECT dm.solution AS ds_uuid,
        sp_translation tr ON (tr.uuid = dm.uuid)
   WHERE dm.cm_deleted = 0;
 
-CREATE VIEW dm_items AS SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;;
+SELECT dm.solution AS ds_uuid,
+           di.uuid AS di_uuid,
+           dm.uuid AS dm_uuid,
+           dm.type AS dm_type,
+           di.type AS di_type,
+           di.properties AS di_properties,
+           di.ddoddl AS di_ddoddl,
+           di.ghost AS di_ghost,
+           di.revision_from AS di_revision_from,
+           di.cm_revision AS di_cm_revision
+      FROM dm_item AS di
+           LEFT JOIN
+           dm_diagram dm ON (dm.uuid = di.diagram) 
+     WHERE di.revision_to = -1;;
 
 CREATE VIEW do_template AS SELECT dd.project AS po_uuid,
        dd.uuid AS do_uuid,
@@ -1528,6 +1615,12 @@ CREATE VIEW ds_ddo AS SELECT ds.solution AS ds_uuid,
            rp_member rpm ON (rpm.uuid = ddo.cm_modified_by) 
      WHERE ds.revision_to == -1;
 
+CREATE VIEW ds_ddo_all AS SELECT *
+  FROM ds_ddo
+UNION
+SELECT *
+  FROM ds_ddo_history;;
+
 CREATE VIEW ds_ddo_ddl_left AS SELECT ddl.ds_uuid,
        ddl.dl_uuid,
        ddl.dl_definition,
@@ -1629,6 +1722,12 @@ CREATE VIEW ds_ddo_na AS SELECT dds.solution AS ds_uuid,
        INNER JOIN
        dd_def_object dd ON (dd.uuid=ddo.definition)
  WHERE dds.revision_to = -1;
+
+CREATE VIEW ds_ddo_na_all AS SELECT *
+  FROM ds_ddo_na
+UNION
+SELECT *
+  FROM ds_ddo_na_history;
 
 CREATE VIEW ds_ddo_na_history AS SELECT dds.solution AS ds_uuid,
        ddo.uuid AS do_uuid,
@@ -2030,20 +2129,34 @@ CREATE VIEW re_documents_history AS SELECT dt.solution AS ds_uuid,
       LEFT JOIN
       mb_modifiedBy mb ON (mb.mb_uuid = dt.cm_modifiedBy);
 
-CREATE VIEW re_layouts AS SELECT *
+CREATE VIEW re_layouts AS SELECT lt.*,
+       mb.mb_account AS lt_mb_account,
+       mb.mb_name AS lt_mb_name,
+       mb.mb_uuid AS lt_mb_uuid
   FROM (
            SELECT lt.solution AS ds_uuid,
                   lt.uuid AS lt_uuid,
                   lt.name AS lt_name,
                   lt.description AS lt_description,
-                  lt.timestamp AS lt_timestamp,
                   GROUP_CONCAT(st.format) AS lt_stylesheets,
+                  lt.cm_revision AS lt_cm_revision,
+                  lt.cm_timestamp AS lt_cm_timestamp,
+                  lt.cm_modified_by AS lt_cm_modified_by,
                   lt.repository AS lt_repository
-             FROM re_layout AS lt 
-                  INNER JOIN
+             FROM re_layout AS lt
+                  LEFT JOIN
                   re_stylesheet st ON (st.layout = lt.uuid) 
        )
- WHERE ds_uuid IS NOT NULL;
+       AS lt
+       LEFT JOIN
+       mb_modifiedBy mb ON (mb.mb_uuid = lt.lt_cm_modified_by) 
+ WHERE ds_uuid IS NOT NULL;;
+
+CREATE VIEW re_reportformats AS SELECT layout AS lt_uuid,
+       format AS rf_id,
+       enabled AS rf_enabled,
+       data AS rf_data
+  FROM re_reportformat;
 
 CREATE VIEW re_sections AS SELECT sn.document AS dt_uuid,
        sn.uuid AS sn_uuid,
