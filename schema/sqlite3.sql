@@ -799,6 +799,7 @@ CREATE TABLE re_layout (
 	cm_modified_by       char(38) NOT NULL    ,
 	cm_revision          integer  DEFAULT 0   ,
 	cm_timestamp         datetime  DEFAULT CURRENT_TIMESTAMP   ,
+	cm_deleted           integer  DEFAULT 0   ,
 	repository           char(38)     ,
 	FOREIGN KEY ( solution ) REFERENCES rp_solution_space( uuid ) ON DELETE CASCADE 
  );
@@ -1356,6 +1357,19 @@ CREATE VIEW dac_result_properties AS SELECT dac.solution AS ds_uuid,
        LEFT JOIN
        da_analysis_result_properties dap ON (dap.result=dar.uuid);
 
+CREATE VIEW dbs_validate_view AS SELECT dm.solution AS ds_uuid,
+       di.uuid AS di_uuid,
+       dm.uuid AS dm_uuid,
+       di.type AS di_type,
+       di.properties AS di_properties,
+       di.ddoddl AS di_ddoddl,
+       di.ghost AS di_ghost,
+       di.revision_from AS di_revision_from
+  FROM dm_item AS di
+       LEFT JOIN
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;;
+
 SELECT dm.solution AS ds_uuid,
            di.uuid AS di_uuid,
            dm.uuid AS dm_uuid,
@@ -1370,19 +1384,6 @@ SELECT dm.solution AS ds_uuid,
            LEFT JOIN
            dm_diagram dm ON (dm.uuid = di.diagram) 
      WHERE di.revision_to = -1;;
-
-CREATE VIEW dbs_validate_view AS SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;;
 
 CREATE VIEW dd_hierarchy AS SELECT dh.project AS po_uuid,
            dh.uuid AS dh_uuid,
@@ -2129,28 +2130,27 @@ CREATE VIEW re_documents_history AS SELECT dt.solution AS ds_uuid,
       LEFT JOIN
       mb_modifiedBy mb ON (mb.mb_uuid = dt.cm_modifiedBy);
 
-CREATE VIEW re_layouts AS SELECT lt.*,
+CREATE VIEW re_layouts AS SELECT lt.solution AS ds_uuid,
+       lt.uuid AS lt_uuid,
+       lt.name AS lt_name,
+       lt.description AS lt_description,
+       (
+           SELECT GROUP_CONCAT(rf.rf_id) 
+             FROM re_reportformats AS rf
+            WHERE rf.lt_uuid = lt.uuid
+       )
+       AS lt_formats,
        mb.mb_account AS lt_mb_account,
        mb.mb_name AS lt_mb_name,
-       mb.mb_uuid AS lt_mb_uuid
-  FROM (
-           SELECT lt.solution AS ds_uuid,
-                  lt.uuid AS lt_uuid,
-                  lt.name AS lt_name,
-                  lt.description AS lt_description,
-                  GROUP_CONCAT(rf.rf_id) AS lt_formats,
-                  lt.cm_revision AS lt_cm_revision,
-                  lt.cm_timestamp AS lt_cm_timestamp,
-                  lt.cm_modified_by AS lt_cm_modified_by,
-                  lt.repository AS lt_repository
-             FROM re_layout AS lt
-                  LEFT JOIN
-                  re_reportformats rf ON (rf.lt_uuid = lt.uuid) 
-       )
-       AS lt
+       mb.mb_uuid AS lt_mb_uuid,
+       lt.cm_revision AS lt_cm_revision,
+       lt.cm_timestamp AS lt_cm_timestamp,
+       lt.cm_modified_by AS lt_cm_modified_by,
+       lt.repository AS lt_repository
+  FROM re_layout AS lt
        LEFT JOIN
-       mb_modifiedBy mb ON (mb.mb_uuid = lt.lt_cm_modified_by) 
- WHERE ds_uuid IS NOT NULL;
+       mb_modifiedBy mb ON (mb.mb_uuid = lt.cm_modified_by) 
+ WHERE cm_deleted = 0;;
 
 CREATE VIEW re_reportformats AS SELECT layout AS lt_uuid,
        format AS rf_id,

@@ -1463,6 +1463,9 @@ completed]]></comment>
 			<column name="cm_timestamp" type="datetime" jt="93" >
 				<defo>CURRENT_TIMESTAMP</defo>
 			</column>
+			<column name="cm_deleted" type="integer" jt="4" >
+				<defo>0</defo>
+			</column>
 			<column name="repository" type="char" length="38" jt="1" />
 			<index name="Pk_re_stylesheet_uuid" unique="PRIMARY_KEY" >
 				<column name="uuid" />
@@ -2448,6 +2451,20 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="mb_name" type="varchar" />
 		</view>
 		<view name="dbs_validate_view" >
+			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
+       di.uuid AS di_uuid,
+       dm.uuid AS dm_uuid,
+       di.type AS di_type,
+       di.properties AS di_properties,
+       di.ddoddl AS di_ddoddl,
+       di.ghost AS di_ghost,
+       di.revision_from AS di_revision_from
+  FROM dm_item AS di
+       LEFT JOIN
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;]]></view_script>
+		</view>
+		<view name="dbs_validate_view" >
 			<view_script><![CDATA[
     SELECT dm.solution AS ds_uuid,
            di.uuid AS di_uuid,
@@ -2463,20 +2480,6 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
            LEFT JOIN
            dm_diagram dm ON (dm.uuid = di.diagram) 
      WHERE di.revision_to = -1;]]></view_script>
-		</view>
-		<view name="dbs_validate_view" >
-			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;]]></view_script>
 		</view>
 		<view name="dd_hierarchy" >
 			<view_script><![CDATA[SELECT dh.project AS po_uuid,
@@ -3902,7 +3905,8 @@ SELECT *
        lt.repository AS lt_repository
   FROM re_layout AS lt
        LEFT JOIN
-       mb_modifiedBy mb ON (mb.mb_uuid = lt.cm_modified_by);]]></view_script>
+       mb_modifiedBy mb ON (mb.mb_uuid = lt.cm_modified_by) 
+ WHERE cm_deleted = 0;]]></view_script>
 			<column name="ds_uuid" type="char " />
 			<column name="lt_uuid" type="char " />
 			<column name="lt_name" type="varchar " />
@@ -5891,8 +5895,8 @@ END;]]></string>
 		<entity schema="Default" name="cm_ddo" color="F7F3EC" x="128" y="1440" />
 		<entity schema="Default" name="re_section_dd" color="FFEBEB" x="1616" y="2000" />
 		<entity schema="Default" name="re_document" color="FFEBEB" x="1360" y="2256" />
-		<entity schema="Default" name="re_layout" color="FFEBEB" x="1648" y="2480" />
 		<entity schema="Default" name="re_reportformat" color="FFEBEB" x="1888" y="2480" />
+		<entity schema="Default" name="re_layout" color="FFEBEB" x="1648" y="2480" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
