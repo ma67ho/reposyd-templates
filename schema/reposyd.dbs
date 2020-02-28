@@ -2448,20 +2448,6 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="mb_name" type="varchar" />
 		</view>
 		<view name="dbs_validate_view" >
-			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;]]></view_script>
-		</view>
-		<view name="dbs_validate_view" >
 			<view_script><![CDATA[
     SELECT dm.solution AS ds_uuid,
            di.uuid AS di_uuid,
@@ -2477,6 +2463,20 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
            LEFT JOIN
            dm_diagram dm ON (dm.uuid = di.diagram) 
      WHERE di.revision_to = -1;]]></view_script>
+		</view>
+		<view name="dbs_validate_view" >
+			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
+       di.uuid AS di_uuid,
+       dm.uuid AS dm_uuid,
+       di.type AS di_type,
+       di.properties AS di_properties,
+       di.ddoddl AS di_ddoddl,
+       di.ghost AS di_ghost,
+       di.revision_from AS di_revision_from
+  FROM dm_item AS di
+       LEFT JOIN
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;]]></view_script>
 		</view>
 		<view name="dd_hierarchy" >
 			<view_script><![CDATA[SELECT dh.project AS po_uuid,
@@ -3883,40 +3883,38 @@ SELECT *
 			<column name="ow_repository" type="char" />
 		</view>
 		<view name="re_layouts" >
-			<view_script><![CDATA[SELECT lt.*,
+			<view_script><![CDATA[SELECT lt.solution AS ds_uuid,
+       lt.uuid AS lt_uuid,
+       lt.name AS lt_name,
+       lt.description AS lt_description,
+       (
+           SELECT GROUP_CONCAT(rf.rf_id) 
+             FROM re_reportformats AS rf
+            WHERE rf.lt_uuid = lt.uuid
+       )
+       AS lt_formats,
        mb.mb_account AS lt_mb_account,
        mb.mb_name AS lt_mb_name,
-       mb.mb_uuid AS lt_mb_uuid
-  FROM (
-           SELECT lt.solution AS ds_uuid,
-                  lt.uuid AS lt_uuid,
-                  lt.name AS lt_name,
-                  lt.description AS lt_description,
-                  GROUP_CONCAT(rf.rf_id) AS lt_formats,
-                  lt.cm_revision AS lt_cm_revision,
-                  lt.cm_timestamp AS lt_cm_timestamp,
-                  lt.cm_modified_by AS lt_cm_modified_by,
-                  lt.repository AS lt_repository
-             FROM re_layout AS lt
-                  LEFT JOIN
-                  re_reportformats rf ON (rf.lt_uuid = lt.uuid) 
-       )
-       AS lt
+       mb.mb_uuid AS lt_mb_uuid,
+       lt.cm_revision AS lt_cm_revision,
+       lt.cm_timestamp AS lt_cm_timestamp,
+       lt.cm_modified_by AS lt_cm_modified_by,
+       lt.repository AS lt_repository
+  FROM re_layout AS lt
        LEFT JOIN
-       mb_modifiedBy mb ON (mb.mb_uuid = lt.lt_cm_modified_by) 
- WHERE ds_uuid IS NOT NULL]]></view_script>
+       mb_modifiedBy mb ON (mb.mb_uuid = lt.cm_modified_by);]]></view_script>
 			<column name="ds_uuid" type="char " />
 			<column name="lt_uuid" type="char " />
 			<column name="lt_name" type="varchar " />
 			<column name="lt_description" type="text" />
 			<column name="lt_formats" type="set" />
+			<column name="lt_mb_account" type="varchar" />
+			<column name="lt_mb_name" type="varchar" />
+			<column name="lt_mb_uuid" type="char" />
 			<column name="lt_cm_revision" type="integer" />
 			<column name="lt_cm_timestamp" type="datetime" />
 			<column name="lt_cm_modified_by" type="char " />
 			<column name="lt_repository" type="char " />
-			<column name="lt_mb_account" type="varchar" />
-			<column name="lt_mb_name" type="varchar" />
-			<column name="lt_mb_uuid" type="char" />
 		</view>
 		<view name="re_reportformats" >
 			<view_script><![CDATA[SELECT layout AS lt_uuid,
@@ -7374,8 +7372,8 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 		<entity schema="Default" name="re_documents_history" color="C4E0F9" x="1104" y="160" />
 		<entity schema="Default" name="re_sections" color="C4E0F9" x="1328" y="160" />
 		<entity schema="Default" name="re_templates" color="C4E0F9" x="1088" y="608" />
-		<entity schema="Default" name="re_layouts" color="3986C1" x="896" y="592" />
 		<entity schema="Default" name="re_reportformats" color="3986C1" x="1888" y="656" />
+		<entity schema="Default" name="re_layouts" color="3986C1" x="896" y="592" />
 		<group name="report engine (re)" color="C4E0F9" >
 			<entity schema="Default" name="re_sections" />
 			<entity schema="Default" name="re_templates" />
