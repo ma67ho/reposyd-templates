@@ -2448,6 +2448,20 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="mb_name" type="varchar" />
 		</view>
 		<view name="dbs_validate_view" >
+			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
+       di.uuid AS di_uuid,
+       dm.uuid AS dm_uuid,
+       di.type AS di_type,
+       di.properties AS di_properties,
+       di.ddoddl AS di_ddoddl,
+       di.ghost AS di_ghost,
+       di.revision_from AS di_revision_from
+  FROM dm_item AS di
+       LEFT JOIN
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;]]></view_script>
+		</view>
+		<view name="dbs_validate_view" >
 			<view_script><![CDATA[
     SELECT dm.solution AS ds_uuid,
            di.uuid AS di_uuid,
@@ -2463,20 +2477,6 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
            LEFT JOIN
            dm_diagram dm ON (dm.uuid = di.diagram) 
      WHERE di.revision_to = -1;]]></view_script>
-		</view>
-		<view name="dbs_validate_view" >
-			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;]]></view_script>
 		</view>
 		<view name="dd_hierarchy" >
 			<view_script><![CDATA[SELECT dh.project AS po_uuid,
@@ -3892,24 +3892,24 @@ SELECT *
                   lt.uuid AS lt_uuid,
                   lt.name AS lt_name,
                   lt.description AS lt_description,
-                  GROUP_CONCAT(st.format) AS lt_stylesheets,
+                  GROUP_CONCAT(rf.rf_id) AS lt_formats,
                   lt.cm_revision AS lt_cm_revision,
                   lt.cm_timestamp AS lt_cm_timestamp,
                   lt.cm_modified_by AS lt_cm_modified_by,
                   lt.repository AS lt_repository
              FROM re_layout AS lt
                   LEFT JOIN
-                  re_stylesheet st ON (st.layout = lt.uuid) 
+                  re_reportformats rf ON (rf.lt_uuid = lt.uuid) 
        )
        AS lt
        LEFT JOIN
        mb_modifiedBy mb ON (mb.mb_uuid = lt.lt_cm_modified_by) 
- WHERE ds_uuid IS NOT NULL;]]></view_script>
+ WHERE ds_uuid IS NOT NULL]]></view_script>
 			<column name="ds_uuid" type="char " />
 			<column name="lt_uuid" type="char " />
 			<column name="lt_name" type="varchar " />
 			<column name="lt_description" type="text" />
-			<column name="lt_stylesheets" type="set" />
+			<column name="lt_formats" type="set" />
 			<column name="lt_cm_revision" type="integer" />
 			<column name="lt_cm_timestamp" type="datetime" />
 			<column name="lt_cm_modified_by" type="char " />
@@ -5850,7 +5850,6 @@ END;]]></string>
 		<entity schema="Default" name="re_documenttree" color="FFEBEB" x="1152" y="2112" />
 		<entity schema="Default" name="re_document_history" color="FFFFCC" x="2640" y="576" />
 		<entity schema="Default" name="re_section_history" color="FFFFCC" x="2640" y="928" />
-		<entity schema="Default" name="re_document" color="FFEBEB" x="1360" y="2256" />
 		<entity schema="Default" name="re_section_ddo" color="FFEBEB" x="944" y="2592" />
 		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1152" y="3264" />
 		<entity schema="Default" name="po_role" color="EEF7EC" x="208" y="2640" />
@@ -5893,8 +5892,9 @@ END;]]></string>
 		<entity schema="Default" name="cm_ddl" color="F7F3EC" x="128" y="1328" />
 		<entity schema="Default" name="cm_ddo" color="F7F3EC" x="128" y="1440" />
 		<entity schema="Default" name="re_section_dd" color="FFEBEB" x="1616" y="2000" />
-		<entity schema="Default" name="re_layout" color="FFEBEB" x="1152" y="2304" />
-		<entity schema="Default" name="re_reportformat" color="FFEBEB" x="960" y="2304" />
+		<entity schema="Default" name="re_document" color="FFEBEB" x="1360" y="2256" />
+		<entity schema="Default" name="re_layout" color="FFEBEB" x="1648" y="2480" />
+		<entity schema="Default" name="re_reportformat" color="FFEBEB" x="1888" y="2480" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
