@@ -16,7 +16,9 @@ class PdfFormat extends ReportFormat {
       pageMargins: this.options.pageMargins,
       pageSize: this.options.pageSize,
       styles: this.options.styles,
-      watermark: { text: 'Entwurf   ', color: 'grey', opacity: 0.1, bold: true, italics: false, fontSize: 128 }
+    } 
+    if (this.options.watermark.enabled) {
+      this._definition.watermark = { text: this.options.watermark.text, color: 'grey', opacity: 0.1, bold: true, italics: false, fontSize: 128 }
     }
     this._definition.header = {
       image: 'logo',
