@@ -2873,8 +2873,6 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
            INNER JOIN
            dd_def_attribute dad ON (dad.uuid=da.dda)
            LEFT JOIN
-           cm_ddo cm ON (cm.ddo_uuid = da.ddo) 
-           LEFT JOIN
            dd_object ddo ON (ddo.uuid = da.ddo) 
            LEFT JOIN
            dd_ddo_solution ds ON (ds.ddo = da.ddo) 
@@ -3065,8 +3063,6 @@ SELECT *
       FROM dd_attribute_history AS da
            INNER JOIN
            dd_def_attribute dad ON (dad.uuid=da.dda)
-           LEFT JOIN
-           cm_ddo cm ON (cm.ddo_uuid = da.ddo) 
            LEFT JOIN
            dd_object_history ddo ON (ddo.uuid = da.ddo) 
            LEFT JOIN
@@ -7299,13 +7295,10 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 		<entity schema="Default" name="ds_ddo_ddl_right" color="C4E0F9" x="320" y="3632" />
 		<entity schema="Default" name="ds_ddl_left_na" color="C4E0F9" x="80" y="3136" />
 		<entity schema="Default" name="ds_ddl_right_na" color="C4E0F9" x="320" y="3136" />
-		<entity schema="Default" name="ds_ddo_na" color="C4E0F9" x="48" y="1808" />
 		<entity schema="Default" name="ds_ddo_na_history" color="C4E0F9" x="304" y="1808" />
 		<entity schema="Default" name="ds_ddl_na" color="3986C1" x="48" y="2016" />
 		<entity schema="Default" name="tl_ddo" color="3986C1" x="736" y="2880" />
 		<entity schema="Default" name="ac_owner" color="994D66" x="1568" y="1520" />
-		<entity schema="Default" name="ds_ddo" color="C4E0F9" x="48" y="1472" />
-		<entity schema="Default" name="ds_ddo_history" color="C4E0F9" x="256" y="1472" />
 		<entity schema="Default" name="mm_ddo" color="CCB3FF" x="192" y="416" />
 		<entity schema="Default" name="rp_projects" color="3986C1" x="512" y="368" />
 		<entity schema="Default" name="rp_solutions" color="3986C1" x="416" y="512" />
@@ -7344,6 +7337,9 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 		<entity schema="Default" name="re_templates" color="C4E0F9" x="1088" y="608" />
 		<entity schema="Default" name="re_reportformats" color="3986C1" x="1888" y="656" />
 		<entity schema="Default" name="re_layouts" color="3986C1" x="896" y="592" />
+		<entity schema="Default" name="ds_ddo_na" color="C4E0F9" x="48" y="1808" />
+		<entity schema="Default" name="ds_ddo" color="C4E0F9" x="48" y="1472" />
+		<entity schema="Default" name="ds_ddo_history" color="C4E0F9" x="256" y="1472" />
 		<group name="report engine (re)" color="C4E0F9" >
 			<entity schema="Default" name="re_sections" />
 			<entity schema="Default" name="re_templates" />

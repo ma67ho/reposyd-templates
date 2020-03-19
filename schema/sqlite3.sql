@@ -1585,8 +1585,6 @@ CREATE VIEW ds_ddo AS SELECT ds.solution AS ds_uuid,
            INNER JOIN
            dd_def_attribute dad ON (dad.uuid=da.dda)
            LEFT JOIN
-           cm_ddo cm ON (cm.ddo_uuid = da.ddo) 
-           LEFT JOIN
            dd_object ddo ON (ddo.uuid = da.ddo) 
            LEFT JOIN
            dd_ddo_solution ds ON (ds.ddo = da.ddo) 
@@ -1669,8 +1667,6 @@ CREATE VIEW ds_ddo_history AS SELECT ds.solution AS ds_uuid,
       FROM dd_attribute_history AS da
            INNER JOIN
            dd_def_attribute dad ON (dad.uuid=da.dda)
-           LEFT JOIN
-           cm_ddo cm ON (cm.ddo_uuid = da.ddo) 
            LEFT JOIN
            dd_object_history ddo ON (ddo.uuid = da.ddo) 
            LEFT JOIN
