@@ -122,6 +122,7 @@ snapshot]]></comment>
 		<table name="cm_request" generator_rows="150" >
 			<comment><![CDATA[Contains change requests raised against a specific version of a DDO or DDL]]></comment>
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="dsuuid" type="char" length="38" jt="1" mandatory="y" />
 			<column name="description" type="text" jt="-1" />
 			<column name="state" type="varchar" length="100" jt="12" mandatory="y" >
 				<defo>&#039;invalid&#039;</defo>
@@ -130,25 +131,8 @@ snapshot]]></comment>
 			<index name="pk_cm_request" unique="PRIMARY_KEY" >
 				<column name="uuid" />
 			</index>
-		</table>
-		<table name="cm_request_solution" generator_rows="225" >
-			<column name="solution" type="char" length="38" jt="1" mandatory="y" />
-			<column name="request" type="char" length="38" jt="1" mandatory="y" />
-			<index name="pk_cm_variant_request" unique="PRIMARY_KEY" >
-				<column name="solution" />
-				<column name="request" />
-			</index>
-			<index name="idx_cm_variant_request_request" unique="NORMAL" >
-				<column name="request" />
-			</index>
-			<index name="idx_cm_variant_request_solution" unique="NORMAL" >
-				<column name="solution" />
-			</index>
-			<fk name="fk_cm_variant_request" to_schema="Default" to_table="cm_request" delete_action="cascade" >
-				<fk_column name="request" pk="uuid" />
-			</fk>
-			<fk name="fk_cm_variant_solution" to_schema="Default" to_table="rp_solution_space" delete_action="cascade" >
-				<fk_column name="solution" pk="uuid" />
+			<fk name="fk_cm_request" to_schema="Default" to_table="rp_solution_space" delete_action="cascade" update_action="cascade" >
+				<fk_column name="dsuuid" pk="uuid" />
 			</fk>
 		</table>
 		<table name="cm_section_ddo" >
@@ -1492,17 +1476,6 @@ completed]]></comment>
 				<fk_column name="layout" pk="uuid" />
 			</fk>
 		</table>
-		<table name="re_reportson" >
-			<comment><![CDATA[Contains the root design data object UUID's a document is reporting on.]]></comment>
-			<column name="document" type="char" length="38" jt="1" mandatory="y" />
-			<column name="object" type="char" length="38" jt="1" mandatory="y" />
-			<fk name="fk_re_reportson_re_document" to_schema="Default" to_table="re_document" >
-				<fk_column name="document" pk="uuid" />
-			</fk>
-			<fk name="fk_re_reportson" to_schema="Default" to_table="dd_ddo_solution" >
-				<fk_column name="object" pk="ddo" />
-			</fk>
-		</table>
 		<table name="re_section" generator_rows="225" >
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
 			<column name="document" type="char" length="38" jt="1" />
@@ -2000,7 +1973,7 @@ Please refer to reposyd::ProjectState]]></comment>
 			</column>
 			<column name="category" type="varchar" length="100" jt="12" />
 			<column name="message" type="text" jt="-1" />
-			<column name="orginator" type="varchar" length="38" jt="12" >
+			<column name="originator" type="varchar" length="38" jt="12" >
 				<defo>&#039;&lt;system&gt;&#039;</defo>
 			</column>
 		</table>
@@ -2021,9 +1994,6 @@ Please refer to reposyd::ProjectState]]></comment>
 				<column name="ddo" />
 				<column name="tag" />
 			</index>
-			<fk name="fk_sp_tags_ddo_dd_ddo_solution" to_schema="Default" to_table="dd_ddo_solution" delete_action="cascade" >
-				<fk_column name="ddo" pk="ddo" />
-			</fk>
 			<fk name="fk_sp_tags_ddo_sp_tags" to_schema="Default" to_table="sp_tags" >
 				<fk_column name="tag" pk="uuid" />
 			</fk>
@@ -2451,20 +2421,6 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="mb_name" type="varchar" />
 		</view>
 		<view name="dbs_validate_view" >
-			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;]]></view_script>
-		</view>
-		<view name="dbs_validate_view" >
 			<view_script><![CDATA[
     SELECT dm.solution AS ds_uuid,
            di.uuid AS di_uuid,
@@ -2480,6 +2436,20 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
            LEFT JOIN
            dm_diagram dm ON (dm.uuid = di.diagram) 
      WHERE di.revision_to = -1;]]></view_script>
+		</view>
+		<view name="dbs_validate_view" >
+			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
+       di.uuid AS di_uuid,
+       dm.uuid AS dm_uuid,
+       di.type AS di_type,
+       di.properties AS di_properties,
+       di.ddoddl AS di_ddoddl,
+       di.ghost AS di_ghost,
+       di.revision_from AS di_revision_from
+  FROM dm_item AS di
+       LEFT JOIN
+       dm_diagram dm ON (dm.uuid = di.diagram) 
+ WHERE di.revision_to = -1;]]></view_script>
 		</view>
 		<view name="dd_hierarchy" >
 			<view_script><![CDATA[SELECT dh.project AS po_uuid,
@@ -5812,91 +5782,89 @@ END;]]></string>
 	</layout>
 	<layout name="Tables only" id="Layout_3e7f25" joined_routing="y" show_column_type="y" show_relation="columns" >
 		<comment><![CDATA[RePoSyD Database Model]]></comment>
-		<entity schema="Default" name="po_role_ddo_transaction" color="EEF7EC" x="416" y="2064" />
-		<entity schema="Default" name="po_role_ddl_transaction" color="EEF7EC" x="416" y="1952" />
-		<entity schema="Default" name="po_ipt" color="EEF7EC" x="416" y="2528" />
-		<entity schema="Default" name="po_role_transaction" color="EEF7EC" x="416" y="2176" />
-		<entity schema="Default" name="dd_ddl_solution_history" color="FFFFCC" x="2176" y="592" />
-		<entity schema="Default" name="dd_attribute_value" color="C4E0F9" x="1904" y="976" />
-		<entity schema="Default" name="da_analysis_result" color="CC6633" x="848" y="256" />
-		<entity schema="Default" name="rp_transaction" color="F0ECF7" x="912" y="2912" />
-		<entity schema="Default" name="da_analysis_container" color="CC6633" x="656" y="272" />
-		<entity schema="Default" name="da_analysis_definition" color="CC6633" x="464" y="320" />
-		<entity schema="Default" name="da_analysis_object" color="CC6633" x="1072" y="256" />
-		<entity schema="Default" name="da_analysis_result_properties" color="CC6633" x="1040" y="432" />
-		<entity schema="Default" name="dd_objectid" color="C4E0F9" x="1600" y="960" />
-		<entity schema="Default" name="dd_def_link_reverse" color="ECECF7" x="784" y="688" />
-		<entity schema="Default" name="sp_user_log" color="FFCCFF" x="2464" y="1792" />
-		<entity schema="Default" name="dd_attribute_history" color="FFFFCC" x="2176" y="864" />
-		<entity schema="Default" name="re_template_solution" color="FFEBEB" x="1168" y="2640" />
-		<entity schema="Default" name="ddh_ddo_dda_revision" color="FFFFCC" x="2176" y="1024" />
-		<entity schema="Default" name="sp_watcher" color="FFCCFF" x="2480" y="2112" />
-		<entity schema="Default" name="po_ipt_member" color="EEF7EC" x="416" y="2400" />
-		<entity schema="Default" name="cm_request" color="F7F3EC" x="48" y="1760" />
-		<entity schema="Default" name="rp_solution_space" color="F0ECF7" x="912" y="3024" />
-		<entity schema="Default" name="rp_project" color="F0ECF7" x="912" y="3216" />
-		<entity schema="Default" name="rp_project_config" color="F0ECF7" x="912" y="3376" />
-		<entity schema="Default" name="rp_member_settings" color="F0ECF7" x="1152" y="3024" />
-		<entity schema="Default" name="rp_config" color="F0ECF7" x="1152" y="3168" />
-		<entity schema="Default" name="rp_member" color="F0ECF7" x="1408" y="3040" />
-		<entity schema="Default" name="sp_comment" color="FFCCFF" x="2256" y="2688" />
-		<entity schema="Default" name="sp_messagebox" color="FFCCFF" x="2256" y="2864" />
-		<entity schema="Default" name="re_template" color="FFEBEB" x="1424" y="2640" />
-		<entity schema="Default" name="dd_object" color="C4E0F9" x="1584" y="1296" />
-		<entity schema="Default" name="dd_ddo_solution" color="C4E0F9" x="1584" y="1584" />
-		<entity schema="Default" name="dd_def_object" color="ECECF7" x="1344" y="1024" />
-		<entity schema="Default" name="sp_issue" color="FFCCFF" x="2240" y="1696" />
-		<entity schema="Default" name="dd_link" color="C4E0F9" x="1904" y="720" />
-		<entity schema="Default" name="dd_link_history" color="FFFFCC" x="2400" y="576" />
-		<entity schema="Default" name="dd_template" color="C1D8EE" x="1632" y="1088" />
-		<entity schema="Default" name="re_documenttree" color="FFEBEB" x="1152" y="2112" />
-		<entity schema="Default" name="re_document_history" color="FFFFCC" x="2640" y="576" />
-		<entity schema="Default" name="re_section_history" color="FFFFCC" x="2640" y="928" />
-		<entity schema="Default" name="re_section_ddo" color="FFEBEB" x="944" y="2592" />
-		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1152" y="3264" />
-		<entity schema="Default" name="po_role" color="EEF7EC" x="208" y="2640" />
-		<entity schema="Default" name="sp_issue_history" color="3986C1" x="2928" y="608" />
-		<entity schema="Default" name="rp_project_member" color="F0ECF7" x="1408" y="2880" />
-		<entity schema="Default" name="po_role_member" color="EEF7EC" x="416" y="2272" />
-		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2464" y="1920" />
-		<entity schema="Default" name="re_section" color="FFEBEB" x="1360" y="2000" />
-		<entity schema="Default" name="sp_script" color="FFCCFF" x="2240" y="2112" />
-		<entity schema="Default" name="sp_translation" color="FFCCFF" x="2240" y="2416" />
-		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="2224" y="1248" />
-		<entity schema="Default" name="dd_def_link" color="ECECF7" x="976" y="848" />
-		<entity schema="Default" name="dd_def_attribute" color="ECECF7" x="1232" y="640" />
-		<entity schema="Default" name="dd_ddl_solution" color="C4E0F9" x="1568" y="672" />
-		<entity schema="Default" name="dd_def_enum" color="ECECF7" x="1008" y="624" />
-		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2400" y="816" />
-		<entity schema="Default" name="ha_mitigation_assessment" color="FF00FF" x="1984" y="320" />
-		<entity schema="Default" name="ha_mitigation" color="FF00FF" x="1744" y="224" />
-		<entity schema="Default" name="ha_assessment" color="FF00FF" x="2272" y="176" />
-		<entity schema="Default" name="ha_assessment_history" color="3986C1" x="2672" y="272" />
-		<entity schema="Default" name="ha_mitigation_history" color="3986C1" x="2672" y="80" />
-		<entity schema="Default" name="ha_hazard" color="FF00FF" x="1472" y="160" />
-		<entity schema="Default" name="ha_hazard_history" color="3986C1" x="2496" y="80" />
-		<entity schema="Default" name="dm_item_history" color="3986C1" x="2976" y="1216" />
-		<entity schema="Default" name="dm_item" color="CCCCFF" x="2464" y="1264" />
-		<entity schema="Default" name="dm_diagram_history" color="3986C1" x="2752" y="1216" />
-		<entity schema="Default" name="dd_def_hierarchy" color="ECECF7" x="768" y="864" />
-		<entity schema="Default" name="ha_hazard_assessment" color="FF00FF" x="2032" y="160" />
-		<entity schema="Default" name="re_section_ddl" color="FFEBEB" x="944" y="2480" />
-		<entity schema="Default" name="re_reportson" color="FFEBEB" x="1136" y="1920" />
-		<entity schema="Default" name="cm_request_solution" color="F7F3EC" x="336" y="1776" />
-		<entity schema="Default" name="sp_tags_ddo" color="FFCCFF" x="2448" y="1600" />
-		<entity schema="Default" name="sp_tags" color="FFCCFF" x="2624" y="1600" />
-		<entity schema="Default" name="cm_baseline" color="F7F3EC" x="400" y="1328" />
-		<entity schema="Default" name="cm_section_ddo" color="C1D8EE" x="128" y="704" />
-		<entity schema="Default" name="cm_document" color="F7F3EC" x="128" y="848" />
-		<entity schema="Default" name="cm_mitigation_assessment" color="F7F3EC" x="96" y="992" />
-		<entity schema="Default" name="cm_hazard_assessment" color="F7F3EC" x="128" y="1168" />
-		<entity schema="Default" name="cm_diagram" color="F7F3EC" x="128" y="1552" />
-		<entity schema="Default" name="cm_ddl" color="F7F3EC" x="128" y="1328" />
-		<entity schema="Default" name="cm_ddo" color="F7F3EC" x="128" y="1440" />
-		<entity schema="Default" name="re_section_dd" color="FFEBEB" x="1616" y="2000" />
-		<entity schema="Default" name="re_document" color="FFEBEB" x="1360" y="2256" />
-		<entity schema="Default" name="re_reportformat" color="FFEBEB" x="1888" y="2480" />
-		<entity schema="Default" name="re_layout" color="FFEBEB" x="1648" y="2480" />
+		<entity schema="Default" name="po_role_ddo_transaction" color="EEF7EC" x="368" y="2064" />
+		<entity schema="Default" name="po_role_ddl_transaction" color="EEF7EC" x="368" y="1952" />
+		<entity schema="Default" name="po_ipt" color="EEF7EC" x="368" y="2528" />
+		<entity schema="Default" name="po_role_transaction" color="EEF7EC" x="368" y="2176" />
+		<entity schema="Default" name="dd_ddl_solution_history" color="FFFFCC" x="2128" y="592" />
+		<entity schema="Default" name="dd_attribute_value" color="C4E0F9" x="1856" y="976" />
+		<entity schema="Default" name="da_analysis_result" color="CC6633" x="800" y="256" />
+		<entity schema="Default" name="rp_transaction" color="F0ECF7" x="864" y="2912" />
+		<entity schema="Default" name="da_analysis_container" color="CC6633" x="608" y="272" />
+		<entity schema="Default" name="da_analysis_definition" color="CC6633" x="416" y="320" />
+		<entity schema="Default" name="da_analysis_object" color="CC6633" x="1024" y="256" />
+		<entity schema="Default" name="da_analysis_result_properties" color="CC6633" x="992" y="432" />
+		<entity schema="Default" name="dd_objectid" color="C4E0F9" x="1552" y="960" />
+		<entity schema="Default" name="dd_def_link_reverse" color="ECECF7" x="736" y="688" />
+		<entity schema="Default" name="sp_user_log" color="FFCCFF" x="2416" y="1792" />
+		<entity schema="Default" name="dd_attribute_history" color="FFFFCC" x="2128" y="864" />
+		<entity schema="Default" name="re_template_solution" color="FFEBEB" x="1120" y="2640" />
+		<entity schema="Default" name="ddh_ddo_dda_revision" color="FFFFCC" x="2128" y="1024" />
+		<entity schema="Default" name="sp_watcher" color="FFCCFF" x="2432" y="2112" />
+		<entity schema="Default" name="po_ipt_member" color="EEF7EC" x="368" y="2400" />
+		<entity schema="Default" name="rp_solution_space" color="F0ECF7" x="864" y="3024" />
+		<entity schema="Default" name="rp_project" color="F0ECF7" x="864" y="3216" />
+		<entity schema="Default" name="rp_project_config" color="F0ECF7" x="864" y="3376" />
+		<entity schema="Default" name="rp_member_settings" color="F0ECF7" x="1104" y="3024" />
+		<entity schema="Default" name="rp_config" color="F0ECF7" x="1104" y="3168" />
+		<entity schema="Default" name="rp_member" color="F0ECF7" x="1360" y="3040" />
+		<entity schema="Default" name="sp_comment" color="FFCCFF" x="2208" y="2688" />
+		<entity schema="Default" name="sp_messagebox" color="FFCCFF" x="2208" y="2864" />
+		<entity schema="Default" name="re_template" color="FFEBEB" x="1376" y="2640" />
+		<entity schema="Default" name="dd_object" color="C4E0F9" x="1536" y="1296" />
+		<entity schema="Default" name="dd_def_object" color="ECECF7" x="1296" y="1024" />
+		<entity schema="Default" name="sp_issue" color="FFCCFF" x="2192" y="1696" />
+		<entity schema="Default" name="dd_link" color="C4E0F9" x="1856" y="720" />
+		<entity schema="Default" name="dd_link_history" color="FFFFCC" x="2352" y="576" />
+		<entity schema="Default" name="dd_template" color="C1D8EE" x="1584" y="1088" />
+		<entity schema="Default" name="re_documenttree" color="FFEBEB" x="1104" y="2112" />
+		<entity schema="Default" name="re_document_history" color="FFFFCC" x="2592" y="576" />
+		<entity schema="Default" name="re_section_history" color="FFFFCC" x="2592" y="928" />
+		<entity schema="Default" name="re_section_ddo" color="FFEBEB" x="896" y="2592" />
+		<entity schema="Default" name="rp_lock" color="F0ECF7" x="1104" y="3264" />
+		<entity schema="Default" name="po_role" color="EEF7EC" x="160" y="2640" />
+		<entity schema="Default" name="sp_issue_history" color="3986C1" x="2880" y="608" />
+		<entity schema="Default" name="rp_project_member" color="F0ECF7" x="1360" y="2880" />
+		<entity schema="Default" name="po_role_member" color="EEF7EC" x="368" y="2272" />
+		<entity schema="Default" name="re_section" color="FFEBEB" x="1312" y="2000" />
+		<entity schema="Default" name="sp_script" color="FFCCFF" x="2192" y="2112" />
+		<entity schema="Default" name="sp_translation" color="FFCCFF" x="2192" y="2416" />
+		<entity schema="Default" name="dm_diagram" color="CCCCFF" x="2176" y="1248" />
+		<entity schema="Default" name="dd_def_link" color="ECECF7" x="928" y="848" />
+		<entity schema="Default" name="dd_def_attribute" color="ECECF7" x="1184" y="640" />
+		<entity schema="Default" name="dd_ddl_solution" color="C4E0F9" x="1520" y="672" />
+		<entity schema="Default" name="dd_def_enum" color="ECECF7" x="960" y="624" />
+		<entity schema="Default" name="dd_object_history" color="FFFFCC" x="2352" y="816" />
+		<entity schema="Default" name="ha_mitigation_assessment" color="FF00FF" x="1936" y="320" />
+		<entity schema="Default" name="ha_mitigation" color="FF00FF" x="1696" y="224" />
+		<entity schema="Default" name="ha_assessment" color="FF00FF" x="2224" y="176" />
+		<entity schema="Default" name="ha_assessment_history" color="3986C1" x="2624" y="272" />
+		<entity schema="Default" name="ha_mitigation_history" color="3986C1" x="2624" y="80" />
+		<entity schema="Default" name="ha_hazard" color="FF00FF" x="1424" y="160" />
+		<entity schema="Default" name="ha_hazard_history" color="3986C1" x="2448" y="80" />
+		<entity schema="Default" name="dm_item_history" color="3986C1" x="2928" y="1216" />
+		<entity schema="Default" name="dm_item" color="CCCCFF" x="2416" y="1264" />
+		<entity schema="Default" name="dm_diagram_history" color="3986C1" x="2704" y="1216" />
+		<entity schema="Default" name="dd_def_hierarchy" color="ECECF7" x="720" y="864" />
+		<entity schema="Default" name="ha_hazard_assessment" color="FF00FF" x="1984" y="160" />
+		<entity schema="Default" name="re_section_ddl" color="FFEBEB" x="896" y="2480" />
+		<entity schema="Default" name="sp_tags_ddo" color="FFCCFF" x="2400" y="1600" />
+		<entity schema="Default" name="sp_tags" color="FFCCFF" x="2576" y="1600" />
+		<entity schema="Default" name="cm_baseline" color="F7F3EC" x="352" y="1328" />
+		<entity schema="Default" name="cm_section_ddo" color="C1D8EE" x="80" y="704" />
+		<entity schema="Default" name="cm_document" color="F7F3EC" x="80" y="848" />
+		<entity schema="Default" name="cm_mitigation_assessment" color="F7F3EC" x="48" y="992" />
+		<entity schema="Default" name="cm_hazard_assessment" color="F7F3EC" x="80" y="1168" />
+		<entity schema="Default" name="cm_diagram" color="F7F3EC" x="80" y="1552" />
+		<entity schema="Default" name="cm_ddl" color="F7F3EC" x="80" y="1328" />
+		<entity schema="Default" name="cm_ddo" color="F7F3EC" x="80" y="1440" />
+		<entity schema="Default" name="re_section_dd" color="FFEBEB" x="1568" y="2000" />
+		<entity schema="Default" name="re_document" color="FFEBEB" x="1312" y="2256" />
+		<entity schema="Default" name="re_reportformat" color="FFEBEB" x="1840" y="2480" />
+		<entity schema="Default" name="re_layout" color="FFEBEB" x="1600" y="2480" />
+		<entity schema="Default" name="cm_request" color="F7F3EC" x="80" y="1696" />
+		<entity schema="Default" name="dd_ddo_solution" color="C4E0F9" x="1536" y="1584" />
+		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2416" y="1920" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
@@ -5939,7 +5907,6 @@ END;]]></string>
 			<entity schema="Default" name="cm_ddo" />
 			<entity schema="Default" name="cm_ddl" />
 			<entity schema="Default" name="cm_request" />
-			<entity schema="Default" name="cm_request_solution" />
 			<entity schema="Default" name="cm_hazard_assessment" />
 			<entity schema="Default" name="cm_diagram" />
 			<entity schema="Default" name="cm_mitigation_assessment" />
@@ -5959,7 +5926,6 @@ END;]]></string>
 			<entity schema="Default" name="re_documenttree" />
 			<entity schema="Default" name="re_template" />
 			<entity schema="Default" name="re_template_solution" />
-			<entity schema="Default" name="re_reportson" />
 			<entity schema="Default" name="re_section_ddl" />
 			<entity schema="Default" name="re_section_ddo" />
 			<entity schema="Default" name="re_section_dd" />

@@ -1,10 +1,3 @@
-CREATE TABLE cm_request ( 
-	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
-	description          text     ,
-	state                varchar(100) NOT NULL DEFAULT 'invalid'   ,
-	repository           char(38)     
- );
-
 CREATE TABLE da_analysis_definition ( 
 	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
 	project              char(38) NOT NULL    ,
@@ -484,13 +477,20 @@ CREATE TABLE sp_sys_log (
 	level                varchar(100) NOT NULL    ,
 	category             varchar(100)     ,
 	message              text     ,
-	orginator            varchar(38)  DEFAULT '<system>'   
+	originator           varchar(38)  DEFAULT '<system>'   
  );
 
 CREATE TABLE sp_tags ( 
 	name                 char(255) NOT NULL  PRIMARY KEY  ,
 	uuid                 char(38)     ,
 	CONSTRAINT Idx_sp_tags_uuid UNIQUE ( uuid ) 
+ );
+
+CREATE TABLE sp_tags_ddo ( 
+	ddo                  char(38) NOT NULL    ,
+	tag                  char(38) NOT NULL    ,
+	CONSTRAINT Pk_sp_tags_ddo PRIMARY KEY ( ddo, tag ),
+	FOREIGN KEY ( tag ) REFERENCES sp_tags( uuid )  
  );
 
 CREATE TABLE sp_translation ( 
@@ -599,17 +599,14 @@ CREATE TABLE cm_mitigation_assessment (
 
 CREATE INDEX Idx_cm_mitigation_assessment ON cm_mitigation_assessment ( bl_uuid, mn_uuid, mn_revision );
 
-CREATE TABLE cm_request_solution ( 
-	solution             char(38) NOT NULL    ,
-	request              char(38) NOT NULL    ,
-	CONSTRAINT pk_cm_variant_request PRIMARY KEY ( solution, request ),
-	FOREIGN KEY ( request ) REFERENCES cm_request( uuid ) ON DELETE CASCADE ,
-	FOREIGN KEY ( solution ) REFERENCES rp_solution_space( uuid ) ON DELETE CASCADE 
+CREATE TABLE cm_request ( 
+	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
+	dsuuid               char(38) NOT NULL    ,
+	description          text     ,
+	state                varchar(100) NOT NULL DEFAULT 'invalid'   ,
+	repository           char(38)     ,
+	FOREIGN KEY ( dsuuid ) REFERENCES rp_solution_space( uuid ) ON DELETE CASCADE ON UPDATE CASCADE
  );
-
-CREATE INDEX idx_cm_variant_request_request ON cm_request_solution ( request );
-
-CREATE INDEX idx_cm_variant_request_solution ON cm_request_solution ( solution );
 
 CREATE TABLE cm_section_ddo ( 
 	bl_uuid              char(38) NOT NULL    ,
@@ -1061,13 +1058,6 @@ CREATE INDEX idx_re_documenttree_parent ON re_documenttree ( parent );
 
 CREATE INDEX idx_re_documenttree_child ON re_documenttree ( child );
 
-CREATE TABLE re_reportson ( 
-	document             char(38) NOT NULL    ,
-	object               char(38) NOT NULL    ,
-	FOREIGN KEY ( document ) REFERENCES re_document( uuid )  ,
-	FOREIGN KEY ( object ) REFERENCES dd_ddo_solution( ddo )  
- );
-
 CREATE TABLE re_section ( 
 	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
 	document             char(38)     ,
@@ -1098,14 +1088,6 @@ CREATE TABLE re_section_dd (
  );
 
 CREATE INDEX Idx_re_section_dd ON re_section_dd ( sn_uuid, sn_revision );
-
-CREATE TABLE sp_tags_ddo ( 
-	ddo                  char(38) NOT NULL    ,
-	tag                  char(38) NOT NULL    ,
-	CONSTRAINT Pk_sp_tags_ddo PRIMARY KEY ( ddo, tag ),
-	FOREIGN KEY ( ddo ) REFERENCES dd_ddo_solution( ddo ) ON DELETE CASCADE ,
-	FOREIGN KEY ( tag ) REFERENCES sp_tags( uuid )  
- );
 
 CREATE TABLE dd_attribute_value ( 
 	dda                  char(38) NOT NULL    ,
