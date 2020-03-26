@@ -382,6 +382,16 @@ CREATE TABLE rp_solution_space (
 
 CREATE INDEX idx_dd_variant_project ON rp_solution_space ( project );
 
+CREATE TABLE rp_template ( 
+	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
+	id                   varchar(100) NOT NULL    ,
+	definition           text  DEFAULT '{}'   ,
+	cm_modified_by       char(38) NOT NULL    ,
+	cm_revision          integer  DEFAULT 0   ,
+	cm_timestamp         datetime NOT NULL DEFAULT CURRENT_TIMESTAMP   ,
+	CONSTRAINT unq_rp_template_id UNIQUE ( id ) 
+ );
+
 CREATE TABLE rp_transaction ( 
 	uuid                 char(38) NOT NULL  PRIMARY KEY  ,
 	name                 varchar(100)     ,
@@ -1849,18 +1859,15 @@ CREATE VIEW ip_assigned_members AS SELECT po.uuid AS po_uuid,
        INNER JOIN 
        po_ipt_member ip ON (ip.member=rpm.member);
 
-CREATE VIEW mb_assigned_projects AS SELECT pim.member AS mb_uuid,
+CREATE VIEW mb_assigned_projects AS
+    SELECT rpm.member AS mb_uuid,
            rpm.mode AS mb_mode,
            rp.uuid AS po_uuid,
            rp.name AS po_name,
            rp.state AS po_state
-      FROM po_ipt_member pim
+      FROM rp_project_member AS rpm
            INNER JOIN
-           rp_project_member rpm ON (pim.member=rpm.member AND pim.project=rpm.project) 
-           INNER JOIN
-           po_ipt pi ON (pim.ipt = pi.uuid) 
-           INNER JOIN
-           rp_project rp ON (pi.project = rp.uuid);
+           rp_project rp ON (rpm.project = rp.uuid);;
 
 CREATE VIEW mb_assigned_roles AS SELECT ro.project AS po_uuid,
        mb.uuid AS mb_uuid,

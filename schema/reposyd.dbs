@@ -1776,6 +1776,26 @@ Please refer to reposyd::ProjectState]]></comment>
 				<fk_column name="project" pk="uuid" />
 			</fk>
 		</table>
+		<table name="rp_template" >
+			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
+			<column name="id" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="definition" type="text" jt="-1" >
+				<defo>&#039;{}&#039;</defo>
+			</column>
+			<column name="cm_modified_by" type="char" length="38" jt="1" mandatory="y" />
+			<column name="cm_revision" type="integer" jt="4" >
+				<defo>0</defo>
+			</column>
+			<column name="cm_timestamp" type="datetime" jt="93" mandatory="y" >
+				<defo>CURRENT_TIMESTAMP</defo>
+			</column>
+			<index name="Pk_rp_template_uuid" unique="PRIMARY_KEY" >
+				<column name="uuid" />
+			</index>
+			<index name="unq_rp_template_id" unique="UNIQUE" >
+				<column name="id" />
+			</index>
+		</table>
 		<table name="rp_transaction" generator_rows="100" >
 			<comment><![CDATA[Contains the transaction used to control. Transactions common accross all projects defined in the repository.]]></comment>
 			<column name="uuid" type="char" length="38" jt="1" mandatory="y" />
@@ -3386,18 +3406,15 @@ SELECT *
 			<column name="mb_repository" type="char" />
 		</view>
 		<view name="mb_assigned_projects" >
-			<view_script><![CDATA[SELECT pim.member AS mb_uuid,
+			<view_script><![CDATA[CREATE VIEW mb_assigned_projects AS
+    SELECT rpm.member AS mb_uuid,
            rpm.mode AS mb_mode,
            rp.uuid AS po_uuid,
            rp.name AS po_name,
            rp.state AS po_state
-      FROM po_ipt_member pim
+      FROM rp_project_member AS rpm
            INNER JOIN
-           rp_project_member rpm ON (pim.member=rpm.member AND pim.project=rpm.project) 
-           INNER JOIN
-           po_ipt pi ON (pim.ipt = pi.uuid) 
-           INNER JOIN
-           rp_project rp ON (pi.project = rp.uuid)]]></view_script>
+           rp_project rp ON (rpm.project = rp.uuid);]]></view_script>
 			<column name="mb_uuid" type="char" />
 			<column name="mb_mode" type="varchar" />
 			<column name="po_uuid" type="char" />
@@ -5861,6 +5878,7 @@ END;]]></string>
 		<entity schema="Default" name="cm_request" color="F7F3EC" x="80" y="1696" />
 		<entity schema="Default" name="dd_ddo_solution" color="C4E0F9" x="1536" y="1584" />
 		<entity schema="Default" name="sp_sys_log" color="FFCCFF" x="2416" y="1920" />
+		<entity schema="Default" name="rp_template" color="F0ECF7" x="1136" y="2864" />
 		<group name="repository (rp)" color="F0ECF7" >
 			<entity schema="Default" name="rp_project" />
 			<entity schema="Default" name="rp_member" />
@@ -5871,6 +5889,7 @@ END;]]></string>
 			<entity schema="Default" name="rp_config" />
 			<entity schema="Default" name="rp_member_settings" />
 			<entity schema="Default" name="rp_project_config" />
+			<entity schema="Default" name="rp_template" />
 		</group>
 		<group name="design data (dd)" color="C4E0F9" >
 			<entity schema="Default" name="dd_link" />
