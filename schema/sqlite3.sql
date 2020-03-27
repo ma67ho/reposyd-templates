@@ -1349,34 +1349,6 @@ CREATE VIEW dac_result_properties AS SELECT dac.solution AS ds_uuid,
        LEFT JOIN
        da_analysis_result_properties dap ON (dap.result=dar.uuid);
 
-CREATE VIEW dbs_validate_view AS SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;;
-
-SELECT dm.solution AS ds_uuid,
-           di.uuid AS di_uuid,
-           dm.uuid AS dm_uuid,
-           dm.type AS dm_type,
-           di.type AS di_type,
-           di.properties AS di_properties,
-           di.ddoddl AS di_ddoddl,
-           di.ghost AS di_ghost,
-           di.revision_from AS di_revision_from,
-           di.cm_revision AS di_cm_revision
-      FROM dm_item AS di
-           LEFT JOIN
-           dm_diagram dm ON (dm.uuid = di.diagram) 
-     WHERE di.revision_to = -1;;
-
 CREATE VIEW dd_hierarchy AS SELECT dh.project AS po_uuid,
            dh.uuid AS dh_uuid,
            dh.name AS dh_name,
@@ -1410,7 +1382,7 @@ CREATE VIEW dm_diagrams AS SELECT dm.solution AS ds_uuid,
        sp_translation tr ON (tr.uuid = dm.uuid)
   WHERE dm.cm_deleted = 0;
 
-SELECT dm.solution AS ds_uuid,
+CREATE VIEW dm_items AS SELECT dm.solution AS ds_uuid,
            di.uuid AS di_uuid,
            dm.uuid AS dm_uuid,
            dm.type AS dm_type,

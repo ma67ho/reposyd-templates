@@ -2440,37 +2440,6 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="mb_account" type="varchar" />
 			<column name="mb_name" type="varchar" />
 		</view>
-		<view name="dbs_validate_view" >
-			<view_script><![CDATA[
-    SELECT dm.solution AS ds_uuid,
-           di.uuid AS di_uuid,
-           dm.uuid AS dm_uuid,
-           dm.type AS dm_type,
-           di.type AS di_type,
-           di.properties AS di_properties,
-           di.ddoddl AS di_ddoddl,
-           di.ghost AS di_ghost,
-           di.revision_from AS di_revision_from,
-           di.cm_revision AS di_cm_revision
-      FROM dm_item AS di
-           LEFT JOIN
-           dm_diagram dm ON (dm.uuid = di.diagram) 
-     WHERE di.revision_to = -1;]]></view_script>
-		</view>
-		<view name="dbs_validate_view" >
-			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
-       di.uuid AS di_uuid,
-       dm.uuid AS dm_uuid,
-       di.type AS di_type,
-       di.properties AS di_properties,
-       di.ddoddl AS di_ddoddl,
-       di.ghost AS di_ghost,
-       di.revision_from AS di_revision_from
-  FROM dm_item AS di
-       LEFT JOIN
-       dm_diagram dm ON (dm.uuid = di.diagram) 
- WHERE di.revision_to = -1;]]></view_script>
-		</view>
 		<view name="dd_hierarchy" >
 			<view_script><![CDATA[SELECT dh.project AS po_uuid,
            dh.uuid AS dh_uuid,
@@ -2531,8 +2500,7 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="cm_timestamp" type="datetime" />
 		</view>
 		<view name="dm_items" >
-			<view_script><![CDATA[
-    SELECT dm.solution AS ds_uuid,
+			<view_script><![CDATA[SELECT dm.solution AS ds_uuid,
            di.uuid AS di_uuid,
            dm.uuid AS dm_uuid,
            dm.type AS dm_type,
@@ -2549,11 +2517,13 @@ INNER JOIN re_documents dt ON (dt.dt_uuid=lck.dd_uuid)]]></view_script>
 			<column name="ds_uuid" type="char" />
 			<column name="di_uuid" type="char " />
 			<column name="dm_uuid" type="char" />
+			<column name="dm_type" type="char" />
 			<column name="di_type" type="varchar " />
 			<column name="di_properties" type="text" />
 			<column name="di_ddoddl" type="char " />
 			<column name="di_ghost" type="boolean" />
 			<column name="di_revision_from" type="integer" />
+			<column name="di_cm_revision" type="integer" />
 		</view>
 		<view name="do_template" >
 			<view_script><![CDATA[SELECT dd.project AS po_uuid,
@@ -7341,8 +7311,7 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 		<entity schema="Default" name="ac_locked_dt" color="994D66" x="1920" y="1696" />
 		<entity schema="Default" name="ip_assigned_members" color="3986C1" x="1168" y="1376" />
 		<entity schema="Default" name="sp_scripts" color="3986C1" x="1360" y="976" />
-		<entity schema="Default" name="dm_diagrams" color="3986C1" x="1136" y="3584" />
-		<entity schema="Default" name="dm_items" color="3986C1" x="1344" y="3568" />
+		<entity schema="Default" name="dm_diagrams" color="C4E0F9" x="1136" y="3584" />
 		<entity schema="Default" name="ha_assessments" color="3986C1" x="832" y="1008" />
 		<entity schema="Default" name="ha_hazards" color="3986C1" x="640" y="1008" />
 		<entity schema="Default" name="ha_hazard_assessments" color="3986C1" x="624" y="1232" />
@@ -7359,6 +7328,7 @@ CREATE INDEX idx_dm_item ON dm_item_history ( uuid, revision );
 		<entity schema="Default" name="ds_ddo_na" color="C4E0F9" x="48" y="1808" />
 		<entity schema="Default" name="ds_ddo" color="C4E0F9" x="48" y="1472" />
 		<entity schema="Default" name="ds_ddo_history" color="C4E0F9" x="256" y="1472" />
+		<entity schema="Default" name="dm_items" color="C4E0F9" x="1408" y="3568" />
 		<group name="report engine (re)" color="C4E0F9" >
 			<entity schema="Default" name="re_sections" />
 			<entity schema="Default" name="re_templates" />
