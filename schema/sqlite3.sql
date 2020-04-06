@@ -22,17 +22,18 @@ CREATE INDEX Idx_dd_attribute_history_ddo ON dd_attribute_history ( ddo, ddo_rev
 CREATE TABLE dd_ddl_solution_history ( 
 	solution             char(38) NOT NULL    ,
 	ddl                  char(38) NOT NULL    ,
-	leftFrom             integer     ,
-	leftTo               integer     ,
-	rightFrom            integer     ,
-	rightTo              integer     ,
-	revision             integer     ,
-	acceptedBy           char(38)     ,
-	acceptedRevisionLeft integer  DEFAULT -1   ,
-	acceptedRevisionRight integer  DEFAULT -1   ,
-	acceptedState        varchar(100)     ,
-	modifiedBy           char(38)     ,
-	timestamp            datetime  DEFAULT CURRENT_TIMESTAMP   
+	left_from            integer     ,
+	left_to              integer     ,
+	right_from           integer     ,
+	right_to             integer     ,
+	accepted_by          char(38)     ,
+	accepted_revision_left integer  DEFAULT -1   ,
+	accepted_revision_right integer  DEFAULT -1   ,
+	accepted_state       varchar(100)     ,
+	accepted_comment     varchar(255)     ,
+	cm_modified_by       char(38)     ,
+	cm_revision          integer     ,
+	cm_timestamp         datetime  DEFAULT CURRENT_TIMESTAMP   
  );
 
 CREATE INDEX idx_dd_variant_ddl_solution_0 ON dd_ddl_solution_history ( solution );
@@ -1865,11 +1866,11 @@ CREATE VIEW mb_assigned_solutions AS SELECT po.uuid AS po_uuid,
        po.description AS po_description,
        po.properties AS po_properties,
        po.repository AS po_repository,
-       so.uuid AS so_uuid,
-       so.name AS so_name,
-       so.description AS so_description,
-       so.enabled AS so_enabled,
-       so.readonly AS so_readonly,
+       so.uuid AS ds_uuid,
+       so.name AS ds_name,
+       so.description AS ds_description,
+       so.enabled AS ds_enabled,
+       so.readonly AS ds_readonly,
        ap.mb_uuid,
        ap.mb_mode
   FROM mb_assigned_projects AS ap
@@ -1877,7 +1878,7 @@ CREATE VIEW mb_assigned_solutions AS SELECT po.uuid AS po_uuid,
        rp_solution_space AS so ON (so.project = ap.po_uuid) 
        INNER JOIN
        rp_project po ON (po.uuid = ap.po_uuid) 
- ORDER BY po_uuid;;
+ ORDER BY po_uuid;
 
 CREATE VIEW mb_assigned_teams AS SELECT rp.uuid AS po_uuid,
            pim.member AS mb_uuid,
@@ -2187,10 +2188,12 @@ CREATE VIEW ro_assigned_teammembers AS SELECT rp_project_member.project AS po_uu
        rp_member ON (rp_member.uuid = rp_project_member.member);
 
 CREATE VIEW rp_members AS SELECT mb.account AS mb_account,
+       mb.email AS mb_email,
+       mb.phone AS mb_phone,
        mb.name AS mb_name,
        mb.radmin AS mb_radmin,
        mb.uuid AS mb_uuid,
-	   mb.password AS mb_passwd,
+       mb.password AS mb_passwd,
        mb.locked AS mb_locked,
        mb.repository AS mb_repository
   FROM rp_member mb;
@@ -2208,7 +2211,7 @@ CREATE VIEW rp_solutions AS SELECT project AS po_uuid,
        name AS ds_name,
        description AS ds_description,
        enabled AS ds_enabled,
-       readonly AS ds_readoly,
+       readonly AS ds_readonly,
        repository AS rp_uuid
   FROM rp_solution_space;;
 
@@ -2352,6 +2355,39 @@ CREATE VIEW tr_da_title AS SELECT group_concat(key || ':' || translation,',') AS
 WHERE
 code = 'de-DE'
 AND uuid='{5f5bd949-c8c8-4e74-960b-e30bd7ff4d18}';
+
+CREATE TRIGGER tg_dd_ddl_solution_au
+         AFTER UPDATE OF left_to,
+                         right_to,
+                         accepted_by,
+                         accepted_revision_left,
+                         accepted_revision_right,
+                         accepted_state,
+                         accepted_comment
+            ON dd_ddl_solution
+      FOR EACH ROW
+BEGIN
+    UPDATE dd_ddl_solution
+       SET cm_revision = cm_revision + 1,
+           cm_timestamp = CURRENT_TIMESTAMP
+     WHERE ddl = OLD.ddl;
+END;
+
+CREATE TRIGGER tg_dd_ddl_solution_bu
+        BEFORE UPDATE OF left_to,
+                         right_to,
+                         accepted_by,
+                         accepted_revision_left,
+                         accepted_revision_right,
+                         accepted_state,
+                         accepted_comment
+            ON dd_ddl_solution
+      FOR EACH ROW
+BEGIN
+    INSERT OR REPLACE INTO dd_ddl_solution_history SELECT *
+                                                     FROM dd_ddl_solution
+                                                    WHERE ddl = OLD.ddl;
+END;
 
 CREATE TRIGGER tg_dd_object_ai AFTER INSERT ON dd_object FOR EACH ROW BEGIN UPDATE dd_objectid SET nextId=nextId+1 WHERE ddo=NEW.definition; END
 
