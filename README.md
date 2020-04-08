@@ -1,1 +1,0 @@
-# reposyd-schema
