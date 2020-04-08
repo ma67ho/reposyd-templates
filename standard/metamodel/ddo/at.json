@@ -1,0 +1,57 @@
+{
+    "attributes": [{
+            "id": "title",
+            "name": {
+                "de-DE": "Titel",
+                "en-US": "Title"
+            },
+            "sortorder": 20,
+            "type": "string",
+            "properties": {
+                "length": 255,
+                "default": ""
+            }
+        },{
+            "id": "description",
+            "name": {
+                    "de-DE": "Beschreibung",
+                    "en-US": "Description"
+                },
+                "sortorder": 30,
+                "type": "text"
+            }, {
+                "id": "number",
+                "name": {
+                    "de-DE": "Nummer",
+                    "en-US": "Number"
+                },
+                "sortorder": 10,
+                "type": "string",
+                "properties": {
+                    "length": 255,
+                    "default": ""
+                }
+            }
+    ],
+    "description": "",
+    "icon": "",
+    "name": {
+        "de-DE": "Abnahmetest",
+        "en-US": "Acceptance Test"
+    },
+    "name_plural": {
+        "de-DE": "Abnahmetests",
+        "en-US": "Acceptance Test"
+    },
+    "id": "AT",
+    "domain": "design",
+    "properties": {
+        "color": {
+            "background": "indianred",
+            "border": "indianred"
+        },
+        "font": {
+            "color": "white"
+        }
+    }
+}

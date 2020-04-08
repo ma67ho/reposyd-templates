@@ -1,0 +1,69 @@
+{
+  "acl": {
+    "change": {
+      "owner": "acl.change.owner",
+      "reponsiblity": "acl.change.responsibility"
+    },
+    "member": {
+      "assignrelease": "acl.member.assignrelease"
+    },
+    "role": {
+      "assignrelease": "acl.role.assignrelease"
+    },
+    "team": {
+      "assignrelease": "acl.team.assignrelease",
+      "create": "acl.team.create",
+      "modify": "acl.team.modify",
+      "remove": "acl.team.remove"
+    },
+    "user": {
+      "manage": "acl.user.manage"
+    }
+  },
+  "analysis": {
+    "analyze": "analysis.analyze",
+    "management": "analysis.management"
+  },
+  "ddl": {
+    "accept": "ddl.accept",
+    "link": "ddl.link",
+    "unlink": "ddl.unlink"
+  },
+  "ddo": {
+    "create": "ddo.create",
+    "delete": "ddo.delete",
+    "modify": "ddo.modify",
+    "restore": "ddo.restore",
+    "undelete": "ddo.undelete"
+  },
+  "metaModel": {
+    "modify": "metamodel.modify"
+  },
+  "reportEngine": {
+    "document": {
+      "cud": "reportengine.document.cud"
+    },
+    "layout": {
+      "cud": "reportengine.document.cud"
+    },
+    "section": {
+      "cud": "reportengine.section.cud"
+    },
+    "template": {
+      "manage": "reportengine.template.manage"
+    }
+  },
+  "script": {
+    "execute": "script.execute",
+    "cud": "script.manage"
+  },
+  "template": {
+    "manage": "template.manage"
+  },
+  "verification": {
+    "test": {
+      "execute": "verification.test.execute",
+      "manage": "verification.test.manage"
+    }
+  }
+}

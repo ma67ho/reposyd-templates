@@ -1,0 +1,25 @@
+[
+  {
+      "foreward": {
+          "id": "forcedby",
+          "name": {
+              "de-DE": "getrieben durch",
+              "en-US": "forced by"
+          },
+          "cardinality": "one2one"
+      },
+      "left": "RT",
+      "right": "SE",
+      "reverse": {
+          "id": "drives",
+          "name": {
+              "de-DE": "treibt",
+              "en-US": "forces"
+          },
+          "cardinality": "one2many"
+      },
+      "roles": {
+
+      }
+  }
+]

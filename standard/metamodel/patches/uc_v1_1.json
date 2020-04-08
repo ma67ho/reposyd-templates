@@ -1,0 +1,213 @@
+{
+  "title": {
+    "de-DE": "Aktualiasiert das Anwendungsfall Modell",
+    "en-US": "Update Use Case Model"
+  },
+  "description": {
+    "de-DE": "",
+    "en-US": "This patch updates the Use Case object and adds a Stake Holder as a new object"
+  },
+  "ddl": {
+    "add": [
+      {
+        "foreward": {
+          "id": "requiredby",
+          "name": {
+            "de-DE": "verlangt von",
+            "en-US": "required by"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "SR",
+        "reverse": {
+          "id": "requires",
+          "name": {
+            "de-DE": "verlangt",
+            "en-US": "requires"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": ["repositorymanager", "requirementsmanager"]
+      }
+    ]
+  },
+  "ddo": {
+    "add": [
+      {
+        "attributes": [
+          {
+            "id": "number",
+            "description": {
+              "de-DE": "",
+              "en-US": ""
+            },
+            "name": {
+              "de-DE": "Nummer",
+              "en-US": "Number"
+            },
+            "sortorder": 10,
+            "type": "string",
+            "properties": {
+              "default": ""
+            }
+          },
+          {
+            "id": "title",
+            "name": {
+              "de-DE": "Titel",
+              "en-US": "Title"
+            },
+            "sortorder": 20,
+            "type": "string",
+            "properties": {
+              "length": 255,
+              "default": ""
+            }
+          },
+          {
+            "id": "description",
+            "name": {
+              "de-DE": "Beschreibung",
+              "en-US": "Description"
+            },
+            "sortorder": 100,
+            "type": "text",
+            "properties": {}
+          },
+          {
+            "id": "levelofimpact",
+            "description": {
+              "de-DE": "",
+              "en-US": ""
+            },
+            "name": {
+              "de-DE": "Auswirkungsgrad",
+              "en-US": "Level of Impact"
+            },
+            "sortorder": 200,
+            "type": "enumeration",
+            "properties": {
+              "enumeration": {
+                "mandatory": {
+                  "values": {
+                    "de-DE": "hoch",
+                    "en-US": "high"
+                  },
+                  "properties": {
+                    "backgroundColor": "firebrick"
+                  }
+                },
+                "low": {
+                  "values": {
+                    "de-DE": "niedrig",
+                    "en-US": "low"
+                  },
+                  "properties": {
+                    "backgroundColor": "limegreen"
+                  }
+                },
+                "medium": {
+                  "values": {
+                    "de-DE": "mittel",
+                    "en-US": "medium"
+                  },
+                  "properties": {
+                    "backgroundColor": "orange"
+                  }
+                },
+                "pending": {
+                  "values": {
+                    "de-DE": "ausstehend",
+                    "en-US": "pending"
+                  },
+                  "properties": {
+                    "backgroundColor": "lightslategray"
+                  }
+                }
+              },
+              "default": "pending"
+            }
+          }
+        ],
+        "description": "",
+        "icon": "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",
+        "name": {
+          "de-DE": "Interessengruppe",
+          "en-US": "Stakeholder"
+        },
+        "name_plural": {
+          "de-DE": "Interessengruppen",
+          "en-US": "Stakeholder"
+        },
+        "id": "SR",
+        "domain": "systemdesign",
+        "properties": {
+          "color": {
+            "background": "olivedrab",
+            "border": "olivedrab"
+          },
+          "font": {
+            "color": "white"
+          }
+        },
+        "roles": ["repositorymanager", "requirementsmanager"]
+      }
+    ],
+    "modify": {
+      "RT": {
+        "modify": {
+          "attribute": [
+            {
+              "id": "type",
+              "enumeration": {
+                "add": {
+                  "stakeholder": {
+                    "values": {
+                      "de-DE": "Interessengruppe",
+                      "en-US": "Stakeholder"
+                    },
+                    "properties": {
+                      "backgroundColor": null
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "UC": {
+        "add": {
+          "attribute": [
+            {
+              "id": "trigger",
+              "name": {
+                "de-DE": "Auslöser",
+                "en-US": "Trigger"
+              },
+              "sortorder": 110,
+              "type": "text",
+              "properties": {}
+            },
+            {
+              "id": "preconditions",
+              "name": {
+                "de-DE": "Vorbedingungen",
+                "en-US": "Preconditions"
+              },
+              "sortorder": 120,
+              "type": "text",
+              "properties": {}
+            }
+          ]
+        },
+        "modify": {
+          "property": {
+            
+          }
+        }
+      }
+    }
+  }
+}

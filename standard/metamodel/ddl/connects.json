@@ -1,0 +1,42 @@
+[
+    {
+        "foreward": {
+            "id": "connects",
+            "name": {
+                "de-DE": "verbindet",
+                "en-US": "connects"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "SI",
+        "right": "SE",
+        "reverse": {
+            "id": "connectedto",
+            "name": {
+                "de-DE": "verbunden mit",
+                "en-US": "connected to"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "connects",
+            "name": {
+                "de-DE": "verbindet",
+                "en-US": "connects"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "IE",
+        "right": "ET",
+        "reverse": {
+            "id": "connectedto",
+            "name": {
+                "de-DE": "verbunden mit",
+                "en-US": "connected to"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

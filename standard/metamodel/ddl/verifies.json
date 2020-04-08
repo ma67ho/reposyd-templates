@@ -1,0 +1,22 @@
+[
+    {
+        "foreward": {
+            "id": "verifies",
+            "name": {
+                "de-DE": "verifiziert",
+                "en-US": "verifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "TT",
+        "right": "RT",
+        "reverse": {
+            "id": "verifiedby",
+            "name": {
+                "de-DE": "verifiziert durch",
+                "en-US": "verified by"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

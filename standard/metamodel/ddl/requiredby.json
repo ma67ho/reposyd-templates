@@ -1,0 +1,25 @@
+[
+  {
+      "foreward": {
+          "id": "requiredby",
+          "name": {
+              "de-DE": "verlangt von",
+              "en-US": "required by"
+          },
+          "cardinality": "one2many"
+      },
+      "left": "RT",
+      "right": "SR",
+      "reverse": {
+          "id": "requires",
+          "name": {
+              "de-DE": "verlangt",
+              "en-US": "requires"
+          },
+          "cardinality": "one2many"
+      },
+      "roles": {
+
+      }
+  }
+]

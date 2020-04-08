@@ -1,0 +1,22 @@
+[
+    {
+        "foreward": {
+            "id": "followsfrom",
+            "name": {
+                "de-DE": "folgt aus",
+                "en-US": "follows from"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "DN",
+        "reverse": {
+            "id": "justifies",
+            "name": {
+                "de-DE": "begründet",
+                "en-US": "justifies"
+            },
+            "cardinality": "one2many"
+        }
+    }	
+]

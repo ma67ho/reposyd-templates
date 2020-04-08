@@ -1,0 +1,45 @@
+ {
+     "attributes": [{
+            "id": "description",
+            "name": {
+                 "de-DE": "Beschreibung",
+                 "en-US": "Description"
+             },
+             "sortorder": 20,
+             "type": "text"
+         }, {
+            "id": "title",
+             "name": {
+                 "de-DE": "Titel",
+                 "en-US": "Title"
+             },
+             "sortorder": 10,
+             "type": "string",
+             "properties": {
+                 "length": 255,
+                 "default": ""
+             }
+         }
+     ],
+     "description": "",
+     "icon": "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",
+     "name": {
+         "de-DE": "Schnittstelle",
+         "en-US": "Interface"
+     },
+     "name_plural": {
+        "de-DE": "Schnittstellen",
+        "en-US": "Interfaces"
+    },
+    "id": "IE",
+     "domain": "systemdesign",
+     "properties": {
+         "color": {
+             "background": "steelblue",
+             "border": "steelblue"
+         },
+         "font": {
+             "color": "white"
+         }
+     }
+ }

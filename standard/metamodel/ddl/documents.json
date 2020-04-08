@@ -1,0 +1,22 @@
+[
+    {
+        "foreward": {
+            "id": "documents",
+            "name": {
+                "de-DE": "dokumentiert",
+                "en-US": "documents"
+            },
+            "cardinality": "one2one"
+        },
+        "left": "AT",
+        "right": "TR",
+        "reverse": {
+            "id": "documentedby",
+            "name": {
+                "de-DE": "dokumentiert durch",
+                "en-US": "documented by"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

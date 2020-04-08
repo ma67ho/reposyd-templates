@@ -1,0 +1,42 @@
+[
+    {
+        "foreward": {
+            "id": "implements",
+            "name": {
+                "de-DE": "implementiert",
+                "en-US": "implements"
+            },
+            "cardinality": "one2one"
+        },
+        "left": "ET",
+        "right": "SE",
+        "reverse": {
+            "id": "madeupfrom",
+            "name": {
+                "de-DE": "gebildet aus",
+                "en-US": "made up from"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "implements",
+            "name": {
+                "de-DE": "implementiert",
+                "en-US": "implements"
+            },
+            "cardinality": "one2one"
+        },
+        "left": "IE",
+        "right": "SI",
+        "reverse": {
+            "id": "madeupfrom",
+            "name": {
+                "de-DE": "gebildet aus",
+                "en-US": "made up from"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

@@ -1,0 +1,257 @@
+{
+  "key": "hazardanalysis.config.risklevel",
+  "value": [
+    {
+      "severity": 1,
+      "criticality": {
+        "min": 3,
+        "max": 4
+      },
+      "label": {
+        "de-DE": "niedrig",
+        "en-US": "low"
+      },
+      "style": "background-color: limegreen; color: white"
+    },
+    {
+      "severity": 1,
+      "criticality": {
+        "min": 5,
+        "max": 7
+      },
+      "label": {
+        "de-DE": "niedrig",
+        "en-US": "low"
+      },
+      "style": "background-color: limegreen; color: white"
+    },
+    {
+      "severity": 1,
+      "criticality": {
+        "min": 6,
+        "max": 8
+      },
+      "label": {
+        "de-DE": "niedrig",
+        "en-US": "low"
+      },
+      "style": "background-color: limegreen; color: white"
+    },
+    {
+      "severity": 1,
+      "criticality": {
+        "min": 8,
+        "max": 10
+      },
+      "label": {
+        "de-DE": "niedrig",
+        "en-US": "low"
+      },
+      "style": "background-color: limegreen; color: white"
+    },
+    {
+      "severity": 1,
+      "criticality": {
+        "min": 11,
+        "max": 13
+      },
+      "label": {
+        "de-DE": "niedrig",
+        "en-US": "low"
+      },
+      "style": "background-color: yellow"
+    },
+    {
+      "severity": 1,
+      "criticality": {
+        "min": 14,
+        "max": 15
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "high"
+      },
+      "style": "background-color: firebrick; color: white"
+    },
+    {
+      "severity": 2,
+      "criticality": {
+        "min": 3,
+        "max": 4
+      },
+      "label": {
+        "de-DE": "niedrig",
+        "en-US": "low"
+      },
+      "style": "background-color: limegreen; color: white"
+    },
+    {
+      "severity": 2,
+      "criticality": {
+        "min": 5,
+        "max": 7
+      },
+      "label": {
+        "de-DE": "niedrig",
+        "en-US": "low"
+      },
+      "style": "background-color: limegreen; color: white"
+    },
+    {
+      "severity": 2,
+      "criticality": {
+        "min": 8,
+        "max": 10
+      },
+      "label": {
+        "de-DE": "niedrig",
+        "en-US": "low"
+      },
+      "style": "background-color: yellow"
+    },
+    {
+      "severity": 2,
+      "criticality": {
+        "min": 11,
+        "max": 13
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "high"
+      },
+      "style": "background-color: firebrick; color: white"
+    },
+    {
+      "severity": 2,
+      "criticality": {
+        "min": 14,
+        "max": 15
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "high"
+      },
+      "style": "background-color: firebrick; color: white"
+    },
+    {
+      "severity": 3,
+      "criticality": {
+        "min": 3,
+        "max": 4
+      },
+      "label": {
+        "de-DE": "niedrig",
+        "en-US": "low"
+      },
+      "style": "background-color: limegreen; color: white"
+    },
+    {
+      "severity": 3,
+      "criticality": {
+        "min": 5,
+        "max": 7
+      },
+      "label": {
+        "de-DE": "mittel",
+        "en-US": "medium"
+      },
+      "style": "background-color: yellow"
+    },
+    {
+      "severity": 3,
+      "criticality": {
+        "min": 8,
+        "max": 10
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "high"
+      },
+      "style": "background-color: firebrick; color: white"
+    },
+    {
+      "severity": 3,
+      "criticality": {
+        "min": 11,
+        "max": 13
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "high"
+      },
+      "style": "background-color: firebrick; color: white"
+    },
+    {
+      "severity": 3,
+      "criticality": {
+        "min": 14,
+        "max": 15
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "high"
+      },
+      "style": "background-color: firebrick; color: white"
+    },
+    {
+      "severity": 4,
+      "criticality": {
+        "min": 3,
+        "max": 4
+      },
+      "label": {
+        "de-DE": "mittel",
+        "en-US": "medium"
+      },
+      "style": "background-color: yellow"
+    },
+    {
+      "severity": 4,
+      "criticality": {
+        "min": 5,
+        "max": 7
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "hoch"
+      },
+      "style": "background-color: firebrick; color: white"
+    },
+    {
+      "severity": 4,
+      "criticality": {
+        "min": 8,
+        "max": 10
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "hoch"
+      },
+      "style": "background-color: firebrick; color: white"
+    },
+    {
+      "severity": 4,
+      "criticality": {
+        "min": 11,
+        "max": 13
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "hoch"
+      },
+      "style": "background-color: firebrick; color: white"
+    },
+    {
+      "severity": 4,
+      "criticality": {
+        "min": 14,
+        "max": 15
+      },
+      "label": {
+        "de-DE": "hoch",
+        "en-US": "hoch"
+      },
+      "style": "background-color: firebrick; color: white"
+    }
+  ]
+}

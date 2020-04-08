@@ -1,0 +1,79 @@
+{
+  "projectmanager": {
+    "name": {
+      "de-DE": "Projektmanager",
+      "en-US": "Project Manager"
+    },
+    "state": "enabled",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    }
+  },
+  "requirementsmanager": {
+    "name": {
+      "de-DE": "Anforderungsmanager",
+      "en-US": "Requirements Manager"
+    },
+    "state": "enabled",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    }
+  },
+  "repositorymanager": {
+    "name": {
+      "de-DE": "Repositorymanager",
+      "en-US": "Repository Manager"
+    },
+    "state": "enabled",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    }
+  },
+  "riskmanager": {
+    "name": {
+      "de-DE": "Risikomanager",
+      "en-US": "Risk Manager"
+    },
+    "state": "enabled",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    }
+  },
+  "safetyengineer": {
+    "name": {
+      "de-DE": "Sicherheitsingenieur",
+      "en-US": "Safety Engineer"
+    },
+    "state": "enabled",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    }
+  },
+  "systemengineer": {
+    "name": {
+      "de-DE": "Systemingenieur",
+      "en-US": "System Engineer"
+    },
+    "state": "enabled",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    }
+  },
+  "verificationengineer": {
+    "name": {
+      "de-DE": "Prüfingenieur",
+      "en-US": "Verification Engineer"
+    },
+    "state": "enabled",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    }
+  }
+}

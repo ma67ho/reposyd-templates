@@ -1,0 +1,86 @@
+{
+  "projectmanager": {
+    "ddo": [
+      {
+        "id": "TK",
+        "transaction": "ddo.*"
+      },
+      {
+        "id": "WP",
+        "transaction": "ddo.*"
+      }
+    ],
+    "transaction": []
+  },
+  "requirementsmanager": {
+    "ddo": [
+      {
+        "id": "ND",
+        "transaction": "ddo.*"
+      },
+      {
+        "id": "RT",
+        "transaction": "ddo.*"
+      }
+    ],
+    "transaction": []
+  },
+  "repositorymanager": {
+    "ddl": [
+      {
+        "id": "*",
+        "transaction": "ddo.*"
+      }
+    ],
+    "ddo": [
+      {
+        "id": "*",
+        "transaction": "ddo.*"
+      }
+    ],
+    "transaction": "*"
+  },
+  "riskmanager": {
+    "ddo": [
+      {
+        "id": "RK",
+        "transaction": "ddo.*"
+      }
+    ],
+    "transaction": []
+  },
+  "systemengineer": {
+    "ddo": [
+      {
+        "id": "CY",
+        "transaction": "ddo.*"
+      },
+      {
+        "id": "FN",
+        "transaction": "ddo.*"
+      },
+      {
+        "id": "SE",
+        "transaction": "ddo.*"
+      },
+      {
+        "id": "SI",
+        "transaction": "ddo.*"
+      }
+    ],
+    "transaction": []
+  },
+  "verificationengineer": {
+    "ddo": [
+      {
+        "id": "TR",
+        "transaction": "ddo.*"
+      },
+      {
+        "id": "TT",
+        "transaction": "ddo.*"
+      }
+    ],
+    "transaction": []
+  }
+}

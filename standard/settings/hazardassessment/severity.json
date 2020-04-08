@@ -1,0 +1,40 @@
+{
+  "key": "hazardanalysis.config.severity",
+  "value": [
+    {
+      "value": 0,
+      "label": {
+        "de-DE": "ausstehend",
+        "en-US": "pending"
+      }
+    },
+    {
+      "value": 1,
+      "label": {
+        "de-DE": "Reversibel: erste Hilfe erforderlich",
+        "en-US": "Reversible: first aid required"
+      }
+    },
+    {
+      "value": 2,
+      "label": {
+        "de-DE": "Reversibel: Behandlung durch einen Mediziner erforderlich",
+        "en-US": "Reversible: medical attention required"
+      }
+    },
+    {
+      "value": 3,
+      "label": {
+        "de-DE": "Irreversibel: gebrochene Gliedmaßen, Verluste eines oder mehrerer Finger",
+        "en-US": "Irreversible: broken limbs, loss of one or more fingers"
+      }
+    },
+    {
+      "value": 4,
+      "label": {
+        "de-DE": "irreversibel: Tod, Verlust eins Auges oder Arms",
+        "en-US": "irreversible: Death, loss of an eye or arm"
+      }
+    }
+  ]
+}

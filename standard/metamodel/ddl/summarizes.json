@@ -1,0 +1,22 @@
+[
+    {
+        "foreward": {
+            "id": "summarizes",
+            "name": {
+                "de-DE": "fasst zusammen",
+                "en-US": "summarizes"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "FE",
+        "right": "RT",
+        "reverse": {
+            "id": "summarizedin",
+            "name": {
+                "de-DE": "zusammengefasst in",
+                "en-US": "summarized in"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

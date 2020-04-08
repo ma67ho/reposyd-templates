@@ -1,0 +1,122 @@
+[
+  {
+    "foreward": {
+      "id": "appliesto",
+      "name": {
+        "de-DE": "gilt für",
+        "en-US": "applies to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "ND",
+    "right": "ET",
+    "reverse": {
+      "id": "applies",
+      "name": {
+        "de-DE": "wendet an",
+        "en-US": "applies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "appliesto",
+      "name": {
+        "de-DE": "gilt für",
+        "en-US": "applies to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "ND",
+    "right": "FN",
+    "reverse": {
+      "id": "applies",
+      "name": {
+        "de-DE": "wendet an",
+        "en-US": "applies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "appliesto",
+      "name": {
+        "de-DE": "gilt für",
+        "en-US": "applies to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "ND",
+    "right": "IE",
+    "reverse": {
+      "id": "applies",
+      "name": {
+        "de-DE": "wendet an",
+        "en-US": "applies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "appliesto",
+      "name": {
+        "de-DE": "gilt für",
+        "en-US": "applies to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "ND",
+    "right": "RT",
+    "reverse": {
+      "id": "applies",
+      "name": {
+        "de-DE": "wendet an",
+        "en-US": "applies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "appliesto",
+      "name": {
+        "de-DE": "gilt für",
+        "en-US": "applies to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "ND",
+    "right": "SE",
+    "reverse": {
+      "id": "determinedby",
+      "name": {
+        "de-DE": "bestimmt durch",
+        "en-US": "determined by"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "appliesto",
+      "name": {
+        "de-DE": "gilt für",
+        "en-US": "applies to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "ND",
+    "right": "SI",
+    "reverse": {
+      "id": "applies",
+      "name": {
+        "de-DE": "wendet an",
+        "en-US": "applies"
+      },
+      "cardinality": "one2many"
+    }
+  }
+]

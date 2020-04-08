@@ -1,0 +1,75 @@
+{
+  "key": "hazardanalysis.config.mitigation.typeofmeasure",
+  "value": [
+    {
+      "value": "pending",
+      "label": {
+        "de-DE": "ausstehend",
+        "en-US": "pending"
+      }
+    },
+    {
+      "value": "SMK",
+      "label": {
+        "de-DE": "Sichere mechanische Konstruktion",
+        "en-US": "Safe Mechanical Construction"
+      }
+    },
+    {
+      "value": "EMS",
+      "label": {
+        "de-DE": "Ergänzende mechanische Konstruktion",
+        "en-US": "Supplementary Mechanical Protective Device"
+      }
+    },
+    {
+      "value": "SSK",
+      "label": {
+        "de-DE": "Sichere steuerungstechnische Konstruktion",
+        "en-US": "Sichere steuerungstechnische Konstruktion"
+      }
+    },
+    {
+      "value": "ESS",
+      "label": {
+        "de-DE": "Ergänzende steuerungstechnische Schutzeinrichtung",
+        "en-US": "Ergänzende steuerungstechnische Schutzeinrichtung"
+      }
+    },
+    {
+      "value": "SEK",
+      "label": {
+        "de-DE": "Sichere elektrische Konstruktion",
+        "en-US": "Sichere elektrische Konstruktion"
+      }
+    },
+    {
+      "value": "ESS",
+      "label": {
+        "de-DE": "Ergänzende elektrische Schutzeinrichtung",
+        "en-US": "Ergänzende elektrische Schutzeinrichtung"
+      }
+    },
+    {
+      "value": "PSA",
+      "label": {
+        "de-DE": "Persönliche Schutzausrüstung",
+        "en-US": "Personal Protective Equipment"
+      }
+    },
+    {
+      "value": "PIK",
+      "label": {
+        "de-DE": "Piktogramme",
+        "en-US": "Pictograms"
+      }
+    },
+    {
+      "value": "BI",
+      "label": {
+        "de-DE": "Benutzerinformation",
+        "en-US": "User Information"
+      }
+    }
+  ]
+}

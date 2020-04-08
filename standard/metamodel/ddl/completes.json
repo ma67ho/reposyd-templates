@@ -1,0 +1,22 @@
+[
+    {
+        "foreward": {
+            "id": "completes",
+            "name": {
+                "de-DE": "vervollständigt",
+                "en-US": "completes"
+            },
+            "cardinality": "one2one"
+        },
+        "left": "TK",
+        "right": "WP",
+        "reverse": {
+            "id": "completedby",
+            "name": {
+                "de-DE": "vervollständigt durch",
+                "en-US": "completedby"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]

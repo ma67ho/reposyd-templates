@@ -1,0 +1,32 @@
+{
+  "id": "pm-document-cmp",
+  "uuid": null,
+  "category": "wbslineitem",
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+  "title": {
+    "de-DE": "Konfigurationsmanagementplan (Standard)",
+    "en-US": "Configuration Management Plan (default)"
+  },
+  "definition": {
+    "document": {
+      "category": "report",
+      "ismsClassification": "unclassified"
+    },
+    "sections": [
+      {
+        "<common>": {
+          "number": "1"
+        },
+        "de-DE": {
+          "title": "Identification"
+        },
+        "en-US": {
+          "title": "Identification"
+        }
+      }
+    ]
+  }
+}

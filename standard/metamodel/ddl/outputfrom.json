@@ -1,0 +1,22 @@
+[
+  {
+      "foreward": {
+          "id": "outputfrom",
+          "name": {
+              "de-DE": "wird ausgegeben von",
+              "en-US": "is output from"
+          },
+          "cardinality": "one2many"
+      },
+      "left": "II",
+      "right": "FN",
+      "reverse": {
+          "id": "hasoutputs",
+          "name": {
+              "de-DE": "hat Ausgänge",
+              "en-US": "has outputs"
+          },
+          "cardinality": "one2many"
+      }
+  }
+]

@@ -1,0 +1,182 @@
+[    
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "DI",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "ET",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "FN",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "II",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "SE",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "SI",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "IE",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    },    
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "TK",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    },
+    {
+        "foreward": {
+            "id": "specifies",
+            "name": {
+                "de-DE": "spezifiziert",
+                "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "WP",
+        "reverse": {
+            "id": "specifiedby",
+            "name": {
+                "de-DE": "spezifiziert durch",
+                "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+        }
+    }
+]
