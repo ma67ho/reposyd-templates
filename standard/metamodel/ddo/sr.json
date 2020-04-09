@@ -92,6 +92,33 @@
         },
         "default": "pending"
       }
+    },
+    {
+      "id": "category",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Kategorie",
+        "en-US": "Category"
+      },
+      "sortorder": 200,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
+            "values": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          }
+        },
+        "default": "pending"
+      }
     }
   ],
   "description": "",
