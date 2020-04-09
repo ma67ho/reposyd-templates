@@ -4,7 +4,7 @@
       "de-DE": "Projektmanager",
       "en-US": "Project Manager"
     },
-    "state": "enabled",
+    "state": "disabled",
     "description": {
       "de-DE": "",
       "en-US": ""
@@ -15,7 +15,7 @@
       "de-DE": "Anforderungsmanager",
       "en-US": "Requirements Manager"
     },
-    "state": "enabled",
+    "state": "disabled",
     "description": {
       "de-DE": "",
       "en-US": ""
@@ -37,7 +37,7 @@
       "de-DE": "Risikomanager",
       "en-US": "Risk Manager"
     },
-    "state": "enabled",
+    "state": "disabled",
     "description": {
       "de-DE": "",
       "en-US": ""
@@ -48,7 +48,7 @@
       "de-DE": "Sicherheitsingenieur",
       "en-US": "Safety Engineer"
     },
-    "state": "enabled",
+    "state": "disabled",
     "description": {
       "de-DE": "",
       "en-US": ""
@@ -59,7 +59,7 @@
       "de-DE": "Systemingenieur",
       "en-US": "System Engineer"
     },
-    "state": "enabled",
+    "state": "disabled",
     "description": {
       "de-DE": "",
       "en-US": ""
@@ -70,7 +70,7 @@
       "de-DE": "Prüfingenieur",
       "en-US": "Verification Engineer"
     },
-    "state": "enabled",
+    "state": "disabled",
     "description": {
       "de-DE": "",
       "en-US": ""
