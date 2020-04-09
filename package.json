@@ -1,0 +1,20 @@
+{
+  "name": "reposyd-templates",
+  "version": "0.1.0",
+  "description": "RePoSyD Templates",
+  "main": "index.js",
+  "repository": "https://github.com/ma67ho/reposyd-templates.git",
+  "author": "Martin Hoppe <48030323+ma67ho@users.noreply.github.com>",
+  "license": "MIT",
+  "reposyd": {
+    "templates": [
+      {
+        "config": [
+          "hazardassessment"
+        ],
+        "id": "standard",
+        "folder": "standard"
+      }
+    ]
+  }
+}
