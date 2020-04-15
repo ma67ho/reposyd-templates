@@ -1,45 +1,56 @@
 {
-    "attributes": [{
-           "id": "description",
-           "name": {
-                "de-DE": "Beschreibung",
-                "en-US": "Description"
-            },
-            "sortorder": 20,
-            "type": "text"
-        }, {
-           "id": "title",
-            "name": {
-                "de-DE": "Titel",
-                "en-US": "Title"
-            },
-            "sortorder": 10,
-            "type": "string",
-            "properties": {
-                "length": 255,
-                "default": ""
-            }
-        }
-    ],
-    "description": "",
-    "icon": "",
-    "name": {
-        "de-DE": "Systemschnittstelle",
-        "en-US": "System Interface"
+  "attributes": [
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 10,
+      "type": "string"
     },
-    "name_plural": {
-       "de-DE": "Systemschnittstellen",
-       "en-US": "System Interfaces"
-   },
-   "id": "SI",
-    "domain": "systemdesign",
-    "properties": {
-        "color": {
-            "background": "darkcyan",
-            "border": "darkcyan"
-        },
-        "font": {
-            "color": "white"
-        }
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
+    },
+    {
+      "id": "title",
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
     }
+  ],
+  "description": "",
+  "icon": "",
+  "name": {
+    "de-DE": "Systemschnittstelle",
+    "en-US": "System Interface"
+  },
+  "name_plural": {
+    "de-DE": "Systemschnittstellen",
+    "en-US": "System Interfaces"
+  },
+  "id": "SI",
+  "domain": "systemdesign",
+  "properties": {
+    "color": {
+      "background": "darkcyan",
+      "border": "darkcyan"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
 }
