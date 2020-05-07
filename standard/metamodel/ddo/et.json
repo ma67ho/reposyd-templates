@@ -126,13 +126,28 @@
       }
     },
     {
+      "id": "weigth",
+      "name": {
+        "de-DE": "Gewicht",
+        "en-US": "Weight"
+      },
+      "sortorder": 730,
+      "type": "value",
+      "properties": {
+        "unit": {
+          "de-DE": "kg",
+          "en-US": "kg"
+        }
+      }
+    },
+    {
       "id": "materialnumber",
       "name": {
         "de-DE": "Materialnummer",
         "en-US": "Material Number"
       },
       "sortorder": 890,
-      "type": "text",
+      "type": "string",
       "properties": {
         "length": 255
       }
