@@ -1,22 +1,62 @@
 [
   {
-      "foreward": {
-          "id": "outputfrom",
-          "name": {
-              "de-DE": "wird ausgegeben von",
-              "en-US": "is output from"
-          },
-          "cardinality": "one2many"
+    "foreward": {
+      "id": "outputfrom",
+      "name": {
+        "de-DE": "wird ausgegeben von",
+        "en-US": "is output from"
       },
-      "left": "II",
-      "right": "FN",
-      "reverse": {
-          "id": "hasoutputs",
-          "name": {
-              "de-DE": "hat Ausgänge",
-              "en-US": "has outputs"
-          },
-          "cardinality": "one2many"
-      }
+      "cardinality": "one2many"
+    },
+    "left": "II",
+    "right": "FN",
+    "reverse": {
+      "id": "hasoutputs",
+      "name": {
+        "de-DE": "hat Ausgänge",
+        "en-US": "has outputs"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "outputfrom",
+      "name": {
+        "de-DE": "wird ausgegeben von",
+        "en-US": "is output from"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "II",
+    "right": "SE",
+    "reverse": {
+      "id": "hasoutputs",
+      "name": {
+        "de-DE": "hat Ausgänge",
+        "en-US": "has outputs"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "outputfrom",
+      "name": {
+        "de-DE": "wird ausgegeben von",
+        "en-US": "is output from"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "II",
+    "right": "SR",
+    "reverse": {
+      "id": "hasoutputs",
+      "name": {
+        "de-DE": "hat Ausgänge",
+        "en-US": "has outputs"
+      },
+      "cardinality": "one2many"
+    }
   }
 ]
