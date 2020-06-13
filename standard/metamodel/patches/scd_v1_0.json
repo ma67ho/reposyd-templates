@@ -1,0 +1,115 @@
+{
+  "title": {
+    "de-DE": "Änderungen für die Implementation der Systemkontextdiagramme",
+    "en-US": "Update Use Case Model"
+  },
+  "description": {
+    "de-DE": "",
+    "en-US": "This patch updates the Use Case object and adds a Stake Holder as a new object"
+  },
+  "ddl": {
+    "add": [
+      {
+        "foreward": {
+          "id": "inputfor",
+          "name": {
+            "de-DE": "ist Eingabe für",
+            "en-US": "is input for"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "II",
+        "right": "SE",
+        "reverse": {
+          "id": "hasinputs",
+          "name": {
+            "de-DE": "hat Eingänge",
+            "en-US": "has inputs"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "requirementsmanager"
+        ]
+      },
+      {
+        "foreward": {
+          "id": "outputfrom",
+          "name": {
+            "de-DE": "wird ausgegeben von",
+            "en-US": "is output from"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "II",
+        "right": "SE",
+        "reverse": {
+          "id": "hasoutputs",
+          "name": {
+            "de-DE": "hat Ausgänge",
+            "en-US": "has outputs"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "requirementsmanager"
+        ]
+      },
+      {
+        "foreward": {
+          "id": "inputfor",
+          "name": {
+            "de-DE": "ist Eingabe für",
+            "en-US": "is input for"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "II",
+        "right": "SR",
+        "reverse": {
+          "id": "hasinputs",
+          "name": {
+            "de-DE": "hat Eingänge",
+            "en-US": "has inputs"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "requirementsmanager"
+        ]
+      },
+      {
+        "foreward": {
+          "id": "outputfrom",
+          "name": {
+            "de-DE": "wird ausgegeben von",
+            "en-US": "is output from"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "II",
+        "right": "SR",
+        "reverse": {
+          "id": "hasoutputs",
+          "name": {
+            "de-DE": "hat Ausgänge",
+            "en-US": "has outputs"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "requirementsmanager"
+        ]
+      }
+
+    ]
+  },
+  "ddo": {
+    "add": [],
+    "modify": []
+  }
+}
