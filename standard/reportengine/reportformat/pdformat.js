@@ -382,7 +382,8 @@ class PdfFormat extends ReportFormat {
 
   static DefaultOptions () {
     var o = ReportFormat.DefaultOptions()
-    o.document.copyright = 'Copyright © INTIS 2020 All Rights Reserved – CONFIDENTIAL DOCUMENT – Schutzvermerk ISO 16016 beachten'
+    // o.document.copyright = 'Copyright © INTIS 2020 All Rights Reserved – CONFIDENTIAL DOCUMENT – Schutzvermerk ISO 16016 beachten'
+    o.document.copyright = 'Copyright © RePoSyD 2020 All Rights Reserved'
     o.filename = 'document.pdf'
     o.folder = {
       fonts: path.join(__dirname, '/../../public/fonts'),
