@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "RePoSyD Templates",
   "main": "index.js",
+  "scripts": {
+    "clean": "rd / /q dist && mkdir dist",
+    "build": "node ./scripts/build.js"
+  },
   "repository": "https://github.com/ma67ho/reposyd-templates.git",
   "author": "Martin Hoppe <48030323+ma67ho@users.noreply.github.com>",
   "license": "MIT",
@@ -13,7 +17,11 @@
           "hazardassessment"
         ],
         "id": "standard",
-        "folder": "standard"
+        "folder": "standard",
+        "name": {
+          "de-DE": "Standardvorlage",
+          "en-US": "Default template"
+        }
       }
     ]
   }
