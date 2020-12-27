@@ -1,5 +1,5 @@
 {
-  "key": "hazardanalysis.config.hazard.type",
+  "key": "hazardanalysis.config.hazardtype",
   "value": [
     {
       "value": "pending",

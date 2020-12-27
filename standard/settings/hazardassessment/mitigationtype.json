@@ -1,5 +1,5 @@
 {
-  "key": "hazardanalysis.config.mitigation.typeofmeasure",
+  "key": "hazardanalysis.config.mitigationtype",
   "value": [
     {
       "value": "pending",
