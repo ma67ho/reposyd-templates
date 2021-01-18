@@ -200,6 +200,7 @@
     },
     "font": {
       "color": "white"
-    }
+    },
+    "icon": "mdi-gavel"
   }
 }

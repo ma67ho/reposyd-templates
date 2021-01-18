@@ -570,9 +570,9 @@
         "attribute": "maturitylevel",
         "display": "puid",
         "values": {
-          "deleted": "border-left: 8px solid #DC143C;",
-          "defined": "border-left: 8px solid #FFD700;",
-          "managed": "border-left: 8px solid #9ACD32;"
+          "deleted": "border-left: 12px solid #DC143C;",
+          "defined": "border-left: 12px solid #FFD700;",
+          "managed": "border-left: 12px solid #9ACD32;"
         }
       }
     }

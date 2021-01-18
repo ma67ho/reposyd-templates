@@ -79,6 +79,7 @@
     },
     "font": {
       "color": "white"
-    }
+    },
+    "icon": "mdi-cogs"
   }
 }

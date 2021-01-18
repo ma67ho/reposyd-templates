@@ -140,6 +140,7 @@
     },
     "font": {
       "color": "white"
-    }
+    },
+    "icon": "mdi-account-group-outline"
   }
 }

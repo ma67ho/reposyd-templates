@@ -1,191 +1,224 @@
 {
-    "attributes": [
-        {
-            "id": "number",
-            "name": {
-                "de-DE": "Nummer",
-                "en-US": "Number"
+  "attributes": [
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "title",
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
+    },
+    {
+      "id": "method",
+      "description": {
+        "de-DE": "Definiert die anzuwendende Methode für die Nachweisführung.",
+        "en-US": "Defines the method of verification to be used."
+      },
+      "name": {
+        "de-DE": "Methode",
+        "en-US": "Method"
+      },
+      "sortorder": 100,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
+            "values": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
             },
-            "sortorder": 10,
-            "type": "string",
             "properties": {
-                "length": 255,
-                "default": ""
+              "backgroundColor": null
             }
-        },
-        {
-            "id": "title",
-            "name": {
-                "de-DE": "Titel",
-                "en-US": "Title"
-            },
-            "sortorder": 20,
-            "type": "string",
-            "properties": {
-                "length": 255,
-                "default": ""
-            }
-        },
-        {
-            "id": "description",
-            "name": {
-                "de-DE": "Beschreibung",
-                "en-US": "Description"
-            },
-            "sortorder": 30,
-            "type": "text"
-        },
-        {
-            "id": "method",
-            "name": {
-                "de-DE": "Methode",
-                "en-US": "Method"
-            },
-            "sortorder": 100,
-            "type": "enumeration",
-            "properties": {
-                "enumeration": {
-                    "pending": {
-                        "values": {
-                            "de-DE": "ausstehend",
-                            "en-US": "pending"
-                        },
-                        "properties": {
-                            "backgroundColor": null
-                        }
-                    },
-                    "analysis": {
-                        "values": {
-                            "de-DE": "Analyse",
-                            "en-US": "Analysis"
-                        },
-                        "properties": {
-                            "backgroundColor": null
-                        }
-                    },
-                    "inspection": {
-                        "values": {
-                            "de-DE": "Inspektion",
-                            "en-US": "Inspection"
-                        },
-                        "properties": {
-                            "backgroundColor": null
-                        }
-                    },
-                    "demonstration": {
-                        "values": {
-                            "de-DE": "Demonstration",
-                            "en-US": "Demonstration"
-                        },
-                        "properties": {
-                            "backgroundColor": null
-                        }
-                    },
-                    "test": {
-                        "values": {
-                            "de-DE": "Test",
-                            "en-US": "Test"
-                        },
-                        "properties": {
-                            "backgroundColor": null
-                        }
-                    }
-                },
-                "default": "pending"
-            }
-        },
-        {
-            "id": "scope",
-            "description": {
-              "de-DE": "Definiert den Anwendungsbereich des Test in Bezug auf die Konfigurationseinheit. D.h. ob der Test z.B. einmalig im Rahmen einer Typprüfung oder für jede Konfigurationseinheit durchgeführt wird",
-              "en-US": "Defines the scope of application for the test with respect to the configuration item and defines whether the test is perfomed, for example, only once during a type test or for each configuration item"
-            },
-            "name": {
-                "de-DE": "Umfang",
-                "en-US": "Scope"
-            },
-            "sortorder": 110,
-            "type": "enumeration",
-            "properties": {
-                "enumeration": {
-                    "pending": {
-                        "values": {
-                            "de-DE": "ausstehend",
-                            "en-US": "pending"
-                        },
-                        "properties": {
-                            "backgroundColor": null
-                        }
-                    },
-                    "analysis": {
-                        "values": {
-                            "de-DE": "Typprüfung",
-                            "en-US": "Typ Test"
-                        },
-                        "properties": {
-                            "backgroundColor": null
-                        }
-                    },
-                    "ci": {
-                        "values": {
-                            "de-DE": "Konfigurationselement",
-                            "en-US": "Configuration Item"
-                        },
-                        "properties": {
-                            "backgroundColor": null
-                        }
-                    }
-                },
-                "default": "pending"
-            }
-        },
-        {
-            "id": "acceptancecriteria",
-            "name": {
-                "de-DE": "Abnahmekriterium",
-                "en-US": "Acceptance Criterion"
-            },
-            "sortorder": 200,
-            "type": "text"
-        },
-        {
-          "id": "prerequisites",
-          "name": {
-              "de-DE": "Voraussetzungen",
-              "en-US": "Prerequisites"
           },
-          "sortorder": 300,
-          "type": "text"
-        },
-        {
-            "id": "safetymeasures",
-            "name": {
-                "de-DE": "Sicherheitsmaßnahmen",
-                "en-US": "Safety Measures"
+          "analysis": {
+            "description": {
+              "de-DE": "Die Analyse oder Überprüfung von Simulationsdaten ist eine Untersuchungsmethode, die zu Daten führt, mit denen die Konformität von Merkmalen mit festgelegten Anforderungen überprüft wird. Worst-Case-Daten können aus Entwurfslösungen abgeleitet werden, bei denen die quantitative Leistung nicht kostengünstig nachgewiesen werden kann",
+              "en-US": "Analysis or review of simulation data is a study method resulting in data used to verify conformance of characteristics with specified requirements. Worst-case data may be derived from design solutions where quantitative performance cannot be demonstrated cost-effectively"
             },
-            "sortorder": 310,
-            "type": "text"
-        }
-    ],
-    "description": "",
-    "icon": "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",
-    "name": {
-        "de-DE": "Prüfung",
-        "en-US": "Test"
-    },
-    "name_plural": {
-        "de-DE": "Prüfungen",
-        "en-US": "Tests"
-    },
-    "id": "TT",
-    "domain": "design",
-    "properties": {
-        "color": {
-            "background": "indianred",
-            "border": "indianred"
+            "values": {
+              "de-DE": "Analyse",
+              "en-US": "Analysis"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "certification": {
+            "description": {
+              "de-DE": "Die Zertifizierung ist ein Verifizierungs- und Qualitätssicherungsprozess. Es endet mit der Bestätigung durch einen Bericht, ein Schreiben oder eine ähnliche Dokumentation, dass das Attribut oder die Leistung des Geräts oder Systems den geltenden Standards entspricht.",
+              "en-US": "Certification is a verification and quality assurance process. It culminates with attesting by report, letter or similar documentation that the attribute or performance of the equipment or system meets the applicable standards."
+            },
+            "values": {
+              "de-DE": "Zertifizierung",
+              "en-US": "Certification"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "inspection": {
+            "description": {
+              "de-DE": "Die Inspektion wird verwendet, um die Systemeigenschaften durch Prüfung und Vergleich mit technischen Zeichnungen oder Flussdiagrammen und Computerprogrammlisten während der Produktentwicklung zu bestimmen, um die Konformität mit den angegebenen Anforderungen zu überprüfen. Die Inspektion ist im Allgemeinen zerstörungsfrei und besteht aus visuellen Untersuchungen oder einfachen Messungen ohne Verwendung von Präzisionsmessgeräten.",
+              "en-US": "Inspection is used to determine system characteristics by examination of and comparison with engineering drawings or flow diagrams and computer program listings during product development to verify conformance with specified requirements. Inspection is generally nondestructive and consist of visual examinations or simple measurements without the use of precision measurement equipment."
+            },
+            "values": {
+              "de-DE": "Inspektion",
+              "en-US": "Inspection"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "demonstration": {
+            "description": {
+              "de-DE": "Die Demonstration ist eine Variation der Testmethode, mit der die Übereinstimmung der Funktionsmerkmale mit den festgelegten Anforderungen anhand von Go / No-Go-Kriterien ohne Verwendung aufwändiger Messgeräte überprüft wird.",
+              "en-US": "Demonstration  is a variation of the test method used to verify conformance of functional characteristics with specified requirements by go/no-go criteria without the use of elaborate measurement equipment."
+            },
+            "values": {
+              "de-DE": "Demonstration",
+              "en-US": "Demonstration"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "test": {
+            "description": {
+              "de-DE": "Der Test wird verwendet, um die Übereinstimmung der Funktionsmerkmale mit den betrieblichen und technischen Anforderungen zu überprüfen. Der Testprozess generiert Daten, und diese Daten werden normalerweise von Präzisionsmessgeräten oder -verfahren aufgezeichnet. Anschließend werden die aus den Tests abgeleiteten Daten analysiert oder überprüft. Die hier beschriebene Analyse ist ein wesentlicher Bestandteil dieser Methode und sollte nicht mit der \"Analyse\" verwechselt werden.",
+              "en-US": "Test is used to verify conformance of functional characteristics with operational and technical requirements. The test process will generate data, and this data is normally recorded by precision measurement equipment or procedures. Analysis or review is subsequently performed on the data derived from the testing. Analysis as described here is an integral part of this method and should not be confused with the \"Analysis\"."
+            },
+            "values": {
+              "de-DE": "Test",
+              "en-US": "Test"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          }
         },
-        "font": {
-            "color": "white"
-        }
+        "default": "pending"
+      }
+    },
+    {
+      "id": "scope",
+      "description": {
+        "de-DE": "Definiert den Anwendungsbereich des Test in Bezug auf die Konfigurationseinheit. D.h. ob der Test z.B. einmalig im Rahmen einer Typprüfung oder für jede Konfigurationseinheit durchgeführt wird",
+        "en-US": "Defines the scope of application for the test with respect to the configuration item and defines whether the test is perfomed, for example, only once during a type test or for each configuration item"
+      },
+      "name": {
+        "de-DE": "Umfang",
+        "en-US": "Scope"
+      },
+      "sortorder": 110,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
+            "values": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "analysis": {
+            "values": {
+              "de-DE": "Typprüfung",
+              "en-US": "Typ Test"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "ci": {
+            "values": {
+              "de-DE": "Konfigurationselement",
+              "en-US": "Configuration Item"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          }
+        },
+        "default": "pending"
+      }
+    },
+    {
+      "id": "acceptancecriteria",
+      "name": {
+        "de-DE": "Abnahmekriterium",
+        "en-US": "Acceptance Criterion"
+      },
+      "sortorder": 200,
+      "type": "text"
+    },
+    {
+      "id": "prerequisites",
+      "name": {
+        "de-DE": "Voraussetzungen",
+        "en-US": "Prerequisites"
+      },
+      "sortorder": 300,
+      "type": "text"
+    },
+    {
+      "id": "safetymeasures",
+      "name": {
+        "de-DE": "Sicherheitsmaßnahmen",
+        "en-US": "Safety Measures"
+      },
+      "sortorder": 310,
+      "type": "text"
     }
+  ],
+  "description": "",
+  "icon": "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",
+  "name": {
+    "de-DE": "Prüfung",
+    "en-US": "Test"
+  },
+  "name_plural": {
+    "de-DE": "Prüfungen",
+    "en-US": "Tests"
+  },
+  "id": "TT",
+  "domain": "design",
+  "properties": {
+    "color": {
+      "background": "indianred",
+      "border": "indianred"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
 }
