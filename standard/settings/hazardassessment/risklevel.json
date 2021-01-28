@@ -2,6 +2,18 @@
   "key": "hazardanalysis.config.risklevel",
   "value": [
     {
+      "severity": 0,
+      "criticality": {
+        "min": 0,
+        "max": 2
+      },
+      "label": {
+        "de-DE": "ausstehend",
+        "en-US": "pending"
+      },
+      "style": "background-color: #c0c0c0; color: white"
+    },
+      {
       "severity": 1,
       "criticality": {
         "min": 3,
@@ -170,7 +182,7 @@
       "style": "background-color: firebrick; color: white"
     },
     {
-      "severity": 3,
+      "severity": 3,  
       "criticality": {
         "min": 11,
         "max": 13
