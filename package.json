@@ -21,8 +21,14 @@
         "name": {
           "de-DE": "Standardvorlage",
           "en-US": "Default template"
-        }
+        },
+        "description": {
+          "de-DE": "Standardvorlage für alle Projekte",
+          "en-US": "Standard template for all projects"
+        },
+        "version": "0.6.0"
       }
     ]
-  }
+  },
+  "dependencies": {}
 }
