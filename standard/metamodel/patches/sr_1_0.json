@@ -1,0 +1,41 @@
+{
+  "title": {
+    "de-DE": "Aktualiasiert das  Modell",
+    "en-US": "Update Stakeholder Model"
+  },
+  "description": {
+    "de-DE": "",
+    "en-US": "This patch updates the Use Case object and adds a Stake Holder as a new object"
+  },
+  "ddl": {
+    "add": [
+      {
+        "foreward": {
+          "id": "affects",
+          "name": {
+            "de-DE": "wirkt  auf",
+            "en-US": "affects"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "SR",
+        "right": "SE",
+        "reverse": {
+          "id": "affectedby",
+          "name": {
+            "de-DE": "beeinflusst durch",
+            "en-US": "affected by"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": ["repositorymanager", "requirementsmanager"]
+      }
+    ]
+  },
+  "ddo": {
+    "add": [
+    ],
+    "modify": {
+    }
+  }
+}
