@@ -36,8 +36,11 @@
       }
     }
   ],
-  "description": "",
-  "icon": "mdi-feature-search-outline",
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+"icon": "mdi-feature-search-outline",
   "name": {
     "de-DE": "Merkmal",
     "en-US": "Feature"

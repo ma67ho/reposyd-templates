@@ -1,61 +1,67 @@
 {
-    "attributes": [{
-            "id": "number",
-            "name": {
-                "de-DE": "Nummer",
-                "en-US": "Number"
-            },
-            "sortorder": 10,
-            "type": "string",
-            "properties": {
-                "length": 255,
-                "default": ""
-            }
-        }, {
-            "id": "title",
-            "description": {
-                "de-DE": "",
-                "en-US": ""
-            },
-            "name": {
-                "de-DE": "Titel",
-                "en-US": "Title"
-            },
-            "sortorder": 20,
-            "type": "string",
-            "properties": {
-                "length": 255,
-                "default": ""
-            }
-        }, {
-            "id": "description",
-            "name": {
-                "de-DE": "Beschreibung",
-                "en-US": "Description"
-            },
-            "sortorder": 30,
-            "type": "text"
-        }
-    ],
-    "description": "",
-    "icon": "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",
-    "name": {
-        "de-DE": "Arbeitspaket",
-        "en-US": "Work Package"
+  "attributes": [
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
     },
-    "name_plural": {
-        "de-DE": "Arbeitspakete",
-        "en-US": "Work Packages"
+    {
+      "id": "title",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
     },
-    "id": "WP",
-    "domain": "projectmanagement",
-    "properties": {
-        "color": {
-            "background": "darkmagenta",
-            "border": "darkmagenta"
-        },
-        "font": {
-            "color": "white"
-        }
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
     }
+  ],
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+  "icon": "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",
+  "name": {
+    "de-DE": "Arbeitspaket",
+    "en-US": "Work Package"
+  },
+  "name_plural": {
+    "de-DE": "Arbeitspakete",
+    "en-US": "Work Packages"
+  },
+  "id": "WP",
+  "domain": "projectmanagement",
+  "properties": {
+    "color": {
+      "background": "darkmagenta",
+      "border": "darkmagenta"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
 }

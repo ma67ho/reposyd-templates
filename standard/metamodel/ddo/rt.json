@@ -69,7 +69,7 @@
       "properties": {
         "enumeration": {
           "mandatory": {
-            "values": {
+            "value": {
               "de-DE": "verpflichtend",
               "en-US": "mandatory"
             },
@@ -78,7 +78,7 @@
             }
           },
           "pending": {
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },
@@ -104,7 +104,7 @@
       "properties": {
         "enumeration": {
           "pending": {
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },
@@ -113,7 +113,7 @@
             }
           },
           "safety": {
-            "values": {
+            "value": {
               "de-DE": "Technische Sicherheit",
               "en-US": "Safety"
             },
@@ -122,7 +122,7 @@
             }
           },
           "security": {
-            "values": {
+            "value": {
               "de-DE": "Gefahrenabwehr",
               "en-US": "Security"
             },
@@ -131,7 +131,7 @@
             }
           },
           "system": {
-            "values": {
+            "value": {
               "de-DE": "System",
               "en-US": "System"
             },
@@ -140,7 +140,7 @@
             }
           },
           "system.capabilty": {
-            "values": {
+            "value": {
               "de-DE": "Fähigkeit",
               "en-US": "Capability"
             },
@@ -149,7 +149,7 @@
             }
           },
           "environment": {
-            "values": {
+            "value": {
               "de-DE": "Umwelt",
               "en-US": "Environment"
             },
@@ -158,7 +158,7 @@
             }
           },
           "environment.emc": {
-            "values": {
+            "value": {
               "de-DE": "Elektromagnetische Verträglichkeit",
               "en-US": "EMC"
             },
@@ -167,7 +167,7 @@
             }
           },
           "environment.esd": {
-            "values": {
+            "value": {
               "de-DE": "Elektrostatische Entladung",
               "en-US": "ESD"
             },
@@ -176,7 +176,7 @@
             }
           },
           "environment.magnetic": {
-            "values": {
+            "value": {
               "de-DE": "Magnetische Beeinflussung",
               "en-US": "Magntic Influence"
             },
@@ -185,7 +185,7 @@
             }
           },
           "environment.shock": {
-            "values": {
+            "value": {
               "de-DE": "Schock",
               "en-US": "Shock"
             },
@@ -194,7 +194,7 @@
             }
           },
           "environment.temperature": {
-            "values": {
+            "value": {
               "de-DE": "Temperatur",
               "en-US": "Temperature"
             },
@@ -203,7 +203,7 @@
             }
           },
           "environment.mediaresistance": {
-            "values": {
+            "value": {
               "de-DE": "Medienbeständigkeit",
               "en-US": "Media Resistance"
             },
@@ -212,7 +212,7 @@
             }
           },
           "environment.tightness": {
-            "values": {
+            "value": {
               "de-DE": "Dichtigkeit",
               "en-US": "Tightness"
             },
@@ -225,7 +225,7 @@
               "de-DE": "Diese Kategorie fasst alle Anforderungen an Schnittstellen für die Kommunikation zusammen",
               "en-US": "This category summarizes all requirements for interfaces related to communication"
             },
-            "values": {
+            "value": {
               "de-DE": "Schnittstelle - Kommunikation",
               "en-US": "Interface - Communication"
             },
@@ -238,7 +238,7 @@
               "de-DE": "Diese Kategorie fasst alle Anforderungen an elektrische Schnittstellen für die Energieversorgung zusammen",
               "en-US": "This category summarizes all requirements or electrical interface related to power supply"
             },
-            "values": {
+            "value": {
               "de-DE": "Schnittstelle - Elektrisch",
               "en-US": "Interface - Electrical"
             },
@@ -251,7 +251,7 @@
               "de-DE": "Diese Kategorie fasst alle Anforderungen an die mechanische Schnittstelle zusammen",
               "en-US": "This category summarizes all requirements related to mechanical interfaces"
             },
-            "values": {
+            "value": {
               "de-DE": "Schnittstelle - Mechanisch",
               "en-US": "Interface - Mechanical"
             },
@@ -264,7 +264,7 @@
               "de-DE": "Diese Kategorie fasst alle Anforderungen an MMI zusammen",
               "en-US": "This category summarizes all requirements related to the MMI"
             },
-            "values": {
+            "value": {
               "de-DE": "MMI",
               "en-US": "HMI"
             },
@@ -273,7 +273,7 @@
             }
           },
           "system.designconstruction": {
-            "values": {
+            "value": {
               "de-DE": "Design und Bau",
               "en-US": "Design and Construction"
             },
@@ -282,7 +282,7 @@
             }
           },
           "systemquality": {
-            "values": {
+            "value": {
               "de-DE": "Systemqualität",
               "en-US": "System Quality"
             },
@@ -291,7 +291,7 @@
             }
           },
           "phst": {
-            "values": {
+            "value": {
               "de-DE": "Verpackung & Transport",
               "en-US": "Packaging & Transportation"
             },
@@ -300,7 +300,7 @@
             }
           },
           "marking": {
-            "values": {
+            "value": {
               "de-DE": "Kennzeichnung",
               "en-US": "Marking"
             },
@@ -327,7 +327,7 @@
       "properties": {
         "enumeration": {
           "pending": {
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },
@@ -353,7 +353,7 @@
       "properties": {
         "enumeration": {
           "initial": {
-            "values": {
+            "value": {
               "de-DE": "initial",
               "en-US": "initial"
             },
@@ -362,7 +362,7 @@
             }
           },
           "defined": {
-            "values": {
+            "value": {
               "de-DE": "definiert",
               "en-US": "defined"
             },
@@ -371,7 +371,7 @@
             }
           },
           "managed": {
-            "values": {
+            "value": {
               "de-DE": "verwaltet",
               "en-US": "managed"
             },
@@ -380,7 +380,7 @@
             }
           },
           "deleted": {
-            "values": {
+            "value": {
               "de-DE": "gelöscht",
               "en-US": "deleted"
             },
@@ -569,7 +569,7 @@
       "cellMarker": {
         "attribute": "maturitylevel",
         "display": "puid",
-        "values": {
+        "value": {
           "deleted": "border-left: 12px solid #DC143C;",
           "defined": "border-left: 12px solid #FFD700;",
           "managed": "border-left: 12px solid #9ACD32;"

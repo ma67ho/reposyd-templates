@@ -73,49 +73,49 @@
       "properties": {
         "enumeration": {
           "pending": {
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },
             "properties": {}
           },
           "stadard": {
-            "values": {
+            "value": {
               "de-DE": "Industrienorm",
               "en-US": "Standard"
             },
             "properties": {}
           },
           "milstd": {
-            "values": {
+            "value": {
               "de-DE": "Militärnorm",
               "en-US": "Military Standard"
             },
             "properties": {}
           },
           "facstd": {
-            "values": {
+            "value": {
               "de-DE": "Werksnorm",
               "en-US": "Factory Standard"
             },
             "properties": {}
           },
           "regulation": {
-            "values": {
+            "value": {
               "de-DE": "Verordnung",
               "en-US": "Regulation"
             },
             "properties": {}
           },
           "guideline": {
-            "values": {
+            "value": {
               "de-DE": "Richtlinie",
               "en-US": "Guideline"
             },
             "properties": {}
           },
           "publication": {
-            "values": {
+            "value": {
               "de-DE": "Veröffentlichung",
               "en-US": "Publication"
             },
@@ -136,28 +136,28 @@
       "properties": {
         "enumeration": {
           "pending": {
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },
             "properties": {}
           },
           "interim": {
-            "values": {
+            "value": {
               "de-DE": "vorläufig",
               "en-US": "provisionally"
             },
             "properties": {}
           },
           "rejected": {
-            "values": {
+            "value": {
               "de-DE": "zurückgezogen",
               "en-US": "rejected"
             },
             "properties": {}
           },
           "released": {
-            "values": {
+            "value": {
               "de-DE": "veröffentlicht",
               "en-US": "released"
             },

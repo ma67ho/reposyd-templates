@@ -63,14 +63,14 @@
       "properties": {
         "enumeration": {
           "pcs": {
-            "values": {
+            "value": {
               "de-DE": "Stück",
               "en-US": "Piece"
             },
             "properties": {}
           },
           "m": {
-            "values": {
+            "value": {
               "de-DE": "Meter",
               "en-US": "Metre"
             },

@@ -46,7 +46,7 @@
       "properties": {
         "enumeration": {
           "document": {
-            "values": {
+            "value": {
               "de-DE": "Dokument",
               "en-US": "Document"
             },
@@ -55,7 +55,7 @@
             }
           },
           "drawing": {
-            "values": {
+            "value": {
               "de-DE": "Zeichnung",
               "en-US": "Drawing"
             },
@@ -64,7 +64,7 @@
             }
           },
           "cad": {
-            "values": {
+            "value": {
               "de-DE": "CAD-Daten",
               "en-US": "CAD-Data"
             },
@@ -73,7 +73,7 @@
             }
           },
           "dmu": {
-            "values": {
+            "value": {
               "de-DE": "DMU-Daten",
               "en-US": "DMU-Data"
             },
@@ -82,7 +82,7 @@
             }
           },
           "pending": {
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },

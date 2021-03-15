@@ -78,7 +78,7 @@
               "de-DE": "offen",
               "en-US": "pending"
             },
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },
@@ -90,7 +90,7 @@
             "description": {
               "en-US": ""
             },
-            "values": {
+            "value": {
               "de-DE": "überwacht",
               "en-US": "monitored"
             },
@@ -102,7 +102,7 @@
             "description": {
               "en-US": ""
             },
-            "values": {
+            "value": {
               "de-DE": "eingetreten",
               "en-US": "occurred"
             },
@@ -114,7 +114,7 @@
             "description": {
               "en-US": ""
             },
-            "values": {
+            "value": {
               "de-DE": "eliminiert",
               "en-US": "eliminated"
             },
@@ -145,7 +145,7 @@
               "de-DE": "offen",
               "en-US": "pending"
             },
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },
@@ -154,7 +154,7 @@
             }
           },
           "productrelated": {
-            "values": {
+            "value": {
               "de-DE": "produktbezogen",
               "en-US": "product-related"
             },
@@ -163,7 +163,7 @@
             }
           },
           "economical": {
-            "values": {
+            "value": {
               "de-DE": "wirtschaftlich",
               "en-US": "economical"
             },
@@ -172,7 +172,7 @@
             }
           },
           "political": {
-            "values": {
+            "value": {
               "de-DE": "politisch",
               "en-US": "political"
             },
@@ -203,7 +203,7 @@
               "de-DE": "Bewertung offen",
               "en-US": "Assessment pending"
             },
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },
@@ -215,7 +215,7 @@
             "description": {
               "en-US": "A risk that is almost certain to show-up during project execution. If you’re looking at percentages a risk that is more than 80% likely to cause problems will fall under this category."
             },
-            "values": {
+            "value": {
               "de-DE": "wahrscheinlich",
               "en-US": "probable"
             },
@@ -227,7 +227,7 @@
             "description": {
               "en-US": "Risks that have 60-80% chances of occurrence can be grouped as possible."
             },
-            "values": {
+            "value": {
               "de-DE": "möglich",
               "en-US": "possible"
             },
@@ -239,7 +239,7 @@
             "description": {
               "en-US": "Risks which have a near 50/50 probability of occurrence."
             },
-            "values": {
+            "value": {
               "de-DE": "unwahrscheinlich",
               "en-US": "unlikely"
             },
@@ -251,7 +251,7 @@
             "description": {
               "en-US": "Rare and exceptional risks which have a less than 10% chance of occurrence."
             },
-            "values": {
+            "value": {
               "de-DE": "selten",
               "en-US": "rare"
             },
@@ -282,7 +282,7 @@
               "de-DE": "Bewertung offen",
               "en-US": "Assessment pending"
             },
-            "values": {
+            "value": {
               "de-DE": "ausstehend",
               "en-US": "pending"
             },
@@ -294,7 +294,7 @@
             "description": {
               "en-US": "Risks that will cause a near negligible amount of damage to the overall progress of the project."
             },
-            "values": {
+            "value": {
               "de-DE": "unbedeutent",
               "en-US": "insignificant"
             },
@@ -306,7 +306,7 @@
             "description": {
               "en-US": "Risks which do not impose a great threat, but yet a sizable damage can be classified as moderate."
             },
-            "values": {
+            "value": {
               "de-DE": "mittel",
               "en-US": "medium"
             },
@@ -318,7 +318,7 @@
             "description": {
               "en-US": "Risks with significantly large consequences which can lead to a great amount of loss are classified as critical."
             },
-            "values": {
+            "value": {
               "de-DE": "hoch",
               "en-US": "high"
             },
@@ -330,7 +330,7 @@
             "description": {
               "en-US": "These are the risks which can make the project completely unproductive and unfruitful, and must be a top priority during risk management. "
             },
-            "values": {
+            "value": {
               "de-DE": "sehr hoch",
               "en-US": "very high"
             },
@@ -375,7 +375,7 @@
         "type": "enumeration",
         "enumeration": {
           "4": {
-            "values": {
+            "value": {
               "de-DE": "Schweres Risiko",
               "en-US": "Severe Risk"
             },
@@ -384,7 +384,7 @@
             }
           },
           "3": {
-            "values": {
+            "value": {
               "de-DE": "Hauptrisiko",
               "en-US": "Major Risk"
             },
@@ -393,7 +393,7 @@
             }
           },
           "2": {
-            "values": {
+            "value": {
               "de-DE": "Moderates Risiko",
               "en-US": "Moderate Risk"
             },
@@ -402,7 +402,7 @@
             }
           },
           "1": {
-            "values": {
+            "value": {
               "de-DE": "Niedriges Risiko",
               "en-US": "Low Risk"
             },
@@ -411,7 +411,7 @@
             }
           },
           "0": {
-            "values": {
+            "value": {
               "de-DE": "Bewertung ausstehend",
               "en-US": "Assessment pending"
             },

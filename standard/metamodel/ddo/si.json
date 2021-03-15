@@ -32,7 +32,10 @@
       }
     }
   ],
-  "description": "",
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
   "icon": "",
   "name": {
     "de-DE": "Systemschnittstelle",

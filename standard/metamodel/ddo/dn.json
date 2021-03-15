@@ -1,61 +1,174 @@
 {
-    "attributes": [
-        {
-            "id": "title",
-            "name": {
-                "de-DE": "Titel",
-                "en-US": "Title"
-            },
-            "sortorder": 10,
-            "type": "string",
+  "attributes": [
+    {
+      "id": "title",
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 20,
+      "type": "text",
+      "properties": {}
+    },
+    {
+      "id": "decision",
+      "name": {
+        "de-DE": "Alternativen",
+        "en-US": "Alternatives"
+      },
+      "sortorder": 100,
+      "type": "choice",
+      "properties": {
+        "default": "{ \"alternatives\": [{ \"description\": \"\", \"title\": \"\"], \"choice\": -1, \"rationale\": \"\" }",
+        "max": -1
+      }
+    },
+    {
+      "id": "rationale",
+      "name": {
+        "de-DE": "Begründung",
+        "en-US": "Rationale"
+      },
+      "sortorder": 110,
+      "type": "description",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "state",
+      "name": {
+        "de-DE": "Status",
+        "en-US": "State"
+      },
+      "sortorder": 200,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
             "properties": {
-                "length": 255,
-                "default": ""
+              "backgroundColor": "#c0c0c0",
+              "icon": "",
+              "transitions": {
+                "allowed": [],
+                "enabled": true
+              }
+            },
+            "value": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            }
+          },
+          "inprocess": {
+            "properties": {
+              "backgroundColor": "#a30000",
+              "icon": "",
+              "transitions": {
+                "allowed": ["waiting","completed", "withdrawn"],
+                "enabled": true
+              }
+            },
+            "value": {
+              "de-DE": "wird bearbeitet",
+              "en-US": "in process"
+            }
+          },
+          "waiting": {
+              "properties": {
+                "backgroundColor": "#d66c00",
+                "icon": "",
+                "transitions": {
+                  "allowed": ["waiting","completed", "withdrawn"],
+                  "enabled": true
+                }
+              },
+              "value": {
+                "de-DE": "wartend",
+                "en-US": "waiting"
+              }
+            },
+            "completed": {
+              "properties": {
+                "backgroundColor": "#00a300",
+                "icon": "",
+                "transitions": {
+                  "allowed": [],
+                  "enabled": true
+                }
+              },
+              "value": {
+                "de-DE": "abgeschlossen",
+                "en-US": "completed"
+              }
+            },
+            "withdrawn": {
+              "properties": {
+                "backgroundColor": "#0052a3",
+                "icon": "",
+                "transitions": {
+                  "allowed": [],
+                  "enabled": true
+                }
+              },
+              "value": {
+                "de-DE": "zurüchezogen",
+                "en-US": "withdrawn"
+              }
             }
         },
-        {
-            "id": "number",
-            "name": {
-                "de-DE": "Nummer",
-                "en-US": "Number"
-            },
-            "sortorder": 10,
-            "type": "string",
-            "properties": {
-                "length": 255,
-                "default": ""
-            }
-        },
-        {
-            "id": "description",
-            "name": {
-                "de-DE": "Beschreibung",
-                "en-US": "Description"
-            },
-            "sortorder": 20,
-            "type": "text",
-            "properties": {}
-        }
-    ],
-    "description": "",
-    "icon": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABIpJREFUeNrkV11oXEUUPjP3Z2+ybbEgamKTaigUQYqIFs1KoeIquqFG6R/2tW+FSuODFF/Msxip4oNPPgk1wTbSlBSSiCkGixaJeSoI/QskNYi7293N/tyf8Zy5czfXzb273a2lDw6ce+bOzJ1z5sz5vpnLhBDwMItOD8ZYW98sfX5scr1UzeTvVqBQtCFXrF48/vWPw9jndORAm6UrobPM7rcOQP7OKlSya3Dp4tUMtaMU2p2Md+CARQ/aOs/zwHE8sG233t5uYTRRwxbol04PTXIGGbQCGnYxfGGMA2eC9gute/QhcI2DpqNoGvax+pI0xuQwmhc/leNcYN/vef/swcZtitqCLpw8kx45CZDNKTfZhhbi33pTf/Ae6ucaFJdvvv3bp+748x9MHMIWt5kDlsAVguPC7d8X8VsdBVfIOUYCRdV5qE7RYXpoTNCvxlCEtvTsgF17U+8sjrGJ50bG605E5QADESyI1Sesiwwv2zAiY91kkzFSAnNF1GqwtbdPOrF05shksPgWSchi56a8+OHbc1LfS5FR9VxI7hwAy9CHFGqaOSCkSKIKJNzrCXj1yLtS31O24zZRLpRuXYe1/Po8NhkteYAmF9yHGyUUQ82Va57SGqeJuXIyJoq0VaYJhZVl+GVu7vJrH1/ADAc71gGhMrc/lfLfRNQAsbke9a7QUVq+CT/Pzs6/MTo1gi0rKOU4Hnhs9qPMH5VSZRuu38cx9xPP5wQu0UW459ggA8D8hPQxz2RU5BjUGvXrOhSrXmHvh9/tx/lvoWQDFDRGQPv1k4NfPZPaty3Z95QknCCMkQWhWqnWwEEmrGHdcX1WdFzHf7cdsF0XymgqtzC3Fb9YCxtvdEBbHDs8sevFweHk40+CVyiAwI9dFAkjFE9pavcUvFw0VC5XoFqz0TgalhoF22v0jg72PrsH8v4aqmHjYQf0pTNHzw+88PJQ8okdErPSUNxRzXx4yu3QBXR3W2BgrNfV1mhE0Wicy3ECrIQBcVMFMOzqNrWhZN+AxKqoh74JrND4zDfjVJEppyMTJtERK6GDiXWShImCmtpanYbGnVx5vrR8XWa/xGwrYsEIpY8dllqyncoUyzQgaZlgoGEDndQxGiZCMC6agSX7ldPnTl6Zmb1cQqwSZmmF8fzk779HuRDkRShPCAFJXHXC9KORMHQQLS4khMkVJIhTM0J89lI6vW9L/9PAw16zCDQw2HwiNp6OFCFERtytK3DAUfCA9OjUqRmufdHziDUomRCdcKUOLiE+M1L2S45ShxP1u67w0YF1XwtJmTQmW3YWIIIrG4lIQ9mO0qt0VPYY1758b3rn4OuQX12B9b/XYHrqKpw4+9ObAb1GMQbKXyi3G69tjQYIozmF19UYBtouF6b2nCkEYLkRRDEmcyoB/ba6ETnKy0Lzg1LU46lO5Kxiugd+KY068Dou/40D8L9zgG2cB/cT/o4dIKqmm66G5zzpNn/t7vvXTPx5t7KQm76QCv4NizU7kmQ6/TNqVehi0Y/yqFpALMk8KAd0daW2VAaESabtv+N/BBgAFoYTinRL6SAAAAAASUVORK5CYII=",
-    "name": {
-        "de-DE": "Entscheidung",
-        "en-US": "Decision"
-    },
-    "name_plural": {
-        "de-DE": "Entscheidungen",
-        "en-US": "Decisions"
-    },
-    "id": "DN",
-    "domain": "projectmanagement",
-    "properties": {
-        "color": {
-            "background": "mediumorchid",
-            "border": "mediumorchid"
-        },
-        "font": {
-            "color": "white"
-        }
+        "default": "pending",
+        "statusnetwork": true
+      }
     }
+  ],
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+"icon": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABIpJREFUeNrkV11oXEUUPjP3Z2+ybbEgamKTaigUQYqIFs1KoeIquqFG6R/2tW+FSuODFF/Msxip4oNPPgk1wTbSlBSSiCkGixaJeSoI/QskNYi7293N/tyf8Zy5czfXzb273a2lDw6ce+bOzJ1z5sz5vpnLhBDwMItOD8ZYW98sfX5scr1UzeTvVqBQtCFXrF48/vWPw9jndORAm6UrobPM7rcOQP7OKlSya3Dp4tUMtaMU2p2Md+CARQ/aOs/zwHE8sG233t5uYTRRwxbol04PTXIGGbQCGnYxfGGMA2eC9gute/QhcI2DpqNoGvax+pI0xuQwmhc/leNcYN/vef/swcZtitqCLpw8kx45CZDNKTfZhhbi33pTf/Ae6ucaFJdvvv3bp+748x9MHMIWt5kDlsAVguPC7d8X8VsdBVfIOUYCRdV5qE7RYXpoTNCvxlCEtvTsgF17U+8sjrGJ50bG605E5QADESyI1Sesiwwv2zAiY91kkzFSAnNF1GqwtbdPOrF05shksPgWSchi56a8+OHbc1LfS5FR9VxI7hwAy9CHFGqaOSCkSKIKJNzrCXj1yLtS31O24zZRLpRuXYe1/Po8NhkteYAmF9yHGyUUQ82Va57SGqeJuXIyJoq0VaYJhZVl+GVu7vJrH1/ADAc71gGhMrc/lfLfRNQAsbke9a7QUVq+CT/Pzs6/MTo1gi0rKOU4Hnhs9qPMH5VSZRuu38cx9xPP5wQu0UW459ggA8D8hPQxz2RU5BjUGvXrOhSrXmHvh9/tx/lvoWQDFDRGQPv1k4NfPZPaty3Z95QknCCMkQWhWqnWwEEmrGHdcX1WdFzHf7cdsF0XymgqtzC3Fb9YCxtvdEBbHDs8sevFweHk40+CVyiAwI9dFAkjFE9pavcUvFw0VC5XoFqz0TgalhoF22v0jg72PrsH8v4aqmHjYQf0pTNHzw+88PJQ8okdErPSUNxRzXx4yu3QBXR3W2BgrNfV1mhE0Wicy3ECrIQBcVMFMOzqNrWhZN+AxKqoh74JrND4zDfjVJEppyMTJtERK6GDiXWShImCmtpanYbGnVx5vrR8XWa/xGwrYsEIpY8dllqyncoUyzQgaZlgoGEDndQxGiZCMC6agSX7ldPnTl6Zmb1cQqwSZmmF8fzk779HuRDkRShPCAFJXHXC9KORMHQQLS4khMkVJIhTM0J89lI6vW9L/9PAw16zCDQw2HwiNp6OFCFERtytK3DAUfCA9OjUqRmufdHziDUomRCdcKUOLiE+M1L2S45ShxP1u67w0YF1XwtJmTQmW3YWIIIrG4lIQ9mO0qt0VPYY1758b3rn4OuQX12B9b/XYHrqKpw4+9ObAb1GMQbKXyi3G69tjQYIozmF19UYBtouF6b2nCkEYLkRRDEmcyoB/ba6ETnKy0Lzg1LU46lO5Kxiugd+KY068Dou/40D8L9zgG2cB/cT/o4dIKqmm66G5zzpNn/t7vvXTPx5t7KQm76QCv4NizU7kmQ6/TNqVehi0Y/yqFpALMk8KAd0daW2VAaESabtv+N/BBgAFoYTinRL6SAAAAAASUVORK5CYII=",
+  "name": {
+    "de-DE": "Entscheidung",
+    "en-US": "Decision"
+  },
+  "name_plural": {
+    "de-DE": "Entscheidungen",
+    "en-US": "Decisions"
+  },
+  "id": "DN",
+  "domain": "projectmanagement",
+  "properties": {
+    "color": {
+      "background": "mediumorchid",
+      "border": "mediumorchid"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
 }
