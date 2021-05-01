@@ -5,49 +5,65 @@
         "id": "completes",
         "left": "TK",
         "right": "WP",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "dividedinto",
         "left": "WP",
         "right": "WP",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "emergesfrom",
         "left": "RK",
         "right": "WP",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "generates",
         "left": "WP",
         "right": "DI",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "leadsto",
         "left": "WP",
         "right": "DN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "specifies",
         "left": "RT",
         "right": "DI",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "specifies",
         "left": "RT",
         "right": "TK",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "specifies",
         "left": "RT",
         "right": "WP",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       }
     ],
     "ddo": [
@@ -72,67 +88,89 @@
         "id": "appliesto",
         "left": "ND",
         "right": "SI",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "defines",
         "left": "UC",
         "right": "RT",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "emergesfrom",
         "left": "RK",
         "right": "RT",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "followsfrom",
         "left": "RT",
         "right": "DN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "leadsto",
         "left": "RT",
         "right": "DN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "refines",
         "left": "FN",
         "right": "DN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "requiredby",
         "left": "RT",
         "right": "SR",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "requires",
         "left": "CY",
         "right": "FN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "requires",
         "left": "UC",
         "right": "CY",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "sourceof",
         "left": "ND",
         "right": "RT",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "summarizes",
         "left": "RT",
         "right": "FE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       }
     ],
     "ddo": [
@@ -188,157 +226,217 @@
         "id": "allocatedto",
         "left": "FN",
         "right": "SE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "appliesto",
         "left": "ND",
         "right": "FN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "appliesto",
         "left": "ND",
         "right": "IE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "appliesto",
         "left": "ND",
         "right": "SE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "appliesto",
         "left": "ND",
         "right": "SI",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "connects",
         "left": "IE",
         "right": "ET",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "connects",
         "left": "SI",
         "right": "SE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "dividedinto",
         "left": "FN",
         "right": "FN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "dividedinto",
         "left": "SE",
         "right": "SE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "emergesfrom",
         "left": "RK",
         "right": "FN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "emergesfrom",
         "left": "RK",
         "right": "IE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "emergesfrom",
         "left": "RK",
         "right": "SE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "forcedby",
         "left": "RT",
         "right": "SE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "implements",
         "left": "ET",
         "right": "SE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "implements",
         "left": "IE",
         "right": "SI",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "inputfor",
         "left": "II",
         "right": "FN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "leadsto",
         "left": "FN",
         "right": "DN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "leadsto",
         "left": "SE",
         "right": "DN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "outputfrom",
         "left": "II",
         "right": "FN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "specifies",
         "left": "RT",
         "right": "ET",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "specifies",
         "left": "RT",
         "right": "FN",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "specifies",
         "left": "RT",
         "right": "IE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "specifies",
         "left": "RT",
         "right": "II",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "specifies",
         "left": "RT",
         "right": "SE",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "specifies",
         "left": "RT",
         "right": "SI",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "ST",
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "transports",
         "left": "SI",
         "right": "II",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       }
     ],
     "ddo": [
@@ -365,6 +463,12 @@
         "transaction": [
           "*"
         ]
+      },
+      {
+        "id": "ST",
+        "transaction": [
+          "*"
+        ]
       }
     ],
     "transaction": []
@@ -375,25 +479,33 @@
         "id": "confirms",
         "left": "TR",
         "right": "TT",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "documents",
         "left": "AT",
         "right": "TR",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "performs",
         "left": "AT",
         "right": "TT",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       },
       {
         "id": "verifies",
         "left": "TT",
         "right": "RT",
-        "transaction": ["*"]
+        "transaction": [
+          "*"
+        ]
       }
     ],
     "ddo": [

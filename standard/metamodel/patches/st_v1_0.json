@@ -1,0 +1,114 @@
+{
+  "title": {
+    "de-DE": "Aktualiasiert das Systementwurfsmodell",
+    "en-US": "Updates the System Design Model"
+  },
+  "description": {
+    "de-DE": "",
+    "en-US": "This patch adds States to the system design model"
+  },
+  "ddl": {
+    "add": [
+      {
+        "foreward": {
+          "id": "specifies",
+          "name": {
+            "de-DE": "spezifiziert",
+            "en-US": "specifies"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "ST",
+        "reverse": {
+          "id": "specifiedby",
+          "name": {
+            "de-DE": "spezifiziert durch",
+            "en-US": "specified by"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "systemengineer"
+        ]
+      }
+    ]
+  },
+  "ddo": {
+    "add": [
+      {
+        "attributes": [
+          {
+            "id": "number",
+            "description": {
+              "de-DE": "",
+              "en-US": ""
+            },
+            "name": {
+              "de-DE": "Nummer",
+              "en-US": "Number"
+            },
+            "sortorder": 10,
+            "type": "string",
+            "properties": {
+              "default": ""
+            }
+          },
+          {
+            "id": "title",
+            "name": {
+              "de-DE": "Titel",
+              "en-US": "Title"
+            },
+            "sortorder": 20,
+            "type": "string",
+            "properties": {
+              "length": 255,
+              "default": ""
+            }
+          },
+          {
+            "id": "description",
+            "name": {
+              "de-DE": "Beschreibung",
+              "en-US": "Description"
+            },
+            "sortorder": 100,
+            "type": "text",
+            "properties": {}
+          }
+        ],
+        "description": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "icon": "",
+        "name": {
+          "de-DE": "Zustand",
+          "en-US": "State"
+        },
+        "name_plural": {
+          "de-DE": "Zustände",
+          "en-US": "States"
+        },
+        "id": "ST",
+        "domain": "systemdesign",
+        "properties": {
+          "color": {
+            "background": "olivedrab",
+            "border": "olivedrab"
+          },
+          "font": {
+            "color": "white"
+          },
+          "icon": "mdi-state-machine"
+        },
+        "roles": [
+          "repositorymanager",
+          "systemengineer"
+        ]
+      }
+    ]
+  }
+}
