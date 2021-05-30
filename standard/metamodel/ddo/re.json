@@ -104,6 +104,18 @@
       },
       "sortorder": 410,
       "type": "properties"
+    },
+    {
+      "id": "userid",
+      "name": {
+        "de-DE": "Benutzerkonto",
+        "en-US": "User account"
+      },
+      "sortorder": 300,
+      "type": "useraccount",
+      "properties": {
+        "default": null
+      }
     }
   ],
   "description": {
