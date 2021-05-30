@@ -36,12 +36,57 @@
       "type": "text"
     },
     {
+      "id": "type",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Typ",
+        "en-US": "Type"
+      },
+      "sortorder": 200,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "task": {
+            "value": {
+              "de-DE": "Aufgabe",
+              "en-US": "Task"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          },
+          "milestone": {
+            "value": {
+              "de-DE": "Meilenstein",
+              "en-US": "Milestone"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          },
+          "deliverydate": {
+            "value": {
+              "de-DE": "Lieferdatum",
+              "en-US": "Delivery date"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          }
+        },
+        "default": "task"
+      }
+    },
+    {
       "id": "duration",
       "name": {
         "de-DE": "Dauer",
         "en-US": "Duration"
       },
-      "sortorder": 200,
+      "sortorder": 300,
       "type": "value",
       "properties": {
         "unit": {
@@ -52,46 +97,6 @@
         "default": 0,
         "max": 99999,
         "min": 0
-      }
-    },
-    {
-      "id": "resource",
-      "name": {
-        "de-DE": "Ressource",
-        "en-US": "Resource"
-      },
-      "sortorder": 310,
-      "type": "resource_pm",
-      "properties": {
-        "enumeration": {
-          "none": {
-            "value": {
-              "de-DE": "Keine",
-              "en-US": "None"
-            },
-            "properties": {
-              "costcenter": "",
-              "hourlyRate": {
-                "value": 0.0,
-                "currency": "EUR"
-              }
-            }
-          },
-          "sem": {
-            "value": {
-              "de-DE": "Systems Engineering Manager",
-              "en-US": "Systems Engineering Manager"
-            },
-            "properties": {
-              "costcenter": "4711",
-              "hourlyRate": {
-                "value": 150.0,
-                "currency": "EUR"
-              }
-            }
-          }
-        },
-        "default": "none"
       }
     },
     {

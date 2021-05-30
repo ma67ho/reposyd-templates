@@ -1,0 +1,270 @@
+{
+  "title": {
+    "de-DE": "Aktualiasiert das Projektmanagementmodell",
+    "en-US": "Updates the Project Management Model"
+  },
+  "description": {
+    "de-DE": "",
+    "en-US": "This patch adds DDO Resource to the model"
+  },
+  "ddl": {
+    "add": [
+      {
+        "foreward": {
+          "id": "assignedto",
+          "name": {
+            "de-DE": "zugewiesen zu",
+            "en-US": "assigned to"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "RE",
+        "properties": {
+          "effort": {
+            "value": 0,
+            "unit": "%"
+          }
+        },
+        "right": "TK",
+        "reverse": {
+          "id": "occupies",
+          "name": {
+            "de-DE": "beansprucht",
+            "en-US": "occupies"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "projectmanager"
+        ]
+      },
+      {
+        "foreward": {
+          "id": "specifies",
+          "name": {
+            "de-DE": "spezifiziert",
+            "en-US": "specifies"
+          },
+          "cardinality": "one2many"
+        },
+        "left": "RT",
+        "right": "RE",
+        "reverse": {
+          "id": "specifiedby",
+          "name": {
+            "de-DE": "spezifiziert durch",
+            "en-US": "specified by"
+          },
+          "cardinality": "one2many"
+        },
+        "roles": [
+          "repositorymanager",
+          "requirementsmanager",
+          "projectmanager"
+        ]
+      }
+    ]
+  },
+  "ddo": {
+    "add": [
+      {
+        "attributes": [
+          {
+            "id": "number",
+            "name": {
+              "de-DE": "Nummer",
+              "en-US": "Number"
+            },
+            "sortorder": 10,
+            "type": "string",
+            "properties": {
+              "length": 255,
+              "default": ""
+            }
+          },
+          {
+            "id": "title",
+            "description": {
+              "de-DE": "",
+              "en-US": ""
+            },
+            "name": {
+              "de-DE": "Titel",
+              "en-US": "Title"
+            },
+            "sortorder": 20,
+            "type": "string",
+            "properties": {
+              "length": 255,
+              "default": ""
+            }
+          },
+          {
+            "id": "description",
+            "name": {
+              "de-DE": "Beschreibung",
+              "en-US": "Description"
+            },
+            "sortorder": 30,
+            "type": "text"
+          },
+          {
+            "id": "type",
+            "description": {
+              "de-DE": "",
+              "en-US": ""
+            },
+            "name": {
+              "de-DE": "Typ",
+              "en-US": "Type"
+            },
+            "sortorder": 200,
+            "type": "enumeration",
+            "properties": {
+              "enumeration": {
+                "costs": {
+                  "value": {
+                    "de-DE": "Kosten",
+                    "en-US": "Costs"
+                  },
+                  "properties": {
+                    "backgroundColor": "sandybrown"
+                  }
+                },
+                "labour": {
+                  "value": {
+                    "de-DE": "Arbeit",
+                    "en-US": "Labour"
+                  },
+                  "properties": {
+                    "backgroundColor": "sandybrown"
+                  }
+                },
+                "material": {
+                  "value": {
+                    "de-DE": "Material",
+                    "en-US": "Material"
+                  },
+                  "properties": {
+                    "backgroundColor": "sandybrown"
+                  }
+                }
+              },
+              "default": "labour"
+            }
+          },
+          {
+            "id": "generic",
+            "name": {
+              "de-DE": "generisch",
+              "en-US": "generic"
+            },
+            "sortorder": 210,
+            "type": "boolean",
+            "properties": {
+              "default": false
+            }
+          },
+          {
+            "id": "userid",
+            "name": {
+              "de-DE": "Benutzerkonto",
+              "en-US": "User account"
+            },
+            "sortorder": 300,
+            "type": "useraccount",
+            "properties": {
+              "default": null
+            }
+          }
+        ],
+        "description": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "icon": "",
+        "name": {
+          "de-DE": "Ressource",
+          "en-US": "Resource"
+        },
+        "name_plural": {
+          "de-DE": "Ressourcen",
+          "en-US": "Resources"
+        },
+        "id": "RE",
+        "domain": "projectmanagement",
+        "roles": [
+          "repositorymanager",
+          "projectmanager"
+        ],
+        "properties": {
+          "color": {
+            "background": "darkmagenta",
+            "border": "darkmagenta"
+          },
+          "font": {
+            "color": "white"
+          }
+        }
+      }
+    ],
+    "modify": [
+      {
+        "id": "TK",
+        "attributes": {
+          "add": [
+            {
+              "id": "type",
+              "description": {
+                "de-DE": "",
+                "en-US": ""
+              },
+              "name": {
+                "de-DE": "Typ",
+                "en-US": "Type"
+              },
+              "sortorder": 200,
+              "type": "enumeration",
+              "properties": {
+                "enumeration": {
+                  "task": {
+                    "value": {
+                      "de-DE": "Aufgabe",
+                      "en-US": "Task"
+                    },
+                    "properties": {
+                      "backgroundColor": "sandybrown"
+                    }
+                  },
+                  "milestone": {
+                    "value": {
+                      "de-DE": "Meilenstein",
+                      "en-US": "Milestone"
+                    },
+                    "properties": {
+                      "backgroundColor": "sandybrown"
+                    }
+                  },
+                  "deliverydate": {
+                    "value": {
+                      "de-DE": "Lieferdatum",
+                      "en-US": "Delivery date"
+                    },
+                    "properties": {
+                      "backgroundColor": "sandybrown"
+                    }
+                  }
+                },
+                "default": "task"
+              }
+            }
+          ],
+          "remove": [
+            "resource"
+          ]
+        }
+      }
+    ]
+  }
+}
