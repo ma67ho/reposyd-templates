@@ -1,0 +1,137 @@
+{
+  "attributes": [
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "title",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
+    },
+    {
+      "id": "generic",
+      "name": {
+        "de-DE": "generisch",
+        "en-US": "generic"
+      },
+      "sortorder": 100,
+      "type": "boolean",
+      "properties": {
+        "default": false
+      }
+    },
+    {
+      "id": "type",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Typ",
+        "en-US": "Type"
+      },
+      "sortorder": 200,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "costs": {
+            "value": {
+              "de-DE": "Kosten",
+              "en-US": "Costs"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          },
+          "labour": {
+            "value": {
+              "de-DE": "Arbeit",
+              "en-US": "Labour"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          },
+          "material": {
+            "value": {
+              "de-DE": "Material",
+              "en-US": "Material"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          }
+        },
+        "default": "labour"
+      }
+    },
+    {
+      "id": "properties",
+      "name": {
+        "de-DE": "Eigenschaften",
+        "en-US": "Properties"
+      },
+      "sortorder": 410,
+      "type": "properties"
+    }
+  ],
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+  "icon": "",
+  "name": {
+    "de-DE": "Ressource",
+    "en-US": "Resource"
+  },
+  "name_plural": {
+    "de-DE": "Ressourcen",
+    "en-US": "Resources"
+  },
+  "id": "RE",
+  "domain": "projectmanagement",
+  "roles": [
+    "repositorymanager",
+    "projectmanager"
+  ],
+  "properties": {
+    "color": {
+      "background": "darkmagenta",
+      "border": "darkmagenta"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
+}
