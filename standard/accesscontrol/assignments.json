@@ -2,6 +2,14 @@
   "projectmanager": {
     "ddl": [
       {
+        "id": "assignedto",
+        "left": "RE",
+        "right": "TK",
+        "transaction": [
+          "*"
+        ]
+      },
+      {
         "id": "completes",
         "left": "TK",
         "right": "WP",
@@ -52,6 +60,14 @@
       {
         "id": "specifies",
         "left": "RT",
+        "right": "RE",
+        "transaction": [
+          "*"
+        ]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
         "right": "TK",
         "transaction": [
           "*"
@@ -67,6 +83,12 @@
       }
     ],
     "ddo": [
+      {
+        "id": "RE",
+        "transaction": [
+          "*"
+        ]
+      },
       {
         "id": "TK",
         "transaction": [
