@@ -2,18 +2,22 @@
   "name": "@reposyd/templates",
   "version": "5.0.0",
   "description": "RePoSyD Templates",
-  "main": "index.js",
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
     "build": "node ./scripts/compile-templates.js",
     "version:major": "yarn version --major & run-s -s build",
     "version:minor": "yarn version --minor & run-s -s build",
     "version:patch": "yarn version --patch & run-s -s build"
-
+  },
+  "files": [
+    "dist/**/*.{json}"
+  ],
+  "publishConfig": {
+    "registry": "https://pkg.reposyd.de/registry"
   },
   "repository": "https://github.com/ma67ho/reposyd-templates.git",
-  "author": "Martin Hoppe <48030323+ma67ho@users.noreply.github.com>",
-  "license": "MIT",
+  "author": "Martin Hoppe <martin@reposyd.de> (https://reposyd.de/)",
+  "license": "GPL-3.0-or-later",
   "reposyd": {
     "templates": [
       {
