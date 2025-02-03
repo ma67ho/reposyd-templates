@@ -1,0 +1,162 @@
+[
+  {
+    "foreward": {
+      "id": "followsfrom",
+      "name": {
+        "de-DE": "führt zu",
+        "en-US": "leads to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "FE",
+    "right": "DN",
+    "reverse": {
+      "id": "justifies",
+      "name": {
+        "de-DE": "rechtfertigt",
+        "en-US": "justifies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "followsfrom",
+      "name": {
+        "de-DE": "führt zu",
+        "en-US": "leads to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "FN",
+    "right": "DN",
+    "reverse": {
+      "id": "justifies",
+      "name": {
+        "de-DE": "rechtfertigt",
+        "en-US": "justifies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "followsfrom",
+      "name": {
+        "de-DE": "führt zu",
+        "en-US": "leads to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "IE",
+    "right": "DN",
+    "reverse": {
+      "id": "justifies",
+      "name": {
+        "de-DE": "rechtfertigt",
+        "en-US": "justifies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "followsfrom",
+      "name": {
+        "de-DE": "führt zu",
+        "en-US": "leads to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "II",
+    "right": "DN",
+    "reverse": {
+      "id": "justifies",
+      "name": {
+        "de-DE": "rechtfertigt",
+        "en-US": "justifies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "followsfrom",
+      "name": {
+        "de-DE": "führt zu",
+        "en-US": "leads to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "RT",
+    "right": "DN",
+    "reverse": {
+      "id": "justifies",
+      "name": {
+        "de-DE": "rechtfertigt",
+        "en-US": "justifies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "followsfrom",
+      "name": {
+        "de-DE": "führt zu",
+        "en-US": "leads to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "SE",
+    "right": "DN",
+    "reverse": {
+      "id": "justifies",
+      "name": {
+        "de-DE": "rechtfertigt",
+        "en-US": "justifies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "followsfrom",
+      "name": {
+        "de-DE": "führt zu",
+        "en-US": "leads to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "SI",
+    "right": "DN",
+    "reverse": {
+      "id": "justifies",
+      "name": {
+        "de-DE": "rechtfertigt",
+        "en-US": "justifies"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "followsfrom",
+      "name": {
+        "de-DE": "führt zu",
+        "en-US": "leads to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "WP",
+    "right": "DN",
+    "reverse": {
+      "id": "justifies",
+      "name": {
+        "de-DE": "rechtfertigt",
+        "en-US": "justifies"
+      },
+      "cardinality": "one2many"
+    }
+  }
+]

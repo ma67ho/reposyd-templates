@@ -1,0 +1,17 @@
+{
+  "repositorymanager": {
+    "ddl": [
+      {
+        "id": "*",
+        "transaction": "*"
+      }
+    ],
+    "ddo": [
+      {
+        "id": "*",
+        "transaction": ["*"]
+      }
+    ],
+    "transaction": ["*"]
+  }
+}

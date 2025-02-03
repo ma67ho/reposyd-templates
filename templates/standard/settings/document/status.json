@@ -1,0 +1,23 @@
+[
+  {
+    "key": "document.status.default",
+    "value": "draft"
+  },
+  {
+    "key": "document.status.options",
+    "value": [
+      {
+        "value": "draft",
+        "label": { "de": "Entwurf", "en": "Draft" }
+      },
+      {
+        "value": "review",
+        "label": { "de": "Review", "en": "Review" }
+      },
+      {
+        "value": "release",
+        "label": { "de": "Freigabe", "en": "Release" }
+      }
+    ]
+  }
+]

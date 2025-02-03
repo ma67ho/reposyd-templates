@@ -1,0 +1,281 @@
+{
+  "date": "2025-01-31",
+  "title": {
+    "de": "Passt das Metamodel für die Systemkonfiguration an.",
+    "en": "Customizes the metamodel for the system configuration."
+  },
+  "commands": [
+    {
+      "name":"dda.add",
+      "arguments": {
+        "ddo":"ET",
+        "dda":{
+          "id": "installationtype",
+          "name": {
+            "de-DE": "Einbauart",
+            "en-US": "Installation type"
+          },
+          "sortorder": 200,
+          "type": "enumeration",
+          "properties": {
+            "default": "fitted",
+            "enumeration": {
+              "fitted": {
+                "value": {
+                  "de-DE": "eingebaut",
+                  "en-US": "fitted"
+                },
+                "properties": {}
+              },
+              "ffbnw": {
+                "value": {
+                  "de-DE": "FFBNW",
+                  "en-US": "FFBNW"
+                },
+                "properties": {}
+              },
+              "spaceandweight": {
+                "value": {
+                  "de-DE": "Space & Weigth",
+                  "en-US": "Space & Weigth"
+                },
+                "properties": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name":"dda.add",
+      "arguments": {
+        "ddo":"ET",
+        "dda":{
+          "id": "shockclass",
+          "name": {
+            "de-DE": "Schockklasse",
+            "en-US": "Shock Class"
+          },
+          "sortorder": 200,
+          "type": "enumeration",
+          "properties": {
+            "default": "fitted",
+            "enumeration": {
+              "notdefined": {
+                "value": {
+                  "de-DE": "nicht definiert",
+                  "en-US": "not defined"
+                },
+                "properties": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name":"dda.add",
+      "arguments":{
+        "ddo":"ET",
+        "dda":{
+          "id": "lifecyclestatus",
+          "name": {
+            "de-DE": "Lebenszyklusstatus",
+            "en-US": "Lifecycle Status"
+          },
+          "sortorder": 200,
+          "type": "enumeration",
+          "properties": {
+            "enumeration": {
+              "available": {
+                "value": {
+                  "de-DE": "verfügbar",
+                  "en-US": "available"
+                },
+                "properties": {}
+              },
+              "obsolete": {
+                "value": {
+                  "de-DE": "veraltet",
+                  "en-US": "obsolete"
+                },
+                "properties": {}
+              },
+              "eos": {
+                "value": {
+                  "de-DE": "Supportende",
+                  "en-US": "End of Support"
+                },
+                "properties": {}
+              },
+              "eol": {
+                "value": {
+                  "de-DE": "Auslaufprodukt",
+                  "en-US": "End of Life"
+                },
+                "properties": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name":"dda.add",
+      "arguments":{
+        "ddo":"ET",
+        "dda":    {
+          "id": "technicaldata",
+          "name": {
+            "de-DE": "Technische Daten",
+            "en-US": "Technical Data"
+          },
+          "sortorder": 210,
+          "type": "json",
+          "properties": {
+            "default:": []
+          }
+        }    
+      }
+    },
+    {
+      "name":"dda.add",
+      "arguments":{
+        "ddo":"ET",
+        "dda":{
+          "id": "technologyreadinesslevel",
+          "name": {
+            "de-DE": "Technology Readiness Level",
+            "en-US": "Technology Readiness Level"
+          },
+          "sortorder": 210,
+          "type": "enumeration",
+          "properties": {
+            "enumeration": {
+              "pending": {
+                "value": {
+                  "de-DE": "ausstehend",
+                  "en-US": "pending"
+                },
+                "properties": {}
+              },
+              "trl1": {
+                "value": {
+                  "de-DE": "TRL 1",
+                  "en-US": "TRL 1"
+                },
+                "properties": {}
+              },
+              "trl2": {
+                "value": {
+                  "de-DE": "TRL 1",
+                  "en-US": "TRL 1"
+                },
+                "properties": {}
+              },
+              "trl3": {
+                "value": {
+                  "de-DE": "TRL 3",
+                  "en-US": "TRL 3"
+                },
+                "properties": {}
+              },
+              "trl4": {
+                "value": {
+                  "de-DE": "TRL 4",
+                  "en-US": "TRL 4"
+                },
+                "properties": {}
+              },
+              "trl5": {
+                "value": {
+                  "de-DE": "TRL 5",
+                  "en-US": "TRL 5"
+                },
+                "properties": {}
+              },
+              "trl6": {
+                "value": {
+                  "de-DE": "TRL 6",
+                  "en-US": "TRL 6"
+                },
+                "properties": {}
+              },
+              "trl7": {
+                "value": {
+                  "de-DE": "TRL 7",
+                  "en-US": "TRL 7"
+                },
+                "properties": {}
+              },
+              "trl8": {
+                "value": {
+                  "de-DE": "TRL 8",
+                  "en-US": "TRL 8"
+                },
+                "properties": {}
+              },
+              "trl9": {
+                "value": {
+                  "de-DE": "TRL 9",
+                  "en-US": "TRL 9"
+                },
+                "properties": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name":"dda.add",
+      "arguments":{
+        "ddo":"ET",
+        "dda": {
+          "id": "weighttolerance",
+          "name": { 
+            "de-DE": "weighttolerance", 
+            "en-US": "weighttolerance" 
+          },
+          "type": "value",
+          "sortorder": 300,
+          "properties": {
+            "decimals": 0,
+            "default": 0,
+            "max": 100,
+            "min": -100,
+            "unit": { "de-DE": "%", "en-US": "%" }
+          }
+        }
+      }
+    },
+    {
+      "name": "dda.remove",
+      "arguments": {
+        "ddo": "ET",
+        "dda": "quantity"
+      }
+    },
+    {
+      "name": "dda.remove",
+      "arguments": {
+        "ddo": "ET",
+        "dda": "unit"
+      }
+    },
+    {
+      "name": "ddl.patch",
+      "arguments": {
+        "ddl": {
+          "left": "ET",
+          "id": "installedin",
+          "right": "IS",
+          "properties": {
+            "cardinality": "one2one"
+          }
+        }
+      }
+    }
+  ],
+  "version": "5.2.0"
+}

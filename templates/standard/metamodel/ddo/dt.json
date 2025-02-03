@@ -1,0 +1,146 @@
+{
+  "attributes": [
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "title",
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
+    },
+    {
+      "id": "type",
+      "name": {
+        "de-DE": "Typ",
+        "en-US": "Type"
+      },
+      "sortorder": 40,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "bom": {
+            "value": {
+              "de-DE": "Stückliste",
+              "en-US": "Bill of Material"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "document": {
+            "value": {
+              "de-DE": "Dokument",
+              "en-US": "Document"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "drawing": {
+            "value": {
+              "de-DE": "Zeichnung",
+              "en-US": "Drawing"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "pending": {
+            "value": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          }
+        },
+        "default": "pending"
+      }
+    },
+    {
+      "id": "revision",
+      "name": {
+        "de-DE": "Revision",
+        "en-US": "Revision"
+      },
+      "sortorder": 110,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "publicationdate",
+      "name": {
+        "de-DE": "Ausgabedatum",
+        "en-US": "Publication Date"
+      },
+      "sortorder": 120,
+      "type": "date",
+      "properties": {}
+    },
+    {
+      "id": "dmsurl",
+      "name": {
+        "de-DE": "DMS Url",
+        "en-US": "DMS Url"
+      },
+      "sortorder": 200,
+      "type": "url"
+    }
+  ],
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+  "icon": "",
+  "name": {
+    "de-DE": "Dokument",
+    "en-US": "Document"
+  },
+  "name_plural": {
+    "de-DE": "Dokumente",
+    "en-US": "Documents"
+  },
+  "id": "DT",
+  "domain": "documentation",
+  "properties": {
+    "color": {
+      "background": "olivedrab",
+      "border": "olivedrab"
+    },
+    "font": {
+      "color": "white"
+    },
+    "icon": "mdi-account-group-outline"
+  }
+}

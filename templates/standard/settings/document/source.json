@@ -1,0 +1,32 @@
+[
+  {
+    "key": "document.source.default",
+    "value": "pending"
+  },
+  {
+    "key": "document.source.options",
+    "value": [
+      {
+        "value": "pending",
+        "label": {
+          "de": "ausstehend",
+          "en": "pending"
+        }
+      },
+      {
+        "value": "reposyd",
+        "label": {
+          "de": "RePoSyD",
+          "en": "RePoSyD"
+        }
+      },
+      {
+        "value": "others",
+        "label": {
+          "de": "Anderes System",
+          "en": "Other system"
+        }
+      }
+    ]
+  }
+]

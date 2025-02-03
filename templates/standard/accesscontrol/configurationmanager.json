@@ -1,0 +1,7 @@
+{
+  "configurationmanager": {
+    "ddl": [],
+    "ddo": [],
+    "transaction": ["ddo.changeprefix"]
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "projectmanager": {
+    "ddl": [
+      {
+        "id": "producedby",
+        "left": "DI",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "followsfrom",
+        "left": "DN",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "TK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "assignedto",
+        "left": "RE",
+        "right": "TK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "DI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "RE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "TK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "occupies",
+        "left": "TK",
+        "right": "RE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "completes",
+        "left": "TK",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "TK",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "completedby",
+        "left": "WP",
+        "right": "TK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "contains",
+        "left": "WP",
+        "right": "RK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "dividedinto",
+        "left": "WP",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "followsfrom",
+        "left": "WP",
+        "right": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "generates",
+        "left": "WP",
+        "right": "DI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "includedin",
+        "left": "WP",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "leadsto",
+        "left": "WP",
+        "right": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "WP",
+        "right": "RT",
+        "transaction": ["*"]
+      }
+    ],
+    "ddo": [
+      {
+        "id": "DI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "RE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "TK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "WP",
+        "transaction": ["*"]
+      }
+    ],
+    "transaction": []
+  }
+}

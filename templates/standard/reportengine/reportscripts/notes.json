@@ -1,0 +1,44 @@
+{
+  "uuid": "{8065fa1f-e25e-49c0-8ed1-d5ef4cfb1c01}",
+  "domain": "<global>",
+  "id": "notes",
+  "definition": {
+    "blocks": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable id=\":-tfJx?@%fd2c;Ps5^?T\">chapter</variable><variable id=\"J}K+jT],G35isHduW7~h\">note</variable></variables><block type=\"rg_translation_add\" id=\"Kx.33T_z#TazB(`B%@n+\" x=\"150\" y=\"-530\"><field name=\"KEY\">tags</field><field name=\"LANG\">de</field><field name=\"TEXT\">Schlüsselwörter: </field><next><block type=\"rg_translation_add\" id=\"uRBrQ-@8tU:9pr(t6/G7\"><field name=\"KEY\">tags</field><field name=\"LANG\">en</field><field name=\"TEXT\">Tags: </field><next><block type=\"variables_set\" id=\"diXiYf1(h$qmi;5Dj)Ol\"><field name=\"VAR\" id=\":-tfJx?@%fd2c;Ps5^?T\">chapter</field><value name=\"VALUE\"><block type=\"rg_generator_document_last_chapter\" id=\"L^:3H2_HOl0AceXD[sDO\"></block></value><next><block type=\"controls_forEach\" id=\"RT2ymqI}{]p_e{azlpYK\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">note</field><value name=\"LIST\"><block type=\"dd_note_read_all\" id=\"a!]goAHn@Zhj6`DFzxBm\"></block></value><statement name=\"DO\"><block type=\"rg_chapter_subchapter_add\" id=\"3z$]j^qk,vt@Gk$by(k`\"><value name=\"CHAPTER\"><block type=\"variables_get\" id=\"GP6Y4t|6nA1C!7Dw;=7U\"><field name=\"VAR\" id=\":-tfJx?@%fd2c;Ps5^?T\">chapter</field></block></value><value name=\"HEADING\"><block type=\"dd_note_prop_get\" id=\"T9_*)p}]/iED*ir]Kc7D\"><field name=\"PROP\">title</field><value name=\"VALUE\"><block type=\"variables_get\" id=\"D0x[{$2=L9T7I;Oq64BC\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">note</field></block></value></block></value><next><block type=\"controls_if\" id=\"-!:@9zQ$?a^Q,lE?r?wH\"><value name=\"IF0\"><block type=\"rg_scriptoption_get\" id=\"bQ$|V5uH)aE;ucRC^lIU\"><field name=\"OPTID\">printtags</field></block></value><statement name=\"DO0\"><block type=\"rg_fragment_paragraph_add\" id=\"5?7{J~!oiZ3fOO%hdTUT\"><field name=\"STYLE\">tabelcell</field><next><block type=\"rg_fragment_text_add\" id=\"o`-ObrLjHlppUTUti%*i\"><value name=\"TEXT\"><shadow type=\"text\" id=\")kSg%}5EAVuU+g)SQPIt\"><field name=\"TEXT\">123</field></shadow><block type=\"rg_translation_get_singular\" id=\"bcK.B8]JLS8)M}X_%Ayu\"><field name=\"KEY\">tags</field></block></value><next><block type=\"rg_fragment_text_add\" id=\"2iIpj%YN])H6jer@)*I!\"><value name=\"TEXT\"><shadow type=\"text\" id=\")kSg%}5EAVuU+g)SQPIt\"><field name=\"TEXT\">123</field></shadow><block type=\"dd_note_prop_get\" id=\"1PWVB+5K(HXddC}B9eV`\"><field name=\"PROP\">tags</field><value name=\"VALUE\"><block type=\"variables_get\" id=\"iIf$WG4Y~1m;w[=41H.F\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">note</field></block></value></block></value><next><block type=\"rg_fragment_linebreak_add\" id=\"Gb`bv[ykwf@b;Nf%Gz%q\"><field name=\"COUNT\">1</field></block></next></block></next></block></next></block></statement><next><block type=\"rg_fragment_html_add\" id=\"q.Y+2gQMa=+fr;}iem)P\"><value name=\"VALUE\"><shadow type=\"text\" id=\"CijnN-*zbNS-J7t6U12q\"><field name=\"TEXT\">&lt;html&gt;&lt;/html&gt;</field></shadow><block type=\"dd_note_prop_get\" id=\"VAP2PzD;oxook--vC~8o\"><field name=\"PROP\">description</field><value name=\"VALUE\"><block type=\"variables_get\" id=\"?764dCBY{5.W$DK`1t#U\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">note</field></block></value></block></value></block></next></block></next></block></statement></block></next></block></next></block></next></block></xml>",
+    "variables": [
+      {
+        "id": "32g}a0gUO?rexEg!~KSF",
+        "name": "document",
+        "type": "ReportGeneratorDocument"
+      }
+    ]
+  },
+  "description": "",
+  "label": {
+    "de": "Notizen",
+    "en": "Notes"
+  },
+  "options": [
+    {
+      "id": "selecttag",
+      "label": {
+        "de": "Schlagwörter",
+        "en": "Tags"
+      },
+      "type": "select.tag",
+      "properties": {
+        "match": "atleastone"
+      },
+      "value": []
+    },
+    {
+      "id": "printtags",
+      "label": {
+        "de": "Schlagwörter drucken",
+        "en": "Print tags"
+      },
+      "type": "boolean",
+      "value": false
+    }
+  ],
+  "type": "reportscript"
+}

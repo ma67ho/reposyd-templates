@@ -1,0 +1,107 @@
+{
+  "riskmanager": {
+    "ddl": [
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "AT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "IE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "IS",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "TC",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "TP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "contains",
+        "left": "RT",
+        "right": "RK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "contains",
+        "left": "SE",
+        "right": "RK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "contains",
+        "left": "SI",
+        "right": "RK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "contains",
+        "left": "WP",
+        "right": "RK",
+        "transaction": ["*"]
+      }
+    ],
+    "ddo": [
+      {
+        "id": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "RK",
+        "transaction": ["*"]
+      }
+    ],
+    "transaction": []
+  }
+}

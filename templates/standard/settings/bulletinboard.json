@@ -1,0 +1,22 @@
+[
+  {
+    "key": "bulletinboard.enabled",
+    "value": false
+  },
+  {
+    "key": "bulletinboard.deliverydates.enabled",
+    "value": false
+  },
+  {
+    "key": "bulletinboard.news.enabled",
+    "value": false
+  },
+  {
+    "key": "bulletinboard.tasks.currentweek",
+    "value": true
+  },
+  {
+    "key": "bulletinboard.tasks.overdue",
+    "value": true
+  }
+]

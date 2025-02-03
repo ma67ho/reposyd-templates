@@ -1,0 +1,12 @@
+[
+  {
+    "key": "minutes.renderer.layout.default",
+    "value": "DIN A4",
+    "hooks": {
+      "addproject": {
+        "object": "Layout",
+        "value": "uuid"
+      }
+    }
+  }
+]

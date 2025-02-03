@@ -1,0 +1,175 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable type="ReportTable" id="g{@~Hrwr`7#}%Qbqm=yX">table</variable>
+    <variable type="TranslationKey" id="EGfo$]$,cU/(J`!:JK0T">number</variable>
+    <variable type="TranslationKey" id="Dqnkc@sSgZ7qCLVIVzYg">title</variable>
+    <variable type="TranslationKey" id="mdUlynrj9`TB7o;_T:K)">pubdate</variable>
+    <variable type="TranslationKey" id="eVYEcVDXhi9E|P^~!g$d">revision</variable>
+    <variable type="DesignDataObject" id="r^EU@a@.WVmWVp?Bdeq0">ddo</variable>
+  </variables>
+  <block type="reportblock_head" id="blockly-y" x="170" y="170">
+    <field name="name">Normative Documents</field>
+    <next>
+      <block type="reportblock_contents" id="P.R4u-$Y8),h(VJbxdE,">
+        <statement name="contentsInline">
+          <block type="reporttable" id="]S#kmlUk*Alb;.6zH68O">
+            <field name="table" id="g{@~Hrwr`7#}%Qbqm=yX" variabletype="ReportTable">table</field>
+            <field name="columns">4</field>
+            <field name="columnsLabel">columns</field>
+            <field name="border">TRUE</field>
+            <field name="style">default</field>
+            <next>
+              <block type="reporttable_header_row" id=":q{RON9bciatM~T[eY=0">
+                <mutation columns="4"></mutation>
+                <field name="table" id="g{@~Hrwr`7#}%Qbqm=yX" variabletype="ReportTable">table</field>
+                <value name="COL0">
+                  <block type="reporttable_header_col_translation" id="$6_|vSd`7oUG4Qs,+%`%">
+                    <field name="key" id="EGfo$]$,cU/(J`!:JK0T" variabletype="TranslationKey">number</field>
+                    <field name="count">singular</field>
+                    <field name="width">0</field>
+                    <field name="unit">%</field>
+                  </block>
+                </value>
+                <value name="COL1">
+                  <block type="reporttable_header_col_translation" id="0skF2P?v?h9yTh;l$7Cb">
+                    <field name="key" id="Dqnkc@sSgZ7qCLVIVzYg" variabletype="TranslationKey">title</field>
+                    <field name="count">singular</field>
+                    <field name="width">0</field>
+                    <field name="unit">%</field>
+                  </block>
+                </value>
+                <value name="COL2">
+                  <block type="reporttable_header_col_translation" id="W~GQxRH8(Eece`)GZ;UN">
+                    <field name="key" id="mdUlynrj9`TB7o;_T:K)" variabletype="TranslationKey">pubdate</field>
+                    <field name="count">singular</field>
+                    <field name="width">0</field>
+                    <field name="unit">%</field>
+                  </block>
+                </value>
+                <value name="COL3">
+                  <block type="reporttable_header_col_translation" id="}ca6(B/I;D?=tOZ{:utQ">
+                    <field name="key" id="eVYEcVDXhi9E|P^~!g$d" variabletype="TranslationKey">revision</field>
+                    <field name="count">singular</field>
+                    <field name="width">0</field>
+                    <field name="unit">%</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="ddolist_foreach" id="K$o_z]K;J~D-kbo)Nr[2">
+                    <field name="ddo" id="r^EU@a@.WVmWVp?Bdeq0" variabletype="DesignDataObject">ddo</field>
+                    <value name="list">
+                      <block type="ddolist_sort_default" id="W0f/6lba|H+vQ?#j*/%Z">
+                        <field name="dir">asce</field>
+                        <value name="list">
+                          <block type="ddolist_read_all" id="nyLnoEKBq0rL+3[H0Xq7">
+                            <field name="ddoid">ND</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="inline">
+                      <block type="reporttable_row_add" id="H0VJCIOOSU}iNBl*-@o~">
+                        <mutation columns="4"></mutation>
+                        <field name="table" id="g{@~Hrwr`7#}%Qbqm=yX" variabletype="ReportTable">table</field>
+                        <value name="COL0">
+                          <block type="ddo_attr_dropdown_get" id="?Ta.=ogZCl]|pLrwN#OZ">
+                            <field name="ddaid">number</field>
+                            <field name="ddo" id="r^EU@a@.WVmWVp?Bdeq0" variabletype="DesignDataObject">ddo</field>
+                          </block>
+                        </value>
+                        <value name="COL1">
+                          <block type="ddo_attr_dropdown_get" id="/$9U(p/@QX/p6Wo?T8Yj">
+                            <field name="ddaid">title</field>
+                            <field name="ddo" id="r^EU@a@.WVmWVp?Bdeq0" variabletype="DesignDataObject">ddo</field>
+                          </block>
+                        </value>
+                        <value name="COL2">
+                          <block type="ddo_attr_dropdown_get" id="aYn0[c76R;WyGppd/Gjg">
+                            <field name="ddaid">publicationdate</field>
+                            <field name="ddo" id="r^EU@a@.WVmWVp?Bdeq0" variabletype="DesignDataObject">ddo</field>
+                          </block>
+                        </value>
+                        <value name="COL3">
+                          <block type="ddo_attr_dropdown_get" id="hR8DfmDY@`B.sKP#:/xV">
+                            <field name="ddaid">revision</field>
+                            <field name="ddo" id="r^EU@a@.WVmWVp?Bdeq0" variabletype="DesignDataObject">ddo</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="reporttable_write" id="g:JuA`$0yY2KSQ+9+RaM">
+                        <field name="table" id="g{@~Hrwr`7#}%Qbqm=yX" variabletype="ReportTable">table</field>
+                        <field name="skip">TRUE</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="reportblock_translations" id="XSz=#!0W%@ML%Qv+.2.+">
+            <statement name="inline">
+              <block type="translations_add" id="Kp[bMG]7$Q~hL!2hr#NY">
+                <field name="NAME" id="EGfo$]$,cU/(J`!:JK0T" variabletype="TranslationKey">number</field>
+                <field name="language">de</field>
+                <field name="value">Nummer</field>
+                <next>
+                  <block type="translations_add" id="m.K!36Ll3J`^3At~8Eo_">
+                    <field name="NAME" id="EGfo$]$,cU/(J`!:JK0T" variabletype="TranslationKey">number</field>
+                    <field name="language">en</field>
+                    <field name="value">Number</field>
+                    <next>
+                      <block type="translations_add" id="ZfeyiWCESjlUc9H`~@m5">
+                        <field name="NAME" id="Dqnkc@sSgZ7qCLVIVzYg" variabletype="TranslationKey">title</field>
+                        <field name="language">de</field>
+                        <field name="value">Titel</field>
+                        <next>
+                          <block type="translations_add" id="AL)057$K:NxzJ#2$W]Ta">
+                            <field name="NAME" id="Dqnkc@sSgZ7qCLVIVzYg" variabletype="TranslationKey">title</field>
+                            <field name="language">en</field>
+                            <field name="value">Title</field>
+                            <next>
+                              <block type="translations_add" id="-lj6~zO|qAcVNAR%E2Wv">
+                                <field name="NAME" id="mdUlynrj9`TB7o;_T:K)" variabletype="TranslationKey">pubdate</field>
+                                <field name="language">de</field>
+                                <field name="value">Ausgabedatum</field>
+                                <next>
+                                  <block type="translations_add" id="VdUDbv$[LE0#dxm1v@^a">
+                                    <field name="NAME" id="mdUlynrj9`TB7o;_T:K)" variabletype="TranslationKey">pubdate</field>
+                                    <field name="language">en</field>
+                                    <field name="value">Publication Date</field>
+                                    <next>
+                                      <block type="translations_add" id="{@.C)im.vqQIZZ?qoOVA">
+                                        <field name="NAME" id="eVYEcVDXhi9E|P^~!g$d" variabletype="TranslationKey">revision</field>
+                                        <field name="language">de</field>
+                                        <field name="value">Stand</field>
+                                        <next>
+                                          <block type="translations_add" id=".2:cL1}F*u:~ZSRM,8g~">
+                                            <field name="NAME" id="eVYEcVDXhi9E|P^~!g$d" variabletype="TranslationKey">revision</field>
+                                            <field name="language">en</field>
+                                            <field name="value">Revision</field>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

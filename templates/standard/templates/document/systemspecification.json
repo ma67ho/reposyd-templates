@@ -1,0 +1,779 @@
+{
+  "uuid": "{935ccff2-22b9-4fb4-a230-4878206c32e5}",
+  "id": "systemspecification",
+  "category": "systemspecification",
+  "label": {
+    "de": "Systemspezifikation",
+    "en": "System specification"
+  },
+  "definition": {
+    "document": {
+      "category": "systemspecification",
+      "ismsClassification": "unclassified",
+      "properties": {
+        "requirements": {
+          "number": "SYS-chapnum({chapter.number},2)-counter({requirements.count},10,3,'0')",
+          "script": "requirements"
+        }
+      },
+      "languages": ["en-US", "de-DE"]
+    },
+    "chapters": [
+      {
+        "hints": {
+          "de-DE": "Überschrift ohne Text",
+          "en-US": "Heading without text"
+        },
+        "properties": {
+          "number": "1",
+          "title": {
+            "de-DE": "Allgemeines",
+            "en-US": "Scope"
+          },
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": null,
+            "options": {}
+          }
+        },
+        "id": "SoIcTZfn53DfhGx9a2ieT"
+      },
+      {
+        "hints": {
+          "de-DE": "Beschreibt den Zweck und das Ziel des Dokumentes",
+          "en-US": ""
+        },
+        "properties": {
+          "number": "1.1",
+          "title": {
+            "de-DE": "Zweck und Ziel",
+            "en-US": "Identification"
+          },
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": null,
+            "options": {}
+          }
+        },
+        "id": "A5fuPMu1MNVEIWZTzN5PP"
+      },
+      {
+        "hints": {
+          "de-DE": "In diesem Kapitel soll der Zweck des in diesem Dokument beschriebenen Systems kurz erläutert werden.",
+          "en-US": "This paragraph shall briefly state the purpose of the system to which this document applies."
+        },
+        "properties": {
+          "number": "1.2",
+          "title": {
+            "de-DE": "Systemübersicht",
+            "en-US": "System Overview"
+          },
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": null,
+            "options": {}
+          }
+        },
+        "id": "wvpNteV1pmDx9EUKHeNKf"
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "1.3",
+          "options": {
+            "pagebreak": false
+          },
+          "script": {
+            "id": null,
+            "options": {}
+          },
+          "title": {
+            "en-US": "",
+            "de-DE": "Änderungshistorie"
+          }
+        },
+        "id": "Wlcj7QPulNAr2ngH8cnqr"
+      },
+      {
+        "hints": {
+          "de-DE": "In diesem Kapitel soll der Zweck des in diesem Dokument beschriebenen Systems kurz erläutert werden.",
+          "en-US": "This paragraph shall briefly state the purpose of the system to which this document applies."
+        },
+        "properties": {
+          "number": "2",
+          "title": {
+            "de-DE": "Refenzierte Dokumente",
+            "en-US": "Referenced Documents"
+          },
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "normativedocuments",
+            "options": {}
+          }
+        },
+        "id": "rFStWZQTd780W2_9RnIgD"
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "3",
+          "options": {
+            "pagebreak": false
+          },
+          "script": {
+            "id": null,
+            "options": {}
+          },
+          "title": {
+            "en-US": "System context",
+            "de-DE": "Systemkontext"
+          }
+        },
+        "id": "ebTwq7xbW9-cjWh5_ieWn"
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "4",
+          "options": {
+            "pagebreak": false
+          },
+          "script": {
+            "id": "usecases",
+            "options": {}
+          },
+          "title": {
+            "en-US": "Uses cases",
+            "de-DE": "Anwendungsfälle"
+          }
+        },
+        "id": "A-NmdtyE15Z9hONTAmWtm"
+      },
+      {
+        "hints": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "properties": {
+          "number": "5",
+          "title": {
+            "de-DE": "Anforderungen",
+            "en-US": "Requirements"
+          },
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": null,
+            "options": {}
+          }
+        },
+        "id": "ZM-lM6Gy1YjDoAxewxWxA"
+      },
+      {
+        "hints": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "properties": {
+          "number": "5.1",
+          "title": {
+            "de-DE": "Betriebsarten und Betriebszustände",
+            "en-US": "States and Modes"
+          },
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": null,
+            "options": {}
+          }
+        },
+        "id": "rqEBbwXKqJZJBOTqFn6nL"
+      },
+      {
+        "hints": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "properties": {
+          "number": "5.2",
+          "title": {
+            "de-DE": "Funktionen und Leistungswerte",
+            "en-US": "Function and Perforrmance"
+          },
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": null,
+            "options": {}
+          }
+        },
+        "id": "2v3j4wK5rWRSdElVWv2X4"
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.3",
+          "options": {
+            "pagebreak": "before"
+          },
+          "script": {
+            "id": null,
+            "options": {
+              "requirementtype": "safety",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Interfaces",
+            "de-DE": "Schnittstellen"
+          }
+        },
+        "id": "jh5Au902vn6E1FZ9JXCu7"
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "U3qwCehyX7AtvnMnBwwRQ",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.3.1",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "interface.commuication",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Electrical interfaces",
+            "de-DE": "Elektrische Schnittstellen"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "KeN3mDMjxXlLz7z0TRRXh",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.3.2",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "interface.mechanical",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Mechanical Interfaces",
+            "de-DE": "Mechanische Schnittstellen"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "P2R_Gs2yB9Vw2pX_vnLiW",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.3.3",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "interface.commuication",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Communication Interfaces",
+            "de-DE": "Kommnikationsschnittstellen"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "C6K4jdxRgPagupPk0Yu_8",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.4",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "safety",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Safety",
+            "de-DE": "Technische Sicherheit"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "V8USNS9OX0Jjl9BC_wc5n",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.5",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "security",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Security",
+            "de-DE": "Gefahrenabwehr"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "_VbQlOL3uIJcLMhSyJxwM",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.6",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "environment",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Environmental Conditions",
+            "de-DE": "Umweltbedingungen"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "NcDn0k7uNUwr845yXFmFM",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.7",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": null,
+            "options": {
+              "requirementtype": "pending",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "System Quality",
+            "de-DE": "Systemqualität"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "2MiVVdLbfrjxLQQ3RyTCK",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.7.1",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "systemquality.availability",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Availability",
+            "de-DE": "Verfügbarkeit"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "rJINOVv5vLaDi8ImcHS_c",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.7.2",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "systemquality.reliability",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Reliability",
+            "de-DE": "Zuverlässigkeit"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "8ziuayyH_GPVdgmOW1DHd",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.7.3",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "systemquality.maintainability",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Maitainability",
+            "de-DE": "Wartbarkeit"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "W_TI-x3LynY_cOmPmX5Fw",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.8",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "system.designconstruction",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Design and Construction Constraints",
+            "de-DE": "Einschränkungen hinsichtlich Design und Bau"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "kjz1SqbTzrMMLam28wIdI",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.9",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "personnel",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Personell related Requirements",
+            "de-DE": "Personalbezogene Anforderungen"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "1-U7GIfbxrhqL68-C5m2g",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.10",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "training",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Training related Requirements",
+            "de-DE": "Schulungsbezogene Anforderungen"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "gCgWom0YTzBCZ4Wtid07W",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.11",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "phst",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Packing, Handling & Transportation",
+            "de-DE": "Verpackung, Handhabung, Transport"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "DJfVVvTFJVJtYas5HSoiF",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.12",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "marking",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Labeling & Marking",
+            "de-DE": "Kennzeichnung"
+          }
+        }
+      },
+      {
+        "hints": {
+          "en-US": "",
+          "de-DE": ""
+        },
+        "id": "tPNXa4LbpUQ3-GyhHM5Qa",
+        "properties": {
+          "description": {
+            "en-US": "",
+            "de-DE": ""
+          },
+          "number": "5.13",
+          "options": {
+            "pagebreak": "none"
+          },
+          "script": {
+            "id": "requirements",
+            "options": {
+              "requirementtype": "certification",
+              "printacceptancetests": false,
+              "systemelement": "none"
+            }
+          },
+          "title": {
+            "en-US": "Certification",
+            "de-DE": "Zertifizierung"
+          }
+        }
+      }
+    ]
+  },
+  "scope": {
+    "level": "project",
+    "uuid": "{738a8878-aae9-48ac-b829-4d3b052683fe}"
+  },
+  "cm": {
+    "modifiedby": {
+      "name": null
+    },
+    "revision": 0,
+    "timestamp": "2022-11-07 21:05:10"
+  },
+  "repository": "{77ce5ee0-7585-4166-ada7-2d599969197b}"
+}

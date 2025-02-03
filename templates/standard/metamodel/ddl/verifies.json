@@ -1,0 +1,42 @@
+[
+  {
+    "foreward": {
+      "id": "verifies",
+      "name": {
+        "de-DE": "verifiziert",
+        "en-US": "verifies"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "AT",
+    "right": "SE",
+    "reverse": {
+      "id": "verifiedby",
+      "name": {
+        "de-DE": "verifiziert durch",
+        "en-US": "verified by"
+      },
+      "cardinality": "one2many"
+    }
+  },
+  {
+    "foreward": {
+      "id": "verifies",
+      "name": {
+        "de-DE": "verifiziert",
+        "en-US": "verifies"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "TT",
+    "right": "RT",
+    "reverse": {
+      "id": "verifiedby",
+      "name": {
+        "de-DE": "verifiziert durch",
+        "en-US": "verified by"
+      },
+      "cardinality": "one2many"
+    }
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "key": "document.classification.secrecylevel.default",
+    "value": "notclassified"
+  },
+  {
+    "key": "document.classification.secrecylevel.options",
+    "value": [
+      {
+        "value": "notclassified",
+        "label": { "de": "nicht klassifiziert", "en": "not classified" }
+      },
+      {
+        "value": "unclassified",
+        "label": { "de": "offen", "en": "unclassified" }
+      },
+      {
+        "value": "restricted",
+        "label": { "de": "VS-NfD", "en": "RESTRICTED" }
+      },
+      {
+        "value": "confindential",
+        "label": { "de": "VS-VERTRAULICH", "en": "CONFIDENTIONAL" }
+      },
+      { "value": "secrect", "label": { "de": "GEHEIM", "en": "SECRET" } }
+    ]
+  }
+]

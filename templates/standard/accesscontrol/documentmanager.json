@@ -1,0 +1,22 @@
+{
+  "documentmanager": {
+    "ddl": [],
+    "ddo": [
+      {
+        "id": "DN",
+        "transaction": [
+          "*"
+        ]
+      }
+    ],
+    "transaction": [
+      "reportengine.document.cud",
+      "reportengine.layout.cud",
+      "template.document.cud",
+      "document.create",
+      "document.delete",
+      "document.update",
+      "document.release"
+    ]
+  }
+}

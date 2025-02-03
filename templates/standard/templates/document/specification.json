@@ -1,0 +1,195 @@
+{
+  "template": {
+    "id": "systemspecification",
+    "uuid": null,
+    "category": "specification",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    },
+    "label": {
+      "de-DE": "Spezifikation",
+      "en-US": "Specification"
+    }
+  },
+  "document": {
+    "category": "report",
+    "ismsClassification": "unclassified",
+    "properties": {
+      "requirement": {
+        "prefix": "spec"
+      }
+    },
+    "languages": ["en-US", "de-DE"]
+  },
+  "chapters": [
+    {
+      "hints": {
+        "de-DE": "Überschrift ohne Text",
+        "en-US": ""
+      },
+      "properties": {
+        "number": "1",
+        "title": {
+          "de-DE": "Allgemeines",
+          "en-US": "Scope"
+        },
+        "description": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "options": {
+          "pagebreak": "none"
+        },
+        "script": {
+          "id": null,
+          "options": {}
+        }
+      }
+    },
+    {
+      "hints": {
+        "de-DE": "Beschreibt den Zweck und das Ziel des Dokumentes",
+        "en-US": ""
+      },
+      "properties": {
+        "number": "1.1",
+        "title": {
+          "de-DE": "Zweck und Ziel",
+          "en-US": "Identification"
+        },
+        "description": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "options": {
+          "pagebreak": "none"
+        },
+        "script": {
+          "id": null,
+          "options": {}
+        }
+      }
+    },
+    {
+      "hints": {
+        "de-DE": "In diesem Kapitel soll der Zweck des in diesem Dokument beschriebenen Systems kurz erläutert werden.",
+        "en-US": "This paragraph shall briefly state the purpose of the system to which this document applies."
+      },
+      "properties": {
+        "number": "1.2",
+        "title": {
+          "de-DE": "Systemübersicht",
+          "en-US": "System Overview"
+        },
+        "description": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "options": {
+          "pagebreak": "none"
+        },
+        "script": {
+          "id": null,
+          "options": {}
+        }
+      }
+    },
+    {
+      "hints": {
+        "de-DE": "In diesem Kapitel soll der Zweck des in diesem Dokument beschriebenen Systems kurz erläutert werden.",
+        "en-US": "This paragraph shall briefly state the purpose of the system to which this document applies."
+      },
+      "properties": {
+        "number": "2",
+        "title": {
+          "de-DE": "Refenzierte Dokumente",
+          "en-US": "Referenced Documents"
+        },
+        "description": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "options": {
+          "pagebreak": "none"
+        },
+        "script": {
+          "id": null,
+          "options": {}
+        }
+      }
+    },
+    {
+      "hints": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "properties": {
+        "number": "3",
+        "title": {
+          "de-DE": "Anforderungen",
+          "en-US": "Requirements"
+        },
+        "description": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "options": {
+          "pagebreak": "none"
+        },
+        "script": {
+          "id": null,
+          "options": {}
+        }
+      }
+    },
+    {
+      "hints": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "properties": {
+        "number": "4.1",
+        "title": {
+          "de-DE": "Betriebsarten und Betriebszustände",
+          "en-US": "States and Modes"
+        },
+        "description": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "options": {
+          "pagebreak": "none"
+        },
+        "script": {
+          "id": null,
+          "options": {}
+        }
+      }
+    },
+    {
+      "hints": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "properties": {
+        "number": "4.2",
+        "title": {
+          "de-DE": "Funktionen und Leistungswerte",
+          "en-US": "Function and Perforrmance"
+        },
+        "description": {
+          "de-DE": "",
+          "en-US": ""
+        },
+        "options": {
+          "pagebreak": "none"
+        },
+        "script": {
+          "id": null,
+          "options": {}
+        }
+      }
+    }
+  ]
+}

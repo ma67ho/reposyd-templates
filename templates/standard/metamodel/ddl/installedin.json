@@ -1,0 +1,23 @@
+[
+  {
+    "foreward": {
+      "id": "installedin",
+      "name": {
+        "de-DE": "eingebaut in",
+        "en-US": "installed in"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "ET",
+    "right": "IS",
+    "reverse": {
+      "id": "contains",
+      "name": {
+        "de-DE": "beinhaltet",
+        "en-US": "contains"
+      },
+      "cardinality": "one2many"
+    },
+    "roles": ["equipmentmanager", "systemarchitect", "systemdesigner"]
+  }
+]

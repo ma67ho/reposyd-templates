@@ -1,0 +1,23 @@
+[
+  {
+    "foreward": {
+      "id": "transports",
+      "name": {
+        "de-DE": "transportiert",
+        "en-US": "transports"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "SI",
+    "right": "II",
+    "reverse": {
+      "id": "transportedvia",
+      "name": {
+        "de-DE": "trasportiert über",
+        "en-US": "transported over"
+      },
+      "cardinality": "one2one"
+    },
+    "roles": ["repositorymanager", "systemengineer"]
+  }
+]

@@ -1,0 +1,633 @@
+{
+  "date": "2025-01-20",
+  "title": {
+    "de": "Erweitwert das MetaModel um Objekte und Verknüpfungen für Abnahmetests",
+    "en": "Extends the MetaModel with objects and links for acceptance tests"
+  },
+  "commands": [
+    {
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "AT",
+        "dda": {
+          "id": "level",
+          "description": {
+            "de-DE": "Definiert die Prüfstufe für den Test, d.h. ob er im Rahmen der Qualitätssicherung (QA) oder z.B. als formale Werksabnahme mit Kundenbeteiligung (FAT) durchgeführt wird.",
+            "en-US": "Defines the test level for the test, i.e. whether it is performed as part of quality assurance (QA) or, for example, as a formal factory acceptance test with customer involvement (FAT)."
+          },
+          "name": {
+            "de-DE": "Prüfstufe",
+            "en-US": "Test level"
+          },
+          "sortorder": 120,
+          "type": "enumeration",
+          "properties": {
+            "enumeration": {
+              "pending": {
+                "value": {
+                  "de-DE": "ausstehend",
+                  "en-US": "pending"
+                },
+                "properties": {
+                  "backgroundColor": null
+                }
+              },
+              "qualityassurance": {
+                "value": {
+                  "de-DE": "QA",
+                  "en-US": "QA"
+                },
+                "properties": {
+                  "backgroundColor": null
+                }
+              },
+              "fat": {
+                "value": {
+                  "de-DE": "FAT",
+                  "en-US": "FAT"
+                },
+                "properties": {
+                  "backgroundColor": null
+                }
+              },
+              "sit": {
+                "value": {
+                  "de-DE": "SIT",
+                  "en-US": "SIT"
+                },
+                "properties": {
+                  "backgroundColor": null
+                }
+              },
+              "sat": {
+                "value": {
+                  "de-DE": "SAT",
+                  "en-US": "SAT"
+                },
+                "properties": {
+                  "backgroundColor": null
+                }
+              }
+            },
+            "default": "pending"
+          }
+        }
+      }
+    },
+    {
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "AT",
+        "dda": {
+          "id": "status",
+          "name": { "de-DE": "Status", "en-US": "Status" },
+          "type": "enumeration",
+          "sortorder": 300,
+          "properties": {
+            "default": "pending",
+            "statusnetwork": true,
+            "enumeration": {
+              "draft": {
+                "uuid": "{f7204120-0c78-450d-9e21-a25d933290a1}",
+                "properties": {
+                  "backgroundColor": "#d60000",
+                  "icon": "bi-file-earmark",
+                  "transitions": {
+                    "enabled": false,
+                    "allowed": ["inapproval", "withdrawn"]
+                  }
+                },
+                "value": { "de-DE": "draft", "en-US": "draft" }
+              },
+              "externallyapproved": {
+                "uuid": "{5dc76a6f-8bdb-431d-b8a3-a2b254727247}",
+                "properties": {
+                  "backgroundColor": "#6c00d6",
+                  "icon": "bi-check-circle-fill",
+                  "transitions": {
+                    "enabled": false,
+                    "allowed": ["released", "draft", "withdrawn"]
+                  }
+                },
+                "value": {
+                  "de-DE": "extern genehmigt",
+                  "en-US": "externally approved"
+                }
+              },
+
+              "inapproval": {
+                "uuid": "{b3494dcb-4b80-44b7-8905-78cfb72b2f25}",
+                "properties": {
+                  "backgroundColor": "#f57b00",
+                  "icon": "bi-file-earmark-play",
+                  "transitions": {
+                    "enabled": false,
+                    "allowed": [
+                      "draft",
+                      "internallyapproved",
+                      "externallyapproved",
+                      "withdrawn"
+                    ]
+                  }
+                },
+                "value": { "de-DE": "in Genehmigung", "en-US": "in approval" }
+              },
+              "internallyapproved": {
+                "uuid": "{f04aebcc-c4f0-4a8b-8a15-a8d5ea8d4a63}",
+                "properties": {
+                  "backgroundColor": "#d600d6",
+                  "icon": "bi-check-circle",
+                  "transitions": {
+                    "enabled": false,
+                    "allowed": [
+                      "externallyapproved",
+                      "released",
+                      "draft",
+                      "withdrawn"
+                    ]
+                  }
+                },
+                "value": {
+                  "de-DE": "intern genehmigt",
+                  "en-US": "internally approved"
+                }
+              },
+              "pending": {
+                "uuid": "{f8630eae-293b-4bda-989d-34cde109a476}",
+                "properties": {
+                  "backgroundColor": "#b2b2b2",
+                  "icon": "bi-question-circle",
+                  "transitions": { "allowed": ["draft"], "enabled": false }
+                },
+                "value": { "de-DE": "asustehend", "en-US": "pending" }
+              },
+              "released": {
+                "uuid": "{cbf2b62d-7810-4557-9982-9fc3cd0fd948}",
+                "properties": {
+                  "backgroundColor": "#00a352",
+                  "icon": "bi-lock",
+                  "transitions": { "enabled": false, "allowed": [] }
+                },
+                "value": { "de-DE": "Freigegeben", "en-US": "released" }
+              },
+              "withdrawn": {
+                "uuid": "{0a611e56-dd70-4d6b-8cce-dc9ec6ee91e7}",
+                "properties": {
+                  "backgroundColor": "#191919",
+                  "icon": "bi-file-earmark-x",
+                  "transitions": { "enabled": false, "allowed": [] }
+                },
+                "value": { "de-DE": "zurückgezogen", "en-US": "withdrawn" }
+              }
+            }
+          }
+        },
+        "description": {
+          "de-DE": "Fügt das Attribute 'Status' hinzu.",
+          "en-US": "Adds the attribute 'Status'."
+        }
+      }
+    },
+    {
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "AT",
+        "dda": {
+          "id": "pretestprotocol",
+          "name": {
+            "de-DE": "Vorlage für Vorab-Prüfprotokoll",
+            "en-US": "Template for Pre-Test Protocol"
+          },
+          "type": "documenttemplate",
+          "sortorder": 400,
+          "properties": {
+            "default": "",
+            "category": ["testprotocol"]
+          }
+        }
+      }
+    },
+    {
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "AT",
+        "dda": {
+          "id": "pretestspecification",
+          "name": {
+            "de-DE": "Vorlage für Vorab-Prüfspezifikationen",
+            "en-US": "Template for Pre-Test Specification"
+          },
+          "type": "documenttemplate",
+          "sortorder": 410,
+          "properties": {
+            "default": "",
+            "category": ["testspecification"]
+          }
+        }
+      }
+    },
+    {
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "AT",
+        "dda": {
+          "id": "testprotocol",
+          "name": {
+            "de-DE": "Vorlage für Prüfprotokolle",
+            "en-US": "Template for Test Protocol"
+          },
+          "type": "documenttemplate",
+          "sortorder": 420,
+          "properties": {
+            "default": "",
+            "category": ["testprotocol"]
+          }
+        }
+      }
+    },
+    {
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "AT",
+        "dda": {
+          "id": "testspecification",
+          "name": {
+            "de-DE": "Vorlage für Prüfspezifikationen",
+            "en-US": "Template for Test Specification"
+          },
+          "type": "documenttemplate",
+          "sortorder": 430,
+          "properties": {
+            "default": "",
+            "category": ["testspecification"]
+          }
+        }
+      }
+    },
+    {
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "AT",
+        "dda": {
+          "id": "acceptanceby",
+          "description": {
+            "de-DE": "Definiert die für die Abnahme des Test verantwortliche Organisation.",
+            "en-US": "Defines the organization responsible for accepting the test."
+          },
+          "name": {
+            "de-DE": "Abnahme durch",
+            "en-US": "Acceptance by"
+          },
+          "sortorder": 130,
+          "type": "enumeration",
+          "properties": {
+            "enumeration": {
+              "pending": {
+                "value": {
+                  "de-DE": "ausstehend",
+                  "en-US": "pending"
+                },
+                "properties": {
+                  "backgroundColor": null
+                }
+              },
+              "customer": {
+                "value": {
+                  "de-DE": "Auftraggeber",
+                  "en-US": "Customer"
+                },
+                "properties": {
+                  "backgroundColor": null
+                }
+              },
+              "approvalauthority": {
+                "value": {
+                  "de-DE": "Genehmigungsbehörde",
+                  "en-US": "Approval Authority"
+                },
+                "properties": {
+                  "backgroundColor": null
+                }
+              },
+              "classificationsociety": {
+                "value": {
+                  "de-DE": "Klassifikationsgesellschaft",
+                  "en-US": "Classification society"
+                },
+                "properties": {
+                  "backgroundColor": null
+                }
+              }
+            },
+            "default": "pending"
+          }
+        }
+      }
+    },
+    {
+      "name": "ddo.add",
+      "arguments": {
+        "ddo": {
+          "attributes": [
+            {
+              "id": "number",
+              "description": {
+                "de-DE": "",
+                "en-US": ""
+              },
+              "name": {
+                "de-DE": "Nummer",
+                "en-US": "Number"
+              },
+              "sortorder": 10,
+              "type": "number",
+              "properties": {
+                "default": ""
+              }
+            },
+            {
+              "id": "title",
+              "name": {
+                "de-DE": "Titel",
+                "en-US": "Title"
+              },
+              "sortorder": 20,
+              "type": "string",
+              "properties": {
+                "length": 255,
+                "default": ""
+              }
+            },
+            {
+              "id": "description",
+              "name": {
+                "de-DE": "Beschreibung",
+                "en-US": "Description"
+              },
+              "sortorder": 100,
+              "type": "text",
+              "properties": {}
+            }
+          ],
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "icon": "",
+          "name": {
+            "de-DE": "Testfall",
+            "en-US": "Test Case"
+          },
+          "name_plural": {
+            "de-DE": "Testfälle",
+            "en-US": "Test Cases"
+          },
+          "id": "TC",
+          "domain": "verification",
+          "properties": {
+            "color": {
+              "background": "indianred",
+              "border": "indianred"
+            },
+            "font": {
+              "color": "white"
+            },
+            "icon": ""
+          }
+        },
+        "roles": {
+          "verificationengineer": ["ddo.create", "ddo.delete", "ddo.modify"]
+        }
+      }
+    },
+    {
+      "name": "ddo.add",
+      "arguments": {
+        "ddo": {
+          "attributes": [
+            {
+              "id": "number",
+              "description": {
+                "de-DE": "",
+                "en-US": ""
+              },
+              "name": {
+                "de-DE": "Nummer",
+                "en-US": "Number"
+              },
+              "sortorder": 10,
+              "type": "number",
+              "properties": {
+                "default": ""
+              }
+            },
+            {
+              "id": "title",
+              "name": {
+                "de-DE": "Titel",
+                "en-US": "Title"
+              },
+              "sortorder": 20,
+              "type": "string",
+              "properties": {
+                "length": 255,
+                "default": ""
+              }
+            },
+            {
+              "id": "description",
+              "name": {
+                "de-DE": "Beschreibung",
+                "en-US": "Description"
+              },
+              "sortorder": 100,
+              "type": "text",
+              "properties": {}
+            },
+            {
+              "id": "data",
+              "name": {
+                "de-DE": "Daten",
+                "en-US": "Data"
+              },
+              "sortorder": 200,
+              "type": "properties",
+              "properties": {
+                "default": "{}"
+              }
+            }
+          ],
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "icon": "",
+          "name": {
+            "de-DE": "Testprotokoll",
+            "en-US": "Test Protocol"
+          },
+          "name_plural": {
+            "de-DE": "Testprotokolle",
+            "en-US": "Test Protocols"
+          },
+          "id": "TP",
+          "domain": "verification",
+          "properties": {
+            "color": {
+              "background": "indianred",
+              "border": "indianred"
+            },
+            "font": {
+              "color": "white"
+            },
+            "icon": ""
+          }
+        },
+        "roles": {
+          "verificationengineer": ["ddo.create", "ddo.delete", "ddo.modify"]
+        }
+      }
+    },
+    {
+      "name": "ddl.add",
+      "arguments": {
+        "ddl": {
+          "foreward": {
+            "id": "performs",
+            "name": {
+              "de-DE": "führt durch",
+              "en-US": "performs"
+            },
+            "cardinality": "one2one"
+          },
+          "left": "AT",
+          "right": "TC",
+          "reverse": {
+            "id": "performedby",
+            "name": {
+              "de-DE": "durchgeführt durch",
+              "en-US": "performed by"
+            },
+            "cardinality": "one2many"
+          }
+        },
+        "roles": {
+          "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
+        }
+      }
+    },
+    {
+      "name": "ddl.add",
+      "arguments": {
+        "ddl": {
+          "foreward": {
+            "id": "documents",
+            "name": {
+              "de-DE": "dokumentiert",
+              "en-US": "documents"
+            },
+            "cardinality": "one2one"
+          },
+          "left": "TP",
+          "right": "AT",
+          "reverse": {
+            "id": "documentedby",
+            "name": {
+              "de-DE": "dokumentiert durch",
+              "en-US": "documented by"
+            },
+            "cardinality": "one2many"
+          }
+        },
+        "roles": {
+          "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
+        }
+      }
+    },
+    {
+      "name": "ddl.add",
+      "arguments": {
+        "ddl": {
+          "foreward": {
+            "id": "summarizes",
+            "name": {
+              "de-DE": "fasst zusammen",
+              "en-US": "summarizes"
+            },
+            "cardinality": "one2many"
+          },
+          "left": "TP",
+          "right": "TR",
+          "reverse": {
+            "id": "summarizedin",
+            "name": {
+              "de-DE": "zusammengefasst in",
+              "en-US": "summarized in"
+            },
+            "cardinality": "one2many"
+          }
+        },
+        "roles": {
+          "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
+        }
+      }
+    },
+    {
+      "name": "ddl.add",
+      "arguments": {
+        "ddl": {
+          "foreward": {
+            "id": "performs",
+            "name": {
+              "de-DE": "führt durch",
+              "en-US": "performs"
+            },
+            "cardinality": "one2one"
+          },
+          "left": "TC",
+          "right": "TT",
+          "reverse": {
+            "id": "performedby",
+            "name": {
+              "de-DE": "durchgeführt durch",
+              "en-US": "performed by"
+            },
+            "cardinality": "one2many"
+          }
+        },
+        "roles": {
+          "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
+        }
+      }
+    },
+    {
+      "name": "ddl.add",
+      "arguments": {
+        "ddl": {
+          "foreward": {
+            "id": "verifies",
+            "name": {
+              "de-DE": "verifiziert",
+              "en-US": "verifies"
+            },
+            "cardinality": "one2many"
+          },
+          "left": "AT",
+          "right": "SE",
+          "reverse": {
+            "id": "verifiedby",
+            "name": {
+              "de-DE": "verifiziert durch",
+              "en-US": "verified by"
+            },
+            "cardinality": "one2many"
+          }
+        },
+        "roles": {
+          "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
+        }
+      }
+    }
+  ],
+  "version": "5.1.0"
+}

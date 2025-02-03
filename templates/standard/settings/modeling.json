@@ -1,0 +1,31 @@
+[
+  {
+    "key": "modeling.types.allowed",
+    "value": [
+      { "id": "AT", "diagrams": [] },
+      { "id": "CY", "diagrams": [] },
+      { "id": "DI", "diagrams": [] },
+      { "id": "DN", "diagrams": [] },
+      { "id": "DT", "diagrams": [] },
+      { "id": "ET", "diagrams": [] },
+      { "id": "FE", "diagrams": [] },
+      { "id": "FN", "diagrams": ["actd", "ffbd"] },
+      { "id": "IE", "diagrams": [] },
+      { "id": "II", "diagrams": [] },
+      { "id": "IS", "diagrams": [] },
+      { "id": "ND", "diagrams": [] },
+      { "id": "RE", "diagrams": [] },
+      { "id": "RK", "diagrams": [] },
+      { "id": "RT", "diagrams": [] },
+      { "id": "SE", "diagrams": ["sbsd", "scd"] },
+      { "id": "SI", "diagrams": [] },
+      { "id": "SR", "diagrams": [] },
+      { "id": "ST", "diagrams": ["stmd"] },
+      { "id": "TK", "diagrams": [] },
+      { "id": "TR", "diagrams": [] },
+      { "id": "TT", "diagrams": [] },
+      { "id": "UC", "diagrams": [] },
+      { "id": "WP", "diagrams": ["wbsd"] }
+    ]
+  }
+]

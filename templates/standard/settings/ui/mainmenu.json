@@ -1,0 +1,548 @@
+[
+  {
+    "icon": "mdi-monitor-dashboard",
+    "label": "common.dashboard",
+    "to": "/project/dashboard"
+  },
+  {
+    "icon": "mdi-bank",
+    "label": "menu.projectmanagement",
+    "role": [
+      "projectmanager",
+      "repositorymanager"
+    ],
+    "items": [
+      {
+        "label": "menu.workpackages",
+        "to": "/projectmanagement/workpackages",
+        "role": "*"
+      },
+      {
+        "label": "separator",
+        "separator": true
+      },
+      {
+        "label": "menu.gantt",
+        "to": "/projectmanagement/ganttchart",
+        "role": "*"
+      },
+      {
+        "label": "separator",
+        "separator": true
+      },
+      {
+        "label": {
+          "text": "common.issuetracking",
+          "count": 2
+        },
+        "to": "/projectmanagement/issuetracking",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-lighthouse",
+    "label": "menu.riskmanagement",
+    "role": [
+      "riskmanager",
+      "repositorymanager"
+    ],
+    "items": [
+      {
+        "label": {
+          "text": "common.risk",
+          "count": 2
+        },
+        "to": "/riskmanagement/risks",
+        "role": "*"
+      },
+      {
+        "label": "separator",
+        "separator": true
+      },
+      {
+        "label": "common.dashboard",
+        "to": "/riskmanagement/dashboard",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-globe-model",
+    "label": "menu.systemcontext",
+    "role": "*",
+    "items": [
+      {
+        "label": {
+          "text": "common.usecase",
+          "count": 2
+        },
+        "to": "/systemcontext/usecases",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.stakeholder",
+          "count": 2
+        },
+        "to": {
+          "name": "designdataobjecttable",
+          "params": {
+            "id": "SR",
+            "breadcrumbs": [
+              {
+                "label": "common.systemcontext",
+                "icon": "mdi-globe-model"
+              }
+            ]
+          }
+        },
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.capability",
+          "count": 2
+        },
+        "to": {
+          "name": "designdataobjecttable",
+          "params": {
+            "id": "CY",
+            "breadcrumbs": [
+              {
+                "label": "common.systemcontext",
+                "icon": "mdi-globe-model"
+              }
+            ]
+          }
+        },
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-handshake",
+    "label": "menu.requirementsdevelopment",
+    "role": "*",
+    "items": [
+      {
+        "label": {
+          "text": "common.feature",
+          "count": 2
+        },
+        "to": "/requirementsengineering/features",
+        "role": "requirementsmanager"
+      },
+      {
+        "label": {
+          "text": "common.requirement",
+          "count": 2
+        },
+        "to": {
+          "name": "designdataobjecttable",
+          "params": {
+            "id": "RT",
+            "breadcrumbs": [
+              {
+                "label": "common.requirementsdevelopment",
+                "icon": "mdi-handshake-outline"
+              }
+            ]
+          }
+        },
+        "role": "*"
+      },
+      {
+        "label": "common.requirementsbreakdownstructure",
+        "to": "/requirementsengineering/rbs",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.normativedocument",
+          "count": 2
+        },
+        "to": "/requirementsengineering/normativedocuments",
+        "role": "*"
+      },
+      {
+        "enabled": false,
+        "label": "menu.traceabilitymatrix",
+        "to": "/requirementsengineering/rtm",
+        "role": "*"
+      },
+      {
+        "separator": true
+      },
+      {
+        "label": "menu.specificationeditor",
+        "to": "/requirementsengineering/specification",
+        "role": "*"
+      },
+      {
+        "separator": true
+      },
+      {
+        "label": "common.dashboard",
+        "to": "/requirementsengineering/dashboard",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-graph-outline",
+    "label": "menu.systemdesign",
+    "role": "*",
+    "items": [  
+      {
+        "label": "common.functionalbreakdownstructure",
+        "to": "/systemdesign/fbs",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.function",
+          "count": 2
+        },
+        "to": {
+          "name": "designdataobjecttable",
+          "params": {
+            "id": "FN",
+            "breadcrumbs": [
+              {
+                "label": "common.systemdesign",
+                "icon": "mdi-graph-outline"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "label": "common.fam",
+        "to": "/systemdesign/fam",
+        "role": "*"
+      },
+      {
+        "separator": true
+      },
+      {
+        "label": {
+          "text": "common.systemelement",
+          "count": 2
+        },
+        "to": "/systemdesign/systemelements",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.sbs",
+          "count": 2
+        },
+        "to": "/systemdesign/sbs",
+        "role": "*"
+      },
+      {
+        "separator": true
+      },
+      {
+        "label": {
+          "text": "common.systeminterface",
+          "count": 2
+        },
+        "to": "/systemdesign/systeminterfaces",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.interfaceitem",
+          "count": 2
+        },
+        "to": "/systemdesign/interfaceitems",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-shape-outline",
+    "label": "common.modeling",
+    "role": "*",
+    "items": [
+      {
+        "label": {
+          "text": "common.ffbd",
+          "count": 2
+        },
+        "to": "/modeling/functionalflowblockdiagrams",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.logicdiagram",
+          "count": 2
+        },
+        "to": "/modeling/logicdiagrams",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.sbs",
+          "count": 2
+        },
+        "to": "/modeling/systembreakdownstructures",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.scd",
+          "count": 2
+        },
+        "to": "/modeling/systemcontextdiagrams",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-hazard-lights",
+    "label": "common.hazardanalysis",
+    "role": "*",
+    "items": [
+      {
+        "label": "common.riskregister",
+        "to": "/hazardanalysis/riskregister",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.setting",
+          "count": 2
+        },
+        "to": "/hazardanalysis/settings",
+        "role": "*"
+      },
+      {
+        "label": "separator",
+        "separator": true
+      },
+      {
+        "label": "common.dashboard",
+        "to": "/hazardanalysis/dashboard",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-warehouse",
+    "label": "menu.physicaldesign",
+    "role": "*",
+    "items": [
+      {
+        "label": {
+          "text": "common.equipment",
+          "count": 2
+        },
+        "to": "/physicaldesign/equipments",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-format-list-checks",
+    "label": "menu.verification",
+    "role": "*",
+    "items": [
+      {
+        "label": "menu.rvtm",
+        "to": "/verification/rvtm",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-archive-outline",
+    "label": "menu.configurationmanagement",
+    "role": [
+      "configurationmanager",
+      "repositorymanager"
+    ],
+    "items": [
+      {
+        "icon": "mdi-package-variant-closed",
+        "label": {
+          "text": "common.baseline",
+          "count": 2
+        },
+        "to": "/configurationmanagement/baselines",
+        "role": "*"
+      },
+      {
+        "icon": "mdi-package-variant-closed",
+        "label": {
+          "text": "common.shareddesigndata",
+          "count": 2
+        },
+        "to": "/configurationmanagement/shareddesigndata",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-text-box-multiple-outline",
+    "label": "menu.designdocumentation",
+    "role": "*",
+    "items": [
+      {
+        "icon": "mdi-file-document-outline",
+        "label": {
+          "text": "common.document",
+          "count": 2
+        },
+        "to": "/designdocuments/documents",
+        "role": "*"
+      },
+      {
+        "label": "separator",
+        "separator": true
+      },
+      {
+        "label": {
+          "text": "common.layout",
+          "count": 2
+        },
+        "to": "/designdocuments/layouts",
+        "role": "*"
+      },
+      {
+        "label": {
+          "text": "common.template",
+          "count": 2
+        },
+        "to": "/designdocuments/templates",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-ship-wheel",
+    "label": "menu.processcontrol",
+    "role": "projectmanager",
+    "items": [
+      {
+        "label": "menu.users",
+        "to": "/processcontrol/users",
+        "role": "*",
+        "icon": "mdi-account-group-outline"
+      },
+      {
+        "label": "menu.roles",
+        "to": "/processcontrol/roles",
+        "role": "*",
+        "icon": "mdi-account-cog-outline"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-hubspot",
+    "label": "common.metamodel",
+    "role": "*",
+    "items": [
+      {
+        "label": {
+          "text": "common.designdataobject",
+          "count": 2
+        },
+        "to": "/metamodel/designdataobjects",
+        "role": "*"
+      },
+      {
+        "label": "common.metamodel",
+        "to": "/metamodel",
+        "role": "*"
+      }
+    ]
+  },
+  {
+    "icon": "mdi-tools",
+    "label": "menu.administration",
+    "role": "repositorymanager",
+    "items": [
+      {
+        "icon": "mdi-lock-outline",
+        "label": "common.lockeddesigndata",
+        "to": "/administration/lockeddesigndata",
+        "role": [
+          "repositorymanager"
+        ]
+      },
+      {
+        "label": "menu.scripts",
+        "to": "/scriptengine/scripts",
+        "role": [
+          "repositorymanager"
+        ]
+      },
+      {
+        "label": {
+          "text": "common.project",
+          "count": 2
+        },
+        "to": "/administration/projects",
+        "role": [
+          "repositorymanager"
+        ],
+        "radmin": true
+      }
+    ]
+  },
+  {
+    "icon": "mdi-database",
+    "label": "label.repository",
+    "role": "repositorymanager",
+    "radmin": true,
+    "items": [
+      {
+        "label": {
+          "text": "label.user",
+          "count": 2
+        },
+        "to": "/repository/users",
+        "radmin": true,
+        "role": [
+          "repositorymanager"
+        ]
+      },
+      {
+        "label": {
+          "text": "label.project",
+          "count": 2
+        },
+        "to": "/repository/projects",
+        "radmin": true,
+        "role": [
+          "repositorymanager"
+        ]
+      },
+      {
+        "label": {
+          "text": "common.setting",
+          "count": 2
+        },
+        "to": "/repository/settings",
+        "radmin": true,
+        "role": [
+          "repositorymanager"
+        ]
+      },
+      {
+        "label": {
+          "text": "label.template",
+          "count": 2
+        },
+        "to": "/repository/templates",
+        "radmin": true,
+        "role": [
+          "repositorymanager"
+        ]
+      }
+    ]
+  }
+]

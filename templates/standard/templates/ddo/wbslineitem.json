@@ -1,0 +1,88 @@
+[
+  {
+    "id": "pm-document-cmp",
+    "uuid": null,
+    "category": "wbslineitem",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    },
+    "title": {
+      "de-DE": "Konfigurationsmanagementplan (Standard)",
+      "en-US": "Configuration Management Plan (default)"
+    },
+    "type": "ddo",
+    "ddo": {
+      "id": "DI",
+      "value": {
+        "<common>": {
+          "number": "CMP.01",
+          "type": "document"
+        },
+        "de-DE": {
+          "title": "Konfigurationsmanagementplan"
+        },
+        "en-US": {
+          "title": "Configuration Management Plan"
+        }
+      }
+    }
+  },
+  {
+    "id": "pm-document-rmp",
+    "uuid": null,
+    "category": "wbslineitem",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    },
+    "title": {
+      "de-DE": "Risikomanagementplan (Standard)",
+      "en-US": "Risk Management Plan (default)"
+    },
+    "type": "ddo",
+    "ddo": {
+      "id": "DI",
+      "value": {
+        "<common>": {
+          "number": "RMP.01",
+          "type": "document"
+        },
+        "de-DE": {
+          "title": "Risikomanagementplan"
+        },
+        "en-US": {
+          "title": "Risk Management Plan"
+        }
+      }
+    }
+  },
+  {
+    "id": "pm-task-rm",
+    "uuid": null,
+    "category": "wbslineitem",
+    "description": {
+      "de-DE": "",
+      "en-US": ""
+    },
+   "title": {
+      "de-DE": "Risikomanagement (Standard)",
+      "en-US": "Risk Management (default)"
+    },
+    "type": "ddo",
+    "ddo": {
+      "id": "TK",
+      "value": {
+        "<common>": {
+          "number": "PM.03"
+        },
+        "de-DE": {
+          "title": "Risikomanagement durchführen"
+        },
+        "en-US": {
+          "title": "Perform Risk Management"
+        }
+      }
+    }
+  }
+]

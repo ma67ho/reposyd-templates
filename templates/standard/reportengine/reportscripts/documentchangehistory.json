@@ -1,0 +1,16 @@
+{
+  "uuid": "{875ab632-82e1-4df9-9900-ef867024c80f}",
+  "domain": "<global>",
+  "id": "documentchangehistory",
+  "definition": {
+    "blocks": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable id=\"J}K+jT],G35isHduW7~h\">version</variable></variables><block type=\"controls_forEach\" id=\"lq3A1B.PN$Q-;tk}i.mO\" x=\"70\" y=\"350\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">version</field><value name=\"LIST\"><block type=\"odata_documentchangehistory\" id=\"`xe-#P%,sR:^{!|/n=S}\"><field name=\"ORDER\">asc</field></block></value><statement name=\"DO\"><block type=\"rg_fragment_paragraph_add\" id=\"q.Q(0/Y_S4~PP!f4{9]B\"><field name=\"STYLE\">heading6</field><next><block type=\"rg_fragment_text_globalstyle_add\" id=\"IdMpcU*)=~,LLr]0|6wf\"><field name=\"STYLE\">textLarge</field><value name=\"TEXT\"><shadow type=\"text\" id=\"Q.mo|-vI7E[CHs57topx\"><field name=\"TEXT\">Text</field></shadow><block type=\"text_join\" id=\"Wzq5=NS:1OI(J.MK!ApP\"><mutation items=\"3\"></mutation><value name=\"ADD0\"><block type=\"odata_property_get_input\" id=\"(kxMGS20uj]%ZBQYJx%N\"><field name=\"PATH\">RevisionNumber</field><value name=\"OBJECT\"><block type=\"variables_get\" id=\"=.kz9Gyq/~?JCE}6nSxp\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">version</field></block></value></block></value><value name=\"ADD1\"><block type=\"text\" id=\"8R.eKRxs}aD=.]kWKRck\"><field name=\"TEXT\"> - </field></block></value><value name=\"ADD2\"><block type=\"rg_formatting_date_input\" id=\"0S(@}e*`tdv@Lq}ZR3/Y\"><value name=\"VALUE\"><block type=\"odata_property_get_input\" id=\"Uu)4yiouSr7OBZXr3cm,\"><field name=\"PATH\">PublicationDate</field><value name=\"OBJECT\"><block type=\"variables_get\" id=\"iQteh~Gh^sl#v),8aCRC\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">version</field></block></value></block></value><value name=\"LOCALE\"><block type=\"text\" id=\"j+Eh-%3=nnGlpxtcf7aY\"><field name=\"TEXT\">de-DE</field></block></value></block></value></block></value><next><block type=\"rg_fragment_html_add\" id=\"k9#O)~|UN~mMS%4HI1xZ\"><value name=\"VALUE\"><shadow type=\"text\" id=\",Z$f_5jJLq?JPeGY3;^6\"><field name=\"TEXT\">&lt;html&gt;&lt;/html&gt;</field></shadow><block type=\"odata_property_get_input\" id=\"5k[@l*$f?y06!v#3f;4f\"><field name=\"PATH\">Changes</field><value name=\"OBJECT\"><block type=\"variables_get\" id=\"QKu!(RAa{k1ZRNaI6o$!\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">version</field></block></value></block></value></block></next></block></next></block></statement></block></xml>",
+    "variables": []
+  },
+  "description": "",
+  "label": {
+    "de": "",
+    "en": "Document Change History"
+  },
+  "options": [],
+  "type": "reportscript"
+}

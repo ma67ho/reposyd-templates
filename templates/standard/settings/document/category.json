@@ -1,0 +1,60 @@
+[
+  {
+    "key": "document.category.default",
+    "value": "report"
+  },
+  {
+    "key": "document.category.options",
+    "value": [
+      {
+        "value": "designdescription",
+        "label": {
+          "de": "Designbeschreibung",
+          "en": "Design description"
+        }
+      },
+      {
+        "value": "handbook",
+        "label": {
+          "de": "Handbuch",
+          "en": "Handbook"
+        }
+      },
+      {
+        "value": "managementplan",
+        "label": {
+          "de": "Managementplan",
+          "en": "Management Plan"
+        }
+      },
+      {
+        "value": "plan",
+        "label": {
+          "de": "Plan",
+          "en": "Plan"
+        }
+      },
+      {
+        "value": "report",
+        "label": {
+          "de": "Bericht",
+          "en": "Report"
+        }
+      },
+      {
+        "value": "systemspecification",
+        "label": {
+          "de": "Systemspezifikation",
+          "en": "System specification"
+        }
+      },
+      {
+        "value": "sow",
+        "label": {
+          "de": "Statement of Work",
+          "en": "Leistungsbeschreibung"
+        }
+      }
+    ]
+  }
+]

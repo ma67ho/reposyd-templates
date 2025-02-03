@@ -1,0 +1,25 @@
+[
+  {
+    "key": "document.watermark.default",
+    "value": "forinformationonly"
+  },
+  {
+    "key": "document.watermark.default",
+    "value": [
+      {
+        "key": "forinformationonly",
+        "value": {
+          "de": "Nur zur Information",
+          "en": "For information only"
+        }
+      },
+      {
+        "key": "draft",
+        "value": {
+          "de": "Entwurf",
+          "en": "Draft"
+        }
+      }
+    ]
+  }
+]

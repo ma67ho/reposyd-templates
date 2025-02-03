@@ -1,0 +1,27 @@
+[
+  {
+    "key": "document.classification.confidentialitylevel.default",
+    "value": "notclassified"
+  },
+  {
+    "key": "document.classification.confidentialitylevel.options",
+    "value": [
+      {
+        "value": "notclassified",
+        "label": { "de": "nicht klassifiziert", "en": "not classified" }
+      },
+      {
+        "value": "restricted",
+        "label": { "de": "eingeschränkt", "en": "restricted" }
+      },
+      {
+        "value": "confidential",
+        "label": { "de": "vertraulich", "en": "confidential" }
+      },
+      {
+        "value": "strictlyconfidential",
+        "label": { "de": "streng vertraulich", "en": "strictly confidential" }
+      }
+    ]
+  }
+]

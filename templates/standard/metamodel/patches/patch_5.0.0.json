@@ -1,0 +1,27 @@
+{
+  "date": "2025-01-15",
+  "title": {
+    "de": "Erweitert das Rollenmodell um Rollen für das Konfigurartionsmanagement",
+    "en": "Extends the role model to include roles for configuration management"
+  },
+  "commands": [
+    {
+      "name": "role.add",
+      "arguments": {
+        "role": {
+          "id": "changemanager",
+          "name": {
+            "de-DE": "Change Manager",
+            "en-US": "Change Manager"
+          },
+          "state": "enabled",
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          }
+        }
+      }
+    }
+  ],
+  "version": "5.0.0"
+}

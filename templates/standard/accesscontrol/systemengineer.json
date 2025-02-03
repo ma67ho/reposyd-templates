@@ -1,0 +1,429 @@
+{
+  "systemengineer": {
+    "ddl": [
+      {
+        "id": "followsfrom",
+        "left": "DN",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "followsfrom",
+        "left": "DN",
+        "right": "IE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "followsfrom",
+        "left": "DN",
+        "right": "II",
+        "transaction": ["*"]
+      },
+      {
+        "id": "followsfrom",
+        "left": "DN",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "followsfrom",
+        "left": "DN",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "followsfrom",
+        "left": "DN",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "applies",
+        "left": "ET",
+        "right": "ND",
+        "transaction": ["*"]
+      },
+      {
+        "id": "connectedto",
+        "left": "ET",
+        "right": "IE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "implements",
+        "left": "ET",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "ET",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "allocatedto",
+        "left": "FN",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "applies",
+        "left": "FN",
+        "right": "ND",
+        "transaction": ["*"]
+      },
+      {
+        "id": "contains",
+        "left": "FN",
+        "right": "RK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "dividedinto",
+        "left": "FN",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "dividedinto",
+        "left": "SE",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "includedin",
+        "left": "FN",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "hasinputs",
+        "left": "FN",
+        "right": "II",
+        "transaction": ["*"]
+      },
+      {
+        "id": "hasoutputs",
+        "left": "FN",
+        "right": "II",
+        "transaction": ["*"]
+      },
+      {
+        "id": "leadsto",
+        "left": "FN",
+        "right": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "requiredfor",
+        "left": "FN",
+        "right": "CY",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "FN",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "applies",
+        "left": "IE",
+        "right": "ND",
+        "transaction": ["*"]
+      },
+      {
+        "id": "connects",
+        "left": "IE",
+        "right": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "implements",
+        "left": "IE",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "leadsto",
+        "left": "IE",
+        "right": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "inputfor",
+        "left": "II",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "inputfor",
+        "left": "II",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "leadsto",
+        "left": "II",
+        "right": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "outputfrom",
+        "left": "II",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "outputfrom",
+        "left": "II",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "II",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "transportedvia",
+        "left": "II",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "IE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "IE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "IE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "II",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "ST",
+        "transaction": ["*"]
+      },
+      {
+        "id": "allocates",
+        "left": "SE",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "determinedby",
+        "left": "SE",
+        "right": "ND",
+        "transaction": ["*"]
+      },
+      {
+        "id": "connectedto",
+        "left": "SE",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "contains",
+        "left": "SE",
+        "right": "RK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "hasinputs",
+        "left": "SE",
+        "right": "II",
+        "transaction": ["*"]
+      },
+      {
+        "id": "hasoutputs",
+        "left": "SE",
+        "right": "II",
+        "transaction": ["*"]
+      },
+      {
+        "id": "includedin",
+        "left": "SE",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "leadsto",
+        "left": "SE",
+        "right": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "SE",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "applies",
+        "left": "SI",
+        "right": "ND",
+        "transaction": ["*"]
+      },
+      {
+        "id": "connects",
+        "left": "SI",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "contains",
+        "left": "SI",
+        "right": "RK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "madeupfrom",
+        "left": "SI",
+        "right": "IE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "SI",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "transports",
+        "left": "SI",
+        "right": "II",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "ST",
+        "right": "RT",
+        "transaction": ["*"]
+      }
+    ],
+    "ddo": [
+      {
+        "id": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "IE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "II",
+        "transaction": ["*"]
+      },
+      {
+        "id": "ND",
+        "transaction": ["*"]
+      },
+      {
+        "id": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "ST",
+        "transaction": ["*"]
+      }
+    ],
+    "transaction": []
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "verificationengineer": {
+    "ddl": [
+      {
+        "id": "performs",
+        "left": "AT",
+        "right": "TC",
+        "transaction": ["*"]
+      },
+      {
+        "id": "performs",
+        "left": "TC",
+        "right": "TT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "confirms",
+        "left": "TR",
+        "right": "TT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "documents",
+        "left": "TP",
+        "right": "AT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "verifies",
+        "left": "AT",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "verifies",
+        "left": "TT",
+        "right": "RT",
+        "transaction": ["*"]
+      }
+    ],
+    "ddo": [
+      {
+        "id": "AT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "TP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "TR",
+        "transaction": ["*"]
+      },
+      {
+        "id": "TT",
+        "transaction": ["*"]
+      }
+    ],
+    "transaction": ["verification.test.execute", "verification.test.manage"]
+  }
+}

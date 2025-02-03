@@ -1,0 +1,30 @@
+{
+  "uuid": "{543c62b1-1f99-4085-b989-43227f86efd0}",
+  "domain": "<global>",
+  "id": "systemdescription",
+  "definition": {
+    "blocks": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable id=\"/?lckU#ih)y1/F0,0[lT\">se</variable></variables><block type=\"variables_set\" id=\"u:3t{K(lH0^#tMt4``,{\" x=\"370\" y=\"-450\"><field name=\"VAR\" id=\"/?lckU#ih)y1/F0,0[lT\">se</field><value name=\"VALUE\"><block type=\"odata_get_dd_with_uuid\" id=\"@nKa!Qe3Q4;T_umdJ*b1\"><field name=\"DDTYPE\">ddo.SE</field><value name=\"UUID\"><block type=\"rg_scriptoption_get\" id=\"(Nc+cj~A11Y.RIfI:]/e\"><field name=\"OPTID\">systemelement</field></block></value></block></value><next><block type=\"rg_fragment_html_add\" id=\"^mW:)M|,sGo7p}Cv^3@#\"><value name=\"VALUE\"><shadow type=\"text\" id=\"9Eh]d0ec^K5YnzB?m6Gl\"><field name=\"TEXT\">&lt;html&gt;&lt;/html&gt;</field></shadow><block type=\"dd_object_attr_get\" id=\"._rq*OG0@%.?iP`E}Xw{\"><field name=\"DDAID\">description</field><field name=\"DDOID\">SE</field><value name=\"VALUE\"><block type=\"variables_get\" id=\"f:++t[?^sRpi,*YB8RN=\"><field name=\"VAR\" id=\"/?lckU#ih)y1/F0,0[lT\">se</field></block></value></block></value><next><block type=\"rg_fragment_paragraph_add\" id=\"R3Sicl!XBKw/%4DH{/8w\"><field name=\"STYLE\">footerrightjustified</field><next><block type=\"rg_fragment_text_add\" id=\"VBk:cFw7^JZu`yOC2}zM\"><value name=\"TEXT\"><shadow type=\"text\" id=\"[OX?[GzLfji_e|}#5TX~\"><field name=\"TEXT\">123</field></shadow><block type=\"text_join\" id=\"`c%OP$D;,5AJ9iwqh:cY\"><mutation items=\"3\"></mutation><value name=\"ADD0\"><block type=\"text\" id=\"hcrXpour{QEOUx9-I;X.\"><field name=\"TEXT\">[</field></block></value><value name=\"ADD1\"><block type=\"dd_object_prop_get\" id=\"o6PWU}/;I[Ses*Q!VfJM\"><field name=\"NAME\">puid</field><value name=\"VALUE\"><block type=\"variables_get\" id=\"p(7QQGXu(p2c^;itNrjN\"><field name=\"VAR\" id=\"/?lckU#ih)y1/F0,0[lT\">se</field></block></value></block></value><value name=\"ADD2\"><block type=\"text\" id=\"4K,2(?`DnD}}W0fi!l!C\"><field name=\"TEXT\">]</field></block></value></block></value><next><block type=\"reportscript_run\" id=\",-M8SrzVGS,.YXk1Ub}d\"><mutation script=\"allocaterequirements\"></mutation><field name=\"SCRIPT\">allocaterequirements</field><field name=\"SUFFIX\">with options</field><value name=\"OPT0\"><block type=\"rg_scriptoption_get\" id=\"I#[H+OB_M]D-N|oJSk+n\"><field name=\"OPTID\">systemelement</field></block></value><value name=\"OPT1\"><block type=\"text_join\" id=\"Y,*(]*,]n)?l.CdH2zd/\"><mutation items=\"3\"></mutation><value name=\"ADD0\"><block type=\"text\" id=\"x(!P2bx:bsaPeqagA{KZ\"><field name=\"TEXT\"> [</field></block></value><value name=\"ADD1\"><block type=\"dd_object_prop_get\" id=\"!%eFu%E([|~V*1/5m|g#\"><field name=\"NAME\">puid</field><value name=\"VALUE\"><block type=\"variables_get\" id=\"WHp~uUwp|3pJzsTXwW=$\"><field name=\"VAR\" id=\"/?lckU#ih)y1/F0,0[lT\">se</field></block></value></block></value><value name=\"ADD2\"><block type=\"text\" id=\"fv(zrw~_M(]3pZOe0]lb\"><field name=\"TEXT\">]</field></block></value></block></value></block></next></block></next></block></next></block></next></block></xml>",
+    "variables": []
+  },
+  "description": "",
+  "label": {
+    "de": "Systembeschreibung",
+    "en": "System Description"
+  },
+  "options": [
+    {
+      "id": "systemelement",
+      "label": {
+        "de": "Systemelement",
+        "en": "System Element"
+      },
+      "type": "select.ddo",
+      "properties": {
+        "ddo": "SE",
+        "selection": "single"
+      },
+      "value": "none"
+    }
+  ],
+  "type": "reportscript"
+}

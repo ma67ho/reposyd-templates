@@ -1,0 +1,607 @@
+{
+  "attributes": [
+    {
+      "id": "number",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "title",
+      "description": {
+        "de-DE": "Enthält eine kurze Zusammenfassung der Anforderung",
+        "en-US": "Contains a brief summary of the requirement"
+      },
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
+    },
+    {
+      "id": "rationale",
+      "description": {
+        "de-DE": "Enthält die Begründung für die Existent der Anforderung",
+        "en-US": "Contains the rationale why this requirement exists"
+      },
+      "name": {
+        "de-DE": "Begründung",
+        "en-US": "Rationale"
+      },
+      "sortorder": 40,
+      "type": "text"
+    },
+    {
+      "id": "priority",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Priorität",
+        "en-US": "Priority"
+      },
+      "sortorder": 200,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "mandatory": {
+            "value": {
+              "de-DE": "verpflichtend",
+              "en-US": "mandatory"
+            },
+            "properties": {
+              "backgroundColor": "firebrick"
+            }
+          },
+          "shall": {
+            "value": {
+              "de-DE": "muss",
+              "en-US": "shall"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          },
+          "should": {
+            "value": {
+              "de-DE": "sollte",
+              "en-US": "should"
+            },
+            "properties": {
+              "backgroundColor": "sandybrown"
+            }
+          },
+          "pending": {
+            "value": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          }
+        },
+        "default": "pending"
+      }
+    },
+    {
+      "id": "type",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Typ",
+        "en-US": "Type"
+      },
+      "sortorder": 210,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
+            "value": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": "lightslategray"
+            }
+          },
+          "safety": {
+            "value": {
+              "de-DE": "Technische Sicherheit",
+              "en-US": "Safety"
+            },
+            "properties": {
+              "backgroundColor": "darkmagenta"
+            }
+          },
+          "security": {
+            "value": {
+              "de-DE": "Gefahrenabwehr",
+              "en-US": "Security"
+            },
+            "properties": {
+              "backgroundColor": "darkmagenta"
+            }
+          },
+          "system": {
+            "value": {
+              "de-DE": "System",
+              "en-US": "System"
+            },
+            "properties": {
+              "backgroundColor": "steelblue"
+            }
+          },
+          "system.capabilty": {
+            "value": {
+              "de-DE": "Fähigkeit",
+              "en-US": "Capability"
+            },
+            "properties": {
+              "backgroundColor": "firebrick"
+            }
+          },
+          "environment": {
+            "value": {
+              "de-DE": "Umwelt",
+              "en-US": "Environment"
+            },
+            "properties": {
+              "backgroundColor": "yellowgreen"
+            }
+          },
+          "environment.emc": {
+            "value": {
+              "de-DE": "Elektromagnetische Verträglichkeit",
+              "en-US": "EMC"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "environment.esd": {
+            "value": {
+              "de-DE": "Elektrostatische Entladung",
+              "en-US": "ESD"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "environment.magnetic": {
+            "value": {
+              "de-DE": "Magnetische Beeinflussung",
+              "en-US": "Magnetic Influence"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "environment.shock": {
+            "value": {
+              "de-DE": "Schock",
+              "en-US": "Shock"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "environment.temperature": {
+            "value": {
+              "de-DE": "Temperatur",
+              "en-US": "Temperature"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "environment.mediaresistance": {
+            "value": {
+              "de-DE": "Medienbeständigkeit",
+              "en-US": "Media Resistance"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "environment.tightness": {
+            "value": {
+              "de-DE": "Dichtigkeit",
+              "en-US": "Tightness"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "interface.commuication": {
+            "description": {
+              "de-DE": "Diese Kategorie fasst alle Anforderungen an Schnittstellen für die Kommunikation zusammen",
+              "en-US": "This category summarizes all requirements for interfaces related to communication"
+            },
+            "value": {
+              "de-DE": "Schnittstelle - Kommunikation",
+              "en-US": "Interface - Communication"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "interface.electrical": {
+            "description": {
+              "de-DE": "Diese Kategorie fasst alle Anforderungen an elektrische Schnittstellen für die Energieversorgung zusammen",
+              "en-US": "This category summarizes all requirements or electrical interface related to power supply"
+            },
+            "value": {
+              "de-DE": "Schnittstelle - Elektrisch",
+              "en-US": "Interface - Electrical"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "interface.mechanical": {
+            "description": {
+              "de-DE": "Diese Kategorie fasst alle Anforderungen an die mechanische Schnittstelle zusammen",
+              "en-US": "This category summarizes all requirements related to mechanical interfaces"
+            },
+            "value": {
+              "de-DE": "Schnittstelle - Mechanisch",
+              "en-US": "Interface - Mechanical"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "interface.hmi": {
+            "description": {
+              "de-DE": "Diese Kategorie fasst alle Anforderungen an MMI zusammen",
+              "en-US": "This category summarizes all requirements related to the MMI"
+            },
+            "value": {
+              "de-DE": "MMI",
+              "en-US": "HMI"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "system.designconstruction": {
+            "value": {
+              "de-DE": "Design und Bau",
+              "en-US": "Design and Construction"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "systemquality": {
+            "value": {
+              "de-DE": "Systemqualität",
+              "en-US": "System Quality"
+            },
+            "properties": {
+              "backgroundColor": "lightyellow"
+            }
+          },
+          "phst": {
+            "value": {
+              "de-DE": "Verpackung & Transport",
+              "en-US": "Packaging & Transportation"
+            },
+            "properties": {
+              "backgroundColor": "lightyellow"
+            }
+          },
+          "marking": {
+            "value": {
+              "de-DE": "Kennzeichnung",
+              "en-US": "Marking"
+            },
+            "properties": {
+              "backgroundColor": "lightyellow"
+            }
+          }
+        },
+        "default": "pending",
+        "separator": "."
+      }
+    },
+    {
+      "id": "category",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Kategorie",
+        "en-US": "Category"
+      },
+      "sortorder": 220,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
+            "value": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          }
+        },
+        "default": "pending"
+      }
+    },
+    {
+      "id": "maturitylevel",
+      "description": {
+        "de-DE": "Enthält den Reifegrad der Anforderung",
+        "en-US": "Contains the requirement's maturity level"
+      },
+      "name": {
+        "de-DE": "Reifegrad",
+        "en-US": "Maturity Level"
+      },
+      "sortorder": 230,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "initial": {
+            "value": {
+              "de-DE": "initial",
+              "en-US": "initial"
+            },
+            "properties": {
+              "backgroundColor": "firebrick"
+            }
+          },
+          "defined": {
+            "value": {
+              "de-DE": "definiert",
+              "en-US": "defined"
+            },
+            "properties": {
+              "backgroundColor": "darkorange  "
+            }
+          },
+          "managed": {
+            "value": {
+              "de-DE": "verwaltet",
+              "en-US": "managed"
+            },
+            "properties": {
+              "backgroundColor": "#9ACD32"
+            }
+          },
+          "deleted": {
+            "value": {
+              "de-DE": "gelöscht",
+              "en-US": "deleted"
+            },
+            "properties": {
+              "backgroundColor": "#A9A9A9"
+            }
+          }
+        },
+        "default": "initial",
+        "states": {
+          "initial": ["defined", "managed", "deleted"],
+          "defined": ["managed", "deleted"]
+        }
+      }
+    },
+    {
+      "id": "sourcedocument.number",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Quelldokument - Nummer",
+        "en-US": "Source Documet Number"
+      },
+      "sortorder": 401,
+      "type": "string",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "sourcedocument.title",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Quelldokument - Titel",
+        "en-US": "Source Document Title"
+      },
+      "sortorder": 402,
+      "type": "string",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "sourcedocument.revision",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Quelldokument - Revision",
+        "en-US": "Source Document Revision"
+      },
+      "sortorder": 404,
+      "type": "string",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "sourcedocument.publicationdate",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Quelldokument - Ausgabedatum",
+        "en-US": "Source Document Publication Date"
+      },
+      "sortorder": 405,
+      "type": "string",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "paragraph.number",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Kapitelnummer",
+        "en-US": "Paragraph Number"
+      },
+      "sortorder": 411,
+      "type": "string",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "paragraph.title",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Kapiteltitel",
+        "en-US": "Paragraph Title"
+      },
+      "sortorder": 412,
+      "type": "string",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "external.id",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Externe ID",
+        "en-US": "External ID"
+      },
+      "sortorder": 500,
+      "type": "string",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "external.url",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Externe URL",
+        "en-US": "External URL"
+      },
+      "sortorder": 510,
+      "type": "url",
+      "properties": {
+        "default": ""
+      }
+    }
+  ],
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABU9JREFUeNrEl3tolWUcx7/v5dw2L5sZzqXTcqKOGCFEkrXNoiAwzAqC/uiPchvkBg5pIAjSXyLN9scUB5vztpq3rEgwMzSnOYPYkLKcnm05cVt6vJxt5/benn6/91w8Z3Nb2w74wu+8z3lun+/ze57n9zyvJITAk3xU/pEkKS19bdmy5Ti911mWlVLAvUuyzMnvt2/f/j69jURhmjygVFdXn6itrRWWJYR/cHCUBYNBweVcj+snxLGAaXqA4cdycnLWl5WWotPbhWAgBEWRE/0KS8CT4cbS/CVoaGjAwMDAyR07dqxnT6hpGLkNLyW4t7sHWkSDSvA/rv4Fv99vV5o1ezYKC1agi8rLysqwe/futZTtIRuS0wXv+ecmwmENDocD171eDA0N//vZ5k1vsQ1TupPyNE2HZZnw+Xzc3s0/cjrgN3tvETxiu11RFEQItLmq8l2qd42N0wznMlqN8amRErtgOvBbff2I6DpUVbE7VhQJbpeL6/WR3Y43crnd0XUBafQ2nAp8Q2kZ+u76oEkqlMyZAImAadgDm5OdhZajx8/NyPCUcqPhYKhhZmYmCWQBYsoCHo2cFtKA7wEiihP3X1sG9uhT5zuBUACSYSBv0SL09/cvDoUiZ7jhnOxszM/JibpekqckwIbPi8Hv3H8IzenEnVeWoeSrE3aFX0oKkHuRRAQDtLl05C1cgPju5lDD45YpQ9c1yLI8KQEx+Lz1vIV8/kGCu9G/eimK9zTBt/VTu1Lxnn04/+pyLLh0AwgMQ5AIEYuI9togqIfWQVNTEygotSKqacJAFIXPI3h5Oe4NBRBRHehdtQRFX3yJhw21NITYGMj1WaVVuFC9GXltXpr4IVsEcxRZgdvjwrEjR+H1elspDlRSQQ/HgfEEPIKXlcMfCtGcu9D90mIUbd2GoW8OQpAYxN1Jo5VMHbPe+wgXPt+GZ3+9AREK2m53u5w4fKQlDq+i2r1kD8eLhAk4z/kgRTfDnYHulQtRtKkKgR9aIHk8sQPmkXjZUhH+rhmCoLJDgWw64KCtd7jla3i7upLhD8jMsaYgCV6OALnRcHjw9wvPoGjDJwh3XIYgl0JOXc38TyEPtHVcw4r2Xsi0DlRyf3PzIXSNAX+cgJQ5DxkmdJcHVwvno+jDD6B5O2l08pjwi7//ieev3IZMO0GhkHvo4IFx4SMFpMAjtIANTwauFDyNknfehnF3ABbDR6yXKNxAa1s7Cq/eIfiwLebA/v0TwpMFqAT/luBrec4N6tbMyED78rlY80YJTE0juJQy3wm4ZeBc629Yee0uwYMUiHTsa9qL7u7uCeHJccCTm5u7lmO7YVoQdKJ15Gfh9TfXwCBPCNWJkfskCjdxtvUyXrzuI3iEdoKBvZOAJwtwJ1xCq1ZWZfumJCsqmYIR4Zu2FrvdxJmfW7Hqxj3IdNIJU0NjY+Ok4CnHMc9XfX09VTfhJPjqHj9Onz4Lh6RQrHGSEIdtnOa8n6hsNcEdtFA59DbSTWey8GQB4bq6ukrugK9MlkZnO4ko9t7DjydPUSST7IsGG6c5r4jKVJ4eiu0NJHwq8ORLKU/FXLKVGzduPF+zc6cYDgREhArDZKeeyxKi+mPbOM15XBYIh0VNTY3gNtw21ocyqQM+6VaspIigjgN0kzWpgs4i8mbYxmnOC0Ui04c/5lo+SkQwxGONQk0RfcKalh74GN8Fo0Toui7iD6fTBh/nw2SUiPiTVvgE9wHuOJssr6Kioi4/P/9lzqQj9dKuXbsqJ73apyAgWURu7I0YtC8d8P/7aabGvmLi0TJMFkr5wJzO86Q/z/8TYABlUkIP3DnF6AAAAABJRU5ErkJggg==",
+  "name": {
+    "de-DE": "Anforderung",
+    "en-US": "Requirement"
+  },
+  "name_plural": {
+    "de-DE": "Anforderungen",
+    "en-US": "Requirements"
+  },
+  "id": "RT",
+  "domain": "requirementsengineering",
+  "properties": {
+    "color": {
+      "background": "firebrick",
+      "border": "firebrick"
+    },
+    "font": {
+      "color": "white"
+    }
+  },
+  "ui": {
+    "tabs": {
+      "attributes": [
+        "sourcedocument.number",
+        "sourcedocument.title",
+        "sourcedocument.revision",
+        "sourcedocument.publicationdate"
+      ],
+      "sourcedocument": {
+        "label": {
+          "de-DE": "Quelldokument",
+          "en-US": "Source Document"
+        }
+      }
+    }
+  },
+  "rules": {
+    "style": {
+      "cellMarker": {
+        "attribute": "maturitylevel",
+        "display": "puid",
+        "value": {
+          "deleted": "border-left: 12px solid #DC143C;",
+          "defined": "border-left: 12px solid #FFD700;",
+          "managed": "border-left: 12px solid #9ACD32;"
+        }
+      }
+    }
+  }
+}

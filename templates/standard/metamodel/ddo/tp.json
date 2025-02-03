@@ -1,0 +1,80 @@
+{
+  "attributes": [
+    {
+      "id": "number",
+      "description": {
+        "de-DE": "",
+        "en-US": ""
+      },
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "number",
+      "properties": {
+        "default": ""
+      }
+    },
+    {
+      "id": "title",
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 100,
+      "type": "text",
+      "properties": {}
+    },
+    {
+      "id": "data",
+      "name": {
+        "de-DE": "Daten",
+        "en-US": "Data"
+      },
+      "sortorder": 200,
+      "type": "properties",
+      "properties": {
+        "default": "{}"
+      }
+    }
+  ],
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+  "icon": "",
+  "name": {
+    "de-DE": "Testprotokoll",
+    "en-US": "Test Protocol"
+  },
+  "name_plural": {
+    "de-DE": "Testprotokolle",
+    "en-US": "Test Protocols"
+  },
+  "id": "TP",
+  "domain": "verification",
+  "properties": {
+    "color": {
+      "background": "indianred",
+      "border": "indianred"
+    },
+    "font": {
+      "color": "white"
+    },
+    "icon": ""
+  }
+}

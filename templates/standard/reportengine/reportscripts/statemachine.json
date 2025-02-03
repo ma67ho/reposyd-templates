@@ -1,0 +1,30 @@
+{
+  "uuid": "{1c5eb46a-8f6c-401b-8546-c66fee8680b6}",
+  "domain": "<global>",
+  "id": "statemachine",
+  "definition": {
+    "blocks": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable id=\"pFBj8PsQ$h1fL;`s1rzZ\">chapter</variable><variable id=\"Jf}t=QF;R7?YT@(Y(Y?b\">dm</variable><variable id=\"rm;U]$22WJawp4VuW@5z\">states</variable><variable id=\"J}K+jT],G35isHduW7~h\">state</variable></variables><block type=\"variables_set\" id=\"*v6VI*HO7Ev54BaB6XBH\" x=\"70\" y=\"90\"><field name=\"VAR\" id=\"pFBj8PsQ$h1fL;`s1rzZ\">chapter</field><value name=\"VALUE\"><block type=\"rg_generator_document_last_chapter\" id=\"$e%+eo^`+4Nv%Qx!q}Ll\"></block></value><next><block type=\"variables_set\" id=\"l-p;KdJQG5nB~OhgRlXS\"><field name=\"VAR\" id=\"Jf}t=QF;R7?YT@(Y(Y?b\">dm</field><value name=\"VALUE\"><block type=\"dd_diagram_read\" id=\"mt+cr$WZ8G*88-I+Xk2a\"><value name=\"UUID\"><shadow type=\"text\" id=\"S~Nj,ld)zk9}0+_;9i],\"><field name=\"TEXT\">{UUID}</field></shadow><block type=\"rg_scriptoption_get\" id=\"?=rYV~LZn_oH?25=FNc:\"><field name=\"OPTID\">diagram</field></block></value></block></value><next><block type=\"controls_if\" id=\"03s.8y}~x_*@+kbb9}C(\"><mutation else=\"1\"></mutation><value name=\"IF0\"><block type=\"logic_negate\" id=\"(@V-dpV1YA8Ief_-F}vX\"><value name=\"BOOL\"><block type=\"variables_get\" id=\"jN#xEG4CToD^Ieg9D$kp\"><field name=\"VAR\" id=\"Jf}t=QF;R7?YT@(Y(Y?b\">dm</field></block></value></block></value><statement name=\"ELSE\"><block type=\"rg_fragment_diagram_add\" id=\"3d/;-v4z50+~0K;Mt11z\"><value name=\"VALUE\"><block type=\"variables_get\" id=\"(1?P|z,@{DTbE=u!J$M]\"><field name=\"VAR\" id=\"Jf}t=QF;R7?YT@(Y(Y?b\">dm</field></block></value><next><block type=\"variables_set\" id=\"oxNp@JCd0KU?8Ax@5=gx\"><field name=\"VAR\" id=\"rm;U]$22WJawp4VuW@5z\">states</field><value name=\"VALUE\"><block type=\"dd_diagram_object_list\" id=\"3z+k-Lc?D,CrmG*fPHf#\"><field name=\"DDOID\">ST</field><value name=\"VALUE\"><block type=\"variables_get\" id=\"R?Eo4_7g8=wt7uOkkmuh\"><field name=\"VAR\" id=\"Jf}t=QF;R7?YT@(Y(Y?b\">dm</field></block></value></block></value><next><block type=\"controls_forEach\" id=\":g:4QVuV2zC8k2:QFVY3\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">state</field><value name=\"LIST\"><block type=\"variables_get\" id=\"yl4:7zXE@eC`qexeaW70\"><field name=\"VAR\" id=\"rm;U]$22WJawp4VuW@5z\">states</field></block></value><statement name=\"DO\"><block type=\"rg_chapter_subchapter_add\" id=\"c[z74FXyEzU4n`ZXFNwC\"><value name=\"CHAPTER\"><block type=\"variables_get\" id=\"GLYdz1Twsw|hCeD+lUKH\"><field name=\"VAR\" id=\"pFBj8PsQ$h1fL;`s1rzZ\">chapter</field></block></value><value name=\"HEADING\"><block type=\"dd_object_attr_get\" id=\"2OoQgbs$hvbED{@ORC*!\"><field name=\"DDAID\">title</field><field name=\"DDOID\">ST</field><value name=\"VALUE\"><block type=\"variables_get\" id=\"VgYVOx3|tgvg@r}aA.;$\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">state</field></block></value></block></value><next><block type=\"rg_fragment_html_add\" id=\"y:iVqa)3S/[Z=munO~m!\"><value name=\"VALUE\"><shadow type=\"text\" id=\"vr%-:}fqn8T:3Qdhw%cJ\"><field name=\"TEXT\">&lt;html&gt;&lt;/html&gt;</field></shadow><block type=\"dd_object_attr_get\" id=\"B+yo^YY)MY`T(z%FR^$r\"><field name=\"DDAID\">description</field><field name=\"DDOID\">ST</field><value name=\"VALUE\"><block type=\"variables_get\" id=\"Pimx{f}F@yw)+Q%#v6C~\"><field name=\"VAR\" id=\"J}K+jT],G35isHduW7~h\">state</field></block></value></block></value></block></next></block></statement></block></next></block></next></block></statement></block></next></block></next></block></xml>",
+    "variables": []
+  },
+  "description": "",
+  "label": {
+    "de": "Zustandsautomat",
+    "en": "State machine"
+  },
+  "options": [
+    {
+      "id": "diagram",
+      "label": {
+        "de": "Zu druckendes Diagram",
+        "en": "Diagram to print"
+      },
+      "type": "select.diagram",
+      "properties": {
+        "type": "stmd",
+        "selection": "single"
+      },
+      "value": null
+    }
+  ],
+  "type": "reportscript"
+}

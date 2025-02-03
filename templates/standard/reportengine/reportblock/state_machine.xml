@@ -1,0 +1,123 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable type="Diagram" id="W$OI5AcV7tG^QGJyN(*I">dm</variable>
+    <variable type="ReportBlockOption" id="Gdhoxhffm`GNV,LbeCkJ">diagramtoprint</variable>
+    <variable type="ChapterNumber" id="@09F[39H(4#1h:%J2zaC">chapterNumber</variable>
+    <variable type="DesignDataObjectList" id="[oDnm:%^~4:`QzKFG8G]">states</variable>
+  </variables>
+  <block type="reportblock_head" id="blockly-y" x="170" y="170">
+    <field name="name">State Machine</field>
+    <next>
+      <block type="reportblock_contents" id="^^}r_;D.uKQH#kcT6yMS">
+        <statement name="contentsInline">
+          <block type="output_write_text_var" id="BzMB,*=9Z!Xdvv*;uNPo">
+            <field name="style">description</field>
+            <value name="text">
+              <block type="section_get" id="DLBI9dQ@%hz(}%rp4=3g">
+                <field name="attribute">description</field>
+              </block>
+            </value>
+            <next>
+              <block type="diagram_load_uuid" id="Z5%J4{,4gKH!H/Bc{r%P">
+                <field name="NAME" id="W$OI5AcV7tG^QGJyN(*I" variabletype="Diagram">dm</field>
+                <value name="UUID">
+                  <block type="reportoption_get" id="tn9+Foaj|;czS=MY:RTt">
+                    <field name="option" id="Gdhoxhffm`GNV,LbeCkJ" variabletype="ReportBlockOption">diagramtoprint</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="Vc#lx5twjJ+Pwvf49k}}">
+                    <value name="IF0">
+                      <block type="diagram_get" id="mLIP:)u23+!0H7M=-@?J">
+                        <field name="NAME" id="W$OI5AcV7tG^QGJyN(*I" variabletype="Diagram">dm</field>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="diagram_write" id="A2|2EZ~F-!{H(v,8XhT(">
+                        <field name="NAME" id="W$OI5AcV7tG^QGJyN(*I" variabletype="Diagram">dm</field>
+                        <next>
+                          <block type="chapternumber_create" id="_^b)4m5}y^UKC80V==DN">
+                            <field name="NAME" id="@09F[39H(4#1h:%J2zaC" variabletype="ChapterNumber">chapterNumber</field>
+                            <value name="VALUE">
+                              <block type="section_get" id="#q[Xdr4uyh*9wR(l?k3)">
+                                <field name="attribute">number</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="chapternumber_add" id="LPjGcXMwL@,[c`Ch*~LM">
+                                <field name="NAME" id="@09F[39H(4#1h:%J2zaC" variabletype="ChapterNumber">chapterNumber</field>
+                                <next>
+                                  <block type="diagram_ddo_get_all" id="W}Ym|+`K9R]=_NR[(Rd:">
+                                    <field name="ddoid">AT</field>
+                                    <field name="diagram" id="W$OI5AcV7tG^QGJyN(*I" variabletype="Diagram">dm</field>
+                                    <field name="list" id="[oDnm:%^~4:`QzKFG8G]" variabletype="DesignDataObjectList">states</field>
+                                    <next>
+                                      <block type="ddolist_for_each" id="Z?LxY/]X;%,ztn14QaT*">
+                                        <field name="list" id="[oDnm:%^~4:`QzKFG8G]" variabletype="DesignDataObjectList">states</field>
+                                        <statement name="inline">
+                                          <block type="toc_item_add" id="r3j;f5q6y).G%93^=]b9">
+                                            <value name="NUMBER">
+                                              <block type="chapternumber_get" id="Gk3k-1!8+EX4FYSck{X-">
+                                                <field name="NAME" id="@09F[39H(4#1h:%J2zaC" variabletype="ChapterNumber">chapterNumber</field>
+                                              </block>
+                                            </value>
+                                            <value name="TEXT">
+                                              <block type="ddolist_current_ddo_attr_get" id="2+h5sG,%QaN|]JitUC~o">
+                                                <field name="dda">none</field>
+                                                <field name="list" id="[oDnm:%^~4:`QzKFG8G]" variabletype="DesignDataObjectList">states</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="output_write_text_var" id="2sK~JVR:aN0(VRLF0VKK">
+                                                <field name="style">description</field>
+                                                <value name="text">
+                                                  <block type="ddolist_current_ddo_attr_get" id="`N9nXFRqO2;Y$1X/XB=(">
+                                                    <field name="dda">none</field>
+                                                    <field name="list" id="[oDnm:%^~4:`QzKFG8G]" variabletype="DesignDataObjectList">states</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="output_ddolist_item_puid" id="YRf_@6)@B,JX$z^-yV4%">
+                                                    <field name="list" id="[oDnm:%^~4:`QzKFG8G]" variabletype="DesignDataObjectList">states</field>
+                                                    <next>
+                                                      <block type="chapternumber_inc" id="nfXnhJ4M?|C]cUmnHN4F">
+                                                        <field name="NAME" id="@09F[39H(4#1h:%J2zaC" variabletype="ChapterNumber">chapterNumber</field>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="reportblock_options" id="b-X7JYqT!|jEok^WAxY4">
+            <statement name="optionsInline">
+              <block type="reportoption_select_diagram" id="y|%/^`Z6[w=uAPY2fV;f">
+                <field name="option" id="Gdhoxhffm`GNV,LbeCkJ" variabletype="ReportBlockOption">diagramtoprint</field>
+                <field name="selection">single</field>
+                <field name="diagram">stmd</field>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

@@ -1,0 +1,10 @@
+[
+  {
+    "key": "actiontracking.whine.enabled",
+    "value": false
+  },
+  {
+    "key": "actiontracking.prefix",
+    "value": ""
+  }
+]

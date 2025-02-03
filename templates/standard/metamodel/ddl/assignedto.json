@@ -1,0 +1,28 @@
+[
+  {
+    "foreward": {
+      "id": "assignedto",
+      "name": {
+        "de-DE": "zugewiesen zu",
+        "en-US": "assigned to"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "RE",
+    "properties": {
+      "effort": {
+        "value": 0,
+        "unit": "%"
+      }
+    },
+    "right": "TK",
+    "reverse": {
+      "id": "occupies",
+      "name": {
+        "de-DE": "beansprucht",
+        "en-US": "occupies"
+      },
+      "cardinality": "one2many"
+    }
+  }
+]

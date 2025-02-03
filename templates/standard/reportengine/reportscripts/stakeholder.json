@@ -1,0 +1,16 @@
+{
+  "uuid": "{8603dd3a-3dec-4e58-965a-52a92eb9d0e6}",
+  "domain": "<global>",
+  "id": "stakeholder",
+  "definition": {
+    "blocks": null,
+    "variables": []
+  },
+  "description": "",
+  "label": {
+    "de": "Interessengruppen",
+    "en": "Stakeholder"
+  },
+  "options": [],
+  "type": "reportscript"
+}

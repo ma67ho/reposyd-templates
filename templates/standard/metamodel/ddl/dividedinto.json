@@ -1,0 +1,123 @@
+[
+  {
+    "foreward": {
+      "id": "dividedinto",
+      "name": {
+        "de-DE": "unterteilt in",
+        "en-US": "divided into"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "CY",
+    "right": "CY",
+    "reverse": {
+      "id": "includedin",
+      "name": {
+        "de-DE": "enthalten in",
+        "en-US": "included in"
+      },
+      "cardinality": "one2one"
+    }
+  },
+  {
+    "foreward": {
+      "id": "dividedinto",
+      "name": {
+        "de-DE": "unterteilt in",
+        "en-US": "divided into"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "IS",
+    "right": "IS",
+    "reverse": {
+      "id": "includedin",
+      "name": {
+        "de-DE": "enthalten in",
+        "en-US": "included in"
+      },
+      "cardinality": "one2one"
+    }
+  },
+  {
+    "foreward": {
+      "id": "dividedinto",
+      "name": {
+        "de-DE": "unterteilt in",
+        "en-US": "divided into"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "FN",
+    "right": "FN",
+    "reverse": {
+      "id": "includedin",
+      "name": {
+        "de-DE": "enthalten in",
+        "en-US": "included in"
+      },
+      "cardinality": "one2one"
+    },
+    "hierarchy": {
+      "id": "fbs",
+      "name": {
+        "de-DE": "Funktionsstruktur",
+        "en-US": "Functional Breakdown Structure"
+      }
+    }
+  },
+  {
+    "foreward": {
+      "id": "dividedinto",
+      "name": {
+        "de-DE": "unterteilt in",
+        "en-US": "divided into"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "WP",
+    "right": "WP",
+    "reverse": {
+      "id": "includedin",
+      "name": {
+        "de-DE": "enthalten in",
+        "en-US": "included in"
+      },
+      "cardinality": "one2one"
+    },
+    "hierarchy": {
+      "id": "wbs",
+      "name": {
+        "de-DE": "Arbeitspaketestruktur",
+        "en-US": "Work Breakdown Structure"
+      }
+    }
+  },
+  {
+    "foreward": {
+      "id": "dividedinto",
+      "name": {
+        "de-DE": "unterteilt in",
+        "en-US": "divided into"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "SE",
+    "right": "SE",
+    "reverse": {
+      "id": "includedin",
+      "name": {
+        "de-DE": "enthalten in",
+        "en-US": "included in"
+      },
+      "cardinality": "one2one"
+    },
+    "hierarchy": {
+      "id": "sbs",
+      "name": {
+        "de-DE": "Systemstruktur",
+        "en-US": "System Breakdown Structure"
+      }
+    }
+  }
+]

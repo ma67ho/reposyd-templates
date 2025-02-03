@@ -1,0 +1,71 @@
+{
+  "equipmentmanager": {
+    "ddl": [
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "IS",
+        "transaction": ["*"]
+      },
+      {
+        "id": "connects",
+        "left": "IE",
+        "right": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "dividedinto",
+        "left": "IS",
+        "right": "IS",
+        "transaction": ["*"]
+      },
+      {
+        "id": "implements",
+        "left": "ET",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "implements",
+        "left": "IE",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "installedin",
+        "left": "ET",
+        "right": "IS",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "IS",
+        "transaction": ["*"]
+      }
+    ],
+    "ddo": [
+      {
+        "id": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "IS",
+        "transaction": ["*"]
+      }
+    ],
+    "transaction": []
+  }
+}

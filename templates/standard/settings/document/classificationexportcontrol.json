@@ -1,0 +1,26 @@
+[
+  {
+    "key": "document.classification.exportcontrol.default",
+    "value": "notclassified"
+  },
+  {
+    "key": "document.classification.exportcontrol.options",
+    "value": [
+      {
+        "value": "notclassified",
+        "label": { "de": "nicht klassifiziert", "en": "not classified" }
+      },
+      {
+        "value": "notexportcontrolled",
+        "label": {
+          "de": "nicht ausfuhrkontrolliert",
+          "en": "not export controlled"
+        }
+      },
+      {
+        "value": "exportcontrolled",
+        "label": { "de": "ausfuhrkontrolliert", "en": "export controlled" }
+      }
+    ]
+  }
+]

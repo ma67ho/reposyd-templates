@@ -1,0 +1,27 @@
+[
+  {
+    "key": "minutes.email.templates",
+    "value": [
+      {
+        "code": "de-DE",
+        "message": "",
+        "subject": ""
+      },
+      {
+        "code": "en-US",
+        "message": "",
+        "subject": ""
+      }
+    ]
+  },
+  {
+    "key": "minutes.renderer.layout.default",
+    "value": "DIN A4",
+    "hooks": {
+      "addproject": {
+        "object": "Layout",
+        "value": "uuid"
+      }
+    }
+  }
+]

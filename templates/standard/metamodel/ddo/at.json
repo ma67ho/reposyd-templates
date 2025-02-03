@@ -1,0 +1,326 @@
+{
+  "attributes": [
+    {
+      "id": "title",
+      "name": {
+        "de-DE": "Titel",
+        "en-US": "Title"
+      },
+      "sortorder": 20,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "description",
+      "name": {
+        "de-DE": "Beschreibung",
+        "en-US": "Description"
+      },
+      "sortorder": 30,
+      "type": "text"
+    },
+    {
+      "id": "number",
+      "name": {
+        "de-DE": "Nummer",
+        "en-US": "Number"
+      },
+      "sortorder": 10,
+      "type": "string",
+      "properties": {
+        "length": 255,
+        "default": ""
+      }
+    },
+    {
+      "id": "level",
+      "description": {
+        "de-DE": "Definiert die Prüfstufe für den Test, d.h. ob er im Rahmen der Qualitätssicherung (QA) oder z.B. als formale Werksabnahme mit Kundenbeteiligung (FAT) durchgeführt wird.",
+        "en-US": "Defines the test level for the test, i.e. whether it is performed as part of quality assurance (QA) or, for example, as a formal factory acceptance test with customer involvement (FAT)."
+      },
+      "name": {
+        "de-DE": "Prüfstufe",
+        "en-US": "Test level"
+      },
+      "sortorder": 120,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
+            "value": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "qualityassurance": {
+            "value": {
+              "de-DE": "QA",
+              "en-US": "QA"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "fat": {
+            "value": {
+              "de-DE": "FAT",
+              "en-US": "FAT"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "sit": {
+            "value": {
+              "de-DE": "SIT",
+              "en-US": "SIT"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "sat": {
+            "value": {
+              "de-DE": "SAT",
+              "en-US": "SAT"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          }
+        },
+        "default": "pending"
+      }
+    },
+    {
+      "id": "acceptanceby",
+      "description": {
+        "de-DE": "Definiert die für die Abnahme des Test verantwortliche Organisation.",
+        "en-US": "Defines the organization responsible for accepting the test."
+      },
+      "name": {
+        "de-DE": "Abnahme durch",
+        "en-US": "Acceptance by"
+      },
+      "sortorder": 130,
+      "type": "enumeration",
+      "properties": {
+        "enumeration": {
+          "pending": {
+            "value": {
+              "de-DE": "ausstehend",
+              "en-US": "pending"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "customer": {
+            "value": {
+              "de-DE": "Auftraggeber",
+              "en-US": "Customer"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "approvalauthority": {
+            "value": {
+              "de-DE": "Genehmigungsbehörde",
+              "en-US": "Approval Authority"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          },
+          "classificationsociety": {
+            "value": {
+              "de-DE": "Klassifikationsgesellschaft",
+              "en-US": "Classification society"
+            },
+            "properties": {
+              "backgroundColor": null
+            }
+          }          
+        },
+        "default": "pending"
+      }
+    },
+    {
+      "id": "status",
+      "name": { "de-DE": "Status", "en-US": "Status" },
+      "type": "enumeration",
+      "sortorder": 300,
+      "properties": {
+        "default": "pending",
+        "statusnetwork": true,
+        "enumeration": {
+          "draft": {
+            "properties": {
+              "backgroundColor": "#d60000",
+              "icon": "bi-file-earmark",
+              "transitions": {
+                "enabled": false,
+                "allowed": ["inapproval", "withdrawn"]
+              }
+            },
+            "value": { "de-DE": "draft", "en-US": "draft" }
+          },
+          "externallyapproved": {
+            "properties": {
+              "backgroundColor": "#6c00d6",
+              "icon": "bi-check-circle-fill",
+              "transitions": {
+                "enabled": false,
+                "allowed": ["released", "draft", "withdrawn"]
+              }
+            },
+            "value": {
+              "de-DE": "extern genehmigt",
+              "en-US": "externally approved"
+            }
+          },
+          "inapproval": {
+            "properties": {
+              "backgroundColor": "#f57b00",
+              "icon": "bi-file-earmark-play",
+              "transitions": {
+                "enabled": false,
+                "allowed": [
+                  "draft",
+                  "internallyapproved",
+                  "externallyapproved",
+                  "withdrawn"
+                ]
+              }
+            },
+            "value": { "de-DE": "in Genehmigung", "en-US": "in approval" }
+          },
+          "internallyapproved": {
+            "properties": {
+              "backgroundColor": "#d600d6",
+              "icon": "bi-check-circle",
+              "transitions": {
+                "enabled": false,
+                "allowed": [
+                  "externallyapproved",
+                  "released",
+                  "draft",
+                  "withdrawn"
+                ]
+              }
+            },
+            "value": {
+              "de-DE": "intern genehmigt",
+              "en-US": "internally approved"
+            }
+          },
+          "pending": {
+            "properties": {
+              "backgroundColor": "#b2b2b2",
+              "icon": "bi-question-circle",
+              "transitions": { "allowed": ["draft"], "enabled": false }
+            },
+            "value": { "de-DE": "asustehend", "en-US": "pending" }
+          },
+          "released": {
+            "uuid": "{cbf2b62d-7810-4557-9982-9fc3cd0fd948}",
+            "properties": {
+              "backgroundColor": "#00a352",
+              "icon": "bi-lock",
+              "transitions": { "enabled": false, "allowed": [] }
+            },
+            "value": { "de-DE": "Freigegeben", "en-US": "released" }
+          },
+          "withdrawn": {
+            "properties": {
+              "backgroundColor": "#191919",
+              "icon": "bi-file-earmark-x",
+              "transitions": { "enabled": false, "allowed": [] }
+            },
+            "value": { "de-DE": "zurückgezogen", "en-US": "withdrawn" }
+          }
+        }
+      }
+    },
+    {
+      "id": "pretestprotocol",
+      "title": {
+        "de-DE": "Vorlage für Vorab-Prüfprotokoll",
+        "en-US": "Template for Pre-Test Protocol"
+      },
+      "type": "documenttemplate",
+      "sortorder": 400,
+      "properties": {
+        "default": "",
+        "category": ["testprotocol"]
+      }
+    }, {
+      "id": "pretestspecification",
+      "title": {
+        "de-DE": "Vorlage für Vorab-Prüfspezifikationen",
+        "en-US": "Template for Pre-Test Specification"
+      },
+      "type": "documenttemplate",
+      "sortorder": 410,
+      "properties": {
+        "default": "",
+        "category": ["testspecification"]
+      }
+    }, {
+      "id": "testprotocol",
+      "title": {
+        "de-DE": "Vorlage für Prüfprotokolle",
+        "en-US": "Template for Test Protocol"
+      },
+      "type": "documenttemplate",
+      "sortorder": 420,
+      "properties": {
+        "default": "",
+        "category": ["testprotocol"]
+      }
+    }, {
+      "id": "testspecification",
+      "title": {
+        "de-DE": "Vorlage für Prüfspezifikationen",
+        "en-US": "Template for Test Specification"
+      },
+      "type": "documenttemplate",
+      "sortorder": 430,
+      "properties": {
+        "default": "",
+        "category": ["testspecification"]
+      }
+    }
+  ],
+  "description": {
+    "de-DE": "",
+    "en-US": ""
+  },
+  "icon": "",
+  "name": {
+    "de-DE": "Abnahmetest",
+    "en-US": "Acceptance Test"
+  },
+  "name_plural": {
+    "de-DE": "Abnahmetests",
+    "en-US": "Acceptance Test"
+  },
+  "id": "AT",
+  "domain": "design",
+  "properties": {
+    "color": {
+      "background": "indianred",
+      "border": "indianred"
+    },
+    "font": {
+      "color": "white"
+    }
+  }
+}

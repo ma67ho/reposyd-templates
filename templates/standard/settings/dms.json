@@ -1,0 +1,10 @@
+[
+  {
+    "key": "dms.enabled",
+    "value": false
+  },
+  {
+    "key": "dms.url",
+    "value": ""
+  }
+]

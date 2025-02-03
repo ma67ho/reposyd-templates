@@ -1,11 +1,15 @@
 {
-  "name": "reposyd-templates",
-  "version": "0.1.0",
+  "name": "@reposyd/templates",
+  "version": "5.0.0",
   "description": "RePoSyD Templates",
   "main": "index.js",
   "scripts": {
-    "clean": "rd / /q dist && mkdir dist",
-    "build": "node ./scripts/build.js"
+    "clean": "rimraf dist && mkdir dist",
+    "build": "node ./scripts/compile-templates.js",
+    "version:major": "yarn version --major & run-s -s build",
+    "version:minor": "yarn version --minor & run-s -s build",
+    "version:patch": "yarn version --patch & run-s -s build"
+
   },
   "repository": "https://github.com/ma67ho/reposyd-templates.git",
   "author": "Martin Hoppe <48030323+ma67ho@users.noreply.github.com>",
@@ -13,11 +17,158 @@
   "reposyd": {
     "templates": [
       {
-        "config": [
-          "hazardassessment"
-        ],
         "id": "standard",
-        "folder": "standard",
+        "folder": [
+          {
+            "file": "./standard/settings/actiontracking.json",
+            "type": "project.config"
+          },
+          {
+            "file": "./standard/settings/bulletinboard.json",
+            "type": "project.config"
+          },
+          {
+            "file": "./standard/settings/document/*",
+            "type": "project.config"
+          },
+          { "file": "./standard/settings/dms.json", "type": "project.config" },
+          { "file": "./standard/settings/erp.json", "type": "project.config" },
+          {
+            "file": "./standard/settings/hazardassessment/*",
+            "type": "project.config"
+          },
+          {
+            "file": "./standard/settings/minutes.json",
+            "type": "project.config"
+          },
+          {
+            "file": "./standard/settings/modeling.json",
+            "type": "project.config"
+          },
+          { "file": "./standard/settings/language/*", "type": "project.config" },
+          { "file": "./standard/settings/minutes/*", "type": "project.config" },
+          {
+            "file": "./standard/accesscontrol/changemanager.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/configurationmanager.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/documentmanager.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/equipmentmanager.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/projectmanager.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/repositorymanager.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/requirementsmanager.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/riskmanager.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/safetyengineer.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/systemengineer.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/verificationengineer.json",
+            "type": "acl.assignment"
+          },
+          { "file": "./standard/accesscontrol/roles.json", "type": "acl.roles" },
+          {
+            "file": "./standard/accesscontrol/transactions.json",
+            "type": "acl.transactions"
+          },
+          {
+            "file": "./standard/reportengine/layout/*",
+            "type": "reportgenerator.layout"
+          },
+          {
+            "file": "./standard/reportengine/reportscripts/functionalbreakdownstructure.json",
+            "type": "reportgenerator.script"
+          },
+          {
+            "file": "./standard/reportengine/reportscripts/hazardlog.json",
+            "type": "reportgenerator.script"
+          },
+          {
+            "file": "./standard/reportengine/reportscripts/normativedocuments.json",
+            "type": "reportgenerator.script"
+          },
+          {
+            "file": "./standard/reportengine/reportscripts/notes.json",
+            "type": "reportgenerator.script"
+          },
+          {
+            "file": "./standard/reportengine/reportscripts/requirements.json",
+            "type": "reportgenerator.script"
+          },
+          {
+            "file": "./standard/reportengine/reportscripts/stakeholder.json",
+            "type": "reportgenerator.script"
+          },
+          {
+            "file": "./standard/reportengine/reportscripts/systembreakdownstructure.json",
+            "type": "reportgenerator.script"
+          },
+          {
+            "file": "./standard/reportengine/reportscripts/statemachine.json",
+            "type": "reportgenerator.script"
+          },
+          {
+            "file": "./standard/reportengine/reportscripts/systemcontextdiagram.json",
+            "type": "reportgenerator.script"
+          },
+          {
+            "file": "./standard/solutionspace/standard.json",
+            "type": "project.solutionspace"
+          },
+          {
+            "file": "./standard/teams/systemsengineering.json",
+            "type": "project.team"
+          },
+          {
+            "file": "./standard/metamodel/ddl/*",
+            "type": "metamodel.ddl"
+          },
+          {
+            "file": "./standard/metamodel/ddo/*",
+            "type": "metamodel.ddo"
+          },
+          {
+            "file": "./standard/metamodel/patches/patch_5.0.0.json",
+            "type": "metamodel.patch"
+          },
+          {
+            "file": "./standard/metamodel/patches/patch_5.1.0.json",
+            "type": "metamodel.patch"
+          },
+          {
+            "file": "./standard/metamodel/patches/patch_5.2.0.json",
+            "type": "metamodel.patch"
+          },
+          {
+            "file": "./standard/templates/document/systemspecification.json",
+            "type": "template.document"
+          }
+        ],
         "name": {
           "de-DE": "Standardvorlage",
           "en-US": "Default template"
@@ -26,9 +177,17 @@
           "de-DE": "Standardvorlage für alle Projekte",
           "en-US": "Standard template for all projects"
         },
-        "version": "0.7.0"
+        "metamodel": "5.0.0",
+        "templates": {
+          "document": ["systemspecification.json"]
+        },
+        "version": "5.0.0"
       }
     ]
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "package-json-from-dist": "^1.0.1",
+    "rimraf": "^4.4.1"
+  }
 }

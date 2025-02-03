@@ -1,0 +1,29 @@
+[
+  {
+    "foreward": {
+      "id": "refinedby",
+      "name": {
+        "de-DE": "verfeinert durch",
+        "en-US": "refined by"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "RT",
+    "right": "RT",
+    "reverse": {
+      "id": "refines",
+      "name": {
+        "de-DE": "verfeinert",
+        "en-US": "refines"
+      },
+      "cardinality": "one2one"
+    },
+    "hierarchy": {
+      "id": "rbs",
+      "name": {
+        "de-DE": "Anforderungsstruktur",
+        "en-US": "Requirements Breakdown Structure"
+      }
+    }
+  }
+]

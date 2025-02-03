@@ -1,0 +1,22 @@
+[
+  {
+      "foreward": {
+          "id": "correspondsto",
+          "name": {
+              "de-DE": "entspricht",
+              "en-US": "corresponds to"
+          },
+          "cardinality": "one2many"
+      },
+      "left": "RT",
+      "right": "RT",
+      "reverse": {
+          "id": "coincideswith",
+          "name": {
+              "de-DE": "stimmt überein mit",
+              "en-US": "coincides with"
+          },
+          "cardinality": "one2many"
+      }
+  }
+]

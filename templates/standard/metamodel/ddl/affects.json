@@ -1,0 +1,23 @@
+[
+  {
+    "foreward": {
+      "id": "affects",
+      "name": {
+        "de-DE": "wirkt auf",
+        "en-US": "affects"
+      },
+      "cardinality": "one2many"
+    },
+    "left": "SR",
+    "right": "SE",
+    "reverse": {
+      "id": "affectedby",
+      "name": {
+        "de-DE": "beeinflusst durch",
+        "en-US": "affected by"
+      },
+      "cardinality": "one2many"
+    },
+    "roles": ["repositorymanager", "requirementsmanager"]
+  }
+]

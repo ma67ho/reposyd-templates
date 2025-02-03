@@ -1,0 +1,307 @@
+{
+  "requirementsmanager": {
+    "ddl": [
+      {
+        "id": "correspondsto",
+        "left": "RT",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "dividedinto",
+        "left": "CY",
+        "right": "CY",
+        "transaction": ["*"]
+      },
+      {
+        "id": "includedin",
+        "left": "CY",
+        "right": "CY",
+        "transaction": ["*"]
+      },
+      {
+        "id": "requires",
+        "left": "CY",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "DI",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "ET",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "FN",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "IE",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "appliesto",
+        "left": "ND",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "sourceof",
+        "left": "ND",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "RE",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "emergesfrom",
+        "left": "RK",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "applies",
+        "left": "RT",
+        "right": "ND",
+        "transaction": ["*"]
+      },
+      {
+        "id": "contains",
+        "left": "RT",
+        "right": "RK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "definedby",
+        "left": "RT",
+        "right": "UC",
+        "transaction": ["*"]
+      },
+      {
+        "id": "followsfrom",
+        "left": "RT",
+        "right": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "forcedby",
+        "left": "RT",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "leadsto",
+        "left": "RT",
+        "right": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "refines",
+        "left": "RT",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "requiredby",
+        "left": "RT",
+        "right": "SR",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "DI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "ET",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "FN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "IE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "II",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "IS",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "RE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "SI",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "ST",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "TK",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifies",
+        "left": "RT",
+        "right": "WP",
+        "transaction": ["*"]
+      },
+      {
+        "id": "summarizes",
+        "left": "FE",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "drives",
+        "left": "SE",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "SE",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "SI",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "requires",
+        "left": "SR",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "ST",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "TK",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "specifiedby",
+        "left": "WP",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "summarizes",
+        "left": "FE",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "defines",
+        "left": "UC",
+        "right": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "requires",
+        "left": "UC",
+        "right": "CY",
+        "transaction": ["*"]
+      },
+      {
+        "id": "verifies",
+        "left": "AT",
+        "right": "SE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "verifies",
+        "left": "TT",
+        "right": "RT",
+        "transaction": ["*"]
+      }
+    ],
+    "ddo": [
+      {
+        "id": "CY",
+        "transaction": ["*"]
+      },
+      {
+        "id": "DN",
+        "transaction": ["*"]
+      },
+      {
+        "id": "FE",
+        "transaction": ["*"]
+      },
+      {
+        "id": "ND",
+        "transaction": ["*"]
+      },
+      {
+        "id": "RT",
+        "transaction": ["*"]
+      },
+      {
+        "id": "SR",
+        "transaction": ["*"]
+      },
+      {
+        "id": "UC",
+        "transaction": ["*"]
+      }
+    ],
+    "transaction": ["analysis.manage", "analysis.perform"]
+  }
+}

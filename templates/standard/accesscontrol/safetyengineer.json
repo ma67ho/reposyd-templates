@@ -1,0 +1,12 @@
+{
+  "safetyengineer": {
+    "ddl": [],
+    "ddo": [
+      {
+        "id": "DN",
+        "transaction": ["*"]
+      }
+    ],
+    "transaction": []
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "id": "abbreviations",
+    "fileName": "abbreviations.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Abkürzungen",
+      "en": "Abbreviations"
+    }
+  },
+  {
+    "id": "functionalbreakdownstructure",
+    "fileName": "functionalbreakdownstructure.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Funktionale Gliederung",
+      "en": "Functional breakdown structure"
+    }
+  },
+  {
+    "id": "normativedocuments",
+    "fileName": "normativedocuments.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Normative Dokumente",
+      "en": "Normative documents"
+    }
+  },
+  {
+    "id": "notes",
+    "fileName": "notes.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Notizen",
+      "en": "Notes"
+    }
+  },
+  {
+    "id": "requirements",
+    "fileName": "requirements.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Anforderungen",
+      "en": "Requirements"
+    }
+  },
+  {
+    "id": "stakeholder",
+    "fileName": "stakeholder.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Interessensvertreter",
+      "en": "Stakeholder"
+    }
+  },
+  {
+    "id": "statemachine",
+    "fileName": "statemachine.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Zustandautomat",
+      "en": "State machine"
+    }
+  },
+  {
+    "id": "systembreakdownstructure",
+    "fileName": "systembreakdownstructure.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Systemstruktur",
+      "en": "System Breakdown Structure"
+    }
+  },
+  {
+    "id": "systemcontextdiagram",
+    "fileName": "systemcontextdiagram.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Systemkontextdiagram",
+      "en": "System context diagram"
+    }
+  },
+  {
+    "id": "usecases",
+    "fileName": "usecases.js",
+    "domain": "<global>",
+    "title": {
+      "de": "Anwendungsfälle",
+      "en": "Use cases"
+    }
+  }
+]
