@@ -1,6 +1,6 @@
 {
   "name": "@reposyd/templates",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "RePoSyD Templates",
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
@@ -35,8 +35,14 @@
             "file": "./standard/settings/document/*",
             "type": "project.config"
           },
-          { "file": "./standard/settings/dms.json", "type": "project.config" },
-          { "file": "./standard/settings/erp.json", "type": "project.config" },
+          {
+            "file": "./standard/settings/dms.json",
+            "type": "project.config"
+          },
+          {
+            "file": "./standard/settings/erp.json",
+            "type": "project.config"
+          },
           {
             "file": "./standard/settings/hazardassessment/*",
             "type": "project.config"
@@ -49,8 +55,14 @@
             "file": "./standard/settings/modeling.json",
             "type": "project.config"
           },
-          { "file": "./standard/settings/language/*", "type": "project.config" },
-          { "file": "./standard/settings/minutes/*", "type": "project.config" },
+          {
+            "file": "./standard/settings/language/*",
+            "type": "project.config"
+          },
+          {
+            "file": "./standard/settings/minutes/*",
+            "type": "project.config"
+          },
           {
             "file": "./standard/accesscontrol/changemanager.json",
             "type": "acl.assignment"
@@ -95,7 +107,10 @@
             "file": "./standard/accesscontrol/verificationengineer.json",
             "type": "acl.assignment"
           },
-          { "file": "./standard/accesscontrol/roles.json", "type": "acl.roles" },
+          {
+            "file": "./standard/accesscontrol/roles.json",
+            "type": "acl.roles"
+          },
           {
             "file": "./standard/accesscontrol/transactions.json",
             "type": "acl.transactions"
@@ -183,7 +198,9 @@
         },
         "metamodel": "5.0.0",
         "templates": {
-          "document": ["systemspecification.json"]
+          "document": [
+            "systemspecification.json"
+          ]
         },
         "version": "5.0.0"
       }
