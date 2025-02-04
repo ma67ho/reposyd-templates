@@ -19,6 +19,9 @@
             "de-DE": "",
             "en-US": ""
           }
+        },
+        "onerror": {
+          "exists": "skip"
         }
       }
     }
