@@ -6,10 +6,30 @@
   },
   "commands": [
     {
-      "name":"dda.add",
+      "name": "role.add",
       "arguments": {
-        "ddo":"ET",
-        "dda":{
+        "role": {
+          "id": "equipmentmanager",
+          "name": {
+            "de-DE": "Ausrüstungsmanager",
+            "en-US": "Euipment Manager"
+          },
+          "state": "enabled",
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          }
+        }
+      },
+      "onerror": {
+        "exists": "skip"
+      }
+    },
+    {
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "ET",
+        "dda": {
           "id": "installationtype",
           "name": {
             "de-DE": "Einbauart",
@@ -47,10 +67,10 @@
       }
     },
     {
-      "name":"dda.add",
+      "name": "dda.add",
       "arguments": {
-        "ddo":"ET",
-        "dda":{
+        "ddo": "ET",
+        "dda": {
           "id": "shockclass",
           "name": {
             "de-DE": "Schockklasse",
@@ -59,7 +79,7 @@
           "sortorder": 200,
           "type": "enumeration",
           "properties": {
-            "default": "fitted",
+            "default": "notdefined",
             "enumeration": {
               "notdefined": {
                 "value": {
@@ -74,10 +94,10 @@
       }
     },
     {
-      "name":"dda.add",
-      "arguments":{
-        "ddo":"ET",
-        "dda":{
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "ET",
+        "dda": {
           "id": "lifecyclestatus",
           "name": {
             "de-DE": "Lebenszyklusstatus",
@@ -86,6 +106,7 @@
           "sortorder": 200,
           "type": "enumeration",
           "properties": {
+            "default": "available",
             "enumeration": {
               "available": {
                 "value": {
@@ -121,10 +142,10 @@
       }
     },
     {
-      "name":"dda.add",
-      "arguments":{
-        "ddo":"ET",
-        "dda":    {
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "ET",
+        "dda": {
           "id": "technicaldata",
           "name": {
             "de-DE": "Technische Daten",
@@ -135,14 +156,14 @@
           "properties": {
             "default:": []
           }
-        }    
+        }
       }
     },
     {
-      "name":"dda.add",
-      "arguments":{
-        "ddo":"ET",
-        "dda":{
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "ET",
+        "dda": {
           "id": "technologyreadinesslevel",
           "name": {
             "de-DE": "Technology Readiness Level",
@@ -151,6 +172,7 @@
           "sortorder": 210,
           "type": "enumeration",
           "properties": {
+            "default": "pending",
             "enumeration": {
               "pending": {
                 "value": {
@@ -228,14 +250,14 @@
       }
     },
     {
-      "name":"dda.add",
-      "arguments":{
-        "ddo":"ET",
+      "name": "dda.add",
+      "arguments": {
+        "ddo": "ET",
         "dda": {
           "id": "weighttolerance",
-          "name": { 
-            "de-DE": "weighttolerance", 
-            "en-US": "weighttolerance" 
+          "name": {
+            "de-DE": "weighttolerance",
+            "en-US": "weighttolerance"
           },
           "type": "value",
           "sortorder": 300,
@@ -264,17 +286,376 @@
       }
     },
     {
-      "name": "ddl.patch",
+      "name": "ddo.add",
       "arguments": {
-        "ddl": {
-          "left": "ET",
-          "id": "installedin",
-          "right": "IS",
+        "ddo": {
+          "attributes": [
+            {
+              "id": "number",
+              "name": {
+                "de-DE": "Nummer",
+                "en-US": "Number"
+              },
+              "sortorder": 10,
+              "type": "string",
+              "properties": {
+                "length": 255,
+                "default": ""
+              }
+            },
+            {
+              "id": "title",
+              "name": {
+                "de-DE": "Titel",
+                "en-US": "Title"
+              },
+              "sortorder": 20,
+              "type": "string",
+              "properties": {
+                "length": 255,
+                "default": ""
+              }
+            },
+            {
+              "id": "description",
+              "name": {
+                "de-DE": "Beschreibung",
+                "en-US": "Description"
+              },
+              "sortorder": 30,
+              "type": "text",
+              "properties": {}
+            }
+          ],
+          "description": {
+            "de-DE": "",
+            "en-US": ""
+          },
+          "icon": "bi-geo",
+          "name": {
+            "de-DE": "Einbauort",
+            "en-US": "Installation site"
+          },
+          "name_plural": {
+            "de-DE": "Einbauorte",
+            "en-US": "Installation sites"
+          },
+          "id": "IS",
+          "domain": "systemdesign",
           "properties": {
-            "cardinality": "one2one"
+            "color": {
+              "background": "darkcyan",
+              "border": "darkcyan"
+            },
+            "font": {
+              "color": "white"
+            }
           }
         }
       }
+    },
+    {
+      "name": "ddl.add",
+      "arguments": {
+        "ddl": {
+          "foreward": {
+            "id": "appliesto",
+            "name": {
+              "de-DE": "gilt für",
+              "en-US": "applies to"
+            },
+            "cardinality": "one2many"
+          },
+          "left": "ND",
+          "right": "ET",
+          "reverse": {
+            "id": "applies",
+            "name": {
+              "de-DE": "wendet an",
+              "en-US": "applies"
+            },
+            "cardinality": "one2many"
+          }
+        }
+      },
+      "onerror": {
+        "exists": "skip"
+      }
+    },
+    {
+      "name": "ddl.add",
+      "arguments": {
+        "ddl": {
+          "foreward": {
+            "id": "appliesto",
+            "name": {
+              "de-DE": "gilt für",
+              "en-US": "applies to"
+            },
+            "cardinality": "one2many"
+          },
+          "left": "ND",
+          "right": "IS",
+          "reverse": {
+            "id": "applies",
+            "name": {
+              "de-DE": "wendet an",
+              "en-US": "applies"
+            },
+            "cardinality": "one2many"
+          }
+        }
+      },
+      "onerror": {
+        "exists": "skip"
+      }
+    },
+    {
+      "name": "ddl.add",
+      "arguments": {
+        "ddl": {
+          "foreward": {
+            "id": "dividedinto",
+            "name": {
+              "de-DE": "unterteilt in",
+              "en-US": "divided into"
+            },
+            "cardinality": "one2many"
+          },
+          "left": "IS",
+          "right": "IS",
+          "reverse": {
+            "id": "includedin",
+            "name": {
+              "de-DE": "enthalten in",
+              "en-US": "included in"
+            },
+            "cardinality": "one2one"
+          }
+        } 
+      },
+      "onerror": {
+        "exists": "skip"
+      }
+    },
+    {
+      "name":"ddl.add",
+      "arguments": {
+        "ddl":   {
+          "foreward": {
+            "id": "connects",
+            "name": {
+              "de-DE": "verbindet",
+              "en-US": "connects"
+            },
+            "cardinality": "one2many"
+          },
+          "left": "IE",
+          "right": "ET",
+          "reverse": {
+            "id": "connectedto",
+            "name": {
+              "de-DE": "verbunden mit",
+              "en-US": "connected to"
+            },
+            "cardinality": "one2many"
+          }
+        }
+      },
+      "onerror": {
+        "exists": "skip"
+      }
+    },
+    {
+      "name":"ddl.add",
+      "arguments": {
+        "ddl":  {
+          "foreward": {
+            "id": "implements",
+            "name": {
+              "de-DE": "implementiert",
+              "en-US": "implements"
+            },
+            "cardinality": "one2one"
+          },
+          "left": "ET",
+          "right": "SE",
+          "reverse": {
+            "id": "madeupfrom",
+            "name": {
+              "de-DE": "gebildet aus",
+              "en-US": "made up from"
+            },
+            "cardinality": "one2many"
+          }
+        }      
+      },
+      "onerror": {
+        "exists": "skip"
+      }
+    },
+    {
+      "name": "ddl.add",
+      "arguments": {
+        "ddl": {
+          "foreward": {
+            "id": "installedin",
+            "name": {
+              "de-DE": "eingebaut in",
+              "en-US": "installed in"
+            },
+            "cardinality": "one2many"
+          },
+          "left": "ET",
+          "right": "IS",
+          "reverse": {
+            "id": "contains",
+            "name": {
+              "de-DE": "beinhaltet",
+              "en-US": "contains"
+            },
+            "cardinality": "one2many"
+          }
+        },
+        "roles": {
+          "equipmentmanager": "*",
+          "repositorymanager": "*",
+          "systemengineer": "*"
+        }
+      },
+      "onerror": {
+        "exists": "skip"
+      }
+    },
+    {
+      "name":"ddl.add",
+      "arguments": {
+        "ddl":   {
+          "foreward": {
+            "id": "specifies",
+            "name": {
+              "de-DE": "spezifiziert",
+              "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+          },
+          "left": "RT",
+          "right": "ET",
+          "reverse": {
+            "id": "specifiedby",
+            "name": {
+              "de-DE": "spezifiziert durch",
+              "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+          }
+        }      
+      },
+      "onerror": {
+        "exists": "skip"
+      }
+    },
+    {
+      "name":"ddl.add",
+      "arguments": {
+        "ddl":   {
+          "foreward": {
+            "id": "specifies",
+            "name": {
+              "de-DE": "spezifiziert",
+              "en-US": "specifies"
+            },
+            "cardinality": "one2many"
+          },
+          "left": "RT",
+          "right": "IS",
+          "reverse": {
+            "id": "specifiedby",
+            "name": {
+              "de-DE": "spezifiziert durch",
+              "en-US": "specified by"
+            },
+            "cardinality": "one2many"
+          }
+        }      
+      },
+      "onerror": {
+        "exists": "skip"
+      }
+    },
+    {
+      "name": "assignment.add",
+      "arguments": {
+        "role": "equipmentmanager",
+        "ddl": [
+          {
+            "id": "appliesto",
+            "left": "ND",
+            "right": "ET",
+            "transaction": "*"
+          },
+          {
+            "id": "appliesto",
+            "left": "ND",
+            "right": "IS",
+            "transaction": "*"
+          },
+          {
+            "id": "connects",
+            "left": "IE",
+            "right": "ET",
+            "transaction": "*"
+          },
+          {
+            "id": "dividedinto",
+            "left": "IS",
+            "right": "IS",
+            "transaction": "*"
+          },
+          {
+            "id": "implements",
+            "left": "ET",
+            "right": "SE",
+            "transaction": "*"
+          },
+          {
+            "id": "implements",
+            "left": "IE",
+            "right": "SI",
+            "transaction": "*"
+          },
+          {
+            "id": "installedin",
+            "left": "ET",
+            "right": "IS",
+            "transaction": "*"
+          },
+          {
+            "id": "specifies",
+            "left": "RT",
+            "right": "ET",
+            "transaction": "*"
+          },
+          {
+            "id": "specifies",
+            "left": "RT",
+            "right": "IS",
+            "transaction": "*"
+          }
+        ],
+        "ddo": [
+          {
+            "id": "ET",
+            "transaction": "*"
+          },
+          {
+            "id": "IS",
+            "transaction": "*"
+          }
+        ],
+        "transaction": []
+      },
+      "onerror": { "exists": "skip" }
     }
   ],
   "version": "5.2.0"
