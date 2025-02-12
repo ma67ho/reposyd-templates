@@ -1,6 +1,6 @@
 {
   "name": "@reposyd/templates",
-  "version": "5.0.1",
+  "version": "5.2.0",
   "description": "RePoSyD Templates",
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
@@ -120,6 +120,10 @@
             "type": "reportgenerator.layout"
           },
           {
+            "file": "./standard/reportengine/reportscripts/allocaterequirements.json",
+            "type": "reportgenerator.script"
+          },
+          {
             "file": "./standard/reportengine/reportscripts/functionalbreakdownstructure.json",
             "type": "reportgenerator.script"
           },
@@ -144,6 +148,10 @@
             "type": "reportgenerator.script"
           },
           {
+            "file": "./standard/reportengine/reportscripts/ssdd-systemelement.json",
+            "type": "reportgenerator.script"
+          },
+          {
             "file": "./standard/reportengine/reportscripts/systembreakdownstructure.json",
             "type": "reportgenerator.script"
           },
@@ -152,7 +160,7 @@
             "type": "reportgenerator.script"
           },
           {
-            "file": "./standard/reportengine/reportscripts/systemcontextdiagram.json",
+            "file": "./standard/reportengine/reportscripts/testcasesbyacceptancetest.json",
             "type": "reportgenerator.script"
           },
           {
@@ -196,13 +204,13 @@
           "de-DE": "Standardvorlage für alle Projekte",
           "en-US": "Standard template for all projects"
         },
-        "metamodel": "5.0.0",
+        "metamodel": "5.2.0",
         "templates": {
           "document": [
             "systemspecification.json"
           ]
         },
-        "version": "5.0.0"
+        "version": "5.2.0"
       }
     ]
   },
