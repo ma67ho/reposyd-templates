@@ -64,6 +64,9 @@
             }
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -91,6 +94,9 @@
             }
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -139,6 +145,9 @@
             }
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -157,6 +166,9 @@
             "default:": []
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -247,6 +259,9 @@
             }
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -269,6 +284,9 @@
             "unit": { "de-DE": "%", "en-US": "%" }
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -352,6 +370,9 @@
             }
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -504,7 +525,7 @@
               "de-DE": "eingebaut in",
               "en-US": "installed in"
             },
-            "cardinality": "one2many"
+            "cardinality": "one2one"
           },
           "left": "ET",
           "right": "IS",

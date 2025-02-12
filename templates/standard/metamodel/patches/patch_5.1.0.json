@@ -72,6 +72,9 @@
             "default": "pending"
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -186,6 +189,9 @@
           "de-DE": "Fügt das Attribute 'Status' hinzu.",
           "en-US": "Adds the attribute 'Status'."
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -205,6 +211,9 @@
             "category": ["testprotocol"]
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -224,6 +233,9 @@
             "category": ["testspecification"]
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -243,6 +255,9 @@
             "category": ["testprotocol"]
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -262,6 +277,9 @@
             "category": ["testspecification"]
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -322,6 +340,9 @@
             "default": "pending"
           }
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -398,6 +419,9 @@
         "roles": {
           "verificationengineer": ["ddo.create", "ddo.delete", "ddo.modify"]
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -486,6 +510,9 @@
         "roles": {
           "verificationengineer": ["ddo.create", "ddo.delete", "ddo.modify"]
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -498,7 +525,7 @@
               "de-DE": "führt durch",
               "en-US": "performs"
             },
-            "cardinality": "one2one"
+            "cardinality": "one2many"
           },
           "left": "AT",
           "right": "TC",
@@ -514,6 +541,9 @@
         "roles": {
           "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -542,6 +572,9 @@
         "roles": {
           "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -570,6 +603,9 @@
         "roles": {
           "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -598,6 +634,9 @@
         "roles": {
           "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     },
     {
@@ -626,6 +665,9 @@
         "roles": {
           "verificationengineer": ["ddl.accept", "ddl.link", "ddl.unlink"]
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     }
   ],

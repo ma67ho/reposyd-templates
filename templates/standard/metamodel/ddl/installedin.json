@@ -6,7 +6,7 @@
         "de-DE": "eingebaut in",
         "en-US": "installed in"
       },
-      "cardinality": "one2many"
+      "cardinality": "one2one"
     },
     "left": "ET",
     "right": "IS",

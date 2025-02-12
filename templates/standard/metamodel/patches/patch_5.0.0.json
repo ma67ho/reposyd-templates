@@ -19,10 +19,10 @@
             "de-DE": "",
             "en-US": ""
           }
-        },
-        "onerror": {
-          "exists": "skip"
         }
+      },
+      "onerror": {
+        "exists": "skip"
       }
     }
   ],
