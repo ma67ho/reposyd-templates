@@ -70,3 +70,8 @@ rimraf@^4.4.1:
   integrity sha512-Gk8NlF062+T9CqNGn6h4tls3k6T1+/nXdOcSZVikNVtlRdYpA7wRJJMoXmuvOnLW844rPjdQ7JgXCYM6PPC/og==
   dependencies:
     glob "^9.2.0"
+
+run-all@^1.0.1:
+  version "1.0.1"
+  resolved "https://pkg.reposyd.de/registry/run-all/-/run-all-1.0.1.tgz#a3573b6458d52e6dc8c0f68407cf50d70ae1e2e6"
+  integrity sha512-5c1Mh6SoH9k/bhVmEiZdrs/d64pEwtlwvOenl/O7+mAgCG39C0LIM4tPje3d1eMn9Bh/F4mUZZipMaF3Ie92qg==

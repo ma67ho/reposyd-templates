@@ -217,6 +217,7 @@
   "dependencies": {},
   "devDependencies": {
     "package-json-from-dist": "^1.0.1",
-    "rimraf": "^4.4.1"
+    "rimraf": "^4.4.1",
+    "run-all": "^1.0.1"
   }
 }
