@@ -364,7 +364,7 @@
             "attribute": "probability",
             "size": 5
           }
-        },  
+        },
         "matrix": [
           [0, 2, 3, 4, 4],
           [0, 2, 3, 3, 4],
@@ -436,7 +436,10 @@
       "sortorder": 200,
       "type": "value",
       "properties": {
-        "unit": "EUR"
+        "default": 0,
+        "min": 0,
+        "max": 999999999,
+        "unit": { "de-DE": "EUR", "en-US": "EUR" }
       }
     },
     {

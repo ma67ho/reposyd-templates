@@ -1,6 +1,6 @@
 {
   "name": "@reposyd/templates",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "description": "RePoSyD Templates",
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
@@ -192,6 +192,10 @@
             "type": "metamodel.patch"
           },
           {
+            "file": "./standard/metamodel/patches/patch_5.2.1.json",
+            "type": "metamodel.patch"
+          },
+          {
             "file": "./standard/templates/document/systemspecification.json",
             "type": "template.document"
           }
@@ -204,13 +208,13 @@
           "de-DE": "Standardvorlage für alle Projekte",
           "en-US": "Standard template for all projects"
         },
-        "metamodel": "5.2.0",
+        "metamodel": "5.2.1",
         "templates": {
           "document": [
             "systemspecification.json"
           ]
         },
-        "version": "5.2.0"
+        "version": "5.2.1"
       }
     ]
   },

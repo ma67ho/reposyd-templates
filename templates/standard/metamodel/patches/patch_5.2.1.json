@@ -1,0 +1,25 @@
+{
+  "date": "2025-02-13",
+  "title": {
+    "de": "Behebt Problem #77 (Extend the EUR value in Risk Management). ",
+    "en": "Fixes issue #77 (Extend the EUR value in Risk Management)."
+  },
+  "commands": [
+    {
+      "name": "dda.patch",
+      "arguments": {
+        "ddo": "RK",
+        "dda": "costimpact",
+        "properties": {
+          "properties": {
+            "default": 0, 
+            "min": 0,
+            "max": 999999999,
+            "unit": { "de-DE": "EUR", "en-US": "EUR" }
+          }
+        }
+      }
+    }
+  ],
+  "version": "5.2.1"
+}
