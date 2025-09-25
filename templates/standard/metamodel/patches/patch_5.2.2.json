@@ -1,0 +1,62 @@
+{
+  "date": "2025-05-13",
+  "title": {
+    "de": "Fügt die fehlenden Attributtitel im Abnahmetest hinzu.",
+    "en": "Adds the missing attribute titles in the acceptance test."
+  },
+  "commands": [
+    {
+      "name": "dda.patch",
+      "arguments": {
+        "ddo": "AT",
+        "dda": "pretestprotocol",
+        "properties": {
+          "title": {
+            "de-DE": "Vorlage für Vorab-Prüfprotokoll",
+            "en-US": "Template for Pre-Test Protocol"
+          }
+        }
+      }
+    },
+    {
+      "name": "dda.patch",
+      "arguments": {
+        "ddo": "AT",
+        "dda": "pretestspecification",
+        "properties": {
+          "title": {
+            "de-DE": "Vorlage für Vorab-Prüfspezifikationen",
+            "en-US": "Template for Pre-Test Specification"
+          }
+        }
+      }
+    },
+    {
+      "name": "dda.patch",
+      "arguments": {
+        "ddo": "AT",
+        "dda": "testprotocol",
+        "properties": {
+          "title": {
+            "de-DE": "Vorlage für Prüfprotokolle",
+            "en-US": "Template for Test Protocol"
+          }
+        }
+      }
+    },
+    {
+      "name": "dda.patch",
+      "arguments": {
+        "ddo": "AT",
+        "dda": "testspecification",
+        "properties": {
+          "title": {
+            "de-DE": "Vorlage für Prüfspezifikationen",
+            "en-US": "Template for Test Specification"
+          }
+        }
+      }
+    }
+  ],
+  "version": "5.2.2"
+}
