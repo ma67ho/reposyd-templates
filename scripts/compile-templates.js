@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 const { findPackageJson, loadPackageJson } = require('package-json-from-dist')
+
+const crc = require('crc/crc32')
 function readConfigFile (filename) {
   // if (fs.existsSync(filename)) {
   const buffer = fs.readFileSync(filename, 'utf-8')
@@ -172,7 +174,16 @@ function read () {
             case 'reportgenerator.script':
               data.forEach(item => {
                 console.log(`reportgenerator: script '${item[1]}' added`)
-                definition.reportengine.reportscripts.push(item[0])
+                const d = {
+                  Definition: item[0].definition,
+                  Domain: item[0].domain,
+                  Id: item[0].id,
+                  Label: item[0].label,
+                  Options: item[0].options,
+                  Type: item[0].type
+                }
+                d.checksum = crc(JSON.stringify(d)).toString(16)
+                definition.reportengine.reportscripts.push(d)
               })
               break
             case 'template.document':

@@ -1,10 +1,12 @@
 {
   "name": "@reposyd/templates",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "description": "RePoSyD Templates",
+  "type": "commonjs",
   "scripts": {
     "clean": "rimraf dist && mkdir dist",
     "build": "node ./scripts/compile-templates.js",
+    "scripts:copy": "cpy ./scripts/compile-templates.js ./dist/. & cpy ./scripts/compile.js ./dist/.",
     "version:major": "yarn version --major & run-s -s build",
     "version:minor": "yarn version --minor & run-s -s build",
     "version:patch": "yarn version --patch & run-s -s build"
@@ -69,6 +71,10 @@
           },
           {
             "file": "./standard/accesscontrol/configurationmanager.json",
+            "type": "acl.assignment"
+          },
+          {
+            "file": "./standard/accesscontrol/documentauthor.json",
             "type": "acl.assignment"
           },
           {
@@ -196,6 +202,10 @@
             "type": "metamodel.patch"
           },
           {
+            "file": "./standard/metamodel/patches/patch_5.2.2.json",
+            "type": "metamodel.patch"
+          },
+          {
             "file": "./standard/templates/document/systemspecification.json",
             "type": "template.document"
           }
@@ -208,18 +218,24 @@
           "de-DE": "Standardvorlage für alle Projekte",
           "en-US": "Standard template for all projects"
         },
-        "metamodel": "5.2.1",
+        "metamodel": "5.2.2",
         "templates": {
           "document": [
             "systemspecification.json"
           ]
         },
-        "version": "5.2.1"
+        "version": "5.2.2"
       }
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "crc": "^4.3.2",
+    "find-package-json": "^1.2.0",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
+    "cpy-cli": "^5.0.0",
     "package-json-from-dist": "^1.0.1",
     "rimraf": "^4.4.1",
     "run-all": "^1.0.1"
