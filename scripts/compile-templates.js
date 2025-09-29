@@ -35,6 +35,7 @@ function read () {
         transactions: []
       },
       designdata: {
+        ddl: [],
         ddo: [],
         documents: []
       },
